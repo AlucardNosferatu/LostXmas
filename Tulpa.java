@@ -13,8 +13,10 @@ public class Tulpa{
   public int Health;
   public int Hunger;
   public int Mood;
+  public int Persona;
   public boolean Lived;
   public boolean Gender;//true for female, false for male
+  
   
   public Tulpa(String I_Name, Boolean I_Gender){
     Scanner sc=new Scanner(System.in);
@@ -25,6 +27,8 @@ public class Tulpa{
     this.Age=0;
     this.Health=100;
     this.Mood=100;
+    this.Hunger=100;
+    this.Persona=0;
   }
   
   public void live(Tulpa t){
@@ -33,13 +37,16 @@ public class Tulpa{
     }
     else{
       t.Lived=true;
+      if(Hunger<20){
+          Health-=10;
+      }
       t.Age++;
     }
   }
   
   public void eat(Tulpa t,Food f){
     if(t.Lived){
-      t.Health+=f.Nutrition;
+      t.Hunger-=f.Nutrition;
       t.Mood+=f.Flavor;
     }
     else{
@@ -96,9 +103,37 @@ public class Tulpa{
         System.out.println("Your Tulpa is dead, you should take good care of him!");
       }
     }
-    
-    
-    
-    
+  }
+  
+  public void play(Tulpa t){
+      if(Lived){
+        t.Mood+=5;
+        t.Hunger-=5;
+        t.Persona+=10;
+      }
+      else{
+        if(t.Gender){
+            System.out.println("Your Tulpa is dead, you should take good care of her!");
+        }
+        else{
+            System.out.println("Your Tulpa is dead, you should take good care of him!");
+        }
+      }
+  }
+  
+  public void puberty（Tulpa t){
+      if(Lived){
+          if(t.Persona>50){
+              
+          }
+      }
+      else{
+          if(t.Gender){
+              System.out.println("Your Tulpa is dead, you should take good care of her!");
+          }
+          else{
+              System.out.println("Your Tulpa is dead, you should take good care of him!");
+          }
+      }
   }
 }
