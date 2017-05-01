@@ -63,10 +63,20 @@ public class Tulpa{
       
       switch(choice){
         case 1:
+          t.Health+=5;
+          break;
         case 2:
+          t.Health++;
+          t.Mood+=4;
+          break;
         case 3:
+          t.Health++;
+          t.Mood+=10;
+          nightmare+=10;
+          break;
         default:
-          
+          t.Health++;
+          break;
       }
       
     }
