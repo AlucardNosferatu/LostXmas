@@ -72,6 +72,8 @@ public class Tulpa{
           t.Mood+=4;
           break;
         case 3:
+          System.out.println("She laughs and guffaws, she is too excited to fall asleep.");
+          System.out.println("But she is cheered up, her mood is effectively improved!");
           t.Health++;
           t.Mood+=10;
           nightmare+=10;
