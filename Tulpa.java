@@ -1,4 +1,4 @@
-//My computer just crashed, I lose a lot of codes I've typed
+//My computer just crashed, I lost a lot of codes I've typed
 //I can't help crying.
 //Her smile give me strenghth to redo it again.
 //Her love is my power.
@@ -36,7 +36,7 @@ public class Tulpa{
   }
   
   public void eat(Tulpa t,Food f){
-    if(Lived){
+    if(t.Lived){
       t.Health+=f.Nutrition;
       t.Mood+=f.Flavor;
     }
@@ -48,5 +48,26 @@ public class Tulpa{
         System.out.println("Your Tulpa is dead, you should take good care of him!");
       }
     }
+  }
+  
+  public void sleep(Tulpa t){
+    if(Lived){
+      System.out.println("Do something before going to sleep?");
+      System.out.println("Do something before going to sleep?");
+      System.out.println("Do something before going to sleep?");
+      System.out.println("Do something before going to sleep?");
+    }
+    else{
+      if(t.Gender){
+        System.out.println("Your Tulpa is dead, you should take good care of her!");
+      }
+      else{
+        System.out.println("Your Tulpa is dead, you should take good care of him!");
+      }
+    }
+    
+    
+    
+    
   }
 }
