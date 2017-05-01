@@ -17,6 +17,8 @@ public class Tulpa{
   public boolean Gender;//true for female, false for male
   
   public Tulpa(String I_Name, Boolean I_Gender){
+    Scanner sc=new Scanner(System.in);
+    Random ra=new Random();
     this.Lived=true;
     this.Name=I_Name;
     this.Gender=I_Gender;
@@ -53,9 +55,11 @@ public class Tulpa{
   public void sleep(Tulpa t){
     if(Lived){
       System.out.println("Do something before going to sleep?");
-      System.out.println("Do something before going to sleep?");
-      System.out.println("Do something before going to sleep?");
-      System.out.println("Do something before going to sleep?");
+      System.out.println("1.Pray for him/her.");
+      System.out.println("2.Sing a lullaby.");
+      System.out.println("3.Tell stories.");
+      int choice=sc.next
+      
     }
     else{
       if(t.Gender){
