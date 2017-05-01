@@ -82,7 +82,11 @@ public class Tulpa{
           t.Health++;
           break;
       }
-      
+      if(nightmare>50){
+        System.out.println("She dreams about something scary, the insomia is unavoidable.");
+        t.Mood-=5;
+        t.Health-=5;
+      }
     }
     else{
       if(t.Gender){
