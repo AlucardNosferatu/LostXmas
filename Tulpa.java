@@ -1,6 +1,3 @@
-import java.util.Date;
-import java.text.SimpleDateFormat;
-
 public class Tulpa{
   public String Name;
   public int Age;
@@ -31,6 +28,8 @@ public class Tulpa{
   
   public void eat(Tulpa t,Food f){
     if(Lived){
+      Health+=f.Nutrition;
+      Mood+=f.Flavor;
     }
     else{
       if(t.Gender){
