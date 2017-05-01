@@ -58,7 +58,16 @@ public class Tulpa{
       System.out.println("1.Pray for him/her.");
       System.out.println("2.Sing a lullaby.");
       System.out.println("3.Tell stories.");
-      int choice=sc.next
+      int choice=sc.nextInt();
+      int nightmare=ra.nextInt(100);
+      
+      switch(choice){
+        case 1:
+        case 2:
+        case 3:
+        default:
+          
+      }
       
     }
     else{
