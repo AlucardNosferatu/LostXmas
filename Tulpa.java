@@ -3,6 +3,10 @@
 //Her smile give me strenghth to redo it again.
 //Her love is my power.
 
+import java.util.Scanner;
+import java.util.Random;
+
+
 public class Tulpa{
   public String Name;
   public int Age;
@@ -33,8 +37,8 @@ public class Tulpa{
   
   public void eat(Tulpa t,Food f){
     if(Lived){
-      Health+=f.Nutrition;
-      Mood+=f.Flavor;
+      t.Health+=f.Nutrition;
+      t.Mood+=f.Flavor;
     }
     else{
       if(t.Gender){
