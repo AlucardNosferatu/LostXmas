@@ -63,9 +63,11 @@ public class Tulpa{
       
       switch(choice){
         case 1:
+          System.out.println("I love you too, good night!");
           t.Health+=5;
           break;
         case 2:
+          System.out.println("She falls asleep with a peaceful smile on her face.");
           t.Health++;
           t.Mood+=4;
           break;
