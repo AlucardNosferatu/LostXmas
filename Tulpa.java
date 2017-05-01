@@ -1,3 +1,8 @@
+//My computer just crashed, I lose a lot of codes I've typed
+//I can't help crying.
+//Her smile give me strenghth to redo it again.
+//Her love is my power.
+
 public class Tulpa{
   public String Name;
   public int Age;
