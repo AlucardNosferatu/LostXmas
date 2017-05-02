@@ -13,7 +13,7 @@ public class Tulpa{
   public int Health;
   public int Hunger;
   public int Mood;
-  public int Persona;
+  public Persona P;
   public boolean Lived;
   public boolean Gender;//true for female, false for male
   
@@ -21,6 +21,7 @@ public class Tulpa{
   public Tulpa(String I_Name, Boolean I_Gender){
     Scanner sc=new Scanner(System.in);
     Random ra=new Random();
+    Persona p=new Persona();
     this.Lived=true;
     this.Name=I_Name;
     this.Gender=I_Gender;
@@ -28,7 +29,7 @@ public class Tulpa{
     this.Health=100;
     this.Mood=100;
     this.Hunger=100;
-    this.Persona=0;
+    this.P.growth=0;
   }
   
   public void live(Tulpa t){
@@ -123,8 +124,8 @@ public class Tulpa{
   
   public void puberty（Tulpa t){
       if(Lived){
-          if(t.Persona>50){
-              
+          if(t.P.growth>50){
+              t.P.action();
           }
       }
       else{
@@ -136,4 +137,9 @@ public class Tulpa{
           }
       }
   }
+  
+  
+  
+  
+  
 }
