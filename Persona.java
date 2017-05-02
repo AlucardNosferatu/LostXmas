@@ -31,14 +31,14 @@ public class Persona{
   
   
   
-  public void action(Tulpa.t){
+  public void action(Tulpa.t,Inventory Inv){
     System.out.println("She want to do sth...");
     int choice=ra.nextInt(6);
     choice++;
     switch(choice){
       case 1:
         System.out.println("She want to read some books");
-        this.reading();
+        this.reading(Inv.Books);
         break;
       case 2:
         System.out.println("She want to do some sports");
@@ -68,6 +68,11 @@ public class Persona{
   public void event(){
     
   
+  }
+  
+  public void reading(Book Book_Shelf[]){
+    System.out.println("Provide your suggestion?");
+    
   }
   
 }
