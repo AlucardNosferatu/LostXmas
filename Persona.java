@@ -71,8 +71,9 @@ public class Persona{
   }
   
   public void reading(Book Book_Shelf[]){
-    System.out.println("Provide your suggestion?");
+    int choice=ra.nextInt(Book_Shelf.length-1);
+    switch(choice){
     
+    }
   }
-  
 }
