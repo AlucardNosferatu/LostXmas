@@ -1,7 +1,19 @@
+import java.util.Random;
+
 public class Persona{
+  
   public int growth;
   public String tag[];
-  public void action(){
+  public Persona(){
+    
+  
+  
+  }
+  
+  
+  
+  public void action(Tulpa.t){
+    System.out.println("She want to do sth...");
     
   
   
