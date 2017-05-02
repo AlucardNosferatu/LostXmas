@@ -33,9 +33,12 @@ public class Persona{
   
   public void action(Tulpa.t){
     System.out.println("She want to do sth...");
+    int choice=ra.nextInt(6);
+    choice++;
+    switch(choice){
     
-  
-  
+    
+    }
   }
   
   
@@ -49,7 +52,7 @@ public class Persona{
   }
   
   public void event(){
-  
+    
   
   }
   
