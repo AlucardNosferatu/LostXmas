@@ -36,7 +36,21 @@ public class Persona{
     int choice=ra.nextInt(6);
     choice++;
     switch(choice){
-    
+      case 1:
+        System.out.println("She want to read some books");
+        this.reading();
+        break;
+      case 2:
+        System.out.println("She want to do some sports");
+        this.exercise();
+        break;
+      case 3:  
+      case 4:
+      case 5:
+      case 6:
+      case 7:
+      default:  
+      
     
     }
   }
