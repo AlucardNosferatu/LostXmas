@@ -1,0 +1,23 @@
+g_take.touchData = {"head":[{"u_id":"72","type_id":"1","touch_type":"6","cv":"33",
+This is such a wonderful date, Scrooge.
+:3,"cast_id":"2","voice_cate":"1"},{"u_id":"73","type_id":"1","touch_type":"6","cv":"1025",
+I love spending time just chatting with you, Scrooge.
+:2,"cast_id":"2","voice_cate":"1"},{"u_id":"74","type_id":"1","touch_type":"6","cv":"5",
+I hope you\u2019ll take me to even more amazing places in the future too, Scrooge.
+:3,"cast_id":"2","voice_cate":"1"},{"u_id":"75","type_id":"1","touch_type":"4","cv":"1023",
+I actually tried recreating a popular hairstyle I\u2019ve been seeing around recently.
+:4,"cast_id":"2","voice_cate":"1"}],"body":[{"u_id":"72","type_id":"1","touch_type":"6","cv":"33",
+This is such a wonderful date, Scrooge.
+:3,"cast_id":"2","voice_cate":"1"},{"u_id":"73","type_id":"1","touch_type":"6","cv":"1025",
+I love spending time just chatting with you, Scrooge.
+:2,"cast_id":"2","voice_cate":"1"},{"u_id":"74","type_id":"1","touch_type":"6","cv":"5",
+I hope you\u2019ll take me to even more amazing places in the future too, Scrooge.
+:3,"cast_id":"2","voice_cate":"1"},{"u_id":"76","type_id":"1","touch_type":"5","cv":"1037",
+Y-you mustn\u2019t do that in public, Scrooge...!
+:6,"cast_id":"2","voice_cate":"1"}],"gacha_success":[{"u_id":"1","type_id":"1","touch_type":"7","cv":"1026",
+Huhu, did you get anything good? Please teach me how to play too, Scrooge.
+:3,"cast_id":"2","voice_cate":"1"}],"gacha_failure":[{"u_id":"2","type_id":"1","touch_type":"8","cv":"1032",
+Oh no... Better luck next time.
+:9,"cast_id":"2","voice_cate":"1"}],"gacha_normal":[{"u_id":"3","type_id":"1","touch_type":"9","cv":"21",
+Amazing. With a little more practice, we\u2019re sure to get something great.
+:2,"cast_id":"2","voice_cate":"1"}]};

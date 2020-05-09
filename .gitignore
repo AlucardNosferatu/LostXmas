@@ -1,0 +1,15 @@
+data/wechat_db/EnMicroMsg.db
+*.pkl
+*.npy
+*.bak1
+*.bak2
+*.bak3
+*.bak4
+*.bak5
+seq2seq/word/__pycache__/
+seq2seq/word/model_word/
+gui/__pycache__/
+soliloquize/__pycache__/
+__pycache__/
+KG/data.txt
+seq2seq/phrase/model_phrase/

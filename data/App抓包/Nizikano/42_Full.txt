@@ -1,0 +1,4095 @@
+﻿GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=b512855fbed33691f0d818d55dc2499c&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=b512855fbed33691f0d818d55dc2499c&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 3013
+Connection: keep-alive
+Date: Wed, 08 May 2019 13:48:57 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 c795828dd110eb9881b0d985e479eaac.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: 5Ivovd4nbVZpnLVsO49Az7tcc2TDsqwKbHPqGExrBul2wVblSMyd8g==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "331";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "... Even if it does get scary... I’ll be holding on to your hand... so it will all be alright!";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "1025";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "11";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "331";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Huh!?... I feel that will make my heart beat even faster...";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "1";
+g_commu.MyData["2"]["cheek"] = "1";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "24";
+g_commu.MyData["fav0"] = "14503";
+g_commu.MyData["exp0"] = "81";
+g_commu.MyData["type_fav0"] = "2262";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "21";
+g_commu.MyData["fav1"] = "14504";
+g_commu.MyData["exp1"] = "81";
+g_commu.MyData["type_fav1"] = "2263";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170612";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 15446, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=b512855fbed33691f0d818d55dc2499c&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=b512855fbed33691f0d818d55dc2499c&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2426
+Connection: keep-alive
+Date: Wed, 08 May 2019 13:51:10 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 456e9698bd1002705d9e83bb010ea4fd.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: PWPWco6866HmYMFuvWi7rNngcVSUf4vBaYxL_fwvcb4dAYsqH94haQ==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "332";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "It’s okay... I think I’m probably ten times more scared than you’re.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "1";
+g_commu.MyData["1"]["cv"] = "27";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "22";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "21";
+g_commu.MyData["fav0"] = "14504";
+g_commu.MyData["exp0"] = "81";
+g_commu.MyData["type_fav0"] = "2263";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "21";
+g_commu.MyData["fav1"] = "14509";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2268";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "5";
+g_commu.MyData["exp4"] = "30";
+g_commu.MyData["type_fav4"] = "5";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170642";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 15313, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=b512855fbed33691f0d818d55dc2499c&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=b512855fbed33691f0d818d55dc2499c&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2468
+Connection: keep-alive
+Date: Wed, 08 May 2019 13:51:16 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 c8c43b7bd0e92cbb9fbe171dc985f060.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: 7zrUACOagTrXEpmfkc-sOBKY-fS2k-z3e8yxsGJaB76E_1iM9lYAMw==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "13";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "If you have any worries you can talk to me anytime. If it’s okay with you, I can be a shoulder for you to lean on.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "1";
+g_commu.MyData["1"]["cv"] = "1025";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "2";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "22";
+g_commu.MyData["fav0"] = "14509";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2268";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "19";
+g_commu.MyData["fav1"] = "14510";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2269";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170648";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 16387, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2442
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:00:13 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: hOFSatu3Wa-kJiQnllQEeH89Pq3aeAawblZzxRm5CS-EfQeNxtvtng==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "487";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Being under the sun during spring makes me tired. Do you want to... take a nap together?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "1031";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "30";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "20";
+g_commu.MyData["fav0"] = "14510";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2269";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "17";
+g_commu.MyData["fav1"] = "14511";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2270";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170654";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 16930, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2923
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:00:24 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: -zXQ1GHJlQv-mTzkc7exle9giMrDy4RbTWnbEuK_MmKKUruhQVDwDA==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "1107";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Today is a beautiful day.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "13";
+g_commu.MyData["1"]["cv"] = "27";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "2";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "1107";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Yeah, summer has the perfect feel to it.";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "2";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "17";
+g_commu.MyData["fav0"] = "14511";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2270";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "14";
+g_commu.MyData["fav1"] = "14512";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2271";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170660";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 18000, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2952
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:00:27 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: iGCJofgYkLqM3jfmui6_59RKGGNJPWRScnHXjNfzup9ftvqfU4YCVg==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "1108";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "*yawn*... I’m a little bit sleepy.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "11";
+g_commu.MyData["1"]["cv"] = "1031";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "30";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "1108";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Alright, come over here! You can take a nap on my lap.";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "30";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "14";
+g_commu.MyData["fav0"] = "14512";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2271";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "11";
+g_commu.MyData["fav1"] = "14512";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2271";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170666";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 19077, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2932
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:00:31 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: m-faNUttKZrOVUnTTXLJU6qcV-sRuDJVh1M72PwYbBI1wnC2h6KQhw==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "1109";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Huh!... Oh... Alright, thanks!...";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "12";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "4";
+g_commu.MyData["1"]["cheek"] = "3";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "1109";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "You don’t have to be so nervous about it.";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "4";
+g_commu.MyData["2"]["cheek"] = "3";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "11";
+g_commu.MyData["fav0"] = "14512";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2271";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "8";
+g_commu.MyData["fav1"] = "14512";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2271";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170672";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 20153, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2964
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:00:34 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: _4rPcsqkQbXVoe_vMptXBAq0sc05y4IdFNnHCh9lHhZCxR86GxC0Ug==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "1110";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Sometimes when I’m happy I get embarrassed... and then I get nervous...";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "19";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "22";
+g_commu.MyData["1"]["cheek"] = "3";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "1110";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Haha, you really are sweet, huh...";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "22";
+g_commu.MyData["2"]["cheek"] = "3";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "8";
+g_commu.MyData["fav0"] = "14512";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2271";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "5";
+g_commu.MyData["fav1"] = "14512";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2271";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170678";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 21229, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2955
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:00:38 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: ePHuYLD0zVCCTerNliKHf8Oaob3zbIfiswYxvM9Vb4FlZzU3Z7H0gg==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "1111";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Don’t make fun of me...!";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "2";
+g_commu.MyData["1"]["cv"] = "35";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "35";
+g_commu.MyData["1"]["cheek"] = "3";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "1111";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Ohh wait... could it be that you’re so nervous that you can’t sleep?";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "35";
+g_commu.MyData["2"]["cheek"] = "3";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "5";
+g_commu.MyData["fav0"] = "14512";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2271";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "2";
+g_commu.MyData["fav1"] = "14512";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2271";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170684";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 22306, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 1420
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:00:41 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: Eum1l5WBMvF6WQTPWJ3xLHxpbQjvY4wK6cFnU17_SjAZIiHdKV36FA==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["page"] = "0";
+g_commu.MyData["commu"] = "0";
+g_commu.MyData["item"] = "1";
+g_commu.MyData["stamina0"] = "2";
+g_commu.MyData["fav0"] = "14512";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "";
+g_commu.MyData["rank0"] = "";
+g_commu.MyData["stamina1"] = "2";
+g_commu.MyData["fav1"] = "14512";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "";
+g_commu.MyData["rank1"] = "";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "";
+g_commu.MyData["rank2"] = "";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "";
+g_commu.MyData["rank3"] = "";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "";
+g_commu.MyData["type_fav4"] = "";
+g_commu.MyData["rank4"] = "";
+g_commu.MyData["exp_now_num"] = "170684";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "0";
+g_commu.MyData["type"] = "0";
+g_commu.MyData["fav_url"] = "";
+g_commu.kissLayout = '<div class="kiss_icon"><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">-</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&next_flg=1&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2867
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:00:51 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: _Rf3vb_EejeK59eHhXqZM845Z-euH9smSANfHN9Ax-GJJLG2SdVpJw==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "1111";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Don’t make fun of me...!";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "2";
+g_commu.MyData["1"]["cv"] = "35";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "35";
+g_commu.MyData["1"]["cheek"] = "3";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "1111";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Ohh wait... could it be that you’re so nervous that you can’t sleep?";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "35";
+g_commu.MyData["2"]["cheek"] = "3";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "65";
+g_commu.MyData["fav0"] = "14512";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2271";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "65";
+g_commu.MyData["fav1"] = "14512";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2271";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170684";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&next_flg=1&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2977
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:00:56 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: Sg9NnNxCQMlf47Nm6wZ-e6vEFqhEoIwgDtWFZ1TInBwTs0e5qIU15g==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "1112";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "No! It makes me feel at ease... just a little more time... and I’ll...";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "18";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "8";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "1112";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "That’s good... *yawn*... I’m pretty tired to.";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "8";
+g_commu.MyData["2"]["cheek"] = "1";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "65";
+g_commu.MyData["fav0"] = "14512";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2271";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "62";
+g_commu.MyData["fav1"] = "14512";
+g_commu.MyData["exp1"] = "82";
+g_commu.MyData["type_fav1"] = "2271";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170690";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 1080, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&next_flg=1&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2947
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:02 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: rwsyFwSqBuryQnS8mKsvqM32pEMmBf-5x8UDdsa1KkmxQBn0c3d3qg==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "1113";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Alright then... shall we go to sleep?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "27";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "2";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "1113";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Okay, let’s do that! Can I use your arm as a pillow?";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "2";
+g_commu.MyData["2"]["cheek"] = "1";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "62";
+g_commu.MyData["fav0"] = "14512";
+g_commu.MyData["exp0"] = "82";
+g_commu.MyData["type_fav0"] = "2271";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "59";
+g_commu.MyData["fav1"] = "14512";
+g_commu.MyData["exp1"] = "83";
+g_commu.MyData["type_fav1"] = "2271";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170696";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 2154, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&next_flg=1&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2376
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:09 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: 7ybFvRkkgmYyhgFpCm9ycfCCF_Q8sMGaUIp8SgFttKzQjEHeuFZz2w==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "1114";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Of course! Any time♪";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "13";
+g_commu.MyData["1"]["cv"] = "1025";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "3";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "59";
+g_commu.MyData["fav0"] = "14512";
+g_commu.MyData["exp0"] = "83";
+g_commu.MyData["type_fav0"] = "2271";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "59";
+g_commu.MyData["fav1"] = "14515";
+g_commu.MyData["exp1"] = "83";
+g_commu.MyData["type_fav1"] = "2274";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "3";
+g_commu.MyData["exp4"] = "18";
+g_commu.MyData["type_fav4"] = "3";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170714";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 2147, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2413
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:15 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: amtDey8-g25wAlqfFzp3Py0D_Vgvp-0sVD5V_kFJsQovGbTEXNYvZg==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "385";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "My frizzy hair just won’t seem to go away today... Is it okay?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "6";
+g_commu.MyData["1"]["cv"] = "4";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "6";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "3";
+g_commu.MyData["locus"] = "1";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "3";
+g_commu.MyData["stamina0"] = "59";
+g_commu.MyData["fav0"] = "14515";
+g_commu.MyData["exp0"] = "83";
+g_commu.MyData["type_fav0"] = "2274";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "56";
+g_commu.MyData["fav1"] = "14516";
+g_commu.MyData["exp1"] = "83";
+g_commu.MyData["type_fav1"] = "2275";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170720";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 3222, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2431
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:18 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: 3DHzxtPX5231A3Xr7PVhKJjzPW0QVb8UQXls6JB6uqRLCHXcZrf8KQ==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "386";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Grr...! It still is messed up in some areas huh?... This is really embarrassing.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "39";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "33";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "56";
+g_commu.MyData["fav0"] = "14516";
+g_commu.MyData["exp0"] = "83";
+g_commu.MyData["type_fav0"] = "2275";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "56";
+g_commu.MyData["fav1"] = "14519";
+g_commu.MyData["exp1"] = "83";
+g_commu.MyData["type_fav1"] = "2278";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "3";
+g_commu.MyData["exp4"] = "18";
+g_commu.MyData["type_fav4"] = "3";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170738";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 3218, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2412
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:24 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: fgKwcFMOaPGCPlL819nPapL3zbYosrWLGgP_a1lZMco12cfy2a56kQ==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "595";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "What kind of sweets do you want to eat?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "1025";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "2";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "1";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "Anything!";
+g_commu.MyData["switch_msg2"] = "Sakuramochi!";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "1";
+g_commu.MyData["stamina0"] = "56";
+g_commu.MyData["fav0"] = "14519";
+g_commu.MyData["exp0"] = "83";
+g_commu.MyData["type_fav0"] = "2278";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "53";
+g_commu.MyData["fav1"] = "14520";
+g_commu.MyData["exp1"] = "83";
+g_commu.MyData["type_fav1"] = "2279";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170744";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 4292, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2339
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:31 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: dimOlx7tSAm4svAs9KbGwApubMlUkFwufu1uUSAlLExrxPoxgVrE-Q==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "596";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Hmm... Well anything works for me!";
+g_commu.MyData["1"]["name"] = "Scrooge";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "0";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "0";
+g_commu.MyData["1"]["face"] = "2";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "1";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "53";
+g_commu.MyData["fav0"] = "14520";
+g_commu.MyData["exp0"] = "83";
+g_commu.MyData["type_fav0"] = "2279";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "50";
+g_commu.MyData["fav1"] = "14520";
+g_commu.MyData["exp1"] = "83";
+g_commu.MyData["type_fav1"] = "2279";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170750";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 5365, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2433
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:33 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: VRQmYNY5vlw_YbIdtzdabmcx9d9J-nuHc7Gty9o3Dwu1MaWCz5d4kA==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "598";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Alright, I’ll have a think. After all, I know all the things that you like♪";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "13";
+g_commu.MyData["1"]["cv"] = "1026";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "34";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "50";
+g_commu.MyData["fav0"] = "14520";
+g_commu.MyData["exp0"] = "83";
+g_commu.MyData["type_fav0"] = "2279";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "50";
+g_commu.MyData["fav1"] = "14524";
+g_commu.MyData["exp1"] = "84";
+g_commu.MyData["type_fav1"] = "2283";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "4";
+g_commu.MyData["exp4"] = "24";
+g_commu.MyData["type_fav4"] = "4";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170774";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 5363, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2411
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:42 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: j00J793UNIlXLK1HOI2GBuRE1FN_ULNX_XP49PmAzR3NvSHggw000w==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "126";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "I had a nice dream last night.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "27";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "3";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "1";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "What kind of dream was it?";
+g_commu.MyData["switch_msg2"] = "I see";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "1";
+g_commu.MyData["stamina0"] = "50";
+g_commu.MyData["fav0"] = "14524";
+g_commu.MyData["exp0"] = "84";
+g_commu.MyData["type_fav0"] = "2283";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "47";
+g_commu.MyData["fav1"] = "14525";
+g_commu.MyData["exp1"] = "84";
+g_commu.MyData["type_fav1"] = "2284";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170780";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 6435, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2349
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:49 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: zpp-cvPzyvETm_CR-IAfmI6N0ztdD0g-tdycSpaB4TYBcZ5hmpccZQ==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "127";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "A nice dream huh. What kind of dream was it?";
+g_commu.MyData["1"]["name"] = "Scrooge";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "0";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "0";
+g_commu.MyData["1"]["face"] = "3";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "1";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "47";
+g_commu.MyData["fav0"] = "14525";
+g_commu.MyData["exp0"] = "84";
+g_commu.MyData["type_fav0"] = "2284";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "44";
+g_commu.MyData["fav1"] = "14525";
+g_commu.MyData["exp1"] = "84";
+g_commu.MyData["type_fav1"] = "2284";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "0";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170786";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 7507, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2464
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:01:56 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: K9qVI_MqagtbxfY46zjZZxDPABzCLsqkTzLm3GOcvLAMPrf3RTAEIw==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "129";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Umm, I remember that you were in it... But what happened after that makes me blush, so I can’t really tell you.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "39";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "28";
+g_commu.MyData["1"]["cheek"] = "3";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "44";
+g_commu.MyData["fav0"] = "14525";
+g_commu.MyData["exp0"] = "84";
+g_commu.MyData["type_fav0"] = "2284";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "44";
+g_commu.MyData["fav1"] = "14530";
+g_commu.MyData["exp1"] = "84";
+g_commu.MyData["type_fav1"] = "2289";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "5";
+g_commu.MyData["exp4"] = "30";
+g_commu.MyData["type_fav4"] = "5";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170816";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 7501, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2408
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:02:06 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: weM7y8iYx3b0Hp77sbODprNhY9_BcwEkI_qYwsyt-qxeHQa5I6gh9w==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "486";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "I want to hold hands and walk under the sakura trees....";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "1";
+g_commu.MyData["1"]["cv"] = "27";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "22";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "44";
+g_commu.MyData["fav0"] = "14530";
+g_commu.MyData["exp0"] = "84";
+g_commu.MyData["type_fav0"] = "2289";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "41";
+g_commu.MyData["fav1"] = "14532";
+g_commu.MyData["exp1"] = "85";
+g_commu.MyData["type_fav1"] = "2291";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "2";
+g_commu.MyData["exp4"] = "12";
+g_commu.MyData["type_fav4"] = "2";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170828";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 8570, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">0%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 0;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2375
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:02:15 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: 94teBMn3bUrzN64vtzJii012OsqZAxbOp3_uOrEnQUwO0JWlhGIg1Q==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "418";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Am I too tiny for you?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "1032";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "24";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "3";
+g_commu.MyData["locus"] = "2";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "3";
+g_commu.MyData["stamina0"] = "41";
+g_commu.MyData["fav0"] = "14532";
+g_commu.MyData["exp0"] = "85";
+g_commu.MyData["type_fav0"] = "2291";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "38";
+g_commu.MyData["fav1"] = "14533";
+g_commu.MyData["exp1"] = "85";
+g_commu.MyData["type_fav1"] = "2292";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170834";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 9641, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=2&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2432
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:02:21 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: g6L1l6HaQsNTvu0TUN5Exhb3DYRMNt7SvAdOHbgSrCw8LUDY66fEhg==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "420";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "I was talking about my body... Sometimes I wonder if you even listen to me...";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "11";
+g_commu.MyData["1"]["cv"] = "1035";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "35";
+g_commu.MyData["1"]["cheek"] = "2";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "38";
+g_commu.MyData["fav0"] = "14533";
+g_commu.MyData["exp0"] = "85";
+g_commu.MyData["type_fav0"] = "2292";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "38";
+g_commu.MyData["fav1"] = "14529";
+g_commu.MyData["exp1"] = "85";
+g_commu.MyData["type_fav1"] = "2292";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "-4";
+g_commu.MyData["exp4"] = "24";
+g_commu.MyData["type_fav4"] = "0";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170858";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 9635, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2919
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:02:26 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: jGeQr3kOwG4EugikOnDdeC_dbLJqSY2NdsAoI9ZsrUI8-fS1rToOyg==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "197";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Can you lie down for a second?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "27";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "3";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "197";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Wh-what’s wrong all of a sudden?";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "2";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "38";
+g_commu.MyData["fav0"] = "14529";
+g_commu.MyData["exp0"] = "85";
+g_commu.MyData["type_fav0"] = "2292";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "35";
+g_commu.MyData["fav1"] = "14530";
+g_commu.MyData["exp1"] = "85";
+g_commu.MyData["type_fav1"] = "2293";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170864";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 10710, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2462
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:02:30 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: XZ6v39rdKGZ3dUl3n8Ni53IT39ljX6IG1oivlbID7LOCn5vlb6jYdA==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "198";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "You look kind of tired, I want to try out a massage technique that I saw on TV. I won’t do anything weird.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "1";
+g_commu.MyData["1"]["cv"] = "1026";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "11";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "35";
+g_commu.MyData["fav0"] = "14530";
+g_commu.MyData["exp0"] = "85";
+g_commu.MyData["type_fav0"] = "2293";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "35";
+g_commu.MyData["fav1"] = "14532";
+g_commu.MyData["exp1"] = "85";
+g_commu.MyData["type_fav1"] = "2295";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "2";
+g_commu.MyData["exp4"] = "12";
+g_commu.MyData["type_fav4"] = "2";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170876";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 10706, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2455
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:02:36 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: OdbvpZZmU0oE8BtGghUJ7QkL1L4tX5mhZcDtg8dhjV145t6yMojdnA==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "11";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Hey. Stay still for a moment Scrooge! You have a flower petal in your hair...... Alright, I got it out.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "7";
+g_commu.MyData["1"]["cv"] = "1033";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "4";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "35";
+g_commu.MyData["fav0"] = "14532";
+g_commu.MyData["exp0"] = "85";
+g_commu.MyData["type_fav0"] = "2295";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "32";
+g_commu.MyData["fav1"] = "14533";
+g_commu.MyData["exp1"] = "85";
+g_commu.MyData["type_fav1"] = "2296";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170882";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 11780, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2953
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:02:46 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: FeW77iMbQIiNWAxqsM9mBpmzw4HHb7zvP1tA0m9lzH8pDnZbZ09IKQ==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "229";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "What are you reading?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "1037";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "24";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "229";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "I bought this manga a long time ago, and decided to give it another read.";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "24";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "32";
+g_commu.MyData["fav0"] = "14533";
+g_commu.MyData["exp0"] = "85";
+g_commu.MyData["type_fav0"] = "2296";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "29";
+g_commu.MyData["fav1"] = "14534";
+g_commu.MyData["exp1"] = "85";
+g_commu.MyData["type_fav1"] = "2297";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170888";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 12850, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2955
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:02:52 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: ElLxsDrcgfuvOlnla_yW6Vp_dussgcol9A6SeO4fu1spvmmLfe_xQQ==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "230";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "That sounds interesting. Can I take a look at it?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "1025";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "2";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "230";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Yeah sure. This is the first volume, have a look.";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "2";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "29";
+g_commu.MyData["fav0"] = "14534";
+g_commu.MyData["exp0"] = "85";
+g_commu.MyData["type_fav0"] = "2297";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "26";
+g_commu.MyData["fav1"] = "14535";
+g_commu.MyData["exp1"] = "86";
+g_commu.MyData["type_fav1"] = "2298";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170894";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 13924, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2408
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:02:56 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: pZAFMo0ewBjq41usoAQztpSS99sMUEl5G19FVF7xDPlLQqPDeq41QQ==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "231";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Thank you... Do you mind if I sit over there and read it?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "1";
+g_commu.MyData["1"]["cv"] = "5";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "22";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "26";
+g_commu.MyData["fav0"] = "14535";
+g_commu.MyData["exp0"] = "86";
+g_commu.MyData["type_fav0"] = "2298";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "26";
+g_commu.MyData["fav1"] = "14538";
+g_commu.MyData["exp1"] = "86";
+g_commu.MyData["type_fav1"] = "2301";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "3";
+g_commu.MyData["exp4"] = "18";
+g_commu.MyData["type_fav4"] = "3";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170912";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 13921, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2409
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:03:04 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: BK6sV3-kJn2Xpl3kvFlbMebGAzoCjy-EuIeAbBtwH9lERwrX3MCIcA==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "415";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "... What is it?...... Do I have something on my clothes?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "6";
+g_commu.MyData["1"]["cv"] = "1029";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "1";
+g_commu.MyData["1"]["cheek"] = "2";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "3";
+g_commu.MyData["locus"] = "2";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "3";
+g_commu.MyData["stamina0"] = "26";
+g_commu.MyData["fav0"] = "14538";
+g_commu.MyData["exp0"] = "86";
+g_commu.MyData["type_fav0"] = "2301";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "23";
+g_commu.MyData["fav1"] = "14539";
+g_commu.MyData["exp1"] = "86";
+g_commu.MyData["type_fav1"] = "2302";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170918";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 14993, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2410
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:03:11 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: HfSqdKzWqH0CwrNNEiVCsvL9urgYz-3j74vhpUp72I7GhdvkM-TljA==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "416";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Wow you caught a butterfly ?...... It’s so beautiful...";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "1033";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "2";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "23";
+g_commu.MyData["fav0"] = "14539";
+g_commu.MyData["exp0"] = "86";
+g_commu.MyData["type_fav0"] = "2302";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "23";
+g_commu.MyData["fav1"] = "14543";
+g_commu.MyData["exp1"] = "86";
+g_commu.MyData["type_fav1"] = "2306";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "4";
+g_commu.MyData["exp4"] = "24";
+g_commu.MyData["type_fav4"] = "4";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170942";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 14986, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=0&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2968
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:03:17 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: b-_NiM_hAK0MpigMGEzt_I5XVctNQFYJ2QUnMar8p4t79a-eNk015A==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "341";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Don’t you think it’s about time to buy a new pillow?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "35";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "2";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "341";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Well, I think we can still use this pillow for a while...";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "2";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "23";
+g_commu.MyData["fav0"] = "14543";
+g_commu.MyData["exp0"] = "86";
+g_commu.MyData["type_fav0"] = "2306";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "20";
+g_commu.MyData["fav1"] = "14544";
+g_commu.MyData["exp1"] = "86";
+g_commu.MyData["type_fav1"] = "2307";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170948";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 16060, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2987
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:03:21 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: qYS6Ekr5bANCWVN3bPaE9US5mYcaYukYTUFK4Okbf51F9qvfBI42Bg==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "342";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Look closer. The pillow is crushed flat, can’t you see that?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "46";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "33";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "342";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "... Well that’s true. But, I’m really attached to that pillow...";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "33";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "20";
+g_commu.MyData["fav0"] = "14544";
+g_commu.MyData["exp0"] = "86";
+g_commu.MyData["type_fav0"] = "2307";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "17";
+g_commu.MyData["fav1"] = "14545";
+g_commu.MyData["exp1"] = "86";
+g_commu.MyData["type_fav1"] = "2308";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170954";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 17135, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2991
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:03:27 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: vQMIPfjC2bWZ3g2ePH71FVOxFSJqcQmlcKDwOytT3RX4jtqtm2xZAw==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "343";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "Speaking of which, haven’t you been saying that your neck has been sore recently?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "1033";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "24";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "343";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Well... my neck does get sore every now and then.";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "24";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "17";
+g_commu.MyData["fav0"] = "14545";
+g_commu.MyData["exp0"] = "86";
+g_commu.MyData["type_fav0"] = "2308";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "14";
+g_commu.MyData["fav1"] = "14546";
+g_commu.MyData["exp1"] = "87";
+g_commu.MyData["type_fav1"] = "2309";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170960";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 18209, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2991
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:03:36 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: 5Cwy5Ig5ec6odLFsHxSwcb6OVxMaIDP1hA_G8idY9ZpeCZiOuDOjmA==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "344";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "If you don’t have the right kind of pillow, it’s bad for your body and can make it hard to sleep well.";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "0";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "1";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "344";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "...... Well, that’s true.... Alright, I’m going to buy a new pillow!";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "1";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "14";
+g_commu.MyData["fav0"] = "14546";
+g_commu.MyData["exp0"] = "87";
+g_commu.MyData["type_fav0"] = "2309";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "11";
+g_commu.MyData["fav1"] = "14547";
+g_commu.MyData["exp1"] = "87";
+g_commu.MyData["type_fav1"] = "2310";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170966";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 19280, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 3015
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:03:43 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: xlXI7PvGUGbiACsN8xgGmDvnFTFK5ZKSIGBwNFcarjo-XVYGkWIdhw==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "345";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "I’m glad I convinced you... Well then.... Would it be okay if I bought a new one as well?";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "1037";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "2";
+g_commu.MyData["1"]["cheek"] = "0";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "345";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Really? Okay. So you’ve been having a hard time sleeping as well?";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "2";
+g_commu.MyData["2"]["cheek"] = "0";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "11";
+g_commu.MyData["fav0"] = "14547";
+g_commu.MyData["exp0"] = "87";
+g_commu.MyData["type_fav0"] = "2310";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "8";
+g_commu.MyData["fav1"] = "14549";
+g_commu.MyData["exp1"] = "87";
+g_commu.MyData["type_fav1"] = "2312";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "2";
+g_commu.MyData["exp4"] = "12";
+g_commu.MyData["type_fav4"] = "2";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170978";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 20354, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2996
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:03:49 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: JJrnpG0UnvP17hwZ0pG_1ucEcYt_Dzkm2sY1bN2RBZT7dqWG5K8E9Q==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "346";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "N-no... Not that...... I was thinking of buying matching pillows with you...";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "0";
+g_commu.MyData["1"]["cv"] = "39";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "22";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "346";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Huh!?... Ohh that’s what you were getting at. You’re so cute!";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "22";
+g_commu.MyData["2"]["cheek"] = "3";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "8";
+g_commu.MyData["fav0"] = "14549";
+g_commu.MyData["exp0"] = "87";
+g_commu.MyData["type_fav0"] = "2312";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "5";
+g_commu.MyData["fav1"] = "14550";
+g_commu.MyData["exp1"] = "87";
+g_commu.MyData["type_fav1"] = "2313";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "1";
+g_commu.MyData["exp4"] = "6";
+g_commu.MyData["type_fav4"] = "1";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "170984";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 21427, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2977
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:03:56 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: Pu9YSHVNIxXvStwTLJUP8_NEIafzbCDhOGOj4UFJpq5M7-Y2jXFdwA==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "347";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "... Y-you’re making me blush!";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "7";
+g_commu.MyData["1"]["cv"] = "1035";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "33";
+g_commu.MyData["1"]["cheek"] = "3";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["2"] = new Array();
+g_commu.MyData["2"]["commu_id"] = "347";
+g_commu.MyData["2"]["page"] = "2";
+g_commu.MyData["2"]["txt"] = "Well you’re cute when you blush. Alright, what if we buy one long pillow and share it?";
+g_commu.MyData["2"]["name"] = "Scrooge";
+g_commu.MyData["2"]["fve"] = "0";
+g_commu.MyData["2"]["cv"] = "0";
+g_commu.MyData["2"]["se"] = "0";
+g_commu.MyData["2"]["lipsync"] = "0";
+g_commu.MyData["2"]["face"] = "33";
+g_commu.MyData["2"]["cheek"] = "1";
+g_commu.MyData["2"]["bg"] = "0";
+g_commu.MyData["2"]["window_flg"] = "1";
+g_commu.MyData["2"]["bg_img"] = "";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "2";
+g_commu.MyData["next"] = "1";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "5";
+g_commu.MyData["fav0"] = "14550";
+g_commu.MyData["exp0"] = "87";
+g_commu.MyData["type_fav0"] = "2313";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "2";
+g_commu.MyData["fav1"] = "14553";
+g_commu.MyData["exp1"] = "87";
+g_commu.MyData["type_fav1"] = "2316";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "-3";
+g_commu.MyData["fav4"] = "3";
+g_commu.MyData["exp4"] = "18";
+g_commu.MyData["type_fav4"] = "3";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "171002";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 22500, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
+GET http://us-nizi2d-app.amz-aws.jp/commu/get_commu.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&next=1&ajax=1 HTTP/1.1
+Host: us-nizi2d-app.amz-aws.jp
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 5s Build/OPR1.170623.032; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36/AMBITION_UA/GooglePlay/Android-/NIZIKANO_2D_GLB_ver28:QsG6FFzuBWx8SeCTjQjAqdhQm1XuLB+PEdQ8imB8GdqU9vgCj2IYDSY96IH3aQvq:22VVU8NK0XNDROTEfZxxSJY6IW0XmaHp0VutFEQSbyk=
+Referer: http://us-nizi2d-app.amz-aws.jp/commu/index.php?P=04fb2455bec7a6c5e17a775c21fe497d&event_collabo_flg=0&
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,en-US;q=0.9
+Cookie: tj_status=0
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 2429
+Connection: keep-alive
+Date: Wed, 08 May 2019 14:04:01 GMT
+Server: Apache/2.2.27 (Unix) DAV/2 PHP/7.0.8
+X-Powered-By: PHP/7.0.8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Cache: Miss from cloudfront
+Via: 1.1 f5171077d7910626ec3cf65e0c222f3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: Gtrc85nJ5EvYpqeoVvstLFXcl9XVORLZ9fN5VoPPMcvoHO4Yi_Z6og==
+
+<script>
+g_commu.MyData = new Array();
+g_commu.MyData["1"] = new Array();
+g_commu.MyData["1"]["commu_id"] = "348";
+g_commu.MyData["1"]["page"] = "1";
+g_commu.MyData["1"]["txt"] = "... Huh!? Buy one pillow for us to share...? ... I think that’s okay too♪";
+g_commu.MyData["1"]["name"] = "Xmas Carol";
+g_commu.MyData["1"]["fve"] = "1";
+g_commu.MyData["1"]["cv"] = "1035";
+g_commu.MyData["1"]["se"] = "0";
+g_commu.MyData["1"]["lipsync"] = "1";
+g_commu.MyData["1"]["face"] = "34";
+g_commu.MyData["1"]["cheek"] = "1";
+g_commu.MyData["1"]["bg"] = "0";
+g_commu.MyData["1"]["window_flg"] = "0";
+g_commu.MyData["1"]["bg_img"] = "";
+g_commu.MyData["1"]["voice_cate"] = "1";
+g_commu.MyData["commu"] = "1";
+g_commu.MyData["page"] = "1";
+g_commu.MyData["next"] = "0";
+g_commu.MyData["switch"] = "0";
+g_commu.MyData["locus"] = "0";
+g_commu.MyData["switch_msg1"] = "";
+g_commu.MyData["switch_msg2"] = "";
+g_commu.MyData["switch_msg3"] = "";
+g_commu.MyData["switch_msg4"] = "";
+g_commu.MyData["cate"] = "0";
+g_commu.MyData["stamina0"] = "2";
+g_commu.MyData["fav0"] = "14553";
+g_commu.MyData["exp0"] = "87";
+g_commu.MyData["type_fav0"] = "2316";
+g_commu.MyData["rank0"] = "90";
+g_commu.MyData["stamina1"] = "2";
+g_commu.MyData["fav1"] = "14558";
+g_commu.MyData["exp1"] = "88";
+g_commu.MyData["type_fav1"] = "2321";
+g_commu.MyData["rank1"] = "90";
+g_commu.MyData["stamina2"] = "65";
+g_commu.MyData["fav2"] = "999999";
+g_commu.MyData["exp2"] = "100";
+g_commu.MyData["type_fav2"] = "MAX";
+g_commu.MyData["rank2"] = "0";
+g_commu.MyData["stamina3"] = "0";
+g_commu.MyData["fav3"] = "-500";
+g_commu.MyData["exp3"] = "0";
+g_commu.MyData["type_fav3"] = "2136";
+g_commu.MyData["rank3"] = "0";
+g_commu.MyData["stamina4"] = "0";
+g_commu.MyData["fav4"] = "5";
+g_commu.MyData["exp4"] = "30";
+g_commu.MyData["type_fav4"] = "5";
+g_commu.MyData["rank4"] = "0";
+g_commu.MyData["exp_now_num"] = "171032";
+g_commu.MyData["lv_up_flg"] = "0";
+g_commu.MyData["voice_name"] = "2";
+g_commu.MyData["type"] = "1";
+g_commu.MyData["fav_url"] = "";
+apl_notificationSendJS(0, 22496, "Stamina fully recovered!", "Stamina fully recovered!");g_commu.kissLayout = '<div class="kiss_icon"><div class="kiss_pt">1</div><img src="http://us-nizi2d-r53.amz-aws.jp/img/status/kiss_icon0.png?681" width="59" height="54" /><div class="kiss_per">1%</div></div>';
+g_commu.campExp = 1;
+g_commu.campFav = 1;
+g_commu.nowKiss = 1;
+g_commu.kissPt = 1;
+g_commu.camp_beginner_flg = 0;
+</script>
+
+
+------------------------------------------------------------------
+
