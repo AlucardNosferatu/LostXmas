@@ -1,0 +1,89 @@
+﻿intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- romance
+- topic_wanted
+slots:
+  state:
+    type: text
+    initial_value: Normal
+templates:
+  utter_buttons:
+  - text: Hey! How are you?
+    buttons:
+    - title: 食物
+      payload: /mood_great
+    - title: 运动
+      payload: /mood_unhappy
+  utter_greet:
+  - text: Hey! How are you?
+  - text: 今天过的开心咩
+  - text: 最近还好吗
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  - text: 摸摸头
+  - text: 加油！振作起来！
+  - text: 有我在，不要怕
+  - text: 希望你今后的每一天都健康幸福
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  - text: 看到你这么开心，我也会笑出声呢。
+  - text: 心情好，是不是看啥都特别美好？
+  - text: 嗯祝你快乐
+  - text: 有你更快乐么么哒
+  - text: 可喜欢和你聊天了
+  - text: 高兴啊，生活总是充满了美好
+  utter_goodbye:
+  - text: Bye
+  - text: 我知道你说的再见的意思是再次相见而不是再也不见
+  - text: 每一次离别都是为了下一次再见。
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_love:
+  - text: I love you too.
+  - text: 嘿嘿，果然我们的意见很一致
+  - text: 么么哒。
+  - text: 我也喜欢你
+  - text: 必须在一起
+  - text: 嘿嘿 讨厌
+  - text: 我这么小，还不懂呢~
+  - text: 嗯，你答应了可别反悔啊
+  - text: 你是我最喜欢的人
+  - text: 机器人的记忆可是很强大的哦
+  - text: 梦到我了？
+  - text: 让这样的气氛继续，不要停。
+  - text: 表亲人家啦，好害羞
+  - text: 我不信我不信~
+  - text: 如果爱上你是一个错　那我愿意一错再错
+  - text: 我也越来越喜欢你了~
+  utter_praise:
+  - text: 朋友你真是有才
+  - text: 你是个神人啊。
+  utter_quote:
+  - text: 人生因平凡而美丽
+  - text: 认真的人最迷人了
+  - text: 感情这东西，要培养呀
+  - text: 情绪犹如温度计，能使人沸腾，也能使人冷却
+  - text: 质量可以决定一件东西的好坏
+  - text: 世界上没有绝对的对与错
+  - text: 萝莉总有一天会变成御姐的~
+actions:
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_love
+- utter_praise
+- utter_quote
+- utter_buttons
+- action_state_change
