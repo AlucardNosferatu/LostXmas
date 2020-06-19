@@ -9,7 +9,7 @@ from tensorflow.keras.initializers import TruncatedNormal
 from tensorflow.keras import Model
 
 
-def build_seq2seq(vocab_size=None):
+def build_seq2seq(vocab_size=None, weight_path=None):
     if vocab_size is None:
         print("vocab_size must be defined!")
         sys.exit()
@@ -54,7 +54,10 @@ def build_seq2seq(vocab_size=None):
     model.summary()
     tf.keras.utils.plot_model(model, "../model.png")
     model.save(filepath="../models/seq2seq_raw.h5")
-    return model
+    if weight_path:
+        model.load_weights(weight_path)
+    return input_question, encoder_lstm, question_h, question_c, LSTM_decoder, input_answer_embed, decoder_dense1, \
+           decoder_dense2, input_answer
 
 
 def load_seq2seq():
@@ -123,5 +126,5 @@ def train_seq2seq(model):
 
 # vocab_size = get_vocab_size()
 # build_seq2seq(vocab_size=vocab_size)
-model = load_seq2seq()
-train_seq2seq(model)
+# model = load_seq2seq()
+# train_seq2seq(model)

@@ -11,7 +11,7 @@ def get_vocab_size():
     return vocab_size
 
 
-def generate_train(batch_size):
+def load_resource():
     main_path = '../data/'
     question = np.load(main_path + 'resource/' + 'pad_question.npy')
     answer = np.load(main_path + 'resource/' + 'pad_answer.npy')
@@ -22,6 +22,11 @@ def generate_train(batch_size):
         word_to_index = pickle.load(f)
     with open(main_path + 'resource/' + 'pad_index_to_word.pkl', 'rb') as f:
         index_to_word = pickle.load(f)
+    return question, answer, answer_o, words, word_to_index, index_to_word
+
+
+def generate_train(batch_size):
+    question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     vocab_size = len(word_to_index) + 1
     maxLen = 20
     print('\n*********************************generate_train()*********************************')
