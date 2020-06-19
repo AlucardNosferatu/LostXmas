@@ -1,7 +1,6 @@
-import os
+import pickle
 
 import jieba
-import pickle
 import numpy as np
 from tensorflow.keras.preprocessing import sequence
 
@@ -99,17 +98,17 @@ def add_padding():
     for pos, i in enumerate(pad_question):
         for pos_, j in enumerate(i):
             i[pos_] = j + 1
-        if (len(i) > maxLen):
+        if len(i) > maxLen:
             pad_question[pos] = i[:maxLen]
     for pos, i in enumerate(pad_answer_a):
         for pos_, j in enumerate(i):
             i[pos_] = j + 1
-        if (len(i) > maxLen):
+        if len(i) > maxLen:
             pad_answer_a[pos] = i[:maxLen]
     for pos, i in enumerate(pad_answer_b):
         for pos_, j in enumerate(i):
             i[pos_] = j + 1
-        if (len(i) > maxLen):
+        if len(i) > maxLen:
             pad_answer_b[pos] = i[:maxLen]
     np.save('resource/answer_o.npy', pad_answer_b)
     with open('resource/vocab_bag.pkl', 'rb') as f:
@@ -123,9 +122,13 @@ def add_padding():
     pad_answer = sequence.pad_sequences(pad_answer_a, maxlen=maxLen,
                                         dtype='int32', padding='post',
                                         truncating='post')
-    with open('pad_word_to_index.pkl', 'wb') as f:
+    with open('resource/pad_word_to_index.pkl', 'wb') as f:
         pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
-    with open('pad_index_to_word.pkl', 'wb') as f:
+    with open('resource/pad_index_to_word.pkl', 'wb') as f:
         pickle.dump(index_to_word, f, pickle.HIGHEST_PROTOCOL)
     np.save('resource/pad_question.npy', pad_question)
     np.save('resource/pad_answer.npy', pad_answer)
+
+
+# read_conv()
+# add_padding()

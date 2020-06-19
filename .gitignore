@@ -13,3 +13,5 @@ soliloquize/__pycache__/
 __pycache__/
 KG/data.txt
 seq2seq/phrase/model_phrase/
+*.h5
+seq2seq/train/logs/train/

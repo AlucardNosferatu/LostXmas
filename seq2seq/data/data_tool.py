@@ -1,6 +1,5 @@
 import os
-
-from data.language.langconv import *
+from language.langconv import *
 
 
 def Traditional2Simplified(sentence):
