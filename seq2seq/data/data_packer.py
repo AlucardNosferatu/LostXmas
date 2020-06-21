@@ -1,19 +1,19 @@
 import pickle
-
 import jieba
 import numpy as np
+from tqdm import tqdm
 from tensorflow.keras.preprocessing import sequence
 
 from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english
 
 
 def read_conv():
-    with open('resource/qingyun.tsv', 'r', encoding='utf-8') as f:
+    with open('resource/raw/qingyun.tsv', 'r', encoding='utf-8') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
     question = []
     answer = []
-    for pos, line in enumerate(lines):
+    for pos, line in enumerate(tqdm(lines)):
         if '\t' not in line:
             print(line)
         line = line.split('\t')
@@ -21,19 +21,28 @@ def read_conv():
         a = line[1].strip()
         question.append(' '.join(jieba.lcut(Traditional2Simplified(q).strip(), cut_all=False)))
         answer.append(' '.join(jieba.lcut(Traditional2Simplified(a).strip(), cut_all=False)))
+    with open('resource/raw/legacy/question.txt', 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        for pos, line in enumerate(tqdm(lines)):
+            question.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
+    with open('resource/raw/legacy/answer.txt', 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        for pos, line in enumerate(tqdm(lines)):
+            answer.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
+
     character = set()
-    for seq in question + answer:
+    for seq in tqdm(question + answer):
         word_list = seq.split(' ')
         for word in word_list:
             if not is_all_chinese(word):
                 character.add(word)
     character = list(character)
     stop_words = set()
-    for pos, word in enumerate(character):
+    for pos, word in enumerate(tqdm(character)):
         if not is_pure_english(word):
             stop_words.add(word)
     maxLen = 18
-    for pos, seq in enumerate(question):
+    for pos, seq in enumerate(tqdm(question)):
         seq_list = seq.split(' ')
         for epoch in range(3):
             for pos_, word in enumerate(seq_list):
@@ -42,7 +51,7 @@ def read_conv():
         if len(seq_list) > maxLen:
             seq_list = seq_list[:maxLen]
         question[pos] = ' '.join(seq_list)
-    for pos, seq in enumerate(answer):
+    for pos, seq in enumerate(tqdm(answer)):
         seq_list = seq.split(' ')
         for epoch in range(3):
             for pos_, word in enumerate(seq_list):
@@ -55,14 +64,14 @@ def read_conv():
     answer_b = [i + ' EOS' for i in answer]
     counts = {}
     BE = ['BOS', 'EOS']
-    for word_list in question + answer + BE:
+    for word_list in tqdm(question + answer + BE):
         for word in word_list.split(' '):
             counts[word] = counts.get(word, 0) + 1
     word_to_index = {}
-    for pos, i in enumerate(counts.keys()):
+    for pos, i in enumerate(tqdm(counts.keys())):
         word_to_index[i] = pos
     index_to_word = {}
-    for pos, i in enumerate(counts.keys()):
+    for pos, i in enumerate(tqdm(counts.keys())):
         index_to_word[pos] = i
     vocab_bag = list(word_to_index.keys())
     with open('resource/word_to_index.pkl', 'wb') as f:
@@ -86,26 +95,26 @@ def add_padding():
     print('answer_a.shape: ', answer_a.shape)
     with open('resource/word_to_index.pkl', 'rb') as f:
         word_to_index = pickle.load(f)
-    for i, j in word_to_index.items():
+    for i, j in tqdm(word_to_index.items()):
         word_to_index[i] = j + 1
     index_to_word = {}
-    for key, value in word_to_index.items():
+    for key, value in tqdm(word_to_index.items()):
         index_to_word[value] = key
     pad_question = question
     pad_answer_a = answer_a
     pad_answer_b = answer_b
     maxLen = 20
-    for pos, i in enumerate(pad_question):
+    for pos, i in enumerate(tqdm(pad_question)):
         for pos_, j in enumerate(i):
             i[pos_] = j + 1
         if len(i) > maxLen:
             pad_question[pos] = i[:maxLen]
-    for pos, i in enumerate(pad_answer_a):
+    for pos, i in enumerate(tqdm(pad_answer_a)):
         for pos_, j in enumerate(i):
             i[pos_] = j + 1
         if len(i) > maxLen:
             pad_answer_a[pos] = i[:maxLen]
-    for pos, i in enumerate(pad_answer_b):
+    for pos, i in enumerate(tqdm(pad_answer_b)):
         for pos_, j in enumerate(i):
             i[pos_] = j + 1
         if len(i) > maxLen:
@@ -131,4 +140,4 @@ def add_padding():
 
 
 # read_conv()
-# add_padding()
+add_padding()

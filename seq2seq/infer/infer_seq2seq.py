@@ -6,11 +6,11 @@ from train.train_seq2seq import build_seq2seq
 from train.utils import get_vocab_size, load_resource
 
 
-def build_qa_model():
+def build_qa_model(wp=None):
     maxLen = 20
     iq, el, qh, qc, ld, iae, dd1, dd2, ia = build_seq2seq(
         vocab_size=get_vocab_size(),
-        weight_path="../train/check_points/W -  5-0.5547-.h5"
+        weight_path=wp
     )
     question_model = Model(iq, [el, qh, qc])
     question_model.summary()
@@ -30,7 +30,7 @@ def build_qa_model():
 
 
 def loop_talking():
-    question_model, answer_model = build_qa_model()
+    question_model, answer_model = build_qa_model(wp=None)
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     while True:
         seq = input()

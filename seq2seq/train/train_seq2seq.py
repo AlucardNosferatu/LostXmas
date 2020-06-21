@@ -61,11 +61,11 @@ def build_seq2seq(vocab_size=None, weight_path=None):
 
 
 def load_seq2seq():
-    model = tf.keras.models.load_model(filepath="../models/seq2seq_raw.h5")
-    return model
+    loaded_model = tf.keras.models.load_model(filepath="../models/seq2seq_raw.h5")
+    return loaded_model
 
 
-def train_seq2seq(model):
+def train_seq2seq(input_model):
     checkpoint = ModelCheckpoint("check_points/W -{epoch:3d}-{loss:.4f}-.h5",
                                  monitor='loss',
                                  verbose=1,
@@ -95,36 +95,36 @@ def train_seq2seq(model):
                               #                           embeddings_data=None,
                               #                           update_freq='epoch'
                               )
-    callbacks_list = [checkpoint, reduce_lr, tensorboard]
+    callbacks_list = [checkpoint, reduce_lr]
 
     initial_epoch_ = 0
     file_list = os.listdir('check_points/')
     if len(file_list) > 0:
         epoch_list = get_file_list('check_points/')
         epoch_last = epoch_list[-1]
-        model.load_weights('check_points/' + epoch_last)
+        input_model.load_weights('check_points/' + epoch_last)
         print("**********checkpoint_loaded: ", epoch_last)
         # initial_epoch_ = int(epoch_last.split('-')[2]) - 1
         # print('**********Begin from epoch: ', str(initial_epoch_))
 
     with tf.device("/gpu:0"):
-        model.fit_generator(generate_train(batch_size=100),
-                            steps_per_epoch=1000,  # (total samples) / batch_size 100000/100 = 1000
-                            epochs=200,
-                            verbose=1,
-                            callbacks=callbacks_list,
-                            #                     validation_data=generate_test(batch_size=100),
-                            #                     validation_steps=200, # 10000/100 = 100
-                            class_weight=None,
-                            max_queue_size=5,
-                            workers=1,
-                            use_multiprocessing=False,
-                            shuffle=False,
-                            initial_epoch=initial_epoch_
-                            )
+        input_model.fit_generator(generate_train(batch_size=100),
+                                  steps_per_epoch=1000,  # (total samples) / batch_size 100000/100 = 1000
+                                  epochs=200,
+                                  verbose=1,
+                                  callbacks=callbacks_list,
+                                  #                     validation_data=generate_test(batch_size=100),
+                                  #                     validation_steps=200, # 10000/100 = 100
+                                  class_weight=None,
+                                  max_queue_size=5,
+                                  workers=1,
+                                  use_multiprocessing=False,
+                                  shuffle=False,
+                                  initial_epoch=initial_epoch_
+                                  )
 
 
 # vocab_size = get_vocab_size()
 # build_seq2seq(vocab_size=vocab_size)
-# model = load_seq2seq()
-# train_seq2seq(model)
+model = load_seq2seq()
+train_seq2seq(model)
