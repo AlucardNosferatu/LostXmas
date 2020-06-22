@@ -8,6 +8,7 @@ from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_engli
 
 
 def read_conv():
+    # region get Q&A
     with open('resource/raw/qingyun.tsv', 'r', encoding='utf-8') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
@@ -29,6 +30,7 @@ def read_conv():
         lines = f.readlines()
         for pos, line in enumerate(tqdm(lines)):
             answer.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
+    # endregion
 
     character = set()
     for seq in tqdm(question + answer):
@@ -139,5 +141,6 @@ def add_padding():
     np.save('resource/pad_answer.npy', pad_answer)
 
 
-# read_conv()
-add_padding()
+if __name__ == '__main__':
+    # read_conv()
+    add_padding()

@@ -30,13 +30,13 @@ def build_qa_model(wp=None):
 
 
 def loop_talking():
-    question_model, answer_model = build_qa_model(wp=None)
+    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W - 54-0.2819-.h5")
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     while True:
         seq = input()
         if seq == 'x':
             break
-        seq, sentence = input_question(seq=seq,word_to_index=word_to_index)
+        seq, sentence = input_question(seq=seq, word_to_index=word_to_index)
         print(sentence)
         with tf.device("/gpu:0"):
             answer = decode_greedy(
@@ -51,4 +51,5 @@ def loop_talking():
         print('ANSWER: ', answer)
 
 
-loop_talking()
+if __name__ == '__main__':
+    loop_talking()

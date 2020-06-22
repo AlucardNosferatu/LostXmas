@@ -124,7 +124,8 @@ def train_seq2seq(input_model):
                                   )
 
 
-# vocab_size = get_vocab_size()
-# build_seq2seq(vocab_size=vocab_size)
-model = load_seq2seq()
-train_seq2seq(model)
+if __name__ == '__main__':
+    # vocab_size = get_vocab_size()
+    # build_seq2seq(vocab_size=vocab_size)
+    model = load_seq2seq()
+    train_seq2seq(model)
