@@ -4,11 +4,11 @@ from data.augmentation.blacklist import DFAFilter, NaiveFilter, BSFilter
 def prompt_filter(show_ng=True):
     gfw = DFAFilter()
     gfw.parse("keywords")
-    with open('../resource/raw/qingyun.tsv', 'r', encoding='utf-8') as f:
-        lines = f.read().split('\n')
+    with open('../resource/raw/qingyun.tsv', 'r', encoding='utf-8-sig') as q_f:
+        lines = q_f.read().split('\n')
         lines = lines[:-2]
-    f = open('../resource/raw/legacy/question.txt', 'a', encoding='utf-8')
-    f1 = open('../resource/raw/legacy/answer.txt', 'a', encoding='utf-8')
+    q_f = open('../resource/raw/legacy/question.txt', 'a', encoding='utf-8-sig')
+    a_f = open('../resource/raw/legacy/answer.txt', 'a', encoding='utf-8-sig')
     i = 0
     while i < len(lines):
         line = lines[i]
@@ -26,38 +26,31 @@ def prompt_filter(show_ng=True):
             if p == "n":
                 del lines[i]
             elif p == "y":
-                f.write(q)
-                f1.write(a)
-                f.flush()
-                f1.flush()
+                q_f.write(q)
+                a_f.write(a)
+                q_f.flush()
+                a_f.flush()
                 i += 1
             elif p == "1":
-                f.write(q)
+                q_f.write(q)
                 a = "啥。。。没明白\n"
-                f1.write(a)
-                f.flush()
-                f1.flush()
+                a_f.write(a)
+                q_f.flush()
+                a_f.flush()
                 i += 1
             elif p == "2":
-                f.write(q)
+                q_f.write(q)
                 a = "不认识。。。你说的是谁？\n"
-                f1.write(a)
-                f.flush()
-                f1.flush()
-                i += 1
-            elif p == "2":
-                f.write(q)
-                a = "不认识。。。你说的是谁？\n"
-                f1.write(a)
-                f.flush()
-                f1.flush()
+                a_f.write(a)
+                q_f.flush()
+                a_f.flush()
                 i += 1
             else:
                 print("y for pass, n for fail")
         else:
             del lines[i]
-    f.close()
-    f1.close()
+    q_f.close()
+    a_f.close()
 
 
 if __name__ == "__main__":

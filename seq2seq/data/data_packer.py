@@ -9,7 +9,7 @@ from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_engli
 
 def read_conv():
     # region get Q&A
-    with open('resource/raw/qingyun.tsv', 'r', encoding='utf-8') as f:
+    with open('resource/raw/qingyun.tsv', 'r', encoding='utf-8-sig') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
     question = []
@@ -22,16 +22,17 @@ def read_conv():
         a = line[1].strip()
         question.append(' '.join(jieba.lcut(Traditional2Simplified(q).strip(), cut_all=False)))
         answer.append(' '.join(jieba.lcut(Traditional2Simplified(a).strip(), cut_all=False)))
-    with open('resource/raw/legacy/question.txt', 'r', encoding='utf-8') as f:
+    with open('resource/raw/legacy/q_compact_vocab.txt', 'r', encoding='utf-8-sig') as f:
         lines = f.readlines()
         for pos, line in enumerate(tqdm(lines)):
             question.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
-    with open('resource/raw/legacy/answer.txt', 'r', encoding='utf-8') as f:
+    with open('resource/raw/legacy/a_compact_vocab.txt', 'r', encoding='utf-8-sig') as f:
         lines = f.readlines()
         for pos, line in enumerate(tqdm(lines)):
             answer.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
     # endregion
 
+    # region process Special Chars
     character = set()
     for seq in tqdm(question + answer):
         word_list = seq.split(' ')
@@ -44,6 +45,9 @@ def read_conv():
         if not is_pure_english(word):
             stop_words.add(word)
     maxLen = 18
+    # endregion
+
+    # region process Question
     for pos, seq in enumerate(tqdm(question)):
         seq_list = seq.split(' ')
         for epoch in range(3):
@@ -53,6 +57,9 @@ def read_conv():
         if len(seq_list) > maxLen:
             seq_list = seq_list[:maxLen]
         question[pos] = ' '.join(seq_list)
+    # endregion
+
+    # region process Answer
     for pos, seq in enumerate(tqdm(answer)):
         seq_list = seq.split(' ')
         for epoch in range(3):
@@ -62,10 +69,14 @@ def read_conv():
         if len(seq_list) > maxLen:
             seq_list = seq_list[:maxLen]
         answer[pos] = ' '.join(seq_list)
+    # endregion
+
     answer_a = ['BOS ' + i + ' EOS' for i in answer]
     answer_b = [i + ' EOS' for i in answer]
     counts = {}
     BE = ['BOS', 'EOS']
+
+    # region word2vec
     for word_list in tqdm(question + answer + BE):
         for word in word_list.split(' '):
             counts[word] = counts.get(word, 0) + 1
@@ -76,6 +87,8 @@ def read_conv():
     for pos, i in enumerate(tqdm(counts.keys())):
         index_to_word[pos] = i
     vocab_bag = list(word_to_index.keys())
+    # endregion
+
     with open('resource/word_to_index.pkl', 'wb') as f:
         pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
     with open('resource/index_to_word.pkl', 'wb') as f:

@@ -2,7 +2,7 @@ from tqdm import tqdm
 
 
 def manual_filter():
-    with open('resource/raw/legacy/conv_zh.txt', 'r', encoding='utf-8') as f:
+    with open('resource/raw/legacy/XiaoIce.txt', 'r', encoding='utf-8') as f:
         lines = f.readlines()
     question = lines[::2]
     answer = lines[1::2]
