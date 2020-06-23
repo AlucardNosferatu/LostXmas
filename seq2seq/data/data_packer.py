@@ -1,43 +1,56 @@
 import pickle
+
 import jieba
 import numpy as np
-from tqdm import tqdm
 from tensorflow.keras.preprocessing import sequence
+from tqdm import tqdm
 
 from data.augmentation.blacklist import DFAFilter
-from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english
+from data.augmentation.frequency import getWords
+from data.augmentation.phrase2words import getBaseWord, getComposable
+from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data
 
 
 def read_conv():
     # region get Q&A
     gfw = DFAFilter()
-    gfw.parse("keywords")
+    gfw.parse('augmentation\\keywords')
     with open('resource/raw/qingyun.tsv', 'r', encoding='utf-8-sig') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
+        lines = remove_brackets(lines)
     question = []
     answer = []
-    for pos, line in enumerate(tqdm(lines)):
+    for i in tqdm(range(len(lines))):
+        line = lines[i]
         if '\t' not in line:
             print(line)
         line = line.split('\t')
         q = line[0].strip()
         a = line[1].strip()
-        q_filter = gfw.filter(q, '*')[1]
-        a_filter = gfw.filter(a, '*')[1]
-        if q_filter or a_filter:
+        q_filter = gfw.filter(q, '*')
+        a_filter = gfw.filter(a, '*')
+        if q_filter[1] or a_filter[1]:
+            # print(q_filter[0])
+            # print(a_filter[0])
             continue
         question.append(' '.join(jieba.lcut(Traditional2Simplified(q).strip(), cut_all=False)))
         answer.append(' '.join(jieba.lcut(Traditional2Simplified(a).strip(), cut_all=False)))
-    with open('resource/raw/legacy/q_compact_vocab.txt', 'r', encoding='utf-8-sig') as f:
-        lines = f.readlines()
-        for pos, line in enumerate(tqdm(lines)):
-            question.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
-    with open('resource/raw/legacy/a_compact_vocab.txt', 'r', encoding='utf-8-sig') as f:
-        lines = f.readlines()
-        for pos, line in enumerate(tqdm(lines)):
-            answer.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
     # endregion
+
+    q_path = 'resource/raw/legacy/q_compact_vocab.txt'
+    a_path = 'resource/raw/legacy/a_compact_vocab.txt'
+    question, answer = append_extra_data(q_path, a_path, question, answer)
+    q_path = 'resource/raw/legacy/CPoL4OC_Q.txt'
+    a_path = 'resource/raw/legacy/CPoL4OC_A.txt'
+    question, answer = append_extra_data(q_path, a_path, question, answer)
+    q_path = 'resource/raw/legacy/Lovers_Q.txt'
+    a_path = 'resource/raw/legacy/Lovers_A.txt'
+    question, answer = append_extra_data(q_path, a_path, question, answer)
+    q_path = 'resource/raw/legacy/MyTulpa_Q.txt'
+    a_path = 'resource/raw/legacy/MyTulpa_A.txt'
+    question, answer = append_extra_data(q_path, a_path, question, answer)
+
 
     # region process Special Chars
     character = set()
@@ -84,15 +97,31 @@ def read_conv():
     BE = ['BOS', 'EOS']
 
     # region word2vec
-    for word_list in tqdm(question + answer + BE):
-        for word in word_list.split(' '):
-            counts[word] = counts.get(word, 0) + 1
+    _, fdist = getWords(question + answer + BE)
+    base_words = getBaseWord(fdist)
+    all_composable = getComposable(base_words, fdist)
+    for comp in all_composable:
+        del fdist[fdist.index(comp)]
+    sentences = [question, answer_a, answer_b]
+    for i in tqdm(range(len(sentences))):
+        sentence = sentences[i]
+        for j in range(len(sentence)):
+            words = sentence[j].split(' ')
+            for k in range(len(words)):
+                if words[k] in all_composable:
+                    words[k] = ' '.join(list(words[k]))
+            sentence[j] = ' '.join(words)
+        sentences[i] = sentence
+    question, answer_a, answer_b = sentences
+
     word_to_index = {}
-    for pos, i in enumerate(tqdm(counts.keys())):
+    for pos, i in enumerate(tqdm(fdist)):
         word_to_index[i] = pos
+
     index_to_word = {}
-    for pos, i in enumerate(tqdm(counts.keys())):
+    for pos, i in enumerate(tqdm(fdist)):
         index_to_word[pos] = i
+
     vocab_bag = list(word_to_index.keys())
     # endregion
 
@@ -105,9 +134,10 @@ def read_conv():
     question = np.array([[word_to_index[w] for w in i.split(' ')] for i in question])
     answer_a = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_a])
     answer_b = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_b])
-    np.save('resource/question.npy', question[:100000])
-    np.save('resource/answer_a.npy', answer_a[:100000])
-    np.save('resource/answer_b.npy', answer_b[:100000])
+    size = int(len(question)/100)*100
+    np.save('resource/question.npy', question[:size])
+    np.save('resource/answer_a.npy', answer_a[:size])
+    np.save('resource/answer_b.npy', answer_b[:size])
 
 
 def add_padding():
@@ -162,5 +192,5 @@ def add_padding():
 
 
 if __name__ == '__main__':
-    # read_conv()
+    read_conv()
     add_padding()

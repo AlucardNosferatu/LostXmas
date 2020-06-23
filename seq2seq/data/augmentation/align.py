@@ -3,8 +3,8 @@ from tqdm import tqdm
 
 def split_continuous_speech():
     f = open('../resource/raw/legacy/unsorted/CPoL4OC.txt', 'r', encoding='utf-8-sig')
-    q_out = open('../resource/raw/legacy/unsorted/CPoL4OC_Q.txt', 'a', encoding='utf-8-sig')
-    a_out = open('../resource/raw/legacy/unsorted/CPoL4OC_A.txt', 'a', encoding='utf-8-sig')
+    q_out = open('../resource/raw/legacy/CPoL4OC_Q.txt', 'a', encoding='utf-8-sig')
+    a_out = open('../resource/raw/legacy/CPoL4OC_A.txt', 'a', encoding='utf-8-sig')
     sentences = f.readlines()
     f.close()
     i = 0
@@ -100,7 +100,7 @@ def set_QA(lines, i, gfw, show_ng):
     print("", a_list)
     answer_index = input("which answer?")
     if answer_index.isnumeric():
-        a = a_list[int(answer_index)]
+        a = int(answer_index) + i + 1
     else:
         a = None
     return q, a
@@ -133,6 +133,43 @@ def concat(choice, sentences, i, input_a, gfw, show_ng):
         # 不符合cq或ca
         pass
     return sentences, i
+
+
+def get_Child(sentences, i, a_index):
+    q_or_a = input("Q or A?")
+    if q_or_a == 'q':
+        temp = sentences[i]
+    elif q_or_a == 'a':
+        temp = sentences[a_index]
+    else:
+        return sentences
+    temp = temp.replace(
+        ',', '#$%'
+    ).replace(
+        '，', '#$%'
+    ).replace(
+        '.', '#$%'
+    ).replace(
+        '。', '#$%'
+    ).replace(
+        ' ', '#$%'
+    ).replace(
+        '！', '#$%'
+    ).replace(
+        '？', '#$%'
+    ).replace(
+        '!', '#$%'
+    ).replace(
+        '?', '#$%'
+    ).split('#$%')
+    print(temp)
+    left_sen = input("which sentence?")
+    if left_sen.isnumeric():
+        if q_or_a == 'q':
+            sentences[i] = temp[int(left_sen)]
+        elif q_or_a == 'a':
+            sentences[a_index] = temp[int(left_sen)]
+    return sentences
 
 
 if __name__ == "__main__":

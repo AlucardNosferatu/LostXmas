@@ -44,6 +44,13 @@ def generate_train(batch_size):
                     print(i)
                 outs[pos, pos_, j] = 1  # one-hot
         yield [batch_question, batch_answer], outs
+        # print(steps)
         steps += batch_size
-        if steps == 100000:
+        if steps == len(question):
             steps = 0
+            state = np.random.get_state()
+            np.random.shuffle(answer_o)
+            np.random.set_state(state)
+            np.random.shuffle(question_)
+            np.random.set_state(state)
+            np.random.shuffle(answer_)

@@ -9,7 +9,7 @@ from data.data_tool import Traditional2Simplified
 def sym_of_word(word):
     syms = chinese_synonym_word.get_synonym_word_cl(word, is_strict=True)
     if syms and len(syms) > 1:
-        syms = syms[:max(min(int(len(syms) / 4), 5), 1)]
+        syms = syms[:max(min(int(len(syms) / 4), 3), 1)]
         if word in syms:
             del syms[syms.index(word)]
     else:

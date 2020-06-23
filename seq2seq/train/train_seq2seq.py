@@ -109,7 +109,7 @@ def train_seq2seq(input_model):
 
     with tf.device("/gpu:0"):
         input_model.fit_generator(generate_train(batch_size=100),
-                                  steps_per_epoch=1000,  # (total samples) / batch_size 100000/100 = 1000
+                                  steps_per_epoch=900,  # (total samples) / batch_size 100000/100 = 1000
                                   epochs=200,
                                   verbose=1,
                                   callbacks=callbacks_list,

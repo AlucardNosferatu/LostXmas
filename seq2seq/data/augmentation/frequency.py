@@ -12,7 +12,7 @@ def getFreqDist(words_with_dup):
     return fdist
 
 
-def getWords():
+def getWordsFromFiles():
     a = open('../resource/raw/legacy/answer.txt', 'r', encoding='utf-8-sig')
     a_out = open('../resource/raw/legacy/a_compact_vocab.txt', 'r', encoding='utf-8-sig')
     q = open('../resource/raw/legacy/question.txt', 'r', encoding='utf-8-sig')
@@ -25,15 +25,26 @@ def getWords():
     a_out.close()
     q.close()
     q_out.close()
+    fdist_list = []
+    wwd = []
     for sentences in [a_sentences + q_sentences, a_out_sentences + q_out_sentences]:
         words_with_dup = []
         for i in tqdm(range(len(sentences))):
             words = jieba.lcut(Traditional2Simplified(sentences[i]).strip(), cut_all=False)
             words_with_dup += words
+        wwd.append(words_with_dup)
         fdist = getFreqDist(words_with_dup)
-        print()
-        print(len(fdist))
+        fdist_list.append(fdist)
+    return wwd, fdist_list
+
+def getWords(lines):
+    words_with_dup = []
+    for line in lines:
+        words = line.split(' ')
+        words_with_dup+=words
+    fdist = getFreqDist(words_with_dup)
+    return words_with_dup,fdist
 
 
 if __name__ == "__main__":
-    getWords()
+    getWordsFromFiles()

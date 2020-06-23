@@ -1,34 +1,11 @@
 import jieba
 from tqdm import tqdm
 
-from data.augmentation.align import set_QA, concat
+from data.augmentation.align import set_QA, concat, get_Child
 from data.augmentation.blacklist import DFAFilter, NaiveFilter, BSFilter
 from data.augmentation.frequency import getFreqDist
 from data.augmentation.synonyms import sym_of_word, compress_vocab, simplify_sentence
 from data.data_tool import Traditional2Simplified
-
-
-def remove_brackets(lines):
-    for i in tqdm(range(len(lines))):
-        new_list = []
-        temp = lines[i]
-        temp_list = temp.split('[')
-        for each in temp_list:
-            if ']' in each:
-                new_list += [each.split(']')[1]]
-            else:
-                new_list += [each]
-        temp_list = new_list
-        lines[i] = " ".join(temp_list)
-    return lines
-
-
-def batch_RB():
-    with open('../resource/raw/legacy/answer.txt', 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-    lines = remove_brackets(lines)
-    with open('../resource/raw/legacy/answer.txt', 'w', encoding='utf-8') as f:
-        f.writelines(lines)
 
 
 def prompt_filter(show_ng=False, UseAlign=True):
@@ -37,7 +14,8 @@ def prompt_filter(show_ng=False, UseAlign=True):
     gfw.parse("keywords")
     vocab = {}
     words_with_dup = []
-    with open('../resource/raw/legacy/unsorted/CPoL4OC.txt', 'r', encoding='utf-8-sig') as q_f:
+    # with open('../resource/raw/legacy/unsorted/CPoL4OC.txt', 'r', encoding='utf-8-sig') as q_f:
+    with open('../resource/raw/qingyun.tsv', 'r', encoding='utf-8-sig') as q_f:
         if UseAlign:
             lines = q_f.readlines()
         else:
@@ -75,9 +53,10 @@ def prompt_filter(show_ng=False, UseAlign=True):
         is_ng = gfw.filter(line, '*')
         if not (show_ng ^ is_ng[1]):
             if UseAlign:
-                q, a = set_QA(lines, i, gfw, show_ng)
-                if a is None:
+                q, a_index = set_QA(lines, i, gfw, show_ng)
+                if a_index is None:
                     continue
+                a = lines[a_index]
             else:
                 line = line.split('\t')
                 q = line[0].strip() + "\n"
@@ -115,8 +94,10 @@ def prompt_filter(show_ng=False, UseAlign=True):
                 i += 1
             # endregion
 
-            elif p.startswith('c'):
+            elif p.startswith('c') and UseAlign:
                 lines, i = concat(p, lines, i, a, gfw, show_ng)
+            elif p == "s" and UseAlign:
+                lines = get_Child(lines, i, a_index)
             if p == 'r':
                 i -= 1
                 if i < 0:
