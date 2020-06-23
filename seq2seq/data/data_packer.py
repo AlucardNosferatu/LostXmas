@@ -4,11 +4,14 @@ import numpy as np
 from tqdm import tqdm
 from tensorflow.keras.preprocessing import sequence
 
+from data.augmentation.blacklist import DFAFilter
 from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english
 
 
 def read_conv():
     # region get Q&A
+    gfw = DFAFilter()
+    gfw.parse("keywords")
     with open('resource/raw/qingyun.tsv', 'r', encoding='utf-8-sig') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
@@ -20,6 +23,10 @@ def read_conv():
         line = line.split('\t')
         q = line[0].strip()
         a = line[1].strip()
+        q_filter = gfw.filter(q, '*')[1]
+        a_filter = gfw.filter(a, '*')[1]
+        if q_filter or a_filter:
+            continue
         question.append(' '.join(jieba.lcut(Traditional2Simplified(q).strip(), cut_all=False)))
         answer.append(' '.join(jieba.lcut(Traditional2Simplified(a).strip(), cut_all=False)))
     with open('resource/raw/legacy/q_compact_vocab.txt', 'r', encoding='utf-8-sig') as f:

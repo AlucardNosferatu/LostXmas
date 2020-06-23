@@ -39,6 +39,36 @@ def compress_vocab(vocab, freq_dist):
     return vocab
 
 
+def simplify_sentence(sentence, vocab):
+    words = jieba.lcut(Traditional2Simplified(sentence).strip(), cut_all=False)
+    for j in range(len(words)):
+        if words[j] in vocab:
+            pass
+        else:
+            k = 0
+            while k < len(list(vocab.keys())):
+                key = list(vocab.keys())[k]
+                if words[j] in vocab[key]:
+                    temp_words = words.copy()
+                    temp_words[j] = key
+                    temp = "".join(temp_words)
+                    print("替换前：", "".join(words))
+                    print("替换后：", temp)
+                    choice = input("?")
+                    if choice == 'y':
+                        words = temp_words
+                        k += 1
+                    elif choice == 'n':
+                        k += 1
+                    else:
+                        pass
+                else:
+                    k += 1
+    temp = "".join(words)
+    sentence = temp + "\n"
+    return sentence
+
+
 def simplify():
     # f = open('../resource/raw/legacy/question.txt', 'r', encoding='utf-8-sig')
     # f_out = open('../resource/raw/legacy/q_compact_vocab.txt', 'a', encoding='utf-8-sig')

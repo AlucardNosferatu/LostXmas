@@ -35,7 +35,7 @@ def split_continuous_speech():
             i += 1
         elif choice == 'n' or choice == '0':
             i += 1
-        elif choice == 'c':
+        elif choice == 'cq':
             sentences[i + 1] = q.replace('\n', '') + a
             i += 1
         elif choice == 'ca':
@@ -85,6 +85,54 @@ def split_continuous_speech():
             pass
     q_out.close()
     a_out.close()
+
+
+def set_QA(lines, i, gfw, show_ng):
+    q = lines[i]
+    a_list = []
+    print("", q)
+    j = i + 1
+    while len(a_list) < 6:
+        is_ng = gfw.filter(lines[j], '*')
+        if not (show_ng ^ is_ng[1]):
+            a_list.append(lines[j])
+        j += 1
+    print("", a_list)
+    answer_index = input("which answer?")
+    if answer_index.isnumeric():
+        a = a_list[int(answer_index)]
+    else:
+        a = None
+    return q, a
+
+
+def concat(choice, sentences, i, input_a, gfw, show_ng):
+    if choice == 'cq':
+        q = sentences[i]
+        sentences[i] = q.replace('\n', '') + input_a
+    elif choice == 'ca':
+        a_list = []
+        j = i + 1
+        while len(a_list) < 6:
+            is_ng = gfw.filter(sentences[j], '*')
+            if not (show_ng ^ is_ng[1]):
+                a_list.append(sentences[j])
+            j += 1
+        print(a_list)
+        answer_index = input("another answer?")
+        if answer_index.isnumeric():
+            if int(answer_index) < len(a_list):
+                sentences[int(answer_index) + i + 1] = input_a.replace('\n', '') + a_list[int(answer_index)]
+            else:
+                # ca时选项是数字但超出a_list范围
+                pass
+        else:
+            # ca时选项不是数字
+            pass
+    else:
+        # 不符合cq或ca
+        pass
+    return sentences, i
 
 
 if __name__ == "__main__":
