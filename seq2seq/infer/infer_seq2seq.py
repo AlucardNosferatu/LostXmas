@@ -1,6 +1,10 @@
+import pickle
 import tensorflow as tf
+from tqdm import tqdm
+from data.augmentation.similarity import similarity_complex
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Input, dot, Activation, concatenate
+
 from infer.utils import input_question, decode_greedy
 from train.train_seq2seq import build_seq2seq
 from train.utils import get_vocab_size, load_resource
@@ -30,13 +34,22 @@ def build_qa_model(wp=None):
 
 
 def loop_talking():
-    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W - 54-0.2819-.h5")
+    with open("../data/resource/raw/qingyun.tsv", 'r+', encoding='utf-8-sig') as f_r:
+        raw_lines = f_r.readlines()
+    for i in tqdm(range(len(raw_lines))):
+        raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
+    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W - 48-0.2539-.h5")
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
+    f_q = open("Online_Q.txt", 'a', encoding='utf-8-sig')
+    f_a = open("Online_A.txt", 'a', encoding='utf-8-sig')
+    with open('../data/resource/composable.pkl', 'rb') as f:
+        all_composable = pickle.load(f)
     while True:
         seq = input()
+        question_new = seq
         if seq == 'x':
             break
-        seq, sentence = input_question(seq=seq, word_to_index=word_to_index)
+        seq, sentence = input_question(seq=seq, word_to_index=word_to_index, all_composable=all_composable)
         print(sentence)
         with tf.device("/gpu:0"):
             answer = decode_greedy(
@@ -49,6 +62,25 @@ def loop_talking():
             )
         #     answer=decode_beamsearch(seq, 3)
         print('ANSWER: ', answer)
+        revision = input("是否修正？")
+        if revision == 'y':
+            answer_new = input("输入新回答")
+            f_q.write(question_new + "\n")
+            f_a.write(answer_new + "\n")
+            f_q.flush()
+            f_a.flush()
+        orientation = input("是否查找？")
+        if orientation == 'y':
+            similar_answers_from_data = []
+            for i in tqdm(range(len(raw_lines))):
+                line = raw_lines[i]
+                scores = similarity_complex(line, answer)
+                scores, mean_score, max_score, std_score = scores
+                if max_score > 0.6:
+                    similar_answers_from_data.append(i)
+                    print("行号：", i, " 内容：", line, " 最高分：", max_score)
+    f_q.close()
+    f_a.close()
 
 
 if __name__ == '__main__':

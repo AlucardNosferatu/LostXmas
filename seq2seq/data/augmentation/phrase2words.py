@@ -12,7 +12,7 @@ def getBaseWord(fdist):
 
 def getComposable(baseWord, fdist):
     AllComposable = []
-    for phrase in fdist[50:]:
+    for phrase in fdist[100:]:
         composable = True
         if is_all_chinese(phrase) and len(phrase) > 1:
             for word in phrase:

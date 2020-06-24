@@ -19,8 +19,13 @@ def act_weather(city):
     return outstrs + ' EOS'
 
 
-def input_question(seq, word_to_index):
+def input_question(seq, word_to_index, all_composable):
     seq = jieba.lcut(seq.strip(), cut_all=False)
+    for k in range(len(seq)):
+        if seq[k] in all_composable:
+            seq[k] = ' '.join(list(seq[k]))
+    seq = ' '.join(seq)
+    seq = seq.split(' ')
     sentence = seq
     try:
         seq = np.array([word_to_index[w] for w in seq])
@@ -62,10 +67,10 @@ def decode_greedy(seq, sentence, question_model, answer_model, word_to_index, in
         question_h = prediction_h
         question_c = prediction_c
         i += 1
-    result = ' '.join(answer_)
-    attention_plot = attention_plot[:len(result.split(' ')), :len(sentence)]
+    # result = ' '.join(answer_)
+    # attention_plot = attention_plot[:len(result.split(' ')), :len(sentence)]
     # plot_attention(attention_plot, sentence, result.split(' '))
-    return ' '.join(answer_)
+    return ''.join(answer_)
 
 
 def decode_beamsearch(seq, beam_size, question_model, answer_model, word_to_index, index_to_word):

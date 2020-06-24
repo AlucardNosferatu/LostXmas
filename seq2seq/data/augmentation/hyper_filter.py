@@ -2,9 +2,9 @@ import jieba
 from tqdm import tqdm
 
 from data.augmentation.align import set_QA, concat, get_Child
-from data.augmentation.blacklist import DFAFilter, NaiveFilter, BSFilter
+from data.augmentation.blacklist import DFAFilter
 from data.augmentation.frequency import getFreqDist
-from data.augmentation.synonyms import sym_of_word, compress_vocab, simplify_sentence
+from data.obsolete.synonyms_old import sym_of_word, compress_vocab, simplify_sentence
 from data.data_tool import Traditional2Simplified
 
 

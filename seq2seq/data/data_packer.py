@@ -100,6 +100,8 @@ def read_conv():
     _, fdist = getWords(question + answer + BE)
     base_words = getBaseWord(fdist)
     all_composable = getComposable(base_words, fdist)
+    with open('resource/composable.pkl', 'wb') as f:
+        pickle.dump(all_composable, f, pickle.HIGHEST_PROTOCOL)
     for comp in all_composable:
         del fdist[fdist.index(comp)]
     sentences = [question, answer_a, answer_b]
