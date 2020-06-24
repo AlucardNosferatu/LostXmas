@@ -70,7 +70,7 @@ def decode_greedy(seq, sentence, question_model, answer_model, word_to_index, in
     # result = ' '.join(answer_)
     # attention_plot = attention_plot[:len(result.split(' ')), :len(sentence)]
     # plot_attention(attention_plot, sentence, result.split(' '))
-    return ''.join(answer_)
+    return ''.join(answer_).replace('EOS', '')
 
 
 def decode_beamsearch(seq, beam_size, question_model, answer_model, word_to_index, index_to_word):

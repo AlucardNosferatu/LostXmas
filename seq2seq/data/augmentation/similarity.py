@@ -1,9 +1,24 @@
 from math import sqrt
-
+from snownlp import SnowNLP
 import distance
 import numpy as np
 from scipy.linalg import norm
 from sklearn.feature_extraction.text import CountVectorizer
+
+
+def Keywords_IoU(s1, s2):
+    s1 = SnowNLP(s1)
+    s2 = SnowNLP(s2)
+    s1 = s1.keywords()
+    s2 = s2.keywords()
+    s1 = set(s1)
+    s2 = set(s2)
+    intersection = s1.intersection(s2)
+    union = s1.union(s2)
+    intersection = list(intersection)
+    union = list(union)
+    IoU = len(intersection) / len(union)
+    return IoU, len(intersection)
 
 
 def LongSubString(s1, s2):
@@ -103,12 +118,14 @@ if __name__ == '__main__':
     score1 = jaccard_improved(sa, sb)
     score2 = edit_distance(sa, sb)
     score3 = tf_similarity(sa, sb)
+    score4, _ = Keywords_IoU(sa, sb)
     mean_score = np.mean(np.array([score1, score2, score3]))
     max_score = np.max(np.array([score1, score2, score3]))
     std_score = np.std(np.array([score1, score2, score3]))
     print("杰卡德距离：", score1)
     print("编辑相似性：", score2)
     print("余弦相似性：", score3)
+    print("关键词比例：", score4)
     print("平均值：", mean_score)
     print("最大值：", max_score)
     print("标准差：", std_score)

@@ -11,7 +11,7 @@ from data.data_tool import Traditional2Simplified
 def prompt_filter(show_ng=False, UseAlign=True):
     # region get Dialog
     gfw = DFAFilter()
-    gfw.parse("keywords")
+    gfw.parse("blacklist")
     vocab = {}
     words_with_dup = []
     # with open('../resource/raw/legacy/unsorted/CPoL4OC.txt', 'r', encoding='utf-8-sig') as q_f:

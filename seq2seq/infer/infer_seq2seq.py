@@ -1,7 +1,7 @@
 import pickle
 import tensorflow as tf
 from tqdm import tqdm
-from data.augmentation.similarity import similarity_complex
+from data.augmentation.similarity import similarity_complex, Keywords_IoU
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Input, dot, Activation, concatenate
 
@@ -33,7 +33,7 @@ def build_qa_model(wp=None):
     return question_model, answer_model
 
 
-def loop_talking():
+def loop_talking(UseKeywords=False):
     with open("../data/resource/raw/qingyun.tsv", 'r+', encoding='utf-8-sig') as f_r:
         raw_lines = f_r.readlines()
     for i in tqdm(range(len(raw_lines))):
@@ -69,16 +69,37 @@ def loop_talking():
             f_a.write(answer_new + "\n")
             f_q.flush()
             f_a.flush()
-        orientation = input("是否查找？")
-        if orientation == 'y':
+        while input("是否查找？") == 'y':
+            if not UseKeywords:
+                must_include = input("必须包含：")
+                exclude = input("不得包含：")
+            else:
+                must_include = ""
+                exclude = ""
             similar_answers_from_data = []
             for i in tqdm(range(len(raw_lines))):
                 line = raw_lines[i]
-                scores = similarity_complex(line, answer)
-                scores, mean_score, max_score, std_score = scores
-                if max_score > 0.6:
-                    similar_answers_from_data.append(i)
-                    print("行号：", i, " 内容：", line, " 最高分：", max_score)
+
+                # region use Similarity
+                if not UseKeywords:
+                    if len(exclude) >= 2 and exclude in line:
+                        continue
+                    if must_include in line:
+                        scores = similarity_complex(line, answer)
+                        scores, mean_score, max_score, std_score = scores
+                        if max_score > 0.5:
+                            similar_answers_from_data.append(i)
+                            print("行号：", i, " 内容：", line, " 最高分：", max_score)
+                # endregion
+
+                # region Use Keywords
+                else:
+                    i_o_u, matched = Keywords_IoU(answer, line)
+                    if i_o_u >= 0.25 and matched >= 2:
+                        similar_answers_from_data.append(i)
+                        print()
+                        print("行号：", i, " 内容：", line, " IoU：", i_o_u," 相同：", matched)
+                # endregion
     f_q.close()
     f_a.close()
 

@@ -14,7 +14,7 @@ from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_engli
 def read_conv():
     # region get Q&A
     gfw = DFAFilter()
-    gfw.parse('augmentation\\keywords')
+    gfw.parse('augmentation\\blacklist')
     with open('resource/raw/qingyun.tsv', 'r', encoding='utf-8-sig') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]

@@ -8,7 +8,7 @@ __date__ = '2012.01.05'
 
 
 class NaiveFilter:
-    '''Filter Messages from keywords
+    '''Filter Messages from blacklist
 
     very simple filter implementation
 
@@ -39,7 +39,7 @@ class NaiveFilter:
 
 
 class BSFilter:
-    '''Filter Messages from keywords
+    '''Filter Messages from blacklist
 
     Use Back Sorted Mapping to reduce replacement times
 
@@ -96,7 +96,7 @@ class BSFilter:
 
 
 class DFAFilter:
-    '''Filter Messages from keywords
+    '''Filter Messages from blacklist
 
     Use DFA to keep algorithm perform constantly
 
@@ -170,5 +170,5 @@ class DFAFilter:
 
 if __name__ == "__main__":
     gfw = DFAFilter()
-    gfw.parse("keywords")
+    gfw.parse("blacklist")
     print(gfw.filter("你是不是觉得这日子过得太无聊了哦", '*'))
