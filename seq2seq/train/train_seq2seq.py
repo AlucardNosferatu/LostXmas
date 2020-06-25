@@ -106,10 +106,11 @@ def train_seq2seq(input_model):
         print("**********checkpoint_loaded: ", epoch_last)
         # initial_epoch_ = int(epoch_last.split('-')[2]) - 1
         # print('**********Begin from epoch: ', str(initial_epoch_))
-
+    gen = generate_train(batch_size=100)
+    spe = next(gen)
     with tf.device("/gpu:0"):
-        input_model.fit_generator(generate_train(batch_size=100),
-                                  steps_per_epoch=46,  # (total samples) / batch_size 100000/100 = 1000
+        input_model.fit_generator(gen,
+                                  steps_per_epoch=spe,  # (total samples) / batch_size 100000/100 = 1000
                                   epochs=200,
                                   verbose=1,
                                   callbacks=callbacks_list,
@@ -125,7 +126,7 @@ def train_seq2seq(input_model):
 
 
 if __name__ == '__main__':
-    # vocab_size = get_vocab_size()
-    # build_seq2seq(vocab_size=vocab_size)
+    vocab_size = get_vocab_size()
+    build_seq2seq(vocab_size=vocab_size)
     model = load_seq2seq()
     train_seq2seq(model)

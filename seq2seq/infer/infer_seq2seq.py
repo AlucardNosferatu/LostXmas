@@ -38,14 +38,14 @@ def loop_talking(UseKeywords=False):
         raw_lines = f_r.readlines()
     for i in tqdm(range(len(raw_lines))):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
-    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -114-0.0018-.h5")
+    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -109-0.0019-.h5")
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     f_q = open("Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open("Online_A.txt", 'a', encoding='utf-8-sig')
     with open('../data/resource/composable.pkl', 'rb') as f:
         all_composable = pickle.load(f)
     while True:
-        seq = input()
+        seq = input("对Carol说些什么吧：")
         question_new = seq
         if seq == 'x':
             break
@@ -79,7 +79,7 @@ def loop_talking(UseKeywords=False):
                 must_include = ""
                 exclude = ""
             similar_answers_from_data = []
-            for i in tqdm(range(len(raw_lines))):
+            for i in range(len(raw_lines)):
                 line = raw_lines[i]
 
                 # region use Similarity

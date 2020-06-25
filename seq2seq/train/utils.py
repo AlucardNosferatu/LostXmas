@@ -33,6 +33,7 @@ def generate_train(batch_size):
     steps = 0
     question_ = question
     answer_ = answer
+    yield int(len(question)/batch_size)
     while True:
         batch_answer_o = answer_o[steps:steps + batch_size]
         batch_question = question_[steps:steps + batch_size]
