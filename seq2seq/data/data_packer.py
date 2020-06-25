@@ -15,7 +15,7 @@ def read_conv():
     # region get Q&A
     gfw = DFAFilter()
     gfw.parse('augmentation\\blacklist')
-    with open('resource/raw/qingyun.tsv', 'r', encoding='utf-8-sig') as f:
+    with open('resource/raw/qingyun_withSyn.tsv', 'r', encoding='utf-8-sig') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
         lines = remove_brackets(lines)

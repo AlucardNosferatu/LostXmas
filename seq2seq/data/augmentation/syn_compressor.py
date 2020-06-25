@@ -16,20 +16,22 @@ def getSynDict(freq_dist):
                 del syn[1][0]
                 score = np.array(syn[1])
                 syn = np.array(syn[0])
-                syn = syn[np.where(score > 0.6)].tolist()
-                if len(syn) < 3:
+                syn = syn[np.where(score > 0.5)].tolist()
+                if len(syn) < 2:
                     continue
                 syn_dict[each] = syn
                 print(syn)
     return syn_dict
 
 
-def syn_replace():
-    with open("../resource/raw/qingyun2.tsv", 'r', encoding='utf-8-sig') as f_o:
-        last_index = len(f_o.readlines())
-    f_o = open("../resource/raw/qingyun2.tsv", 'a', encoding='utf-8-sig')
+def syn_replace(ReplaceAllMatched=True):
+    with open("../resource/raw/qingyun_withSyn.tsv", 'r', encoding='utf-8-sig') as f_o:
+        prev_lines = f_o.readlines()
+        last_index = len(prev_lines)
+    f_o = open("../resource/raw/qingyun_withSyn.tsv", 'a', encoding='utf-8-sig')
     with open("../resource/raw/qingyun.tsv", 'r+', encoding='utf-8-sig') as f_r:
         raw_lines = f_r.readlines()
+        raw_lines[:last_index] = prev_lines
         backup_lines = raw_lines.copy()
     for i in tqdm(range(len(raw_lines))):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
@@ -38,31 +40,40 @@ def syn_replace():
         syn_dict = pickle.load(f_s, encoding='utf-8')
     for i in range(last_index, len(raw_lines)):
         line = raw_lines[i]
-        rd = {}
-        for key in syn_dict:
-            result = filter(lambda syn: syn in line, syn_dict[key])
-            result = list(result)
-            if any(result):
-                rd[result[0]] = rd.get(result[0], []) + [key]
-        if any(rd):
-            print()
-            print(line)
-            print(rd)
-            print()
-            if len(rd.keys()) == 1:
-                r1 = "0"
-            else:
-                r1 = input("Replace?")
-            if r1.isnumeric() and int(r1) <= len(rd.keys()) - 1:
-                if len(rd[list(rd.keys())[int(r1)]]) == 1 and len(rd.keys()) > 1:
-                    r2 = "0"
+        if ReplaceAllMatched and line in raw_lines[:i]:
+            pass
+        else:
+            rd = {}
+            for key in syn_dict:
+                result = filter(lambda syn: syn in line, syn_dict[key])
+                result = list(result)
+                if any(result):
+                    if result[0] not in syn_dict and len(result[0]) > 1:
+                        rd[result[0]] = rd.get(result[0], []) + [key]
+            if any(rd):
+                print()
+                print(backup_lines[i].replace("\n", ""))
+                print(line)
+                print(rd)
+                print()
+                if len(rd.keys()) == 1:
+                    r1 = "0"
                 else:
-                    r2 = input("With?")
-                if r2.isnumeric() and int(r2) <= len(rd[list(rd.keys())[int(r1)]]) - 1:
-                    line = line.replace(list(rd.keys())[int(r1)], rd[list(rd.keys())[int(r1)]][int(r2)])
-                    print(line)
+                    r1 = input("Replace?")
+                if r1.isnumeric() and int(r1) <= len(rd.keys()) - 1:
+                    if len(rd[list(rd.keys())[int(r1)]]) == 1 and len(rd.keys()) > 1:
+                        r2 = "0"
+                    else:
+                        r2 = input("With?")
+                    if r2.isnumeric() and int(r2) <= len(rd[list(rd.keys())[int(r1)]]) - 1:
+                        line = line.replace(list(rd.keys())[int(r1)], rd[list(rd.keys())[int(r1)]][int(r2)])
+                        print(line)
         raw_lines[i] = line
-        backup_lines[i] = backup_lines[i].replace(replaced_lines[i], raw_lines[i])
+        if ReplaceAllMatched and len(line) > 4:
+            backup_lines = [line.replace(replaced_lines[i], raw_lines[i]) for line in backup_lines]
+            raw_lines = [line.replace(replaced_lines[i], raw_lines[i]) for line in raw_lines]
+        else:
+            backup_lines[i] = backup_lines[i].replace(replaced_lines[i], raw_lines[i])
         f_o.write(backup_lines[i])
         f_o.flush()
     f_o.close()
@@ -77,6 +88,24 @@ def buildSynDict():
         pickle.dump(SD, f, pickle.HIGHEST_PROTOCOL)
 
 
+def remove_dup():
+    with open("../resource/raw/qingyun.tsv", 'r+', encoding='utf-8-sig') as f_o:
+        lines = f_o.readlines()
+        i = 1
+        print(len(lines))
+        while i < len(lines):
+            print(i)
+            if lines[i] in lines[:i]:
+                del lines[i]
+            else:
+                i += 1
+        print(len(lines))
+        f_o.truncate(0)
+        f_o.seek(0)
+        f_o.writelines(lines)
+
+
 if __name__ == '__main__':
     # buildSynDict()
-    syn_replace()
+    # syn_replace()
+    remove_dup()
