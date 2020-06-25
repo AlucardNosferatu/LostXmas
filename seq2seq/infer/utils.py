@@ -29,10 +29,12 @@ def input_question(seq, word_to_index, all_composable):
     sentence = seq
     try:
         seq = np.array([word_to_index[w] for w in seq])
+        seq = sequence.pad_sequences([seq], maxlen=maxLen,
+                                     padding='post', truncating='post')
     except KeyError:
-        seq = np.array([36874, 165, 14625])
-    seq = sequence.pad_sequences([seq], maxlen=maxLen,
-                                 padding='post', truncating='post')
+        seq = None
+        print("（出现了Carol没法理解的词汇。。。）")
+
     print(seq)
     return seq, sentence
 

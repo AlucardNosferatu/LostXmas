@@ -34,11 +34,11 @@ def build_qa_model(wp=None):
 
 
 def loop_talking(UseKeywords=False):
-    with open("../data/resource/raw/qingyun.tsv", 'r+', encoding='utf-8-sig') as f_r:
+    with open("../data/resource/raw/qingyun_withSyn_forTrain.tsv", 'r+', encoding='utf-8-sig') as f_r:
         raw_lines = f_r.readlines()
     for i in tqdm(range(len(raw_lines))):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
-    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W - 48-0.2539-.h5")
+    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -114-0.0018-.h5")
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     f_q = open("Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open("Online_A.txt", 'a', encoding='utf-8-sig')
@@ -51,6 +51,8 @@ def loop_talking(UseKeywords=False):
             break
         seq, sentence = input_question(seq=seq, word_to_index=word_to_index, all_composable=all_composable)
         print(sentence)
+        if seq is None:
+            continue
         with tf.device("/gpu:0"):
             answer = decode_greedy(
                 seq=seq,

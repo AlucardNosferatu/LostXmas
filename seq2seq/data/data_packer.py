@@ -15,7 +15,7 @@ def read_conv():
     # region get Q&A
     gfw = DFAFilter()
     gfw.parse('augmentation\\blacklist')
-    with open('resource/raw/qingyun_withSyn.tsv', 'r', encoding='utf-8-sig') as f:
+    with open('resource/raw/qingyun_withSyn_forTrain.tsv', 'r', encoding='utf-8-sig') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
         lines = remove_brackets(lines)
@@ -50,7 +50,9 @@ def read_conv():
     q_path = 'resource/raw/legacy/MyTulpa_Q.txt'
     a_path = 'resource/raw/legacy/MyTulpa_A.txt'
     question, answer = append_extra_data(q_path, a_path, question, answer)
-
+    q_path = '../infer/Online_Q.txt'
+    a_path = '../infer/Online_A.txt'
+    question, answer = append_extra_data(q_path, a_path, question, answer)
 
     # region process Special Chars
     character = set()
