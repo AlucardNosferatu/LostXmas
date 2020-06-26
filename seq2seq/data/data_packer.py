@@ -8,17 +8,19 @@ from tqdm import tqdm
 from data.augmentation.blacklist import DFAFilter
 from data.augmentation.frequency import getWords
 from data.augmentation.phrase2words import getBaseWord, getComposable
-from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data
+from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data, \
+    remove_banned
 
 
 def read_conv():
     # region get Q&A
     gfw = DFAFilter()
     gfw.parse('augmentation\\blacklist')
-    with open('resource/raw/qingyun_withSyn_forTrain.tsv', 'r', encoding='utf-8-sig') as f:
+    with open('resource/raw/qingyun_withSyn.tsv', 'r', encoding='utf-8-sig') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
         lines = remove_brackets(lines)
+        lines = remove_banned(lines)
     question = []
     answer = []
     for i in tqdm(range(len(lines))):
@@ -38,8 +40,8 @@ def read_conv():
         answer.append(' '.join(jieba.lcut(Traditional2Simplified(a).strip(), cut_all=False)))
     # endregion
 
-    q_path = 'resource/raw/legacy/q_compact_vocab.txt'
-    a_path = 'resource/raw/legacy/a_compact_vocab.txt'
+    q_path = 'resource/raw/legacy/compact_vocab_Q.txt'
+    a_path = 'resource/raw/legacy/compact_vocab_A.txt'
     question, answer = append_extra_data(q_path, a_path, question, answer)
     q_path = 'resource/raw/legacy/CPoL4OC_Q.txt'
     a_path = 'resource/raw/legacy/CPoL4OC_A.txt'

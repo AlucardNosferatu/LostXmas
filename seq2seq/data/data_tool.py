@@ -47,6 +47,17 @@ def remove_brackets(lines):
     return lines
 
 
+def remove_banned(lines):
+    kill_list = []
+    for i in tqdm(range(len(lines))):
+        temp = lines[i]
+        if temp.startswith('【禁用】'):
+            kill_list.append(i)
+    for each in kill_list:
+        del lines[each]
+    return lines
+
+
 def append_extra_data(q_path, a_path, question, answer):
     with open(q_path, 'r', encoding='utf-8-sig') as f:
         lines = f.readlines()

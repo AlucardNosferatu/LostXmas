@@ -70,10 +70,10 @@ def simplify_sentence(sentence, vocab):
 
 
 def simplify():
-    # f = open('../resource/raw/legacy/question.txt', 'r', encoding='utf-8-sig')
-    # f_out = open('../resource/raw/legacy/q_compact_vocab.txt', 'a', encoding='utf-8-sig')
-    f = open('../resource/raw/legacy/answer.txt', 'r', encoding='utf-8-sig')
-    f_out = open('../resource/raw/legacy/a_compact_vocab.txt', 'a', encoding='utf-8-sig')
+    # f = open('../resource/raw/legacy/Soliq_Q.txt', 'r', encoding='utf-8-sig')
+    # f_out = open('../resource/raw/legacy/compact_vocab_Q.txt', 'a', encoding='utf-8-sig')
+    f = open('../resource/raw/legacy/Soliq_A.txt', 'r', encoding='utf-8-sig')
+    f_out = open('../resource/raw/legacy/compact_vocab_A.txt', 'a', encoding='utf-8-sig')
     sentences = f.readlines()
     f.close()
     vocab = {}

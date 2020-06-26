@@ -34,7 +34,7 @@ def build_qa_model(wp=None):
 
 
 def loop_talking(UseKeywords=False):
-    with open("../data/resource/raw/qingyun_withSyn_forTrain.tsv", 'r+', encoding='utf-8-sig') as f_r:
+    with open("../data/resource/raw/qingyun_withSyn.tsv", 'r+', encoding='utf-8-sig') as f_r:
         raw_lines = f_r.readlines()
     for i in tqdm(range(len(raw_lines))):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()

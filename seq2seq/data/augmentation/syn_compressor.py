@@ -107,5 +107,5 @@ def remove_dup():
 
 if __name__ == '__main__':
     # buildSynDict()
-    # syn_replace()
-    remove_dup()
+    syn_replace()
+    # remove_dup()
