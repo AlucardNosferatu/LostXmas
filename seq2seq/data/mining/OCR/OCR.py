@@ -2,7 +2,7 @@ import numpy as np
 import pytesseract
 import cv2
 
-image = cv2.imread("ocr_images/IMG_0505.png", 0)
+image = cv2.imread("Images/IMG_0505.png", 0)
 print("Origin")
 cv2.imshow("image", cv2.resize(image, (384, 512)))
 cv2.waitKey()
