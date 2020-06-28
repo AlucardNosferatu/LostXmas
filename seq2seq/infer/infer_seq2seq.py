@@ -38,7 +38,7 @@ def loop_talking(UseKeywords=False):
         raw_lines = f_r.readlines()
     for i in tqdm(range(len(raw_lines))):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
-    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -109-0.0019-.h5")
+    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -117-0.0013-.h5")
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     f_q = open("Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open("Online_A.txt", 'a', encoding='utf-8-sig')
@@ -91,7 +91,7 @@ def loop_talking(UseKeywords=False):
                         scores, mean_score, max_score, std_score = scores
                         if max_score > 0.5:
                             similar_answers_from_data.append(i)
-                            print("行号：", i, " 内容：", line, " 最高分：", max_score)
+                            print("行号：", i + 1, " 内容：", line, " 最高分：", max_score)
                 # endregion
 
                 # region Use Keywords
@@ -100,7 +100,7 @@ def loop_talking(UseKeywords=False):
                     if i_o_u >= 0.25 and matched >= 2:
                         similar_answers_from_data.append(i)
                         print()
-                        print("行号：", i, " 内容：", line, " IoU：", i_o_u," 相同：", matched)
+                        print("行号：", i + 1, " 内容：", line, " IoU：", i_o_u, " 相同：", matched)
                 # endregion
     f_q.close()
     f_a.close()

@@ -52,6 +52,15 @@ def read_conv():
     q_path = 'resource/raw/legacy/MyTulpa_Q.txt'
     a_path = 'resource/raw/legacy/MyTulpa_A.txt'
     question, answer = append_extra_data(q_path, a_path, question, answer)
+    q_path = 'resource/raw/legacy/XiaoIce_Q.txt'
+    a_path = 'resource/raw/legacy/XiaoIce_A.txt'
+    question, answer = append_extra_data(q_path, a_path, question, answer)
+    # q_path = 'resource/raw/legacy/YellowChick_Q.txt'
+    # a_path = 'resource/raw/legacy/YellowChick_A.txt'
+    # question, answer = append_extra_data(q_path, a_path, question, answer)
+    # q_path = 'resource/raw/legacy/ChatterBot_Q.txt'
+    # a_path = 'resource/raw/legacy/ChatterBot_A.txt'
+    # question, answer = append_extra_data(q_path, a_path, question, answer)
     q_path = '../infer/Online_Q.txt'
     a_path = '../infer/Online_A.txt'
     question, answer = append_extra_data(q_path, a_path, question, answer)
