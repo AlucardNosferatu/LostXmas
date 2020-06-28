@@ -21,8 +21,8 @@ def use_log():
     a_lines = f_a.readlines()
     new_q = []
     new_a = []
-    smw = [Randomword(create_num=5, change_rate=0.3)]
-    smw += [Similarword(create_num=5, change_rate=0.3)]
+    smw = [Randomword(create_num=5, change_rate=0.1)]
+    smw += [Similarword(create_num=5, change_rate=0.1)]
     for i in range(len(q_lines)):
         q_list = get_siaw(q_lines[i], smw)
         a_list = get_siaw(a_lines[i], smw)
