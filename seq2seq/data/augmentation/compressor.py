@@ -7,7 +7,10 @@ from tqdm import tqdm
 
 def getSynDict(freq_dist):
     syn_dict = {}
-    for each in freq_dist[:800]:
+    size = int(0.5 * len(freq_dist))
+    if type(freq_dist) is dict:
+        freq_dist = list(freq_dist)
+    for each in tqdm(freq_dist[:size]):
         if len(each) >= 2:
             syn = synonyms.nearby(each)
             if len(syn[0]) <= 1:
@@ -21,7 +24,7 @@ def getSynDict(freq_dist):
                 if len(syn) < 2:
                     continue
                 syn_dict[each] = syn
-                print(syn)
+                # print(syn)
     return syn_dict
 
 

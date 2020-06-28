@@ -6,13 +6,14 @@ from tensorflow.keras.preprocessing import sequence
 from tqdm import tqdm
 
 from data.augmentation.blacklist import DFAFilter
+from data.augmentation.compressor import getSynDict
 from data.augmentation.frequency import getWords
-from data.augmentation.phrase2words import getBaseWord, getComposable
+from data.augmentation.phrase2words import getBaseWord, getComposed
 from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data, \
     remove_banned
 
 
-def read_conv():
+def read_conv(forceSyn=True):
     # region get Q&A
     gfw = DFAFilter()
     gfw.parse('augmentation\\blacklist')
@@ -112,7 +113,7 @@ def read_conv():
     # region word2vec
     _, fdist = getWords(question + answer + BE)
     base_words = getBaseWord(fdist)
-    all_composable = getComposable(base_words, fdist)
+    all_composable = getComposed(base_words, fdist)
     with open('resource/composable.pkl', 'wb') as f:
         pickle.dump(all_composable, f, pickle.HIGHEST_PROTOCOL)
     for comp in all_composable:
@@ -140,6 +141,12 @@ def read_conv():
     vocab_bag = list(word_to_index.keys())
     # endregion
 
+    syn_dict = getSynDict(word_to_index)
+    with open('resource/' + 'syn_dict.pkl', 'wb') as f:
+        pickle.dump(syn_dict, f, pickle.HIGHEST_PROTOCOL)
+    if forceSyn:
+        pass
+
     with open('resource/word_to_index.pkl', 'wb') as f:
         pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
     with open('resource/index_to_word.pkl', 'wb') as f:
@@ -149,7 +156,7 @@ def read_conv():
     question = np.array([[word_to_index[w] for w in i.split(' ')] for i in question])
     answer_a = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_a])
     answer_b = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_b])
-    size = int(len(question)/100)*100
+    size = int(len(question) / 100) * 100
     np.save('resource/question.npy', question[:size])
     np.save('resource/answer_a.npy', answer_a[:size])
     np.save('resource/answer_b.npy', answer_b[:size])

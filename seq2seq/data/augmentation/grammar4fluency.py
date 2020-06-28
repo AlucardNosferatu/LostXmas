@@ -3,7 +3,7 @@ from ltp import LTP
 
 
 def mark_invalid(QingYun=False):
-    # nlp = LTP()
+    nlp = LTP()
     # pycorrector.enable_char_error(enable=False)
     if QingYun:
         text_path = "../resource/raw/qingyun_withSyn.tsv"
@@ -25,9 +25,9 @@ def mark_invalid(QingYun=False):
                     q = q_lines[i].replace('\n', '')
                     a = a_lines[i].replace('\n', '')
                 # hasName = grammar_analysis(q, nlp)
-                # hasName = grammar_analysis(a, nlp)
+                has_error = grammar_analysis(a, nlp)
                 perplexity, corrected_sent = perplexity_detection(a)
-                if perplexity:
+                if perplexity or has_error:
                     print(i, q, a, '\n')
                     choice = input('是否删去？')
                     if choice == 'c':
@@ -58,19 +58,20 @@ def mark_invalid(QingYun=False):
 
 def grammar_analysis(sentence, parser):
     segment, hidden = parser.seg([sentence])
-    print(segment)
     # ner = parser.ner(hidden)
     # print(ner)
     pos = parser.pos(hidden)
-
-    print("POS: ", pos)
+    suspicion = (len(set(pos[0])) / len(pos[0])) < 0.5
+    if suspicion:
+        print(segment)
+        print("POS: ", pos)
     # srl = parser.srl(hidden)
     # print("SRL: ", srl)
     # dep = parser.dep(hidden)
     # print("DEP: ", dep)
     # sdp = parser.sdp(hidden)
     # print("SDP: ", sdp)
-    return True
+    return suspicion
 
 
 def perplexity_detection(src):
