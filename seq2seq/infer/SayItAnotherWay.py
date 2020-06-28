@@ -19,8 +19,8 @@ def use_log():
     # f_a = open("../data/resource/raw/legacy/ChatterBot_A.txt", 'r+', encoding='utf-8-sig')
     q_lines = f_q.readlines()
     a_lines = f_a.readlines()
-    new_q = []
-    new_a = []
+    new_q = q_lines.copy()
+    new_a = a_lines.copy()
     smw = [Randomword(create_num=5, change_rate=0.1)]
     smw += [Similarword(create_num=5, change_rate=0.1)]
     for i in range(len(q_lines)):
@@ -32,6 +32,8 @@ def use_log():
         new_a += a_list
     assert len(new_a) == len(new_q)
     for i in range(len(new_q)):
+        new_q[i] = new_q[i].replace('\n', '')
+        new_a[i] = new_a[i].replace('\n', '')
         new_q[i] += '\n'
         new_a[i] += '\n'
     f_q.truncate(0)
