@@ -13,10 +13,10 @@ def get_siaw(sentence, smw):
 
 
 def use_log():
-    # f_q = open("Online_Q.txt", 'r+', encoding='utf-8-sig')
-    # f_a = open("Online_A.txt", 'r+', encoding='utf-8-sig')
-    f_q = open("../data/resource/raw/legacy/ChatterBot_Q.txt", 'r+', encoding='utf-8-sig')
-    f_a = open("../data/resource/raw/legacy/ChatterBot_A.txt", 'r+', encoding='utf-8-sig')
+    f_q = open("Online_Q.txt", 'r+', encoding='utf-8-sig')
+    f_a = open("Online_A.txt", 'r+', encoding='utf-8-sig')
+    # f_q = open("../data/resource/raw/legacy/ChatterBot_Q.txt", 'r+', encoding='utf-8-sig')
+    # f_a = open("../data/resource/raw/legacy/ChatterBot_A.txt", 'r+', encoding='utf-8-sig')
     q_lines = f_q.readlines()
     a_lines = f_a.readlines()
     new_q = []
