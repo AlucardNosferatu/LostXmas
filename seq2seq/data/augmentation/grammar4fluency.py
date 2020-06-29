@@ -1,5 +1,8 @@
 import pycorrector
 from ltp import LTP
+from tqdm import tqdm
+
+from data.data_tool import is_all_chinese
 
 
 def batch_mark(QingYun=False):
@@ -15,7 +18,7 @@ def batch_mark(QingYun=False):
             # with open("../../infer/Online_A.txt", 'r+', encoding='utf-8-sig') as f_a:
             q_lines = f_q.readlines()
             a_lines = f_a.readlines()
-            for i in range(len(q_lines)):
+            for i in tqdm(range(len(q_lines))):
                 if q_lines[i].startswith('【禁用】'):
                     continue
                 if QingYun:
@@ -24,12 +27,12 @@ def batch_mark(QingYun=False):
                 else:
                     q = q_lines[i].replace('\n', '')
                     a = a_lines[i].replace('\n', '')
-                # hasName = grammar_analysis(q, nlp)
-                has_error = grammar_analysis(a, nlp)
                 perplexity, corrected_sent = perplexity_detection(a)
+                has_error = grammar_analysis(a, nlp)
                 if perplexity or has_error:
                     print(i, q, a, '\n')
-                    choice = input('是否删去？')
+                    # choice = input('是否删去？')
+                    choice = 'y'
                     if choice == 'c':
                         if QingYun:
                             q_lines[i] = q_lines[i].replace(a, corrected_sent)
@@ -57,31 +60,41 @@ def batch_mark(QingYun=False):
 
 
 def grammar_analysis(sentence, parser):
-    segment, hidden = parser.seg([sentence])
-    # ner = parser.ner(hidden)
-    # print(ner)
-    pos = parser.pos(hidden)
-    srl = parser.srl(hidden)
-    dep = parser.dep(hidden)
-    sdp = parser.sdp(hidden)
-    suspicion = True
+    try:
+        segment, hidden = parser.seg([sentence])
+    except Exception as e:
+        print(repr(e))
+        return True
+    ner = parser.ner(hidden)
+    # pos = parser.pos(hidden)
+    # srl = parser.srl(hidden)
+    # dep = parser.dep(hidden)
+    # sdp = parser.sdp(hidden)
+    # suspicion = srl[0].count([]) == len(segment[0])
+    # suspicion = len(ner[0]) != 0 or suspicion
+    suspicion = len(ner[0]) != 0
     if suspicion:
-        print(segment)
-        print("POS: ", pos)
-        print("SRL: ", srl)
-        print("DEP: ", dep)
-        print("SDP: ", sdp)
+        pass
+        # print(segment)
+        # print("NER: ", ner)
+        # print("POS: ", pos)
+        # print("SRL: ", srl)
+        # print("DEP: ", dep)
+        # print("SDP: ", sdp)
     return suspicion
 
 
 def perplexity_detection(src):
+    corrected_sent = src
     # print(src)
-    corrected_sent, detail = pycorrector.correct(src)
-    idx_errors = pycorrector.detect(src)
-    detected = (len(idx_errors) != 0)
+    # corrected_sent, detail = pycorrector.correct(src)
+    # idx_errors = pycorrector.detect(src)
+    # detected = (len(idx_errors) != 0)
+    detected = False
     if detected:
-        print(idx_errors)
-        print(corrected_sent, detail)
+        pass
+        # print(idx_errors)
+        # print(corrected_sent, detail)
     return detected, corrected_sent
 
 
