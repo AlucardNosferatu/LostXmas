@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/seq2seq.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/seq2seq.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/augmentation/compressor.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/compressor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/augmentation/frequency.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/frequency.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data_packer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_packer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/qingyun_withSyn.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/qingyun_withSyn.tsv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/Online_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_A.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/Online_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_Q.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/infer_seq2seq.py" beforeDir="false" afterPath="$PROJECT_DIR$/infer/infer_seq2seq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infer/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/infer/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +27,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/infer/infer_seq2seq.py" />
   </component>
-  <component name="RunManager" selected="Python.data_packer">
+  <component name="RunManager" selected="Python.infer_seq2seq">
     <configuration name="data_packer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="seq2seq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -120,75 +115,49 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593398754237" />
-    <state x="943" y="112" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593399618363">
+    <state x="943" y="112" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593400148380">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="943" y="112" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593399618363" />
+    <state x="943" y="112" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593400148380" />
     <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593398752274">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593398752274" />
-    <state width="1515" height="333" key="GridCell.Tab.0.bottom" timestamp="1593399649163">
+    <state width="1515" height="246" key="GridCell.Tab.0.bottom" timestamp="1593402388519">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="333" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593399649163" />
-    <state width="1515" height="333" key="GridCell.Tab.0.center" timestamp="1593399649162">
+    <state width="1515" height="246" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593402388519" />
+    <state width="1515" height="246" key="GridCell.Tab.0.center" timestamp="1593402388519">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="333" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593399649162" />
-    <state width="1515" height="333" key="GridCell.Tab.0.left" timestamp="1593399649162">
+    <state width="1515" height="246" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593402388519" />
+    <state width="1515" height="246" key="GridCell.Tab.0.left" timestamp="1593402388518">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="333" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593399649162" />
-    <state width="1515" height="333" key="GridCell.Tab.0.right" timestamp="1593399649163">
+    <state width="1515" height="246" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593402388518" />
+    <state width="1515" height="246" key="GridCell.Tab.0.right" timestamp="1593402388519">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="333" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593399649163" />
-    <state width="1515" height="333" key="GridCell.Tab.1.bottom" timestamp="1593399649024">
+    <state width="1515" height="246" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593402388519" />
+    <state width="1515" height="246" key="GridCell.Tab.1.bottom" timestamp="1593402388519">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="333" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593399649024" />
-    <state width="1515" height="333" key="GridCell.Tab.1.center" timestamp="1593399649024">
+    <state width="1515" height="246" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593402388519" />
+    <state width="1515" height="246" key="GridCell.Tab.1.center" timestamp="1593402388519">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="333" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593399649024" />
-    <state width="1515" height="333" key="GridCell.Tab.1.left" timestamp="1593399649024">
+    <state width="1515" height="246" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593402388519" />
+    <state width="1515" height="246" key="GridCell.Tab.1.left" timestamp="1593402388519">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="333" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593399649024" />
-    <state width="1515" height="333" key="GridCell.Tab.1.right" timestamp="1593399649024">
+    <state width="1515" height="246" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593402388519" />
+    <state width="1515" height="246" key="GridCell.Tab.1.right" timestamp="1593402388519">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="333" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593399649024" />
-    <state x="467" y="164" width="602" height="536" key="find.popup" timestamp="1593396509701">
+    <state width="1515" height="246" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593402388519" />
+    <state x="330" y="173" width="602" height="536" key="find.popup" timestamp="1593401142006">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="467" y="164" width="602" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1593396509701" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/infer/utils.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data/data_packer.py</url>
-          <line>156</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data/data_packer.py</url>
-          <line>137</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data/data_packer.py</url>
-          <line>136</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="330" y="173" width="602" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1593401142006" />
   </component>
 </project>
