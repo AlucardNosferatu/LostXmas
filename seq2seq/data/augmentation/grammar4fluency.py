@@ -30,7 +30,7 @@ def batch_mark(QingYun=False):
                 perplexity, corrected_sent = perplexity_detection(a)
                 has_error = grammar_analysis(a, nlp)
                 if perplexity or has_error:
-                    print(i, q, a, '\n')
+                    # print(i, q, a, '\n')
                     # choice = input('是否删去？')
                     choice = 'y'
                     if choice == 'c':
