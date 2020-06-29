@@ -9,10 +9,10 @@ def batch_mark(QingYun=False):
         text_path = "../resource/raw/qingyun_withSyn.tsv"
     else:
         text_path = "../resource/raw/legacy/YellowChick_Q.txt"
-        text_path = "../../infer/Online_Q.txt"
+        # text_path = "../../infer/Online_Q.txt"
     with open(text_path, 'r+', encoding='utf-8-sig') as f_q:
-        # with open("../resource/raw/legacy/YellowChick_A.txt", 'r+', encoding='utf-8-sig') as f_a:
-        with open("../../infer/Online_A.txt", 'r+', encoding='utf-8-sig') as f_a:
+        with open("../resource/raw/legacy/YellowChick_A.txt", 'r+', encoding='utf-8-sig') as f_a:
+            # with open("../../infer/Online_A.txt", 'r+', encoding='utf-8-sig') as f_a:
             q_lines = f_q.readlines()
             a_lines = f_a.readlines()
             for i in range(len(q_lines)):
@@ -61,16 +61,16 @@ def grammar_analysis(sentence, parser):
     # ner = parser.ner(hidden)
     # print(ner)
     pos = parser.pos(hidden)
-    suspicion = (len(set(pos[0])) / len(pos[0])) < 0.5
+    srl = parser.srl(hidden)
+    dep = parser.dep(hidden)
+    sdp = parser.sdp(hidden)
+    suspicion = True
     if suspicion:
         print(segment)
         print("POS: ", pos)
-    # srl = parser.srl(hidden)
-    # print("SRL: ", srl)
-    # dep = parser.dep(hidden)
-    # print("DEP: ", dep)
-    # sdp = parser.sdp(hidden)
-    # print("SDP: ", sdp)
+        print("SRL: ", srl)
+        print("DEP: ", dep)
+        print("SDP: ", sdp)
     return suspicion
 
 

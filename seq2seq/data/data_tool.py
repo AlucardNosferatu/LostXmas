@@ -58,17 +58,27 @@ def remove_banned(lines):
     return lines
 
 
-def append_extra_data(q_path, a_path, question, answer, filter_banned=True):
-    with open(q_path, 'r', encoding='utf-8-sig') as f:
-        lines = f.readlines()
-        if filter_banned:
-            lines = remove_banned(lines)
-        for pos, line in enumerate(tqdm(lines)):
-            question.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
+def append_extra_data(gfw, q_path, a_path, question, answer, filter_banned=True):
+    skip_list = []
     with open(a_path, 'r', encoding='utf-8-sig') as f:
         lines = f.readlines()
         if filter_banned:
             lines = remove_banned(lines)
         for pos, line in enumerate(tqdm(lines)):
-            answer.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
+            a_filter = gfw.filter(line, '*')
+            if a_filter[1]:
+                skip_list.append(pos)
+                continue
+            else:
+                answer.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
+    with open(q_path, 'r', encoding='utf-8-sig') as f:
+        lines = f.readlines()
+        if filter_banned:
+            lines = remove_banned(lines)
+        for pos, line in enumerate(tqdm(lines)):
+            if pos in skip_list:
+                continue
+            else:
+                question.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
+    assert len(question) == len(answer)
     return question, answer
