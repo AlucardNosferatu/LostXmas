@@ -2,7 +2,7 @@ import pycorrector
 from ltp import LTP
 
 
-def mark_invalid(QingYun=False):
+def batch_mark(QingYun=False):
     nlp = LTP()
     # pycorrector.enable_char_error(enable=False)
     if QingYun:
@@ -85,5 +85,11 @@ def perplexity_detection(src):
     return detected, corrected_sent
 
 
+def mark_invalid(invalid_indices, lines):
+    for i in invalid_indices:
+        lines[i] = "【禁用】" + lines[i]
+    return lines
+
+
 if __name__ == '__main__':
-    mark_invalid()
+    batch_mark()

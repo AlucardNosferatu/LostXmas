@@ -3,6 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import requests
 import numpy as np
+import synonyms
 from tensorflow.keras.preprocessing import sequence
 
 maxLen = 20
@@ -19,9 +20,17 @@ def act_weather(city):
     return outstrs + ' EOS'
 
 
-def input_question(seq, word_to_index, all_composed):
+def input_question(seq, word_to_index, all_composed, syn_dict):
     seq = jieba.lcut(seq.strip(), cut_all=False)
     for k in range(len(seq)):
+        if not seq[k] in word_to_index:
+            for key in syn_dict:
+                if seq[k] in syn_dict[key]:
+                    seq[k] = key
+                    break
+                elif key in synonyms.nearby(seq[k])[0]:
+                    seq[k] = key
+                    break
         if seq[k] in all_composed:
             seq[k] = ' '.join(list(seq[k]))
     seq = ' '.join(seq)
@@ -31,9 +40,9 @@ def input_question(seq, word_to_index, all_composed):
         seq = np.array([word_to_index[w] for w in seq])
         seq = sequence.pad_sequences([seq], maxlen=maxLen,
                                      padding='post', truncating='post')
-    except KeyError:
+    except KeyError as e:
         seq = None
-        print("（出现了Carol没法理解的词汇。。。）")
+        print("（出现了Carol没法理解的词汇。。。：", e.args[0], "）")
 
     print(seq)
     return seq, sentence

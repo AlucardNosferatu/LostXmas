@@ -110,13 +110,9 @@ def read_conv(forceSyn=True):
 
     # region Compress synonyms
     _, freq_dist = getWords(question + answer)
-    if os.path.exists('resource/' + 'syn_dict.pkl'):
-        with open('resource/' + 'syn_dict.pkl', 'rb') as f:
-            syn_dict = pickle.load(f)
-    else:
-        syn_dict = getSynDict(freq_dist)
-        with open('resource/' + 'syn_dict.pkl', 'wb') as f:
-            pickle.dump(syn_dict, f, pickle.HIGHEST_PROTOCOL)
+    syn_dict = getSynDict(freq_dist)
+    with open('resource/' + 'syn_dict.pkl', 'wb') as f:
+        pickle.dump(syn_dict, f, pickle.HIGHEST_PROTOCOL)
     if forceSyn:
         sentences = [question, answer]
         for i in range(len(sentences)):
