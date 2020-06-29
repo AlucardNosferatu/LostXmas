@@ -37,13 +37,14 @@ def getWordsFromFiles():
         fdist_list.append(fdist)
     return wwd, fdist_list
 
+
 def getWords(lines):
     words_with_dup = []
     for line in lines:
         words = line.split(' ')
-        words_with_dup+=words
-    fdist = getFreqDist(words_with_dup)
-    return words_with_dup,fdist
+        words_with_dup += words
+    freq_dist = getFreqDist(words_with_dup)
+    return words_with_dup, freq_dist
 
 
 if __name__ == "__main__":

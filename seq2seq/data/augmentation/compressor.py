@@ -20,11 +20,10 @@ def getSynDict(freq_dist):
                 del syn[1][0]
                 score = np.array(syn[1])
                 syn = np.array(syn[0])
-                syn = syn[np.where(score > 0.5)].tolist()
+                syn = syn[np.where(score > 0.7)].tolist()
                 if len(syn) < 2:
                     continue
                 syn_dict[each] = syn
-                # print(syn)
     return syn_dict
 
 

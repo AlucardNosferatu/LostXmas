@@ -1,3 +1,4 @@
+import os
 import pickle
 
 import jieba
@@ -41,6 +42,7 @@ def read_conv(forceSyn=True):
         answer.append(' '.join(jieba.lcut(Traditional2Simplified(a).strip(), cut_all=False)))
     # endregion
 
+    # region Append extra data
     q_path = 'resource/raw/legacy/compact_vocab_Q.txt'
     a_path = 'resource/raw/legacy/compact_vocab_A.txt'
     question, answer = append_extra_data(q_path, a_path, question, answer)
@@ -65,8 +67,9 @@ def read_conv(forceSyn=True):
     q_path = '../infer/Online_Q.txt'
     a_path = '../infer/Online_A.txt'
     question, answer = append_extra_data(q_path, a_path, question, answer)
+    # endregion
 
-    # region process Special Chars
+    # region Process special chars
     character = set()
     for seq in tqdm(question + answer):
         word_list = seq.split(' ')
@@ -81,7 +84,7 @@ def read_conv(forceSyn=True):
     maxLen = 18
     # endregion
 
-    # region process Question
+    # region Process questions
     for pos, seq in enumerate(tqdm(question)):
         seq_list = seq.split(' ')
         for epoch in range(3):
@@ -93,7 +96,7 @@ def read_conv(forceSyn=True):
         question[pos] = ' '.join(seq_list)
     # endregion
 
-    # region process Answer
+    # region Process answers
     for pos, seq in enumerate(tqdm(answer)):
         seq_list = seq.split(' ')
         for epoch in range(3):
@@ -105,48 +108,64 @@ def read_conv(forceSyn=True):
         answer[pos] = ' '.join(seq_list)
     # endregion
 
-    answer_a = ['BOS ' + i + ' EOS' for i in answer]
-    answer_b = [i + ' EOS' for i in answer]
-    counts = {}
-    BE = ['BOS', 'EOS']
+    # region Compress synonyms
+    _, freq_dist = getWords(question + answer)
+    if os.path.exists('resource/' + 'syn_dict.pkl'):
+        with open('resource/' + 'syn_dict.pkl', 'rb') as f:
+            syn_dict = pickle.load(f)
+    else:
+        syn_dict = getSynDict(freq_dist)
+        with open('resource/' + 'syn_dict.pkl', 'wb') as f:
+            pickle.dump(syn_dict, f, pickle.HIGHEST_PROTOCOL)
+    if forceSyn:
+        sentences = [question, answer]
+        for i in range(len(sentences)):
+            sentence = sentences[i]
+            for j in tqdm(range(len(sentence))):
+                words = sentence[j].split(' ')
+                for k in range(len(words)):
+                    for key in syn_dict:
+                        if words[k] in syn_dict[key] and len(words[k]) >= 2:
+                            words[k] = key
+                            break
+                sentence[j] = ' '.join(words)
+            sentences[i] = sentence
+        question, answer = sentences
+    # endregion
 
-    # region word2vec
-    _, fdist = getWords(question + answer + BE)
-    base_words = getBaseWord(fdist)
-    all_composable = getComposed(base_words, fdist)
+    # region Decompose phrases
+    _, freq_dist = getWords(question + answer)
+    base_words = getBaseWord(freq_dist)
+    all_composable = getComposed(base_words, freq_dist)
     with open('resource/composable.pkl', 'wb') as f:
         pickle.dump(all_composable, f, pickle.HIGHEST_PROTOCOL)
     for comp in all_composable:
-        del fdist[fdist.index(comp)]
-    sentences = [question, answer_a, answer_b]
-    for i in tqdm(range(len(sentences))):
+        del freq_dist[freq_dist.index(comp)]
+    sentences = [question, answer]
+    for i in range(len(sentences)):
         sentence = sentences[i]
-        for j in range(len(sentence)):
+        for j in tqdm(range(len(sentence))):
             words = sentence[j].split(' ')
             for k in range(len(words)):
                 if words[k] in all_composable:
                     words[k] = ' '.join(list(words[k]))
             sentence[j] = ' '.join(words)
         sentences[i] = sentence
-    question, answer_a, answer_b = sentences
-
-    word_to_index = {}
-    for pos, i in enumerate(tqdm(fdist)):
-        word_to_index[i] = pos
-
-    index_to_word = {}
-    for pos, i in enumerate(tqdm(fdist)):
-        index_to_word[pos] = i
-
-    vocab_bag = list(word_to_index.keys())
+    question, answer = sentences
     # endregion
 
-    syn_dict = getSynDict(word_to_index)
-    with open('resource/' + 'syn_dict.pkl', 'wb') as f:
-        pickle.dump(syn_dict, f, pickle.HIGHEST_PROTOCOL)
-    if forceSyn:
-        pass
+    placeholders = ['BOS', 'EOS']
+    _, freq_dist = getWords(question + answer + placeholders)
+    word_to_index = {}
+    for pos, i in enumerate(tqdm(freq_dist)):
+        word_to_index[i] = pos
+    index_to_word = {}
+    for pos, i in enumerate(tqdm(freq_dist)):
+        index_to_word[pos] = i
+    vocab_bag = list(word_to_index.keys())
 
+    answer_a = ['BOS ' + i + ' EOS' for i in answer]
+    answer_b = [i + ' EOS' for i in answer]
     with open('resource/word_to_index.pkl', 'wb') as f:
         pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
     with open('resource/index_to_word.pkl', 'wb') as f:

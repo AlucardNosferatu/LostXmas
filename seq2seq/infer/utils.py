@@ -19,10 +19,10 @@ def act_weather(city):
     return outstrs + ' EOS'
 
 
-def input_question(seq, word_to_index, all_composable):
+def input_question(seq, word_to_index, all_composed):
     seq = jieba.lcut(seq.strip(), cut_all=False)
     for k in range(len(seq)):
-        if seq[k] in all_composable:
+        if seq[k] in all_composed:
             seq[k] = ' '.join(list(seq[k]))
     seq = ' '.join(seq)
     seq = seq.split(' ')
