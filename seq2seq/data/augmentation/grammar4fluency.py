@@ -11,7 +11,7 @@ def batch_mark():
     with open(text_path, 'r+', encoding='utf-8-sig') as f_q:
         q_lines = f_q.readlines()
         # for i in tqdm(range(453000, len(q_lines))):
-        for i in tqdm(range(57543, len(q_lines))):
+        for i in tqdm(range(0, len(q_lines), 100)):
             q_lover = "Carol" in q_lines[i] or "守财奴" in q_lines[i]
             if q_lines[i].startswith('【禁用】'):
                 if q_lover:
@@ -20,10 +20,13 @@ def batch_mark():
                     continue
             if q_lover:
                 continue
-
-            q = q_lines[i].split('\t')[0].strip()
-            a = q_lines[i].split('\t')[1].replace('\n', '').strip()
-
+            try:
+                q = q_lines[i].split('\t')[0].strip()
+                a = q_lines[i].split('\t')[1].replace('\n', '').strip()
+            except Exception as e:
+                print(repr(e))
+                q_lines[i] = '【禁用】' + q_lines[i]
+                continue
             perplexity, corrected_sent = perplexity_detection(a)
             has_error = grammar_analysis(a, nlp)
             if perplexity or has_error:
