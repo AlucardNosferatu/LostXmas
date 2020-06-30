@@ -129,7 +129,7 @@ def loop_talking(UseKeywords=False):
                         if delete == 'y':
                             lines = mark_invalid(similar_answers_from_data, lines)
                     else:
-                        print("没有在青云数据集查找到相似回答。")
+                        print("没有在查找到相似回答。")
     f_r.truncate(0)
     f_r.seek(0)
     f_r.writelines(lines)

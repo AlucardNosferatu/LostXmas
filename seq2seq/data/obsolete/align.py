@@ -2,7 +2,7 @@ from tqdm import tqdm
 
 
 def split_continuous_speech():
-    f = open('../resource/raw/legacy/unsorted/CPoL4OC.txt', 'r', encoding='utf-8-sig')
+    f = open('CPoL4OC.txt', 'r', encoding='utf-8-sig')
     q_out = open('../resource/raw/legacy/CPoL4OC_Q.txt', 'a', encoding='utf-8-sig')
     a_out = open('../resource/raw/legacy/CPoL4OC_A.txt', 'a', encoding='utf-8-sig')
     sentences = f.readlines()

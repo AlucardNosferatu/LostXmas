@@ -20,35 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/resource/raw/corpus_combination.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/augmentation/align.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/align.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/augmentation/compressor.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/compressor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/grammar4fluency.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data_packer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_packer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/obsolete/hyper_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/hyper_filter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/CPoL4OC_A.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/CPoL4OC_Q.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/ChatterBot_A.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/ChatterBot_Q.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Lovers_A.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Lovers_Q.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/MyTulpa_A.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/MyTulpa_Q.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Soliq_A.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Soliq_Q.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/XiaoIce_A.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/XiaoIce_Q.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/YellowChick_A.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/YellowChick_Q.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/compact_vocab_A.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/compact_vocab_Q.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/remove_emoji.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/qingyun_withSyn.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/qingyun_withSyn.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/align.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/align.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/CPoL4OC.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/CPoL4OC.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/ChatterBot.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/ChatterBot.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/Lovers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/Lovers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/MyTulpa.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/MyTulpa.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/XiaoIce.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/XiaoIce.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/separate_QA.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/separate_QA.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/Online_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_A.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/Online_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_Q.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/infer_seq2seq.py" beforeDir="false" afterPath="$PROJECT_DIR$/infer/infer_seq2seq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" afterPath="$PROJECT_DIR$/model.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,46 +175,46 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593505638087" />
-    <state width="1515" height="291" key="GridCell.Tab.0.bottom" timestamp="1593506905218">
+    <state width="1515" height="339" key="GridCell.Tab.0.bottom" timestamp="1593508088097">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593506905218" />
-    <state width="1515" height="291" key="GridCell.Tab.0.center" timestamp="1593506905218">
+    <state width="1515" height="339" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593508088097" />
+    <state width="1515" height="339" key="GridCell.Tab.0.center" timestamp="1593508088097">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593506905218" />
-    <state width="1515" height="291" key="GridCell.Tab.0.left" timestamp="1593506905218">
+    <state width="1515" height="339" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593508088097" />
+    <state width="1515" height="339" key="GridCell.Tab.0.left" timestamp="1593508088097">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593506905218" />
-    <state width="1515" height="291" key="GridCell.Tab.0.right" timestamp="1593506905218">
+    <state width="1515" height="339" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593508088097" />
+    <state width="1515" height="339" key="GridCell.Tab.0.right" timestamp="1593508088097">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593506905218" />
-    <state width="1515" height="291" key="GridCell.Tab.1.bottom" timestamp="1593506905124">
+    <state width="1515" height="339" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593508088097" />
+    <state width="1515" height="339" key="GridCell.Tab.1.bottom" timestamp="1593508088003">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593506905124" />
-    <state width="1515" height="291" key="GridCell.Tab.1.center" timestamp="1593506905124">
+    <state width="1515" height="339" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593508088003" />
+    <state width="1515" height="339" key="GridCell.Tab.1.center" timestamp="1593508088003">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593506905124" />
-    <state width="1515" height="291" key="GridCell.Tab.1.left" timestamp="1593506905124">
+    <state width="1515" height="339" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593508088003" />
+    <state width="1515" height="339" key="GridCell.Tab.1.left" timestamp="1593508088003">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593506905124" />
-    <state width="1515" height="291" key="GridCell.Tab.1.right" timestamp="1593506905124">
+    <state width="1515" height="339" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593508088003" />
+    <state width="1515" height="339" key="GridCell.Tab.1.right" timestamp="1593508088003">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593506905124" />
+    <state width="1515" height="339" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593508088003" />
     <state width="775" height="439" key="XDebugger.FullValuePopup" timestamp="1593440916031">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="775" height="439" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1593440916031" />
-    <state x="732" y="217" width="705" height="536" key="find.popup" timestamp="1593504729980">
+    <state x="732" y="217" width="705" height="536" key="find.popup" timestamp="1593507199122">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="732" y="217" width="705" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1593504729980" />
+    <state x="732" y="217" width="705" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1593507199122" />
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1593480668501">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

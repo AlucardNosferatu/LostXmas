@@ -1,4 +1,4 @@
-f = open("ChatterBot.txt", 'r', encoding='utf-8-sig')
+f = open("../../../../obsolete/ChatterBot.txt", 'r', encoding='utf-8-sig')
 lines = f.readlines()
 f.close()
 q = lines[::2]
