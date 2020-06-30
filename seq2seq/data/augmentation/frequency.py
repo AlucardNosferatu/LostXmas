@@ -13,10 +13,10 @@ def getFreqDist(words_with_dup):
 
 
 def getWordsFromFiles():
-    a = open('../resource/raw/legacy/Soliq_A.txt', 'r', encoding='utf-8-sig')
-    a_out = open('../resource/raw/legacy/compact_vocab_A.txt', 'r', encoding='utf-8-sig')
-    q = open('../resource/raw/legacy/Soliq_Q.txt', 'r', encoding='utf-8-sig')
-    q_out = open('../resource/raw/legacy/compact_vocab_Q.txt', 'r', encoding='utf-8-sig')
+    a = open('../obsolete/legacy/Soliq_A.txt', 'r', encoding='utf-8-sig')
+    a_out = open('../obsolete/legacy/compact_vocab_A.txt', 'r', encoding='utf-8-sig')
+    q = open('../obsolete/legacy/Soliq_Q.txt', 'r', encoding='utf-8-sig')
+    q_out = open('../obsolete/legacy/compact_vocab_Q.txt', 'r', encoding='utf-8-sig')
     a_sentences = a.readlines()
     a_out_sentences = a_out.readlines()
     q_sentences = q.readlines()

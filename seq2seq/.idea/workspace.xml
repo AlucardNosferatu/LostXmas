@@ -20,16 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/obsolete/unsorted/separate_QA.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/augmentation/frequency.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/frequency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data_packer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_packer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/CPoL4OC.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/unsorted/CPoL4OC.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/ChatterBot.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/unsorted/ChatterBot.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/Lovers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/unsorted/Lovers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/MyTulpa.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/unsorted/MyTulpa.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/XiaoIce.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/unsorted/XiaoIce.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/obsolete/align.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/align.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/CPoL4OC.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/CPoL4OC.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/ChatterBot.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/ChatterBot.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/Lovers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/Lovers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/MyTulpa.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/MyTulpa.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/XiaoIce.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/XiaoIce.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/separate_QA.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/separate_QA.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infer/Online_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_A.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infer/Online_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_Q.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/grammar4fluency.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/hyper_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/hyper_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/legacy.rar" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/legacy/legacy.rar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/synonyms_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/synonyms_old.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/corpus_combination.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/corpus_combination.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/YellowChick.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/unsorted/YellowChick.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/separate_QA.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/qingyun.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/qingyun.tsv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/infer_seq2seq.py" beforeDir="false" afterPath="$PROJECT_DIR$/infer/infer_seq2seq.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,11 +70,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\augmentation" />
+      <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\obsolete\legacy" />
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\obsolete" />
+      <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\obsolete\unsorted" />
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\resource\raw" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.infer_seq2seq">
+  <component name="RunManager" selected="Python.train_seq2seq">
     <configuration name="data_packer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="seq2seq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -78,6 +91,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/data_packer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="grammar4fluency" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="seq2seq" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/obsolete" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\augmentation\grammar4fluency.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -131,6 +165,7 @@
     <list>
       <item itemvalue="Python.data_packer" />
       <item itemvalue="Python.infer_seq2seq" />
+      <item itemvalue="Python.grammar4fluency" />
       <item itemvalue="Python.train_seq2seq" />
     </list>
   </component>
@@ -157,12 +192,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593507087628">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593511503826">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593507087628" />
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593511503826" />
     <state x="998" y="220" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593503525586">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -171,42 +207,42 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1593485112783" />
-    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593505638087">
+    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593510290729">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593505638087" />
-    <state width="1515" height="339" key="GridCell.Tab.0.bottom" timestamp="1593508088097">
+    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593510290729" />
+    <state width="1515" height="322" key="GridCell.Tab.0.bottom" timestamp="1593511299960">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="339" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593508088097" />
-    <state width="1515" height="339" key="GridCell.Tab.0.center" timestamp="1593508088097">
+    <state width="1515" height="322" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593511299960" />
+    <state width="1515" height="322" key="GridCell.Tab.0.center" timestamp="1593511299960">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="339" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593508088097" />
-    <state width="1515" height="339" key="GridCell.Tab.0.left" timestamp="1593508088097">
+    <state width="1515" height="322" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593511299960" />
+    <state width="1515" height="322" key="GridCell.Tab.0.left" timestamp="1593511299960">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="339" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593508088097" />
-    <state width="1515" height="339" key="GridCell.Tab.0.right" timestamp="1593508088097">
+    <state width="1515" height="322" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593511299960" />
+    <state width="1515" height="322" key="GridCell.Tab.0.right" timestamp="1593511299960">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="339" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593508088097" />
-    <state width="1515" height="339" key="GridCell.Tab.1.bottom" timestamp="1593508088003">
+    <state width="1515" height="322" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593511299960" />
+    <state width="1515" height="322" key="GridCell.Tab.1.bottom" timestamp="1593511299961">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="339" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593508088003" />
-    <state width="1515" height="339" key="GridCell.Tab.1.center" timestamp="1593508088003">
+    <state width="1515" height="322" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593511299961" />
+    <state width="1515" height="322" key="GridCell.Tab.1.center" timestamp="1593511299960">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="339" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593508088003" />
-    <state width="1515" height="339" key="GridCell.Tab.1.left" timestamp="1593508088003">
+    <state width="1515" height="322" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593511299960" />
+    <state width="1515" height="322" key="GridCell.Tab.1.left" timestamp="1593511299960">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="339" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593508088003" />
-    <state width="1515" height="339" key="GridCell.Tab.1.right" timestamp="1593508088003">
+    <state width="1515" height="322" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593511299960" />
+    <state width="1515" height="322" key="GridCell.Tab.1.right" timestamp="1593511299960">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="339" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593508088003" />
+    <state width="1515" height="322" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593511299960" />
     <state width="775" height="439" key="XDebugger.FullValuePopup" timestamp="1593440916031">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -219,5 +255,16 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1593480668501" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data/augmentation/grammar4fluency.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

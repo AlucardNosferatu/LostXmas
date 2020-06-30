@@ -2,13 +2,11 @@ import pickle
 import tensorflow as tf
 from tqdm import tqdm
 
-from data.augmentation.blacklist import DFAFilter
-from data.obsolete.grammar4fluency import mark_invalid
+from data.augmentation.grammar4fluency import mark_invalid
 from data.augmentation.similarity import similarity_complex, Keywords_IoU
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Input, dot, Activation, concatenate
 
-from data.data_tool import append_extra_data
 from infer.utils import input_question, decode_greedy
 from train.train_seq2seq import build_seq2seq
 from train.utils import get_vocab_size, load_resource

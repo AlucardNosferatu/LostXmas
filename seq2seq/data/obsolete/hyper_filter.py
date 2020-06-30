@@ -21,8 +21,8 @@ def prompt_filter(show_ng=False, UseAlign=True):
         else:
             lines = q_f.read().split('\n')
             lines = lines[:-2]
-    q_f = open('../resource/raw/legacy/Soliq_Q.txt', 'a', encoding='utf-8-sig')
-    a_f = open('../resource/raw/legacy/Soliq_A.txt', 'a', encoding='utf-8-sig')
+    q_f = open('legacy/Soliq_Q.txt', 'a', encoding='utf-8-sig')
+    a_f = open('legacy/Soliq_A.txt', 'a', encoding='utf-8-sig')
     print("Loaded.")
     # endregion
 

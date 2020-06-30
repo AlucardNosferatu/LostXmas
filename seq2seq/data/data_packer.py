@@ -206,26 +206,26 @@ def add_padding():
 
 
 def getExtra(gfw, question, answer):
-    q_path = 'resource/raw/legacy/compact_vocab_Q.txt'
-    a_path = 'resource/raw/legacy/compact_vocab_A.txt'
+    q_path = 'obsolete/legacy/compact_vocab_Q.txt'
+    a_path = 'obsolete/legacy/compact_vocab_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
-    q_path = 'resource/raw/legacy/CPoL4OC_Q.txt'
-    a_path = 'resource/raw/legacy/CPoL4OC_A.txt'
+    q_path = 'obsolete/legacy/CPoL4OC_Q.txt'
+    a_path = 'obsolete/legacy/CPoL4OC_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
-    q_path = 'resource/raw/legacy/Lovers_Q.txt'
-    a_path = 'resource/raw/legacy/Lovers_A.txt'
+    q_path = 'obsolete/legacy/Lovers_Q.txt'
+    a_path = 'obsolete/legacy/Lovers_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
-    q_path = 'resource/raw/legacy/MyTulpa_Q.txt'
-    a_path = 'resource/raw/legacy/MyTulpa_A.txt'
+    q_path = 'obsolete/legacy/MyTulpa_Q.txt'
+    a_path = 'obsolete/legacy/MyTulpa_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
-    q_path = 'resource/raw/legacy/XiaoIce_Q.txt'
-    a_path = 'resource/raw/legacy/XiaoIce_A.txt'
+    q_path = 'obsolete/legacy/XiaoIce_Q.txt'
+    a_path = 'obsolete/legacy/XiaoIce_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
-    q_path = 'resource/raw/legacy/YellowChick_Q.txt'
-    a_path = 'resource/raw/legacy/YellowChick_A.txt'
+    q_path = 'obsolete/legacy/YellowChick_Q.txt'
+    a_path = 'obsolete/legacy/YellowChick_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
-    q_path = 'resource/raw/legacy/ChatterBot_Q.txt'
-    a_path = 'resource/raw/legacy/ChatterBot_A.txt'
+    q_path = 'obsolete/legacy/ChatterBot_Q.txt'
+    a_path = 'obsolete/legacy/ChatterBot_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
     q_path = '../infer/Online_Q.txt'
     a_path = '../infer/Online_A.txt'
