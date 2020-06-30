@@ -19,7 +19,7 @@ def batch_mark(QingYun=False):
             q_lines = f_q.readlines()
             a_lines = f_a.readlines()
             # for i in tqdm(range(453000, len(q_lines))):
-            for i in tqdm(range(136000, 139000)):
+            for i in tqdm(range(0, 5000)):
                 if q_lines[i].startswith('【禁用】'):
                     continue
                 if QingYun:
@@ -28,6 +28,8 @@ def batch_mark(QingYun=False):
                 else:
                     q = q_lines[i].replace('\n', '')
                     a = a_lines[i].replace('\n', '')
+                if i == 3841:
+                    print("Catch")
                 perplexity, corrected_sent = perplexity_detection(a)
                 has_error = grammar_analysis(a, nlp)
                 if perplexity or has_error:

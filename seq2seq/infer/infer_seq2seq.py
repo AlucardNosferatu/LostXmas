@@ -2,6 +2,7 @@ import pickle
 import tensorflow as tf
 from tqdm import tqdm
 
+from data.augmentation.blacklist import DFAFilter
 from data.augmentation.grammar4fluency import mark_invalid
 from data.augmentation.similarity import similarity_complex, Keywords_IoU
 from tensorflow.keras import Model
@@ -37,30 +38,47 @@ def build_qa_model(wp=None):
 
 
 def loop_talking(UseKeywords=False):
+    gfw = DFAFilter()
+    gfw.parse('../data/augmentation/blacklist')
     q_path = '../data/resource/raw/legacy/compact_vocab_Q.txt'
     a_path = '../data/resource/raw/legacy/compact_vocab_A.txt'
-    cvq, cva = append_extra_data(q_path, a_path, [], [])
+    cvq, cva = append_extra_data(gfw, q_path, a_path, [], [], filter_banned=False)
     q_path = '../data/resource/raw/legacy/CPoL4OC_Q.txt'
     a_path = '../data/resource/raw/legacy/CPoL4OC_A.txt'
-    c4oq, c4oa = append_extra_data(q_path, a_path, [], [])
+    c4oq, c4oa = append_extra_data(gfw, q_path, a_path, [], [], filter_banned=False)
     q_path = '../data/resource/raw/legacy/Lovers_Q.txt'
     a_path = '../data/resource/raw/legacy/Lovers_A.txt'
-    lq, la = append_extra_data(q_path, a_path, [], [])
+    lq, la = append_extra_data(gfw, q_path, a_path, [], [], filter_banned=False)
     q_path = '../data/resource/raw/legacy/MyTulpa_Q.txt'
     a_path = '../data/resource/raw/legacy/MyTulpa_A.txt'
-    mtq, mta = append_extra_data(q_path, a_path, [], [])
+    mtq, mta = append_extra_data(gfw, q_path, a_path, [], [], filter_banned=False)
     q_path = '../data/resource/raw/legacy/XiaoIce_Q.txt'
     a_path = '../data/resource/raw/legacy/XiaoIce_A.txt'
-    xiq, xia = append_extra_data(q_path, a_path, [], [])
+    xiq, xia = append_extra_data(gfw, q_path, a_path, [], [], filter_banned=False)
+    q_path = '../data/resource/raw/legacy/YellowChick_Q.txt'
+    a_path = '../data/resource/raw/legacy/YellowChick_A.txt'
+    ycq, yca = append_extra_data(gfw, q_path, a_path, [], [], filter_banned=False)
+    q_path = '../data/resource/raw/legacy/ChatterBot_Q.txt'
+    a_path = '../data/resource/raw/legacy/ChatterBot_A.txt'
+    cbq, cba = append_extra_data(gfw, q_path, a_path, [], [], filter_banned=False)
 
     f_r = open("../data/resource/raw/qingyun_withSyn.tsv", 'r+', encoding='utf-8-sig')
     raw_lines = f_r.readlines()
     lines = raw_lines.copy()
     for i in tqdm(range(len(raw_lines))):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
-    all_lines = [raw_lines, cva, c4oa, la, mta, xia]
-    src_label = ['青云数据集', '青云数据集（同义词压缩）', '语C聊天数据集', '情话大全', 'Tulpa叙述训练记录', '微软小冰数据集']
-    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -110-0.0034-.h5")
+    all_lines = [raw_lines, cva, c4oa, la, mta, xia, yca, cba]
+    src_label = [
+        '青云数据集',
+        '青云数据集（同义词压缩）',
+        '语C聊天数据集',
+        '情话大全',
+        'Tulpa叙述训练记录',
+        '微软小冰数据集',
+        '小黄鸡数据集',
+        'ChatterBot数据集'
+    ]
+    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W - 50-0.1697-.h5")
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     f_q = open("Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open("Online_A.txt", 'a', encoding='utf-8-sig')
@@ -106,7 +124,7 @@ def loop_talking(UseKeywords=False):
                 similar_answers_from_data = []
                 for i in range(len(all_lines[j])):
                     line = all_lines[j][i]
-                    line = line.replace(' ','')
+                    line = line.replace(' ', '')
                     # region use Similarity
                     if not UseKeywords:
                         if len(exclude) >= 2 and exclude in line:

@@ -68,7 +68,7 @@ def append_extra_data(gfw, q_path, a_path, question, answer, filter_banned=True,
             lines = remove_banned(lines)
         for pos, line in enumerate(tqdm(lines)):
             a_filter = gfw.filter(line, '*')
-            if a_filter[1]:
+            if a_filter[1] and filter_banned:
                 skip_list.append(pos)
                 continue
             else:
