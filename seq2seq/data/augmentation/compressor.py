@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 def getSynDict(freq_dist):
     syn_dict = {}
-    size = int(0.25 * len(freq_dist))
+    size = int(0.125 * len(freq_dist))
     if type(freq_dist) is dict:
         freq_dist = list(freq_dist)
     for each in tqdm(freq_dist[:size]):
@@ -20,8 +20,8 @@ def getSynDict(freq_dist):
                 del syn[1][0]
                 score = np.array(syn[1])
                 syn = np.array(syn[0])
-                syn = syn[np.where(score > 0.75)].tolist()
-                if len(syn) < 2:
+                syn = syn[np.where(score > 0.875)].tolist()
+                if len(syn) < 1:
                     continue
                 syn_dict[each] = syn
     return syn_dict

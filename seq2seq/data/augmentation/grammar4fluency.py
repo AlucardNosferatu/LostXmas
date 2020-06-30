@@ -11,16 +11,24 @@ def batch_mark(QingYun=False):
     if QingYun:
         text_path = "../resource/raw/qingyun_withSyn.tsv"
     else:
+        text_path = "../../infer/Online_Q.txt"
         text_path = "../resource/raw/legacy/YellowChick_Q.txt"
-        # text_path = "../../infer/Online_Q.txt"
+        text_path = "../resource/raw/legacy/compact_vocab_Q.txt"
     with open(text_path, 'r+', encoding='utf-8-sig') as f_q:
-        with open("../resource/raw/legacy/YellowChick_A.txt", 'r+', encoding='utf-8-sig') as f_a:
-            # with open("../../infer/Online_A.txt", 'r+', encoding='utf-8-sig') as f_a:
+        # with open("../../infer/Online_A.txt", 'r+', encoding='utf-8-sig') as f_a:
+        # with open("../resource/raw/legacy/YellowChick_A.txt", 'r+', encoding='utf-8-sig') as f_a:
+        with open("../resource/raw/legacy/compact_vocab_A.txt", 'r+', encoding='utf-8-sig') as f_a:
             q_lines = f_q.readlines()
             a_lines = f_a.readlines()
             # for i in tqdm(range(453000, len(q_lines))):
-            for i in tqdm(range(0, 5000)):
+            for i in tqdm(range(len(q_lines))):
                 if q_lines[i].startswith('【禁用】'):
+                    if "Carol" in q_lines[i] or "守财奴" in q_lines[i] or "Carol" in a_lines[i] or "守财奴" in a_lines[i]:
+                        q_lines[i] = q_lines[i].replace('【禁用】', '')
+                        a_lines[i] = a_lines[i].replace('【禁用】', '')
+                    else:
+                        continue
+                if "Carol" in q_lines[i] or "守财奴" in q_lines[i] or "Carol" in a_lines[i] or "守财奴" in a_lines[i]:
                     continue
                 if QingYun:
                     q = q_lines[i].split('\t')[0].strip()
@@ -28,8 +36,6 @@ def batch_mark(QingYun=False):
                 else:
                     q = q_lines[i].replace('\n', '')
                     a = a_lines[i].replace('\n', '')
-                if i == 3841:
-                    print("Catch")
                 perplexity, corrected_sent = perplexity_detection(a)
                 has_error = grammar_analysis(a, nlp)
                 if perplexity or has_error:
@@ -68,13 +74,13 @@ def grammar_analysis(sentence, parser):
     except Exception as e:
         print(repr(e))
         return True
-    # ner = parser.ner(hidden)
+    ner = parser.ner(hidden)
     # pos = parser.pos(hidden)
     srl = parser.srl(hidden)
     # dep = parser.dep(hidden)
     # sdp = parser.sdp(hidden)
     suspicion = srl[0].count([]) == len(segment[0])
-    # suspicion = len(ner[0]) != 0 or suspicion
+    suspicion = len(ner[0]) != 0 or suspicion
     # suspicion = len(ner[0]) != 0
     if suspicion:
         pass

@@ -53,7 +53,7 @@ def edit_distance(s1, s2):
 
 
 def jaccard_improved(s1, s2):
-    if (s1 in s2 and len(s1) > 5) or (s2 in s1 and len(s2) > 5):
+    if (s1 in s2 and len(s1) > 5) or (s2 in s1 and len(s2) > 5) or s1 == s2:
         return 1
     else:
         _, overlapped_length = LongSubString(s1, s2)

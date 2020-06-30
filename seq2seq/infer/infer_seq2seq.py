@@ -78,7 +78,7 @@ def loop_talking(UseKeywords=False):
         '小黄鸡数据集',
         'ChatterBot数据集'
     ]
-    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -100-0.0144-.h5")
+    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -100-0.0078-.h5")
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     f_q = open("Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open("Online_A.txt", 'a', encoding='utf-8-sig')
