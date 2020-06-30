@@ -58,10 +58,12 @@ def remove_banned(lines):
     return lines
 
 
-def append_extra_data(gfw, q_path, a_path, question, answer, filter_banned=True):
+def append_extra_data(gfw, q_path, a_path, question, answer, filter_banned=True, limit=5000):
     skip_list = []
     with open(a_path, 'r', encoding='utf-8-sig') as f:
         lines = f.readlines()
+        if len(lines) > limit:
+            lines = lines[:limit]
         if filter_banned:
             lines = remove_banned(lines)
         for pos, line in enumerate(tqdm(lines)):
@@ -73,6 +75,8 @@ def append_extra_data(gfw, q_path, a_path, question, answer, filter_banned=True)
                 answer.append(' '.join(jieba.lcut(Traditional2Simplified(line).strip(), cut_all=False)))
     with open(q_path, 'r', encoding='utf-8-sig') as f:
         lines = f.readlines()
+        if len(lines) > limit:
+            lines = lines[:limit]
         if filter_banned:
             lines = remove_banned(lines)
         for pos, line in enumerate(tqdm(lines)):

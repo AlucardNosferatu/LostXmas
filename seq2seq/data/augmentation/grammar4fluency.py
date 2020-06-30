@@ -18,7 +18,8 @@ def batch_mark(QingYun=False):
             # with open("../../infer/Online_A.txt", 'r+', encoding='utf-8-sig') as f_a:
             q_lines = f_q.readlines()
             a_lines = f_a.readlines()
-            for i in tqdm(range(len(q_lines))):
+            # for i in tqdm(range(453000, len(q_lines))):
+            for i in tqdm(range(136000, 139000)):
                 if q_lines[i].startswith('【禁用】'):
                     continue
                 if QingYun:
@@ -65,14 +66,14 @@ def grammar_analysis(sentence, parser):
     except Exception as e:
         print(repr(e))
         return True
-    ner = parser.ner(hidden)
+    # ner = parser.ner(hidden)
     # pos = parser.pos(hidden)
-    # srl = parser.srl(hidden)
+    srl = parser.srl(hidden)
     # dep = parser.dep(hidden)
     # sdp = parser.sdp(hidden)
-    # suspicion = srl[0].count([]) == len(segment[0])
+    suspicion = srl[0].count([]) == len(segment[0])
     # suspicion = len(ner[0]) != 0 or suspicion
-    suspicion = len(ner[0]) != 0
+    # suspicion = len(ner[0]) != 0
     if suspicion:
         pass
         # print(segment)
@@ -85,7 +86,7 @@ def grammar_analysis(sentence, parser):
 
 
 def perplexity_detection(src):
-    corrected_sent = src
+    corrected_sent = ""
     # print(src)
     # corrected_sent, detail = pycorrector.correct(src)
     # idx_errors = pycorrector.detect(src)
