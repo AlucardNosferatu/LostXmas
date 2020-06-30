@@ -5,11 +5,11 @@ from tqdm import tqdm
 from data.data_tool import is_all_chinese
 
 
-def batch_mark(QingYun=False):
+def batch_mark(QingYun=True):
     nlp = LTP()
     # pycorrector.enable_char_error(enable=False)
     if QingYun:
-        text_path = "../resource/raw/qingyun_withSyn.tsv"
+        text_path = "qingyun_withSyn.tsv"
     else:
         text_path = "../../infer/Online_Q.txt"
         text_path = "../resource/raw/legacy/YellowChick_Q.txt"
@@ -19,16 +19,24 @@ def batch_mark(QingYun=False):
         # with open("../resource/raw/legacy/YellowChick_A.txt", 'r+', encoding='utf-8-sig') as f_a:
         with open("../resource/raw/legacy/compact_vocab_A.txt", 'r+', encoding='utf-8-sig') as f_a:
             q_lines = f_q.readlines()
-            a_lines = f_a.readlines()
+            if QingYun:
+                a_lines = q_lines.copy()
+            else:
+                a_lines = f_a.readlines()
             # for i in tqdm(range(453000, len(q_lines))):
             for i in tqdm(range(len(q_lines))):
+                q_lover = "Carol" in q_lines[i] or "守财奴" in q_lines[i]
+                a_lover = "Carol" in a_lines[i] or "守财奴" in a_lines[i]
                 if q_lines[i].startswith('【禁用】'):
-                    if "Carol" in q_lines[i] or "守财奴" in q_lines[i] or "Carol" in a_lines[i] or "守财奴" in a_lines[i]:
+                    if q_lover or (not QingYun and a_lover):
                         q_lines[i] = q_lines[i].replace('【禁用】', '')
-                        a_lines[i] = a_lines[i].replace('【禁用】', '')
+                        if QingYun:
+                            pass
+                        else:
+                            a_lines[i] = a_lines[i].replace('【禁用】', '')
                     else:
                         continue
-                if "Carol" in q_lines[i] or "守财奴" in q_lines[i] or "Carol" in a_lines[i] or "守财奴" in a_lines[i]:
+                if q_lover or (not QingYun and a_lover):
                     continue
                 if QingYun:
                     q = q_lines[i].split('\t')[0].strip()

@@ -1,26 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/resource/raw/corpus_combination.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/augmentation/align.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/align.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/augmentation/compressor.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/compressor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/augmentation/similarity.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/similarity.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/ChatterBot_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/ChatterBot_A.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/ChatterBot_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/ChatterBot_Q.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Soliq_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/Soliq_A.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Soliq_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/Soliq_Q.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/XiaoIce_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/XiaoIce_A.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/XiaoIce_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/XiaoIce_Q.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/qingyun_withSyn.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/qingyun_withSyn.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/grammar4fluency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data_packer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_packer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/obsolete/hyper_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/hyper_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/CPoL4OC_A.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/CPoL4OC_Q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/ChatterBot_A.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/ChatterBot_Q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Lovers_A.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Lovers_Q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/MyTulpa_A.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/MyTulpa_Q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Soliq_A.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/Soliq_Q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/XiaoIce_A.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/XiaoIce_Q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/YellowChick_A.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/YellowChick_Q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/compact_vocab_A.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/compact_vocab_Q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/unsorted/remove_emoji.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/qingyun_withSyn.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/qingyun_withSyn.tsv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/Online_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_A.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/Online_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_Q.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/infer_seq2seq.py" beforeDir="false" afterPath="$PROJECT_DIR$/infer/infer_seq2seq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" afterPath="$PROJECT_DIR$/model.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -34,9 +74,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/resource/raw/corpus_combination.py" />
   </component>
-  <component name="RunManager" selected="Python.train_seq2seq">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\obsolete" />
+      <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\resource\raw" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.infer_seq2seq">
     <configuration name="data_packer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="seq2seq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -50,27 +96,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/data_packer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="grammar4fluency" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="seq2seq" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/augmentation" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -123,7 +148,6 @@
     </configuration>
     <list>
       <item itemvalue="Python.data_packer" />
-      <item itemvalue="Python.grammar4fluency" />
       <item itemvalue="Python.infer_seq2seq" />
       <item itemvalue="Python.train_seq2seq" />
     </list>
@@ -141,74 +165,77 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593425891963">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593507087628">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593425891963" />
-    <state x="998" y="220" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593499166685">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593507087628" />
+    <state x="998" y="220" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593503525586">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="998" y="220" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593499166685" />
+    <state x="998" y="220" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593503525586" />
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1593485112783">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1593485112783" />
-    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593425887779">
+    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593505638087">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593425887779" />
-    <state width="1515" height="284" key="GridCell.Tab.0.bottom" timestamp="1593501482683">
+    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593505638087" />
+    <state width="1515" height="291" key="GridCell.Tab.0.bottom" timestamp="1593506905218">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="284" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593501482683" />
-    <state width="1515" height="284" key="GridCell.Tab.0.center" timestamp="1593501482682">
+    <state width="1515" height="291" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593506905218" />
+    <state width="1515" height="291" key="GridCell.Tab.0.center" timestamp="1593506905218">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="284" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593501482682" />
-    <state width="1515" height="284" key="GridCell.Tab.0.left" timestamp="1593501482682">
+    <state width="1515" height="291" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593506905218" />
+    <state width="1515" height="291" key="GridCell.Tab.0.left" timestamp="1593506905218">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="284" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593501482682" />
-    <state width="1515" height="284" key="GridCell.Tab.0.right" timestamp="1593501482683">
+    <state width="1515" height="291" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593506905218" />
+    <state width="1515" height="291" key="GridCell.Tab.0.right" timestamp="1593506905218">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="284" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593501482683" />
-    <state width="1515" height="284" key="GridCell.Tab.1.bottom" timestamp="1593501482599">
+    <state width="1515" height="291" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593506905218" />
+    <state width="1515" height="291" key="GridCell.Tab.1.bottom" timestamp="1593506905124">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="284" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593501482599" />
-    <state width="1515" height="284" key="GridCell.Tab.1.center" timestamp="1593501482599">
+    <state width="1515" height="291" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593506905124" />
+    <state width="1515" height="291" key="GridCell.Tab.1.center" timestamp="1593506905124">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="284" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593501482599" />
-    <state width="1515" height="284" key="GridCell.Tab.1.left" timestamp="1593501482599">
+    <state width="1515" height="291" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593506905124" />
+    <state width="1515" height="291" key="GridCell.Tab.1.left" timestamp="1593506905124">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="284" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593501482599" />
-    <state width="1515" height="284" key="GridCell.Tab.1.right" timestamp="1593501482599">
+    <state width="1515" height="291" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593506905124" />
+    <state width="1515" height="291" key="GridCell.Tab.1.right" timestamp="1593506905124">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="284" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593501482599" />
+    <state width="1515" height="291" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593506905124" />
     <state width="775" height="439" key="XDebugger.FullValuePopup" timestamp="1593440916031">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="775" height="439" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1593440916031" />
-    <state x="732" y="217" width="705" height="536" key="find.popup" timestamp="1593501739890">
+    <state x="732" y="217" width="705" height="536" key="find.popup" timestamp="1593504729980">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="732" y="217" width="705" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1593501739890" />
+    <state x="732" y="217" width="705" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1593504729980" />
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1593480668501">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1593480668501" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="q_lines[i]" language="Python" />
-        <watch expression="a_lines[i]" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
