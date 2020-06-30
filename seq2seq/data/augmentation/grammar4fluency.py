@@ -2,8 +2,6 @@ import pycorrector
 from ltp import LTP
 from tqdm import tqdm
 
-from data.data_tool import is_all_chinese
-
 
 def batch_mark():
     nlp = LTP()
@@ -11,7 +9,7 @@ def batch_mark():
     with open(text_path, 'r+', encoding='utf-8-sig') as f_q:
         q_lines = f_q.readlines()
         # for i in tqdm(range(453000, len(q_lines))):
-        for i in tqdm(range(0, len(q_lines), 100)):
+        for i in tqdm(range(len(q_lines))):
             q_lover = "Carol" in q_lines[i] or "守财奴" in q_lines[i]
             if q_lines[i].startswith('【禁用】'):
                 if q_lover:
