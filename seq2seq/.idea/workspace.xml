@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_tool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/YellowChick_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/YellowChick_A.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/legacy/YellowChick_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/legacy/YellowChick_Q.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infer/Online_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_A.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infer/Online_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_Q.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infer/infer_seq2seq.py" beforeDir="false" afterPath="$PROJECT_DIR$/infer/infer_seq2seq.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +26,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" />
   </component>
-  <component name="RunManager" selected="Python.data_packer">
+  <component name="RunManager" selected="Python.infer_seq2seq">
     <configuration name="data_packer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="seq2seq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,38 +148,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593425887779" />
-    <state width="1515" height="196" key="GridCell.Tab.0.bottom" timestamp="1593487953110">
+    <state width="1515" height="209" key="GridCell.Tab.0.bottom" timestamp="1593489427134">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="196" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593487953110" />
-    <state width="1515" height="196" key="GridCell.Tab.0.center" timestamp="1593487953110">
+    <state width="1515" height="209" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593489427134" />
+    <state width="1515" height="209" key="GridCell.Tab.0.center" timestamp="1593489427134">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="196" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593487953110" />
-    <state width="1515" height="196" key="GridCell.Tab.0.left" timestamp="1593487953110">
+    <state width="1515" height="209" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593489427134" />
+    <state width="1515" height="209" key="GridCell.Tab.0.left" timestamp="1593489427134">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="196" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593487953110" />
-    <state width="1515" height="196" key="GridCell.Tab.0.right" timestamp="1593487953110">
+    <state width="1515" height="209" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593489427134" />
+    <state width="1515" height="209" key="GridCell.Tab.0.right" timestamp="1593489427134">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="196" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593487953110" />
-    <state width="1515" height="196" key="GridCell.Tab.1.bottom" timestamp="1593487953017">
+    <state width="1515" height="209" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593489427134" />
+    <state width="1515" height="209" key="GridCell.Tab.1.bottom" timestamp="1593489427134">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="196" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593487953017" />
-    <state width="1515" height="196" key="GridCell.Tab.1.center" timestamp="1593487953017">
+    <state width="1515" height="209" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593489427134" />
+    <state width="1515" height="209" key="GridCell.Tab.1.center" timestamp="1593489427134">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="196" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593487953017" />
-    <state width="1515" height="196" key="GridCell.Tab.1.left" timestamp="1593487953017">
+    <state width="1515" height="209" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593489427134" />
+    <state width="1515" height="209" key="GridCell.Tab.1.left" timestamp="1593489427134">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="196" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593487953017" />
-    <state width="1515" height="196" key="GridCell.Tab.1.right" timestamp="1593487953017">
+    <state width="1515" height="209" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593489427134" />
+    <state width="1515" height="209" key="GridCell.Tab.1.right" timestamp="1593489427134">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="196" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593487953017" />
+    <state width="1515" height="209" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593489427134" />
     <state width="775" height="439" key="XDebugger.FullValuePopup" timestamp="1593440916031">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
