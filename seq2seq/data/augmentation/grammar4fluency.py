@@ -43,6 +43,11 @@ def batch_mark():
                     break
             else:
                 pass
+            if i % 1000 == 0 and i != 0:
+                f_q.truncate(0)
+                f_q.seek(0)
+                f_q.writelines(q_lines)
+                print("checkpoint saved.")
         f_q.truncate(0)
         f_q.seek(0)
         f_q.writelines(q_lines)
