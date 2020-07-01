@@ -9,7 +9,7 @@ from tqdm import tqdm
 from data.augmentation.blacklist import DFAFilter
 from data.augmentation.compressor import getSynDict
 from data.augmentation.frequency import getWords
-from data.augmentation.phrase2words import getBaseWord, getComposed
+from data.augmentation.decomposition import getBaseWord, getComposed
 from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data, \
     remove_banned
 

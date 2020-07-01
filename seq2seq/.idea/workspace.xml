@@ -20,9 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/augmentation/correspondency.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/all_in_one.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/all_in_one.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/augmentation/blacklist" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/blacklist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/augmentation/grammar4fluency.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/obsolete/grammar4fluency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/augmentation/phrase2words.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/augmentation/decomposition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data_packer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_packer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/all_corpus.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/all_corpus.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/all_in_one.tsv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,18 +53,39 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/resource/raw/corpus_combination.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/obsolete/grammar4fluency.py" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\obsolete" />
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\augmentation" />
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\obsolete\legacy" />
-      <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\obsolete" />
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\obsolete\unsorted" />
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\resource\raw" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.infer_seq2seq">
+  <component name="RunManager" selected="Python.correspondency">
+    <configuration name="correspondency" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="seq2seq" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/augmentation" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/augmentation/correspondency.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="data_packer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="seq2seq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -93,7 +119,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\augmentation\grammar4fluency.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/obsolete/grammar4fluency.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -147,8 +173,9 @@
     <list>
       <item itemvalue="Python.data_packer" />
       <item itemvalue="Python.infer_seq2seq" />
-      <item itemvalue="Python.grammar4fluency" />
       <item itemvalue="Python.train_seq2seq" />
+      <item itemvalue="Python.correspondency" />
+      <item itemvalue="Python.grammar4fluency" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -177,58 +204,66 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593511503826">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593581432068">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593511503826" />
-    <state x="998" y="220" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593503525586">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593581432068" />
+    <state x="510" y="232" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593567683746">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="998" y="220" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593503525586" />
+    <state x="510" y="232" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1593567683746" />
+    <state x="0" y="185" key="#xdebugger.XInspectDialog" timestamp="1593592295397">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="0" y="185" key="#xdebugger.XInspectDialog/0.0.1536.864@0.0.1536.864" timestamp="1593592295397" />
+    <state x="692" y="302" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593591002229">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="692" y="302" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593591002229" />
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1593485112783">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1593485112783" />
-    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593565579128">
+    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593581380651">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593565579128" />
-    <state width="1515" height="457" key="GridCell.Tab.0.bottom" timestamp="1593565246590">
+    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593581380651" />
+    <state width="1515" height="229" key="GridCell.Tab.0.bottom" timestamp="1593592613169">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="457" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593565246590" />
-    <state width="1515" height="457" key="GridCell.Tab.0.center" timestamp="1593565246590">
+    <state width="1515" height="229" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593592613169" />
+    <state width="1515" height="229" key="GridCell.Tab.0.center" timestamp="1593592613169">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="457" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593565246590" />
-    <state width="1515" height="457" key="GridCell.Tab.0.left" timestamp="1593565246590">
+    <state width="1515" height="229" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593592613169" />
+    <state width="1515" height="229" key="GridCell.Tab.0.left" timestamp="1593592613169">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="457" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593565246590" />
-    <state width="1515" height="457" key="GridCell.Tab.0.right" timestamp="1593565246590">
+    <state width="1515" height="229" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593592613169" />
+    <state width="1515" height="229" key="GridCell.Tab.0.right" timestamp="1593592613169">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="457" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593565246590" />
-    <state width="1515" height="457" key="GridCell.Tab.1.bottom" timestamp="1593565246478">
+    <state width="1515" height="229" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593592613169" />
+    <state width="1515" height="229" key="GridCell.Tab.1.bottom" timestamp="1593592613069">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="457" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593565246478" />
-    <state width="1515" height="457" key="GridCell.Tab.1.center" timestamp="1593565246478">
+    <state width="1515" height="229" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593592613069" />
+    <state width="1515" height="229" key="GridCell.Tab.1.center" timestamp="1593592613068">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="457" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593565246478" />
-    <state width="1515" height="457" key="GridCell.Tab.1.left" timestamp="1593565246478">
+    <state width="1515" height="229" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593592613068" />
+    <state width="1515" height="229" key="GridCell.Tab.1.left" timestamp="1593592613068">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="457" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593565246478" />
-    <state width="1515" height="457" key="GridCell.Tab.1.right" timestamp="1593565246478">
+    <state width="1515" height="229" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593592613068" />
+    <state width="1515" height="229" key="GridCell.Tab.1.right" timestamp="1593592613069">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="457" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593565246478" />
-    <state width="775" height="439" key="XDebugger.FullValuePopup" timestamp="1593440916031">
+    <state width="1515" height="229" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593592613069" />
+    <state width="775" height="439" key="XDebugger.FullValuePopup" timestamp="1593592287629">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="775" height="439" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1593440916031" />
+    <state width="775" height="439" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1593592287629" />
     <state x="361" y="174" width="705" height="594" key="find.popup" timestamp="1593565601326">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -239,10 +274,14 @@
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1593480668501" />
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="q_lines[i]" language="Python" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data/augmentation/correspondency.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
