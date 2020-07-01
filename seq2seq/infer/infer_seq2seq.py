@@ -42,7 +42,7 @@ def loop_talking(UseKeywords=False):
     for i in tqdm(range(len(raw_lines))):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
     all_lines = [raw_lines]
-    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W - 90-0.0059-.h5")
+    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -170-0.0109-.h5")
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     f_q = open("Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open("Online_A.txt", 'a', encoding='utf-8-sig')
