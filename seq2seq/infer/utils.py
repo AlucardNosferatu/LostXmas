@@ -21,6 +21,7 @@ def act_weather(city):
 
 
 def input_question(seq, word_to_index, all_composed, syn_dict):
+    seq = seq.replace('，', ',').replace('。', '.')
     seq = jieba.lcut(seq.strip(), cut_all=False)
     for k in range(len(seq)):
         if not seq[k] in word_to_index:

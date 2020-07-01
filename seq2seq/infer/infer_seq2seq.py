@@ -89,7 +89,7 @@ def loop_talking(UseKeywords=False):
                 for i in range(len(all_lines[j])):
                     line = all_lines[j][i]
                     line = line.replace(' ', '')
-                    if "【禁用】" in line:
+                    if "【禁用】" in lines[i]:
                         continue
 
                     # region use Similarity
