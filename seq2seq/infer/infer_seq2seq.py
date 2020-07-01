@@ -2,7 +2,7 @@ import pickle
 import tensorflow as tf
 from tqdm import tqdm
 
-from data.augmentation.grammar4fluency import mark_invalid
+from data.obsolete.grammar4fluency import mark_invalid
 from data.augmentation.similarity import similarity_complex, Keywords_IoU
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Input, dot, Activation, concatenate
@@ -42,7 +42,7 @@ def loop_talking(UseKeywords=False):
     for i in tqdm(range(len(raw_lines))):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
     all_lines = [raw_lines]
-    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W -110-0.0069-.h5")
+    question_model, answer_model = build_qa_model(wp="..\\train\\check_points\\W - 90-0.0059-.h5")
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
     f_q = open("Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open("Online_A.txt", 'a', encoding='utf-8-sig')
@@ -126,6 +126,10 @@ def loop_talking(UseKeywords=False):
                         delete = input("是否禁用？")
                         if delete == 'y':
                             lines = mark_invalid(similar_answers_from_data, lines)
+                            f_r.truncate(0)
+                            f_r.seek(0)
+                            f_r.writelines(lines)
+                            f_r.flush()
                     else:
                         print("没有在查找到相似回答。")
     f_r.truncate(0)
