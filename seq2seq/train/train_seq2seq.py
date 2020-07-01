@@ -1,6 +1,8 @@
 import os
 import sys
 import tensorflow as tf
+from tensorflow.python.keras.callbacks import EarlyStopping
+
 from data.data_tool import get_file_list
 from train.utils import generate_train, get_vocab_size
 from tensorflow.keras.layers import Embedding, LSTM, Input, dot, Activation, concatenate, TimeDistributed, Dense
@@ -95,7 +97,8 @@ def train_seq2seq(input_model):
                               #                           embeddings_data=None,
                               #                           update_freq='epoch'
                               )
-    callbacks_list = [checkpoint, reduce_lr]
+    early = EarlyStopping(monitor='loss', min_delta=0, patience=10, verbose=1, mode='auto')
+    callbacks_list = [checkpoint, reduce_lr, early]
 
     initial_epoch_ = 0
     file_list = os.listdir('check_points/')

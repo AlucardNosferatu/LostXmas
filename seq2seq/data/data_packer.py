@@ -1,4 +1,3 @@
-import os
 import pickle
 
 import jieba
@@ -8,8 +7,8 @@ from tqdm import tqdm
 
 from data.augmentation.blacklist import DFAFilter
 from data.augmentation.compressor import getSynDict
-from data.augmentation.frequency import getWords
 from data.augmentation.decomposition import getBaseWord, getComposed
+from data.augmentation.frequency import getWords
 from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data, \
     remove_banned
 
@@ -44,6 +43,12 @@ def read_conversation(forceSyn=True):
 
     # region Append extra data
     # question, answer = getExtra(gfw, question, answer)
+    # endregion
+
+    # region Append test log
+    q_path = '../infer/Online_Q.txt'
+    a_path = '../infer/Online_A.txt'
+    question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
     # endregion
 
     # region Process special chars
@@ -226,9 +231,6 @@ def getExtra(gfw, question, answer):
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
     q_path = 'obsolete/legacy/ChatterBot_Q.txt'
     a_path = 'obsolete/legacy/ChatterBot_A.txt'
-    question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
-    q_path = '../infer/Online_Q.txt'
-    a_path = '../infer/Online_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
     return question, answer
 
