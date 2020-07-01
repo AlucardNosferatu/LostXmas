@@ -59,7 +59,7 @@
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\resource\raw" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.grammar4fluency">
+  <component name="RunManager" selected="Python.infer_seq2seq">
     <configuration name="data_packer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="seq2seq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -189,65 +189,56 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1593485112783" />
-    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593510290729">
+    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593565579128">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593510290729" />
-    <state width="1515" height="247" key="GridCell.Tab.0.bottom" timestamp="1593560296436">
+    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593565579128" />
+    <state width="1515" height="457" key="GridCell.Tab.0.bottom" timestamp="1593565246590">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="247" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593560296436" />
-    <state width="1515" height="247" key="GridCell.Tab.0.center" timestamp="1593560296436">
+    <state width="1515" height="457" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593565246590" />
+    <state width="1515" height="457" key="GridCell.Tab.0.center" timestamp="1593565246590">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="247" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593560296436" />
-    <state width="1515" height="247" key="GridCell.Tab.0.left" timestamp="1593560296436">
+    <state width="1515" height="457" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593565246590" />
+    <state width="1515" height="457" key="GridCell.Tab.0.left" timestamp="1593565246590">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="247" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593560296436" />
-    <state width="1515" height="247" key="GridCell.Tab.0.right" timestamp="1593560296436">
+    <state width="1515" height="457" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593565246590" />
+    <state width="1515" height="457" key="GridCell.Tab.0.right" timestamp="1593565246590">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="247" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593560296436" />
-    <state width="1515" height="247" key="GridCell.Tab.1.bottom" timestamp="1593560296436">
+    <state width="1515" height="457" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593565246590" />
+    <state width="1515" height="457" key="GridCell.Tab.1.bottom" timestamp="1593565246478">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="247" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593560296436" />
-    <state width="1515" height="247" key="GridCell.Tab.1.center" timestamp="1593560296436">
+    <state width="1515" height="457" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593565246478" />
+    <state width="1515" height="457" key="GridCell.Tab.1.center" timestamp="1593565246478">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="247" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593560296436" />
-    <state width="1515" height="247" key="GridCell.Tab.1.left" timestamp="1593560296436">
+    <state width="1515" height="457" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593565246478" />
+    <state width="1515" height="457" key="GridCell.Tab.1.left" timestamp="1593565246478">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="247" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593560296436" />
-    <state width="1515" height="247" key="GridCell.Tab.1.right" timestamp="1593560296436">
+    <state width="1515" height="457" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593565246478" />
+    <state width="1515" height="457" key="GridCell.Tab.1.right" timestamp="1593565246478">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="247" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593560296436" />
+    <state width="1515" height="457" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593565246478" />
     <state width="775" height="439" key="XDebugger.FullValuePopup" timestamp="1593440916031">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="775" height="439" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1593440916031" />
-    <state x="732" y="217" width="705" height="536" key="find.popup" timestamp="1593507199122">
+    <state x="361" y="174" width="705" height="594" key="find.popup" timestamp="1593565601326">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="732" y="217" width="705" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1593507199122" />
+    <state x="361" y="174" width="705" height="594" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1593565601326" />
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1593480668501">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1593480668501" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data/augmentation/grammar4fluency.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="q_lines[i]" language="Python" />
