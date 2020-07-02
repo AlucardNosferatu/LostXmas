@@ -171,13 +171,13 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
             if data.__contains__('content'):
                 response = self.seq2seq.interact(data['content'])
                 self.send_response(200)
-                self.send_header("Content-type", "text/html")
+                self.send_header("Content-type", "application/json; charset=utf-8")
                 self.end_headers()
                 res = {'reply': response}
             elif data.__contains__('sync'):
                 response = self.seq2seq.education(new_answer=data['sync'])
                 self.send_response(200)
-                self.send_header("Content-type", "text/html")
+                self.send_header("Content-type", "application/json; charset=utf-8")
                 self.end_headers()
                 res = {'result': response}
             elif data.__contains__('include') or data.__contains__('exclude'):
@@ -185,12 +185,12 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 exclude = data.get('exclude', '')
                 _, log = self.seq2seq.orientation(include, exclude)
                 self.send_response(200)
-                self.send_header("Content-type", "text/html")
+                self.send_header("Content-type", "application/json; charset=utf-8")
                 self.end_headers()
                 res = {'result': log}
             else:
                 self.send_response(500)
-                self.send_header("Content-type", "text/html")
+                self.send_header("Content-type", "application/json; charset=utf-8")
                 self.end_headers()
                 res = {}
             rspstr = json.dumps(res, ensure_ascii=False)
