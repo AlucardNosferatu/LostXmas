@@ -86,6 +86,7 @@ class Seq2seq:
             self.f_a.write(new_answer + "\n")
             self.f_q.flush()
             self.f_a.flush()
+            self.currentA = new_answer
             return "新语料添加成功。"
 
     def orientation(self, include, exclude):
@@ -147,17 +148,20 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
 
         if self.path == "/":
             print(self.path)
-            content = self.seq2seq.currentQ + "\n" + self.seq2seq.currentA
+            content = self.seq2seq.currentQ + "<br>" + self.seq2seq.currentA + "<br>"
+            for each in self.seq2seq.info_log:
+                content += each + "<br>"
             self.send_response(200)
-            self.send_header("Content-type", "json")
+            self.send_header('Content-type', 'text/html; charset=utf-8')
             self.end_headers()
-            content = content.encode("gbk")
+            content = content.encode("utf-8")
             self.wfile.write(content)
         else:
             print("get path error")
 
     def do_POST(self):
         if self.path == "/":
+            res = {}
             print("postmsg recv, path right")
             data = self.rfile.read(int(self.headers["content-length"]))
             try:
@@ -170,12 +174,27 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 self.send_header("Content-type", "text/html")
                 self.end_headers()
                 res = {'reply': response}
-                rspstr = json.dumps(res, ensure_ascii=False)
-                self.wfile.write(rspstr.encode("gbk"))
+            elif data.__contains__('sync'):
+                response = self.seq2seq.education(new_answer=data['sync'])
+                self.send_response(200)
+                self.send_header("Content-type", "text/html")
+                self.end_headers()
+                res = {'result': response}
+            elif data.__contains__('include') or data.__contains__('exclude'):
+                include = data.get('include', '')
+                exclude = data.get('exclude', '')
+                _, log = self.seq2seq.orientation(include, exclude)
+                self.send_response(200)
+                self.send_header("Content-type", "text/html")
+                self.end_headers()
+                res = {'result': log}
             else:
                 self.send_response(500)
                 self.send_header("Content-type", "text/html")
                 self.end_headers()
+                res = {}
+            rspstr = json.dumps(res, ensure_ascii=False)
+            self.wfile.write(rspstr.encode("utf-8"))
         else:
             print("postmsg recv, path error")
             self.send_response(500)
