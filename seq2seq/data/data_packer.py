@@ -13,7 +13,7 @@ from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_engli
     remove_banned
 
 
-def read_conversation(forceSyn=True):
+def read_conversation(forceSyn=False):
     # region get Q&A
     gfw = DFAFilter()
     gfw.parse('augmentation\\blacklist')
@@ -27,16 +27,17 @@ def read_conversation(forceSyn=True):
     for i in tqdm(range(len(lines))):
         line = lines[i]
         if '\t' not in line:
-            print(line)
+            continue
         line = line.split('\t')
         q = line[0].strip()
         a = line[1].strip()
-        q_filter = gfw.filter(q, '*')
-        a_filter = gfw.filter(a, '*')
-        if q_filter[1] or a_filter[1]:
-            # print(q_filter[0])
-            # print(a_filter[0])
-            continue
+        if 'Carol' in q + a or '守财奴' in q + a:
+            pass
+        else:
+            q_filter = gfw.filter(q, '*')
+            a_filter = gfw.filter(a, '*')
+            if q_filter[1] or a_filter[1]:
+                continue
         question.append(' '.join(jieba.lcut(Traditional2Simplified(q).strip(), cut_all=False)))
         answer.append(' '.join(jieba.lcut(Traditional2Simplified(a).strip(), cut_all=False)))
     # endregion

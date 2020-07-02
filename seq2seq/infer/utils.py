@@ -42,10 +42,8 @@ def input_question(seq, word_to_index, all_composed, syn_dict):
         seq = sequence.pad_sequences([seq], maxlen=maxLen,
                                      padding='post', truncating='post')
     except KeyError as e:
-        seq = None
-        print("（出现了Carol没法理解的词汇。。。：", e.args[0], "）")
-
-    print(seq)
+        sentence = None
+        seq = "出现了Carol没法理解的词汇。。。：" + str(e.args[0])
     return seq, sentence
 
 
