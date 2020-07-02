@@ -14,16 +14,21 @@ from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_engli
 
 
 def read_conversation(forceSyn=False):
-    # region get Q&A
     gfw = DFAFilter()
     gfw.parse('augmentation\\blacklist')
+    # region Append test log
+    q_path = '../infer/Online_Q.txt'
+    a_path = '../infer/Online_A.txt'
+    question, answer = append_extra_data(gfw, q_path, a_path, [], [])
+    # endregion
+
+    # region get Q&A
     with open('resource/raw/all_corpus.tsv', 'r', encoding='utf-8-sig') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
         lines = remove_brackets(lines)
         lines = remove_banned(lines)
-    question = []
-    answer = []
+
     for i in tqdm(range(len(lines))):
         line = lines[i]
         if '\t' not in line:
@@ -44,12 +49,6 @@ def read_conversation(forceSyn=False):
 
     # region Append extra data
     # question, answer = getExtra(gfw, question, answer)
-    # endregion
-
-    # region Append test log
-    q_path = '../infer/Online_Q.txt'
-    a_path = '../infer/Online_A.txt'
-    question, answer = append_extra_data(gfw, q_path, a_path, question, answer)
     # endregion
 
     # region Process special chars

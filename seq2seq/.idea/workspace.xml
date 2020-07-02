@@ -21,7 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data_packer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_packer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/all_corpus.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/all_corpus.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infer/Online_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_A.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infer/Online_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_Q.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" afterPath="$PROJECT_DIR$/model.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +64,7 @@
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\resource\raw" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.infer_seq2seq">
     <configuration name="correspondency" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="seq2seq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -250,38 +254,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593655397655" />
-    <state width="1515" height="291" key="GridCell.Tab.0.bottom" timestamp="1593677629105">
+    <state width="1515" height="291" key="GridCell.Tab.0.bottom" timestamp="1593681412500">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593677629105" />
-    <state width="1515" height="291" key="GridCell.Tab.0.center" timestamp="1593677629105">
+    <state width="1515" height="291" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593681412500" />
+    <state width="1515" height="291" key="GridCell.Tab.0.center" timestamp="1593681412500">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593677629105" />
-    <state width="1515" height="291" key="GridCell.Tab.0.left" timestamp="1593677629105">
+    <state width="1515" height="291" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593681412500" />
+    <state width="1515" height="291" key="GridCell.Tab.0.left" timestamp="1593681412500">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593677629105" />
-    <state width="1515" height="291" key="GridCell.Tab.0.right" timestamp="1593677629105">
+    <state width="1515" height="291" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593681412500" />
+    <state width="1515" height="291" key="GridCell.Tab.0.right" timestamp="1593681412500">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593677629105" />
-    <state width="1515" height="291" key="GridCell.Tab.1.bottom" timestamp="1593677629105">
+    <state width="1515" height="291" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593681412500" />
+    <state width="1515" height="291" key="GridCell.Tab.1.bottom" timestamp="1593681412500">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593677629105" />
-    <state width="1515" height="291" key="GridCell.Tab.1.center" timestamp="1593677629105">
+    <state width="1515" height="291" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593681412500" />
+    <state width="1515" height="291" key="GridCell.Tab.1.center" timestamp="1593681412500">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593677629105" />
-    <state width="1515" height="291" key="GridCell.Tab.1.left" timestamp="1593677629105">
+    <state width="1515" height="291" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593681412500" />
+    <state width="1515" height="291" key="GridCell.Tab.1.left" timestamp="1593681412500">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593677629105" />
-    <state width="1515" height="291" key="GridCell.Tab.1.right" timestamp="1593677629105">
+    <state width="1515" height="291" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593681412500" />
+    <state width="1515" height="291" key="GridCell.Tab.1.right" timestamp="1593681412500">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="291" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593677629105" />
+    <state width="1515" height="291" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593681412500" />
     <state width="775" height="439" key="XDebugger.FullValuePopup" timestamp="1593673880048">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

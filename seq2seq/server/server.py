@@ -30,7 +30,7 @@ class Seq2seq:
     syn = None
     UseKeywords = False
 
-    def __init__(self, UseKeywords=False, BaseDir='../'):
+    def __init__(self, UseKeywords=False, BaseDir='../', WeightName="W -154-0.0107-.h5"):
         self.UseKeywords = UseKeywords
         self.BaseDir = BaseDir
         self.f_r = open(self.BaseDir + "data/resource/raw/all_corpus.tsv", 'r+', encoding='utf-8-sig')
@@ -41,7 +41,7 @@ class Seq2seq:
             self.a_lines_list = [lines]
         self.q_model, self.a_model = build_qa_model(
             BaseDir=self.BaseDir,
-            wp=BaseDir + "train/check_points/W -154-0.0107-.h5"
+            wp=BaseDir + "train/check_points/" + WeightName
         )
         _, _, _, _, self.word_to_index, self.index_to_word = load_resource(BaseDir=self.BaseDir)
         self.f_q = open(self.BaseDir + "infer/Online_Q.txt", 'a', encoding='utf-8-sig')
@@ -133,16 +133,16 @@ class Seq2seq:
             self.f_r.seek(0)
             self.f_r.writelines(self.qa_lines)
             self.f_r.flush()
-            return "被选中语料禁用成功。"
+            return "被选中的语料禁用成功。"
         else:
-            return "没有查找到相似回答。"
+            return "相似回答搜索结果为空。"
 
 
 class MyRequestHandler(SimpleHTTPRequestHandler):
     protocol_version = "HTTP/1.0"
     server_version = "PSHS/0.1"
     sys_version = "Python/3.7.x"
-    seq2seq = Seq2seq(BaseDir='')
+    seq2seq = Seq2seq(BaseDir='', WeightName="W -170-0.0104-.h5")
 
     def do_GET(self):
 
@@ -179,17 +179,23 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 self.send_response(200)
                 self.send_header("Content-type", "application/json; charset=utf-8")
                 self.end_headers()
-                res = {'result': response}
+                res = {'reply': response}
             elif data.__contains__('include') or data.__contains__('exclude'):
                 include = data.get('include', '')
                 exclude = data.get('exclude', '')
-                _, log = self.seq2seq.orientation(include, exclude)
+                _, response = self.seq2seq.orientation(include, exclude)
                 self.send_response(200)
                 self.send_header("Content-type", "application/json; charset=utf-8")
                 self.end_headers()
-                res = {'result': log}
+                res = {'reply': response}
+            elif data.__contains__('purge'):
+                response = self.seq2seq.correction()
+                self.send_response(200)
+                self.send_header("Content-type", "application/json; charset=utf-8")
+                self.end_headers()
+                res = {'reply': response}
             else:
-                self.send_response(500)
+                self.send_response(400)
                 self.send_header("Content-type", "application/json; charset=utf-8")
                 self.end_headers()
                 res = {}
