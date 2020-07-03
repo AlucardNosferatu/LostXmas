@@ -97,7 +97,7 @@ def train_seq2seq(input_model):
                               #                           embeddings_data=None,
                               #                           update_freq='epoch'
                               )
-    early = EarlyStopping(monitor='loss', min_delta=0, patience=5, verbose=1, mode='auto')
+    early = EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=1, mode='auto')
     callbacks_list = [checkpoint, early]
 
     initial_epoch_ = 0

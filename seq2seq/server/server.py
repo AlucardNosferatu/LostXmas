@@ -32,7 +32,7 @@ class Seq2seq:
     syn = None
     UseKeywords = False
 
-    def __init__(self, UseKeywords=False, BaseDir='../', WeightName="W -154-0.0107-.h5"):
+    def __init__(self, UseKeywords=False, BaseDir='../', WeightName="W -140-0.0120-.h5"):
         self.UseKeywords = UseKeywords
         self.BaseDir = BaseDir
         self.f_r = open(self.BaseDir + "data/resource/raw/all_corpus.tsv", 'r+', encoding='utf-8-sig')
@@ -151,7 +151,7 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
     protocol_version = "HTTP/1.0"
     server_version = "PSHS/0.1"
     sys_version = "Python/3.7.x"
-    seq2seq = Seq2seq(BaseDir='', WeightName="W -170-0.0104-.h5")
+    seq2seq = Seq2seq(BaseDir='', WeightName="W -140-0.0120-.h5")
 
     def do_GET(self):
 
