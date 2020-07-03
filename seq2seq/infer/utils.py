@@ -6,6 +6,8 @@ import numpy as np
 import synonyms
 from tensorflow.keras.preprocessing import sequence
 
+from server.hyper_transformer import translate
+
 maxLen = 20
 
 
@@ -25,15 +27,16 @@ def input_question(seq, word_to_index, all_composed, syn_dict):
     seq = jieba.lcut(seq.strip(), cut_all=False)
     for k in range(len(seq)):
         if not seq[k] in word_to_index:
-            for key in syn_dict:
-                if seq[k] in syn_dict[key]:
-                    seq[k] = key
-                    break
-                elif key in synonyms.nearby(seq[k])[0]:
-                    seq[k] = key
-                    break
-        if seq[k] in all_composed:
-            seq[k] = ' '.join(list(seq[k]))
+            seq[k] = translate(word_to_index, seq[k])
+            # for key in syn_dict:
+            #     if seq[k] in syn_dict[key]:
+            #         seq[k] = key
+            #         break
+            #     elif key in synonyms.nearby(seq[k])[0]:
+            #         seq[k] = key
+            #         break
+        # if seq[k] in all_composed:
+        #     seq[k] = ' '.join(list(seq[k]))
     seq = ' '.join(seq)
     seq = seq.split(' ')
     sentence = seq

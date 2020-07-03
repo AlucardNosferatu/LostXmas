@@ -13,7 +13,7 @@ from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_engli
     remove_banned
 
 
-def read_conversation(forceSyn=False):
+def read_conversation(forceSyn=False, forceDec=False):
     gfw = DFAFilter()
     gfw.parse('augmentation\\blacklist')
     # region Append test log
@@ -117,19 +117,20 @@ def read_conversation(forceSyn=False):
     all_composable = getComposed(base_words, freq_dist)
     with open('resource/composable.pkl', 'wb') as f:
         pickle.dump(all_composable, f, pickle.HIGHEST_PROTOCOL)
-    for comp in all_composable:
-        del freq_dist[freq_dist.index(comp)]
-    sentences = [question, answer]
-    for i in range(len(sentences)):
-        sentence = sentences[i]
-        for j in tqdm(range(len(sentence))):
-            words = sentence[j].split(' ')
-            for k in range(len(words)):
-                if words[k] in all_composable:
-                    words[k] = ' '.join(list(words[k]))
-            sentence[j] = ' '.join(words)
-        sentences[i] = sentence
-    question, answer = sentences
+    if forceDec:
+        for comp in all_composable:
+            del freq_dist[freq_dist.index(comp)]
+        sentences = [question, answer]
+        for i in range(len(sentences)):
+            sentence = sentences[i]
+            for j in tqdm(range(len(sentence))):
+                words = sentence[j].split(' ')
+                for k in range(len(words)):
+                    if words[k] in all_composable:
+                        words[k] = ' '.join(list(words[k]))
+                sentence[j] = ' '.join(words)
+            sentences[i] = sentence
+        question, answer = sentences
     # endregion
 
     placeholders = ['BOS', 'EOS']
