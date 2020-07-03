@@ -25,9 +25,11 @@ def act_weather(city):
 def input_question(seq, word_to_index, all_composed, syn_dict):
     seq = seq.replace('，', ',').replace('。', '.')
     seq = jieba.lcut(seq.strip(), cut_all=False)
+    use_syn = False
     for k in range(len(seq)):
         if not seq[k] in word_to_index:
-            seq[k] = translate(word_to_index, seq[k])
+            use_syn = True
+            seq[k] = translate(word_to_index, seq[k], [seq[k]])
             # for key in syn_dict:
             #     if seq[k] in syn_dict[key]:
             #         seq[k] = key
@@ -38,6 +40,9 @@ def input_question(seq, word_to_index, all_composed, syn_dict):
         # if seq[k] in all_composed:
         #     seq[k] = ' '.join(list(seq[k]))
     seq = ' '.join(seq)
+    if use_syn:
+        print("出现未知词汇，采用同义词替换：")
+        print(seq.replace(' ', ''))
     seq = seq.split(' ')
     sentence = seq
     try:
@@ -52,11 +57,11 @@ def input_question(seq, word_to_index, all_composed, syn_dict):
 
 def decode_greedy(seq, sentence, question_model, answer_model, word_to_index, index_to_word):
     question = seq
-    for index in question[0]:
-        if int(index) == 5900:
-            for index_ in question[0]:
-                if index_ in [7851, 11842, 2406, 3485, 823, 12773, 8078]:
-                    return act_weather(index_to_word[index_])
+    # for index in question[0]:
+    #     if int(index) == 5900:
+    #         for index_ in question[0]:
+    #             if index_ in [7851, 11842, 2406, 3485, 823, 12773, 8078]:
+    #                 return act_weather(index_to_word[index_])
     answer = np.zeros((1, 1))
     attention_plot = np.zeros((20, 20))
     answer[0, 0] = word_to_index['BOS']

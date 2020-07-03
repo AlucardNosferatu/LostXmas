@@ -28,8 +28,8 @@ class Seq2seq:
     a_model = None
     word_to_index = None
     index_to_word = None
-    all_composed = None
-    syn = None
+    # all_composed = None
+    # syn = None
     UseKeywords = False
 
     def __init__(self, UseKeywords=False, BaseDir='../', WeightName="W -140-0.0120-.h5"):
@@ -48,10 +48,10 @@ class Seq2seq:
         _, _, _, _, self.word_to_index, self.index_to_word = load_resource(BaseDir=self.BaseDir)
         self.f_q = open(self.BaseDir + "infer/Online_Q.txt", 'a', encoding='utf-8-sig')
         self.f_a = open(self.BaseDir + "infer/Online_A.txt", 'a', encoding='utf-8-sig')
-        with open(BaseDir + 'data/resource/composable.pkl', 'rb') as f:
-            self.all_composed = pickle.load(f)
-        with open(BaseDir + 'data/resource/syn_dict.pkl', 'rb') as f:
-            self.syn = pickle.load(f)
+        # with open(BaseDir + 'data/resource/composable.pkl', 'rb') as f:
+        #     self.all_composed = pickle.load(f)
+        # with open(BaseDir + 'data/resource/syn_dict.pkl', 'rb') as f:
+        #     self.syn = pickle.load(f)
         print(self.interact(new_question="你好"))
 
     def interact(self, new_question):
@@ -62,8 +62,8 @@ class Seq2seq:
         new_question, sentence = input_question(
             seq=new_question,
             word_to_index=self.word_to_index,
-            all_composed=self.all_composed,
-            syn_dict=self.syn
+            all_composed=None,
+            syn_dict=None
         )
         if sentence is None:
             self.currentA = "DEBUG:" + new_question
@@ -151,7 +151,7 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
     protocol_version = "HTTP/1.0"
     server_version = "PSHS/0.1"
     sys_version = "Python/3.7.x"
-    seq2seq = Seq2seq(BaseDir='', WeightName="W -140-0.0120-.h5")
+    seq2seq = Seq2seq(BaseDir='', WeightName="W - 96-0.0499-.h5")
 
     def do_GET(self):
 
