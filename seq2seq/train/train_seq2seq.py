@@ -15,12 +15,12 @@ def build_seq2seq(BaseDir='../', vocab_size=None, weight_path=None):
     if vocab_size is None:
         print("vocab_size must be defined!")
         sys.exit()
-    truncatednormal = TruncatedNormal(mean=0.0, stddev=0.05)
+    truncated_normal = TruncatedNormal(mean=0.0, stddev=0.05)
     embed_layer = Embedding(input_dim=vocab_size,
                             output_dim=100,
                             mask_zero=True,
                             input_length=None,
-                            embeddings_initializer=truncatednormal)
+                            embeddings_initializer=truncated_normal)
     LSTM_encoder = LSTM(512,
                         return_sequences=True,
                         return_state=True,

@@ -1,5 +1,7 @@
 import json
 import pickle
+import sys
+
 import tensorflow as tf
 from tqdm import tqdm
 from urllib import parse
@@ -111,7 +113,11 @@ class Seq2seq:
                         scores, mean_score, max_score, std_score = scores
                         if max_score > 0.5:
                             self.similar_answers_from_data.append(i)
-                            self.info_log.append(" 行号：" + str(i + 1) + " 内容：" + line + " 最高分：" + str(max_score))
+                            self.info_log.append(
+                                " 行号：" + str(i + 1) + " 内容：" + self.qa_lines[i].replace(
+                                    "\t",
+                                    "<-------"
+                                ) + " 最高分：" + str(max_score))
                 # endregion
 
                 # region Use Keywords
@@ -120,7 +126,10 @@ class Seq2seq:
                     if i_o_u >= 0.25 and matched >= 2:
                         self.similar_answers_from_data.append(i)
                         self.info_log.append(
-                            " 行号：" + str(i + 1) + " 内容：" + line + " IoU：" + str(i_o_u) + " 相同：" + str(matched))
+                            " 行号：" + str(i + 1) + " 内容：" + self.qa_lines[i].replace(
+                                "\t",
+                                "<-------"
+                            ) + " IoU：" + str(i_o_u) + " 相同：" + str(matched))
 
                 # endregion
 
@@ -161,7 +170,7 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         if self.path == "/":
-            res = {}
+            response = ""
             print("postmsg recv, path right")
             data = self.rfile.read(int(self.headers["content-length"]))
             try:
@@ -171,36 +180,26 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
             if data.__contains__('content'):
                 response = self.seq2seq.interact(data['content'])
                 self.send_response(200)
-                self.send_header("Content-type", "application/json; charset=utf-8")
-                self.end_headers()
-                res = {'reply': response}
             elif data.__contains__('sync'):
                 response = self.seq2seq.education(new_answer=data['sync'])
                 self.send_response(200)
-                self.send_header("Content-type", "application/json; charset=utf-8")
-                self.end_headers()
-                res = {'reply': response}
             elif data.__contains__('include') or data.__contains__('exclude'):
                 include = data.get('include', '')
                 exclude = data.get('exclude', '')
                 _, response = self.seq2seq.orientation(include, exclude)
                 self.send_response(200)
-                self.send_header("Content-type", "application/json; charset=utf-8")
-                self.end_headers()
-                res = {'reply': response}
             elif data.__contains__('purge'):
                 response = self.seq2seq.correction()
                 self.send_response(200)
-                self.send_header("Content-type", "application/json; charset=utf-8")
-                self.end_headers()
-                res = {'reply': response}
             else:
                 self.send_response(400)
-                self.send_header("Content-type", "application/json; charset=utf-8")
-                self.end_headers()
-                res = {}
+            self.send_header("Content-type", "application/json; charset=utf-8")
+            self.end_headers()
+            res = {'reply': response}
             rspstr = json.dumps(res, ensure_ascii=False)
             self.wfile.write(rspstr.encode("utf-8"))
+            if response == "DEBUG:那不打扰你了，回聊~":
+                sys.exit()
         else:
             print("postmsg recv, path error")
             self.send_response(500)
