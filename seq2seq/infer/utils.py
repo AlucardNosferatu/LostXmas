@@ -6,7 +6,7 @@ import numpy as np
 import synonyms
 from tensorflow.keras.preprocessing import sequence
 
-from server.hyper_transformer import translator
+from server.hyper_transformer import translator, recursive_translator
 
 maxLen = 20
 
@@ -29,7 +29,8 @@ def input_question(seq, word_to_index, all_composed, syn_dict):
     for k in range(len(seq)):
         if not seq[k] in word_to_index:
             use_syn = True
-            seq[k] = translator(word_to_index, seq[k])
+            # seq[k] = translator(word_to_index, seq[k])
+            seq[k] = recursive_translator(word_to_index, seq[k], 0)
             # for key in syn_dict:
             #     if seq[k] in syn_dict[key]:
             #         seq[k] = key
