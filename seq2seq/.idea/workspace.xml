@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/inspiration.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/inspiration.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/inspiration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,10 +215,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="0" y="185" key="#xdebugger.XInspectDialog/0.0.1536.864@0.0.1536.864" timestamp="1593592295397" />
-    <state x="902" y="200" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593861105013">
+    <state x="902" y="200" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593872213875">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="902" y="200" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593861105013" />
+    <state x="902" y="200" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593872213875" />
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1593595904834">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -231,38 +231,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593850432332" />
-    <state width="1515" height="258" key="GridCell.Tab.0.bottom" timestamp="1593865761064">
+    <state width="1515" height="258" key="GridCell.Tab.0.bottom" timestamp="1593872390205">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593865761064" />
-    <state width="1515" height="258" key="GridCell.Tab.0.center" timestamp="1593865761064">
+    <state width="1515" height="258" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593872390205" />
+    <state width="1515" height="258" key="GridCell.Tab.0.center" timestamp="1593872390205">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593865761064" />
-    <state width="1515" height="258" key="GridCell.Tab.0.left" timestamp="1593865761064">
+    <state width="1515" height="258" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593872390205" />
+    <state width="1515" height="258" key="GridCell.Tab.0.left" timestamp="1593872390205">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593865761064" />
-    <state width="1515" height="258" key="GridCell.Tab.0.right" timestamp="1593865761064">
+    <state width="1515" height="258" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593872390205" />
+    <state width="1515" height="258" key="GridCell.Tab.0.right" timestamp="1593872390205">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593865761064" />
-    <state width="1515" height="258" key="GridCell.Tab.1.bottom" timestamp="1593865763618">
+    <state width="1515" height="258" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593872390205" />
+    <state width="1515" height="258" key="GridCell.Tab.1.bottom" timestamp="1593872390205">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593865763618" />
-    <state width="1515" height="258" key="GridCell.Tab.1.center" timestamp="1593865763618">
+    <state width="1515" height="258" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593872390205" />
+    <state width="1515" height="258" key="GridCell.Tab.1.center" timestamp="1593872390205">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593865763618" />
-    <state width="1515" height="258" key="GridCell.Tab.1.left" timestamp="1593865763618">
+    <state width="1515" height="258" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593872390205" />
+    <state width="1515" height="258" key="GridCell.Tab.1.left" timestamp="1593872390205">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593865763618" />
-    <state width="1515" height="258" key="GridCell.Tab.1.right" timestamp="1593865763618">
+    <state width="1515" height="258" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593872390205" />
+    <state width="1515" height="258" key="GridCell.Tab.1.right" timestamp="1593872390205">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593865763618" />
+    <state width="1515" height="258" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593872390205" />
     <state x="270" y="76" key="SettingsEditor" timestamp="1593819985299">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -337,6 +337,26 @@
           <url>file://$PROJECT_DIR$/../../../../../../Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/music_dl/__main__.py</url>
           <line>100</line>
           <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../../../../Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/faketranslate/translate.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../../../../Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/faketranslate/__init__.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../../../../Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/faketranslate/translate.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../../../../Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/faketranslate/translate.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
