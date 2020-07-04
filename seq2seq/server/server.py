@@ -32,9 +32,9 @@ class Seq2seq:
     # syn = None
     UseKeywords = False
 
-    def __init__(self, UseKeywords=False, BaseDir='../', WeightName="W -140-0.0120-.h5"):
-        self.UseKeywords = UseKeywords
-        self.BaseDir = BaseDir
+    def __init__(self, use_keywords=False, base_dir='../', weight_name="W -140-0.0120-.h5"):
+        self.UseKeywords = use_keywords
+        self.BaseDir = base_dir
         self.f_r = open(self.BaseDir + "data/resource/raw/all_corpus.tsv", 'r+', encoding='utf-8-sig')
         self.qa_lines = self.f_r.readlines()
         lines = self.qa_lines.copy()
@@ -43,7 +43,7 @@ class Seq2seq:
             self.a_lines_list = [lines]
         self.q_model, self.a_model = build_qa_model(
             BaseDir=self.BaseDir,
-            wp=BaseDir + "train/check_points/" + WeightName
+            wp=base_dir + "train/check_points/" + weight_name
         )
         _, _, _, _, self.word_to_index, self.index_to_word = load_resource(BaseDir=self.BaseDir)
         self.f_q = open(self.BaseDir + "infer/Online_Q.txt", 'a', encoding='utf-8-sig')
@@ -151,7 +151,7 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
     protocol_version = "HTTP/1.0"
     server_version = "PSHS/0.1"
     sys_version = "Python/3.7.x"
-    seq2seq = Seq2seq(BaseDir='', WeightName="W - 96-0.0499-.h5")
+    seq2seq = Seq2seq(base_dir='', weight_name="W - 38-0.0415-.h5")
 
     def do_GET(self):
 

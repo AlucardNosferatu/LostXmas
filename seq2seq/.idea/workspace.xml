@@ -20,9 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gui/unknown.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gui/unknown.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gui/unknown_support.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/resource/raw/all_corpus.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/all_corpus.tsv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infer/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/infer/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/mining/OCR/OCR.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/mining/OCR/OCR.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +53,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/hyper_transformer.py" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/mining/OCR/OCR.py" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -61,7 +65,28 @@
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\resource\raw" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.data_packer">
+  <component name="RunManager" selected="Python.OCR">
+    <configuration name="OCR" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="seq2seq" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/mining/OCR" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/mining/OCR/OCR.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="data_packer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="seq2seq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -75,27 +100,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/data_packer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="hyper_transformer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="seq2seq" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/server" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server/hyper_transformer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -149,8 +153,8 @@
     <list>
       <item itemvalue="Python.data_packer" />
       <item itemvalue="Python.train_seq2seq" />
-      <item itemvalue="Python.hyper_transformer" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.OCR" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -179,10 +183,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593743898178">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593819312879">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593743898178" />
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593819312879" />
     <state x="510" y="232" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593595040575">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -203,46 +207,46 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="626" y="179" key="EnvironmentVariablesDialog/0.0.1536.864@0.0.1536.864" timestamp="1593614341407" />
-    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593743896191">
+    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1593819307684">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593743896191" />
-    <state width="1515" height="303" key="GridCell.Tab.0.bottom" timestamp="1593780501331">
+    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593819307684" />
+    <state width="1515" height="304" key="GridCell.Tab.0.bottom" timestamp="1593838523577">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="303" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593780501331" />
-    <state width="1515" height="303" key="GridCell.Tab.0.center" timestamp="1593780501331">
+    <state width="1515" height="304" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593838523577" />
+    <state width="1515" height="304" key="GridCell.Tab.0.center" timestamp="1593838523577">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="303" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593780501331" />
-    <state width="1515" height="303" key="GridCell.Tab.0.left" timestamp="1593780501331">
+    <state width="1515" height="304" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593838523577" />
+    <state width="1515" height="304" key="GridCell.Tab.0.left" timestamp="1593838523577">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="303" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593780501331" />
-    <state width="1515" height="303" key="GridCell.Tab.0.right" timestamp="1593780501331">
+    <state width="1515" height="304" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593838523577" />
+    <state width="1515" height="304" key="GridCell.Tab.0.right" timestamp="1593838523577">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="303" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593780501331" />
-    <state width="1515" height="303" key="GridCell.Tab.1.bottom" timestamp="1593780501202">
+    <state width="1515" height="304" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593838523577" />
+    <state width="1515" height="304" key="GridCell.Tab.1.bottom" timestamp="1593838523431">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="303" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593780501202" />
-    <state width="1515" height="303" key="GridCell.Tab.1.center" timestamp="1593780501202">
+    <state width="1515" height="304" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593838523431" />
+    <state width="1515" height="304" key="GridCell.Tab.1.center" timestamp="1593838523431">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="303" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593780501202" />
-    <state width="1515" height="303" key="GridCell.Tab.1.left" timestamp="1593780501202">
+    <state width="1515" height="304" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593838523431" />
+    <state width="1515" height="304" key="GridCell.Tab.1.left" timestamp="1593838523431">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="303" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593780501202" />
-    <state width="1515" height="303" key="GridCell.Tab.1.right" timestamp="1593780501202">
+    <state width="1515" height="304" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593838523431" />
+    <state width="1515" height="304" key="GridCell.Tab.1.right" timestamp="1593838523431">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="303" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593780501202" />
-    <state x="270" y="76" key="SettingsEditor" timestamp="1593764352106">
+    <state width="1515" height="304" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593838523431" />
+    <state x="270" y="76" key="SettingsEditor" timestamp="1593819985299">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="270" y="76" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1593764352106" />
+    <state x="270" y="76" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1593819985299" />
     <state width="775" height="439" key="XDebugger.FullValuePopup" timestamp="1593673880048">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
