@@ -231,38 +231,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593850432332" />
-    <state width="1515" height="258" key="GridCell.Tab.0.bottom" timestamp="1593915235785">
+    <state width="1515" height="258" key="GridCell.Tab.0.bottom" timestamp="1593915453844">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593915235785" />
-    <state width="1515" height="258" key="GridCell.Tab.0.center" timestamp="1593915235785">
+    <state width="1515" height="258" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593915453844" />
+    <state width="1515" height="258" key="GridCell.Tab.0.center" timestamp="1593915453844">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593915235785" />
-    <state width="1515" height="258" key="GridCell.Tab.0.left" timestamp="1593915235785">
+    <state width="1515" height="258" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593915453844" />
+    <state width="1515" height="258" key="GridCell.Tab.0.left" timestamp="1593915453844">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593915235785" />
-    <state width="1515" height="258" key="GridCell.Tab.0.right" timestamp="1593915235785">
+    <state width="1515" height="258" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593915453844" />
+    <state width="1515" height="258" key="GridCell.Tab.0.right" timestamp="1593915453844">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593915235785" />
-    <state width="1515" height="258" key="GridCell.Tab.1.bottom" timestamp="1593915239644">
+    <state width="1515" height="258" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593915453844" />
+    <state width="1515" height="258" key="GridCell.Tab.1.bottom" timestamp="1593915453736">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593915239644" />
-    <state width="1515" height="258" key="GridCell.Tab.1.center" timestamp="1593915239644">
+    <state width="1515" height="258" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593915453736" />
+    <state width="1515" height="258" key="GridCell.Tab.1.center" timestamp="1593915453736">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593915239644" />
-    <state width="1515" height="258" key="GridCell.Tab.1.left" timestamp="1593915239644">
+    <state width="1515" height="258" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593915453736" />
+    <state width="1515" height="258" key="GridCell.Tab.1.left" timestamp="1593915453736">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593915239644" />
-    <state width="1515" height="258" key="GridCell.Tab.1.right" timestamp="1593915239644">
+    <state width="1515" height="258" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593915453736" />
+    <state width="1515" height="258" key="GridCell.Tab.1.right" timestamp="1593915453736">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593915239644" />
+    <state width="1515" height="258" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593915453736" />
     <state x="270" y="76" key="SettingsEditor" timestamp="1593819985299">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -357,11 +357,6 @@
           <url>file://$PROJECT_DIR$/../../../../../../Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/faketranslate/translate.py</url>
           <line>11</line>
           <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/server/inspiration.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="96" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
