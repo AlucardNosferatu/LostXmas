@@ -21,7 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resource/raw/all_corpus.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resource/raw/all_corpus.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infer/Online_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_A.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infer/Online_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_Q.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" afterPath="$PROJECT_DIR$/model.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/inspiration.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/inspiration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +68,7 @@
       <recent name="C:\Users\16413\Documents\GitHub\LostXmas\seq2seq\data\resource\raw" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.inspiration">
+  <component name="RunManager" selected="Python.OCR">
     <configuration name="OCR" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="seq2seq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,27 +103,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/data_packer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="inspiration" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="seq2seq" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/server" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server/inspiration.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -174,7 +158,6 @@
       <item itemvalue="Python.train_seq2seq" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.OCR" />
-      <item itemvalue="Python.inspiration" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -203,10 +186,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593850434365">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593941702100">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593850434365" />
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1593941702100" />
     <state x="510" y="232" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593595040575">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -215,10 +198,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="0" y="185" key="#xdebugger.XInspectDialog/0.0.1536.864@0.0.1536.864" timestamp="1593592295397" />
-    <state x="803" y="264" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593920734630">
+    <state x="803" y="264" width="488" height="562" key="#xdebugger.evaluate" timestamp="1593921752461">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="803" y="264" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593920734630" />
+    <state x="803" y="264" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1593921752461" />
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1593595904834">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -231,38 +214,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593850432332" />
-    <state width="1515" height="258" key="GridCell.Tab.0.bottom" timestamp="1593920875309">
+    <state width="1515" height="258" key="GridCell.Tab.0.bottom" timestamp="1593941997743">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593920875309" />
-    <state width="1515" height="258" key="GridCell.Tab.0.center" timestamp="1593920875308">
+    <state width="1515" height="258" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593941997743" />
+    <state width="1515" height="258" key="GridCell.Tab.0.center" timestamp="1593941997743">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593920875308" />
-    <state width="1515" height="258" key="GridCell.Tab.0.left" timestamp="1593920875308">
+    <state width="1515" height="258" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593941997743" />
+    <state width="1515" height="258" key="GridCell.Tab.0.left" timestamp="1593941997743">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593920875308" />
-    <state width="1515" height="258" key="GridCell.Tab.0.right" timestamp="1593920875308">
+    <state width="1515" height="258" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593941997743" />
+    <state width="1515" height="258" key="GridCell.Tab.0.right" timestamp="1593941997743">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593920875308" />
-    <state width="1515" height="258" key="GridCell.Tab.1.bottom" timestamp="1593920887739">
+    <state width="1515" height="258" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593941997743" />
+    <state width="1515" height="258" key="GridCell.Tab.1.bottom" timestamp="1593941997607">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593920887739" />
-    <state width="1515" height="258" key="GridCell.Tab.1.center" timestamp="1593920887738">
+    <state width="1515" height="258" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593941997607" />
+    <state width="1515" height="258" key="GridCell.Tab.1.center" timestamp="1593941997607">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593920887738" />
-    <state width="1515" height="258" key="GridCell.Tab.1.left" timestamp="1593920887738">
+    <state width="1515" height="258" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593941997607" />
+    <state width="1515" height="258" key="GridCell.Tab.1.left" timestamp="1593941997607">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593920887738" />
-    <state width="1515" height="258" key="GridCell.Tab.1.right" timestamp="1593920887739">
+    <state width="1515" height="258" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593941997607" />
+    <state width="1515" height="258" key="GridCell.Tab.1.right" timestamp="1593941997607">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593920887739" />
+    <state width="1515" height="258" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593941997607" />
     <state x="270" y="76" key="SettingsEditor" timestamp="1593819985299">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -357,16 +340,6 @@
           <url>file://$PROJECT_DIR$/../../../../../../Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/faketranslate/translate.py</url>
           <line>11</line>
           <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/server/inspiration.py</url>
-          <line>146</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/server/inspiration.py</url>
-          <line>147</line>
-          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

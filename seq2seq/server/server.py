@@ -5,6 +5,8 @@ import sys
 import tensorflow as tf
 from tqdm import tqdm
 from urllib import parse
+
+from server.inspiration import Inspiration
 from train.utils import load_resource
 from infer.infer_seq2seq import build_qa_model
 from http.server import SimpleHTTPRequestHandler
@@ -147,18 +149,27 @@ class Seq2seq:
             return "相似回答搜索结果为空。"
 
 
+# noinspection PyPep8Naming
 class MyRequestHandler(SimpleHTTPRequestHandler):
     protocol_version = "HTTP/1.0"
     server_version = "PSHS/0.1"
     sys_version = "Python/3.7.x"
     seq2seq = Seq2seq(base_dir='', weight_name="W - 38-0.0415-.h5")
+    ins = Inspiration(base_dir='', limit=3)
 
     def do_GET(self):
 
         if self.path == "/":
             print(self.path)
             content = self.seq2seq.currentQ + "<br>" + self.seq2seq.currentA + "<br>"
+            content += "<br>"
             for each in self.seq2seq.info_log:
+                content += each + "<br>"
+            content += "<br>"
+            content += self.ins.q + "<br>"
+            content += self.ins.a + "<br>"
+            content += "<br>"
+            for each in self.ins.a_list:
                 content += each + "<br>"
             self.send_response(200)
             self.send_header('Content-type', 'text/html; charset=utf-8')
@@ -181,6 +192,10 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 response = self.seq2seq.interact(data['content'])
                 self.send_response(200)
             elif data.__contains__('sync'):
+                if len(data['sync']) == 0:
+                    new_question, new_answer = self.ins.get_qa()
+                    self.seq2seq.currentQ = new_question
+                    data['sync'] = new_answer
                 response = self.seq2seq.education(new_answer=data['sync'])
                 self.send_response(200)
             elif data.__contains__('include') or data.__contains__('exclude'):
@@ -190,6 +205,12 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 self.send_response(200)
             elif data.__contains__('purge'):
                 response = self.seq2seq.correction()
+                self.send_response(200)
+            elif data.__contains__('hint'):
+                response = self.ins.search_keyword(keyword=data['hint'])
+                self.send_response(200)
+            elif data.__contains__('hers'):
+                response = self.ins.select_reply(int(data['hers']))
                 self.send_response(200)
             else:
                 self.send_response(400)

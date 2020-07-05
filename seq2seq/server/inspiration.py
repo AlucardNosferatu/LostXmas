@@ -19,13 +19,13 @@ def search_lyrics(api_instance, para_dict):
     return api_instance.send(url, param)
 
 
-def test_lyrics(keyword, a=None):
+def test_lyrics(keyword, a=None, limit=2):
     if a is None:
         a = Api()
     para = {"string": keyword, "number": "100"}
     r = search_lyrics(a, para)
     lyrics_list = []
-    while len(lyrics_list) < 2:
+    while len(lyrics_list) < limit:
         choice = random.choice(range(len(r)))
         music = cloudmusic.getMusic(r[choice])
         lyrics = music.getLyrics()
@@ -39,36 +39,43 @@ def test_lyrics(keyword, a=None):
     return lyrics_list
 
 
-def search_quotes(keyword):
+def search_quotes(keyword, limit=2):
+    if " " in keyword:
+        keyword = random.choice(keyword.split(' '))
     t = topics.Topic(misc.toUUID(keyword))
     q = []
-    q_list = t.quotes(1)['elements']
-    while len(q) < 2:
-        try:
+    try:
+        q_list = t.quotes(1)['elements']
+    except Exception as e:
+        print(repr(e))
+        return q
+    while len(q) < limit:
+        choice = random.choice(range(len(q_list)))
+        q_temp = q_list[choice]
+        while q_temp.UUID.startswith("/"):
             choice = random.choice(range(len(q_list)))
             q_temp = q_list[choice]
-            while q_temp.UUID.startswith("/"):
-                choice = random.choice(range(len(q_list)))
-                q_temp = q_list[choice]
+        try:
             q_temp = q_temp.snippet()['body']
-        except ValueError:
+        except Exception as e:
+            print(repr(e))
             continue
         if len(q_temp.split(' ')) < 20:
             q.append(q_temp)
     return q
 
 
-def test_quotes(keyword):
+def test_quotes(keyword, limit=2):
     keyword = bdtrans.trans(keyword, 'zh', 'en')
-    quote_list = search_quotes(keyword)
+    quote_list = search_quotes(keyword, limit=limit)
     for i in range(len(quote_list)):
         quote_list[i] = bdtrans.trans(quote_list[i], 'en', 'zh')
         time.sleep(1)
     return quote_list
 
 
-def gen_random_keywords():
-    with open('../infer/Online_A.txt', encoding='utf-8-sig', mode='r') as f:
+def gen_random_keywords(base_dir='../'):
+    with open(base_dir + 'infer/Online_A.txt', encoding='utf-8-sig', mode='r') as f:
         lines = f.readlines()
         words_with_dup = []
         for line in lines:
@@ -84,6 +91,7 @@ def gen_random_keywords():
 
 
 class Inspiration:
+    base_dir = "../"
     random_keywords = []
     q_list = [
         "在想啥呢？",
@@ -98,8 +106,9 @@ class Inspiration:
     a = ""
     keyword = ""
     api = None
+    limit = 0
 
-    def __init__(self):
+    def __init__(self, limit=2, base_dir="../"):
         self.api = Api()
         self.a_list = []
         self.q_list = [
@@ -113,16 +122,19 @@ class Inspiration:
         self.a = ""
         self.q = random.choice(self.q_list)
         self.keyword = ""
-        self.random_keywords = gen_random_keywords()
+        self.base_dir = base_dir
+        self.random_keywords = gen_random_keywords(base_dir=base_dir)
+        self.limit = limit
 
     def search_keyword(self, keyword=None):
         self.q = random.choice(self.q_list)
         if keyword is None:
             keyword = self.keyword
         assert len(keyword) > 0
-        quotes_list = test_quotes(keyword)
-        lyrics_list = test_lyrics(keyword, self.api)
+        quotes_list = test_quotes(keyword, limit=self.limit)
+        lyrics_list = test_lyrics(keyword, self.api, limit=self.limit)
         self.a_list = quotes_list + lyrics_list
+        return self.a_list
 
     def select_reply(self, selected_index):
         self.q = random.choice(self.q_list)
@@ -130,13 +142,15 @@ class Inspiration:
             self.a = self.a_list[selected_index]
         else:
             self.a = ""
+        return self.a
 
     def get_qa(self):
-        self.q = random.choice(self.q_list)
+        if len(self.q) == 0:
+            self.q = random.choice(self.q_list)
         if len(self.a) == 0:
             if len(self.a_list) == 0:
                 if len(self.random_keywords) == 0:
-                    self.random_keywords = gen_random_keywords()
+                    self.random_keywords = gen_random_keywords(base_dir=self.base_dir)
                 self.search_keyword(random.choice(self.random_keywords))
             self.a = random.choice(self.a_list)
         return [self.q, self.a]
