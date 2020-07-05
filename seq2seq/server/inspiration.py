@@ -31,6 +31,7 @@ def test_lyrics(keyword):
                 lyrics_list.append(each)
                 break
     lyrics_list = remove_brackets(lyrics_list)
+    lyrics_list = [item.strip() for item in lyrics_list]
     return lyrics_list
 
 
@@ -65,7 +66,7 @@ def test_quotes(keyword):
 if __name__ == '__main__':
     print('start')
     searched = "开始"
-    quote_list = test_quotes(searched)
-    lyrics_list = test_lyrics(searched)
-    result = quote_list + lyrics_list
+    ql = test_quotes(searched)
+    ll = test_lyrics(searched)
+    result = ql + ll
     print(result)
