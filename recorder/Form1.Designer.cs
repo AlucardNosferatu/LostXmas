@@ -33,9 +33,9 @@
             this.InputBox = new System.Windows.Forms.TextBox();
             this.API_Response = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.HostSay = new System.Windows.Forms.Button();
             this.TulpaSay = new System.Windows.Forms.Button();
             this.Send = new System.Windows.Forms.Button();
-            this.HostSay = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,24 +44,27 @@
             this.Log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Log.Location = new System.Drawing.Point(12, 12);
+            this.Log.Location = new System.Drawing.Point(16, 15);
+            this.Log.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Log.Name = "Log";
-            this.Log.Size = new System.Drawing.Size(583, 277);
+            this.Log.Size = new System.Drawing.Size(776, 345);
             this.Log.TabIndex = 0;
             this.Log.Text = "";
             // 
             // InputBox
             // 
-            this.InputBox.Location = new System.Drawing.Point(12, 295);
+            this.InputBox.Location = new System.Drawing.Point(16, 369);
+            this.InputBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.InputBox.Name = "InputBox";
-            this.InputBox.Size = new System.Drawing.Size(583, 21);
+            this.InputBox.Size = new System.Drawing.Size(776, 25);
             this.InputBox.TabIndex = 1;
             // 
             // API_Response
             // 
-            this.API_Response.Location = new System.Drawing.Point(139, 322);
+            this.API_Response.Location = new System.Drawing.Point(185, 402);
+            this.API_Response.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.API_Response.Name = "API_Response";
-            this.API_Response.Size = new System.Drawing.Size(456, 153);
+            this.API_Response.Size = new System.Drawing.Size(607, 190);
             this.API_Response.TabIndex = 4;
             this.API_Response.Text = "";
             // 
@@ -73,10 +76,25 @@
             this.flowLayoutPanel1.Controls.Add(this.TulpaSay);
             this.flowLayoutPanel1.Controls.Add(this.Send);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 322);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 402);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(121, 153);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(148, 186);
             this.flowLayoutPanel1.TabIndex = 6;
+            // 
+            // HostSay
+            // 
+            this.HostSay.AutoSize = true;
+            this.HostSay.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.HostSay.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.HostSay.Location = new System.Drawing.Point(4, 4);
+            this.HostSay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HostSay.Name = "HostSay";
+            this.HostSay.Size = new System.Drawing.Size(118, 54);
+            this.HostSay.TabIndex = 2;
+            this.HostSay.Text = "Host";
+            this.HostSay.UseVisualStyleBackColor = true;
+            this.HostSay.Click += new System.EventHandler(this.HostSay_Click);
             // 
             // TulpaSay
             // 
@@ -84,9 +102,10 @@
             this.TulpaSay.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.TulpaSay.Enabled = false;
             this.TulpaSay.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TulpaSay.Location = new System.Drawing.Point(3, 54);
+            this.TulpaSay.Location = new System.Drawing.Point(4, 66);
+            this.TulpaSay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TulpaSay.Name = "TulpaSay";
-            this.TulpaSay.Size = new System.Drawing.Size(115, 45);
+            this.TulpaSay.Size = new System.Drawing.Size(140, 54);
             this.TulpaSay.TabIndex = 3;
             this.TulpaSay.Text = "Tulpa";
             this.TulpaSay.UseVisualStyleBackColor = true;
@@ -97,37 +116,29 @@
             this.Send.AutoSize = true;
             this.Send.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Send.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Send.Location = new System.Drawing.Point(3, 105);
+            this.Send.Location = new System.Drawing.Point(4, 128);
+            this.Send.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Send.Name = "Send";
-            this.Send.Size = new System.Drawing.Size(97, 45);
+            this.Send.Size = new System.Drawing.Size(118, 54);
             this.Send.TabIndex = 5;
             this.Send.Text = "Send";
             this.Send.UseVisualStyleBackColor = true;
             this.Send.Click += new System.EventHandler(this.Send_Click);
             // 
-            // HostSay
-            // 
-            this.HostSay.AutoSize = true;
-            this.HostSay.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.HostSay.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.HostSay.Location = new System.Drawing.Point(3, 3);
-            this.HostSay.Name = "HostSay";
-            this.HostSay.Size = new System.Drawing.Size(97, 45);
-            this.HostSay.TabIndex = 2;
-            this.HostSay.Text = "Host";
-            this.HostSay.UseVisualStyleBackColor = true;
-            this.HostSay.Click += new System.EventHandler(this.HostSay_Click);
-            // 
             // RecorderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 485);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(809, 606);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.API_Response);
             this.Controls.Add(this.InputBox);
             this.Controls.Add(this.Log);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RecorderForm";
             this.Text = "Recorder";
             this.flowLayoutPanel1.ResumeLayout(false);

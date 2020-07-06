@@ -11,3 +11,16 @@ C:\Users\16413\Documents\GitHub\LostXmas\recorder\Recorder\obj\Debug\Recorder.pd
 C:\Users\16413\Documents\GitHub\LostXmas\recorder\Recorder\bin\Debug\Newtonsoft.Json.dll
 C:\Users\16413\Documents\GitHub\LostXmas\recorder\Recorder\bin\Debug\Newtonsoft.Json.xml
 C:\Users\16413\Documents\GitHub\LostXmas\recorder\Recorder\obj\Debug\Recorder.csproj.CopyComplete
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\bin\Debug\Recorder.exe.config
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\bin\Debug\Recorder.exe
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\bin\Debug\Recorder.pdb
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\bin\Debug\Newtonsoft.Json.dll
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\bin\Debug\Newtonsoft.Json.xml
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\obj\Debug\Recorder.csprojAssemblyReference.cache
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\obj\Debug\Recorder.RecorderForm.resources
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\obj\Debug\Recorder.Properties.Resources.resources
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\obj\Debug\Recorder.csproj.GenerateResource.cache
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\obj\Debug\Recorder.csproj.CoreCompileInputs.cache
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\obj\Debug\Recorder.csproj.CopyComplete
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\obj\Debug\Recorder.exe
+C:\Users\16413\Documents\GitHub\LostXmas\recorder\obj\Debug\Recorder.pdb
