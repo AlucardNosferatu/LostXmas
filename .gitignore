@@ -15,3 +15,5 @@ KG/data.txt
 seq2seq/phrase/model_phrase/
 *.h5
 seq2seq/train/logs/train/
+recorder/Recorder/packages/
+recorder/Recorder/bin/
