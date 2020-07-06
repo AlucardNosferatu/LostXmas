@@ -22,6 +22,8 @@ def search_lyrics(api_instance, para_dict):
 def test_lyrics(keyword, a=None, limit=2):
     if a is None:
         a = Api()
+    if len(keyword.strip()) == 0:
+        keyword = "你"
     para = {"string": keyword, "number": "100"}
     r = search_lyrics(a, para)
     lyrics_list = []
@@ -40,16 +42,26 @@ def test_lyrics(keyword, a=None, limit=2):
 
 
 def search_quotes(keyword, limit=2):
-    if " " in keyword:
-        keyword = random.choice(keyword.split(' '))
+    if " " in keyword or len(keyword) == 0:
+        keywords = keyword.split(' ')
+        i = 0
+        while i < len(keywords):
+            if len(keywords[i]) < 1:
+                del keywords[i]
+            else:
+                i += 1
+        keyword = max(keywords, key=len, default="you")
     t = topics.Topic(misc.toUUID(keyword))
     q = []
     try:
         q_list = t.quotes(1)['elements']
+        print("Topic fetched")
     except Exception as e:
         print(repr(e))
         return q
+    time.sleep(1)
     while len(q) < limit:
+        print("Current length of q_list: ", len(q))
         choice = random.choice(range(len(q_list)))
         q_temp = q_list[choice]
         while q_temp.UUID.startswith("/"):
@@ -67,7 +79,9 @@ def search_quotes(keyword, limit=2):
 
 def test_quotes(keyword, limit=2):
     keyword = bdtrans.trans(keyword, 'zh', 'en')
+    print("Keyword translated")
     quote_list = search_quotes(keyword, limit=limit)
+    print("Quotes fetched.")
     for i in range(len(quote_list)):
         quote_list[i] = bdtrans.trans(quote_list[i], 'en', 'zh')
         time.sleep(1)
@@ -130,9 +144,14 @@ class Inspiration:
         self.q = random.choice(self.q_list)
         if keyword is None:
             keyword = self.keyword
-        assert len(keyword) > 0
+        try:
+            assert len(keyword) > 0
+        except AssertionError:
+            keyword = " "
         quotes_list = test_quotes(keyword, limit=self.limit)
+        print("Quotes searched.")
         lyrics_list = test_lyrics(keyword, self.api, limit=self.limit)
+        print("Lyrics searched.")
         self.a_list = quotes_list + lyrics_list
         return self.a_list
 
@@ -144,7 +163,9 @@ class Inspiration:
             self.a = ""
         return self.a
 
-    def get_qa(self):
+    def get_qa(self, q_index=None):
+        if type(q_index) is int and q_index in range(len(self.q_list)):
+            self.q = self.q_list[q_index]
         if len(self.q) == 0:
             self.q = random.choice(self.q_list)
         if len(self.a) == 0:

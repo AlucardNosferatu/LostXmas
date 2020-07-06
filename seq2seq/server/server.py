@@ -1,18 +1,18 @@
 import json
-import pickle
+import random
 import sys
+from http.server import SimpleHTTPRequestHandler
+from urllib import parse
 
 import tensorflow as tf
 from tqdm import tqdm
-from urllib import parse
-
+from snownlp import SnowNLP
+from data.augmentation.similarity import similarity_complex, Keywords_IoU
+from data.obsolete.grammar4fluency import mark_invalid
+from infer.infer_seq2seq import build_qa_model
+from infer.utils import input_question, decode_greedy
 from server.inspiration import Inspiration
 from train.utils import load_resource
-from infer.infer_seq2seq import build_qa_model
-from http.server import SimpleHTTPRequestHandler
-from infer.utils import input_question, decode_greedy
-from data.obsolete.grammar4fluency import mark_invalid
-from data.augmentation.similarity import similarity_complex, Keywords_IoU
 
 
 class Seq2seq:
@@ -84,14 +84,14 @@ class Seq2seq:
 
     def education(self, new_answer):
         if new_answer == "cancel":
-            return "取消添加新语料。"
+            return "取消添加新语料："
         else:
             self.f_q.write(self.currentQ + "\n")
             self.f_a.write(new_answer + "\n")
             self.f_q.flush()
             self.f_a.flush()
             self.currentA = new_answer
-            return "新语料添加成功。"
+            return "新语料添加成功："
 
     def orientation(self, include, exclude):
         self.info_log = []
@@ -194,7 +194,7 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
             elif data.__contains__('sync'):
                 if len(data['sync']) != 0:
                     self.seq2seq.currentA = data['sync']
-                    response = [self.seq2seq.currentA]
+                response = [self.seq2seq.currentQ, self.seq2seq.currentA]
                 response = [self.seq2seq.education(new_answer=self.seq2seq.currentA)] + response
                 self.send_response(200)
             elif data.__contains__('include') or data.__contains__('exclude'):
@@ -206,12 +206,37 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 response = self.seq2seq.correction()
                 self.send_response(200)
             elif data.__contains__('hint'):
-                response = self.ins.search_keyword(keyword=data['hint'])
+                self.seq2seq.currentQ = data['hint']
+                try:
+                    s = SnowNLP(self.seq2seq.currentQ)
+                    tags = list(s.tags)
+                    i = 0
+                    while i < len(tags):
+                        if len(tags[i][0]) < 2:
+                            del tags[i]
+                        elif not tags[i][1][0] in ['v', 'a', 't', 'n', 'i']:
+                            del tags[i]
+                        else:
+                            i += 1
+                    keyword = random.choice(tags)[0]
+                except ZeroDivisionError:
+                    keyword = ""
+                except UnboundLocalError:
+                    keyword = " "
+                response = self.ins.search_keyword(keyword=keyword)
+                self.send_response(200)
+            elif data.__contains__('keyword'):
+                response = self.ins.search_keyword(keyword=data['keyword'])
                 self.send_response(200)
             elif data.__contains__('hers'):
                 self.ins.select_reply(int(data['hers']))
-                response = self.ins.get_qa()
-                self.seq2seq.currentQ, self.seq2seq.currentA = response
+                q_index = data.get('mine', None)
+                response = self.ins.get_qa(q_index=q_index)
+                if q_index == "use_current":
+                    _, self.seq2seq.currentA = response
+                    response = [self.seq2seq.currentQ, self.seq2seq.currentA]
+                else:
+                    self.seq2seq.currentQ, self.seq2seq.currentA = response
                 self.send_response(200)
             elif data.__contains__('h') or data.__contains__('t'):
                 self.seq2seq.currentQ = data.get('h', '')
@@ -220,11 +245,12 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 self.send_response(200)
             else:
                 self.send_response(400)
+
             self.send_header("Content-type", "application/json; charset=utf-8")
             self.end_headers()
             res = {'reply': response}
-            rspstr = json.dumps(res, ensure_ascii=False)
-            self.wfile.write(rspstr.encode("utf-8"))
+            response_str = json.dumps(res, ensure_ascii=False)
+            self.wfile.write(response_str.encode("utf-8"))
             if response == "DEBUG:那不打扰你了，回聊~":
                 sys.exit()
         else:
