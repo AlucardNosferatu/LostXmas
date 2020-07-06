@@ -154,7 +154,7 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
     protocol_version = "HTTP/1.0"
     server_version = "PSHS/0.1"
     sys_version = "Python/3.7.x"
-    seq2seq = Seq2seq(base_dir='', weight_name="W - 38-0.0415-.h5")
+    seq2seq = Seq2seq(base_dir='', weight_name="W - 99-0.0470-.h5")
     ins = Inspiration(base_dir='', limit=3)
 
     def do_GET(self):
@@ -192,11 +192,10 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 response = self.seq2seq.interact(data['content'])
                 self.send_response(200)
             elif data.__contains__('sync'):
-                if len(data['sync']) == 0:
-                    new_question, new_answer = self.ins.get_qa()
-                    self.seq2seq.currentQ = new_question
-                    data['sync'] = new_answer
-                response = self.seq2seq.education(new_answer=data['sync'])
+                if len(data['sync']) != 0:
+                    self.seq2seq.currentA = data['sync']
+                    response = [self.seq2seq.currentA]
+                response = [self.seq2seq.education(new_answer=self.seq2seq.currentA)] + response
                 self.send_response(200)
             elif data.__contains__('include') or data.__contains__('exclude'):
                 include = data.get('include', '')
@@ -210,7 +209,14 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 response = self.ins.search_keyword(keyword=data['hint'])
                 self.send_response(200)
             elif data.__contains__('hers'):
-                response = self.ins.select_reply(int(data['hers']))
+                self.ins.select_reply(int(data['hers']))
+                response = self.ins.get_qa()
+                self.seq2seq.currentQ, self.seq2seq.currentA = response
+                self.send_response(200)
+            elif data.__contains__('h') or data.__contains__('t'):
+                self.seq2seq.currentQ = data.get('h', '')
+                self.seq2seq.currentA = data.get('t', '')
+                response = data
                 self.send_response(200)
             else:
                 self.send_response(400)
