@@ -17,5 +17,3 @@ seq2seq/phrase/model_phrase/
 seq2seq/train/logs/train/
 recorder/packages/
 recorder/bin/
-seq2seq/model.png
-seq2seq/.idea/workspace.xml
