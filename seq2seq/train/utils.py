@@ -3,16 +3,16 @@ import pickle
 import numpy as np
 
 
-def get_vocab_size(BaseDir='../'):
-    main_path = BaseDir + 'data/'
+def get_vocab_size(base_dir='../'):
+    main_path = base_dir + 'data/'
     with open(main_path + 'resource/' + 'pad_word_to_index.pkl', 'rb') as f:
         word_to_index = pickle.load(f)
     vocab_size = len(word_to_index) + 1
     return vocab_size
 
 
-def load_resource(BaseDir='../'):
-    main_path = BaseDir + 'data/'
+def load_resource(base_dir='../'):
+    main_path = base_dir + 'data/'
     question = np.load(main_path + 'resource/' + 'pad_question.npy')
     answer = np.load(main_path + 'resource/' + 'pad_answer.npy')
     answer_o = np.load(main_path + 'resource/' + 'answer_o.npy', allow_pickle=True)
@@ -25,8 +25,8 @@ def load_resource(BaseDir='../'):
     return question, answer, answer_o, words, word_to_index, index_to_word
 
 
-def generate_train(batch_size):
-    question, answer, answer_o, words, word_to_index, index_to_word = load_resource()
+def generate_train(batch_size, base_dir="../"):
+    question, answer, answer_o, words, word_to_index, index_to_word = load_resource(base_dir=base_dir)
     vocab_size = len(word_to_index) + 1
     maxLen = 20
     print('\n*********************************generate_train()*********************************')

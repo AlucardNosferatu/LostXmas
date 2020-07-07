@@ -6,7 +6,7 @@ from train.utils import load_resource
 
 
 def input_question(seq="下馆子", base_dir='../'):
-    _, _, _, _, word_to_index, _ = load_resource(BaseDir=base_dir)
+    _, _, _, _, word_to_index, _ = load_resource(base_dir=base_dir)
     seq = seq.replace('，', ',').replace('。', '.')
     seq = jieba.lcut(seq.strip(), cut_all=False)
     for k in range(len(seq)):

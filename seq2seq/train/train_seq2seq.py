@@ -11,7 +11,7 @@ from tensorflow.keras.initializers import TruncatedNormal
 from tensorflow.keras import Model
 
 
-def build_seq2seq(BaseDir='../', vocab_size=None, weight_path=None):
+def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None):
     if vocab_size is None:
         print("vocab_size must be defined!")
         sys.exit()
@@ -54,21 +54,21 @@ def build_seq2seq(BaseDir='../', vocab_size=None, weight_path=None):
     model = Model([input_question, input_answer], output)
     model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
     model.summary()
-    tf.keras.utils.plot_model(model, BaseDir + "model.png")
-    model.save(filepath=BaseDir + "models/seq2seq_raw.h5")
+    tf.keras.utils.plot_model(model, base_dir + "model.png")
+    model.save(filepath=base_dir + "models/seq2seq_raw.h5")
     if weight_path:
         model.load_weights(weight_path)
     return input_question, encoder_lstm, question_h, question_c, LSTM_decoder, input_answer_embed, decoder_dense1, \
            decoder_dense2, input_answer
 
 
-def load_seq2seq():
-    loaded_model = tf.keras.models.load_model(filepath="../models/seq2seq_raw.h5")
+def load_seq2seq(file_path="../models/seq2seq_raw.h5"):
+    loaded_model = tf.keras.models.load_model(filepath=file_path)
     return loaded_model
 
 
-def train_seq2seq(input_model):
-    checkpoint = ModelCheckpoint("check_points/W -{epoch:3d}-{loss:.4f}-.h5",
+def train_seq2seq(input_model, base_dir="../"):
+    checkpoint = ModelCheckpoint(base_dir + "train/check_points/W -{epoch:3d}-{loss:.4f}-.h5",
                                  monitor='loss',
                                  verbose=1,
                                  save_best_only=True,
@@ -85,7 +85,7 @@ def train_seq2seq(input_model):
                                   cooldown=0,
                                   min_lr=0
                                   )
-    tensorboard = TensorBoard(log_dir='logs',
+    tensorboard = TensorBoard(log_dir=base_dir + 'train/logs',
                               #                           histogram_freq=0,
                               batch_size=100
                               #                           write_graph=True,
@@ -101,15 +101,15 @@ def train_seq2seq(input_model):
     callbacks_list = [checkpoint, early]
 
     initial_epoch_ = 0
-    file_list = os.listdir('check_points/')
+    file_list = os.listdir(base_dir + 'train/check_points/')
     if len(file_list) > 0:
-        epoch_list = get_file_list('check_points/')
+        epoch_list = get_file_list(base_dir + 'train/check_points/')
         epoch_last = epoch_list[-1]
-        input_model.load_weights('check_points/' + epoch_last)
+        input_model.load_weights(base_dir + 'train/check_points/' + epoch_last)
         print("**********checkpoint_loaded: ", epoch_last)
         # initial_epoch_ = int(epoch_last.split('-')[2]) - 1
         # print('**********Begin from epoch: ', str(initial_epoch_))
-    gen = generate_train(batch_size=100)
+    gen = generate_train(batch_size=100, base_dir=base_dir)
     spe = next(gen)
     with tf.device("/gpu:0"):
         input_model.fit_generator(gen,

@@ -13,17 +13,17 @@ from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_engli
     remove_banned
 
 
-def read_conversation(forceSyn=False, forceDec=False):
+def read_conversation(force_syn=False, force_dec=False, base_dir="../"):
     gfw = DFAFilter()
-    gfw.parse('augmentation\\blacklist')
+    gfw.parse(base_dir + 'data/augmentation/blacklist')
     # region Append test log
-    q_path = '../infer/Online_Q.txt'
-    a_path = '../infer/Online_A.txt'
+    q_path = base_dir + 'infer/Online_Q.txt'
+    a_path = base_dir + 'infer/Online_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, [], [])
     # endregion
 
     # region get Q&A
-    with open('resource/raw/all_corpus.tsv', 'r', encoding='utf-8-sig') as f:
+    with open(base_dir + 'data/resource/raw/all_corpus.tsv', 'r', encoding='utf-8-sig') as f:
         lines = f.read().split('\n')
         lines = lines[:-2]
         lines = remove_brackets(lines)
@@ -93,9 +93,9 @@ def read_conversation(forceSyn=False, forceDec=False):
     # region Compress synonyms
     _, freq_dist = getWords(question + answer)
     syn_dict = getSynDict(freq_dist)
-    with open('resource/' + 'syn_dict.pkl', 'wb') as f:
+    with open(base_dir + 'data/resource/' + 'syn_dict.pkl', 'wb') as f:
         pickle.dump(syn_dict, f, pickle.HIGHEST_PROTOCOL)
-    if forceSyn:
+    if force_syn:
         sentences = [question, answer]
         for i in range(len(sentences)):
             sentence = sentences[i]
@@ -115,9 +115,9 @@ def read_conversation(forceSyn=False, forceDec=False):
     _, freq_dist = getWords(question + answer)
     base_words = getBaseWord(freq_dist)
     all_composable = getComposed(base_words, freq_dist)
-    with open('resource/composable.pkl', 'wb') as f:
+    with open(base_dir + 'data/resource/composable.pkl', 'wb') as f:
         pickle.dump(all_composable, f, pickle.HIGHEST_PROTOCOL)
-    if forceDec:
+    if force_dec:
         for comp in all_composable:
             del freq_dist[freq_dist.index(comp)]
         sentences = [question, answer]
@@ -145,27 +145,27 @@ def read_conversation(forceSyn=False, forceDec=False):
 
     answer_a = ['BOS ' + i + ' EOS' for i in answer]
     answer_b = [i + ' EOS' for i in answer]
-    with open('resource/word_to_index.pkl', 'wb') as f:
+    with open(base_dir + 'data/resource/word_to_index.pkl', 'wb') as f:
         pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
-    with open('resource/index_to_word.pkl', 'wb') as f:
+    with open(base_dir + 'data/resource/index_to_word.pkl', 'wb') as f:
         pickle.dump(index_to_word, f, pickle.HIGHEST_PROTOCOL)
-    with open('resource/vocab_bag.pkl', 'wb') as f:
+    with open(base_dir + 'data/resource/vocab_bag.pkl', 'wb') as f:
         pickle.dump(vocab_bag, f, pickle.HIGHEST_PROTOCOL)
     question = np.array([[word_to_index[w] for w in i.split(' ')] for i in question])
     answer_a = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_a])
     answer_b = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_b])
     size = int(len(question) / 100) * 100
-    np.save('resource/question.npy', question[:size])
-    np.save('resource/answer_a.npy', answer_a[:size])
-    np.save('resource/answer_b.npy', answer_b[:size])
+    np.save(base_dir + 'data/resource/question.npy', question[:size])
+    np.save(base_dir + 'data/resource/answer_a.npy', answer_a[:size])
+    np.save(base_dir + 'data/resource/answer_b.npy', answer_b[:size])
 
 
-def add_padding():
-    question = np.load('resource/question.npy', allow_pickle=True)
-    answer_a = np.load('resource/answer_a.npy', allow_pickle=True)
-    answer_b = np.load('resource/answer_b.npy', allow_pickle=True)
+def add_padding(base_dir="../"):
+    question = np.load(base_dir + 'data/resource/question.npy', allow_pickle=True)
+    answer_a = np.load(base_dir + 'data/resource/answer_a.npy', allow_pickle=True)
+    answer_b = np.load(base_dir + 'data/resource/answer_b.npy', allow_pickle=True)
     print('answer_a.shape: ', answer_a.shape)
-    with open('resource/word_to_index.pkl', 'rb') as f:
+    with open(base_dir + 'data/resource/word_to_index.pkl', 'rb') as f:
         word_to_index = pickle.load(f)
     for i, j in tqdm(word_to_index.items()):
         word_to_index[i] = j + 1
@@ -191,8 +191,8 @@ def add_padding():
             i[pos_] = j + 1
         if len(i) > maxLen:
             pad_answer_b[pos] = i[:maxLen]
-    np.save('resource/answer_o.npy', pad_answer_b)
-    with open('resource/vocab_bag.pkl', 'rb') as f:
+    np.save(base_dir + 'data/resource/answer_o.npy', pad_answer_b)
+    with open(base_dir + 'data/resource/vocab_bag.pkl', 'rb') as f:
         words = pickle.load(f)
     vocab_size = len(word_to_index) + 1
     print('word_to_vec_map: ', len(list(words)))
@@ -203,15 +203,20 @@ def add_padding():
     pad_answer = sequence.pad_sequences(pad_answer_a, maxlen=maxLen,
                                         dtype='int32', padding='post',
                                         truncating='post')
-    with open('resource/pad_word_to_index.pkl', 'wb') as f:
+    with open(base_dir + 'data/resource/pad_word_to_index.pkl', 'wb') as f:
         pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
-    with open('resource/pad_index_to_word.pkl', 'wb') as f:
+    with open(base_dir + 'data/resource/pad_index_to_word.pkl', 'wb') as f:
         pickle.dump(index_to_word, f, pickle.HIGHEST_PROTOCOL)
-    np.save('resource/pad_question.npy', pad_question)
-    np.save('resource/pad_answer.npy', pad_answer)
+    np.save(base_dir + 'data/resource/pad_question.npy', pad_question)
+    np.save(base_dir + 'data/resource/pad_answer.npy', pad_answer)
+    return [
+        'answer_a.shape: ' + str(answer_a.shape),
+        'word_to_vec_map: ' + str(len(list(words))),
+        'vocab_size: ' + str(vocab_size)
+    ]
 
 
-def getExtra(gfw, question, answer):
+def get_extra(gfw, question, answer):
     q_path = 'obsolete/legacy/compact_vocab_Q.txt'
     a_path = 'obsolete/legacy/compact_vocab_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, question, answer)

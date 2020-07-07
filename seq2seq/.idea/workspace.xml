@@ -20,11 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c48f13-d7f9-4a82-aeca-1eaf232cbaec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../recorder/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../recorder/Form1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recorder/obj/Debug/Recorder.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../recorder/obj/Debug/Recorder.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recorder/.vs/Recorder/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../recorder/.vs/Recorder/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/16413.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/16413.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infer/Online_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_A.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infer/Online_Q.txt" beforeDir="false" afterPath="$PROJECT_DIR$/infer/Online_Q.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data_packer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_packer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infer/infer_seq2seq.py" beforeDir="false" afterPath="$PROJECT_DIR$/infer/infer_seq2seq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" afterPath="$PROJECT_DIR$/model.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/hyper_transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/hyper_transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/train_seq2seq.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/train_seq2seq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,10 +202,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="0" y="185" key="#xdebugger.XInspectDialog/0.0.1536.864@0.0.1536.864" timestamp="1593592295397" />
-    <state x="961" y="248" width="488" height="562" key="#xdebugger.evaluate" timestamp="1594004363362">
+    <state x="616" y="79" width="488" height="562" key="#xdebugger.evaluate" timestamp="1594089747901">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="961" y="248" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1594004363362" />
+    <state x="616" y="79" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1594089747901" />
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1593595904834">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -212,38 +218,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593850432332" />
-    <state width="1515" height="258" key="GridCell.Tab.0.bottom" timestamp="1594024137415">
+    <state width="1515" height="292" key="GridCell.Tab.0.bottom" timestamp="1594090065718">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1594024137415" />
-    <state width="1515" height="258" key="GridCell.Tab.0.center" timestamp="1594024137415">
+    <state width="1515" height="292" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1594090065718" />
+    <state width="1515" height="292" key="GridCell.Tab.0.center" timestamp="1594090065718">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1594024137415" />
-    <state width="1515" height="258" key="GridCell.Tab.0.left" timestamp="1594024137415">
+    <state width="1515" height="292" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1594090065718" />
+    <state width="1515" height="292" key="GridCell.Tab.0.left" timestamp="1594090065718">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1594024137415" />
-    <state width="1515" height="258" key="GridCell.Tab.0.right" timestamp="1594024137415">
+    <state width="1515" height="292" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1594090065718" />
+    <state width="1515" height="292" key="GridCell.Tab.0.right" timestamp="1594090065718">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1594024137415" />
-    <state width="1515" height="258" key="GridCell.Tab.1.bottom" timestamp="1594006019163">
+    <state width="1515" height="292" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1594090065718" />
+    <state width="1515" height="292" key="GridCell.Tab.1.bottom" timestamp="1594090065606">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1594006019163" />
-    <state width="1515" height="258" key="GridCell.Tab.1.center" timestamp="1594006019163">
+    <state width="1515" height="292" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1594090065606" />
+    <state width="1515" height="292" key="GridCell.Tab.1.center" timestamp="1594090065606">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1594006019163" />
-    <state width="1515" height="258" key="GridCell.Tab.1.left" timestamp="1594006019163">
+    <state width="1515" height="292" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1594090065606" />
+    <state width="1515" height="292" key="GridCell.Tab.1.left" timestamp="1594090065606">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1594006019163" />
-    <state width="1515" height="258" key="GridCell.Tab.1.right" timestamp="1594006019163">
+    <state width="1515" height="292" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1594090065606" />
+    <state width="1515" height="292" key="GridCell.Tab.1.right" timestamp="1594090065606">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="258" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1594006019163" />
+    <state width="1515" height="292" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1594090065606" />
     <state x="270" y="76" key="SettingsEditor" timestamp="1593819985299">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -256,10 +262,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="174" width="705" height="594" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1593565601326" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1594006015197">
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1594084920403">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1594006015197" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1594084920403" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -338,6 +344,16 @@
           <url>file://$PROJECT_DIR$/../../../../../../Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/faketranslate/translate.py</url>
           <line>11</line>
           <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/server/server.py</url>
+          <line>317</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/server/server.py</url>
+          <line>304</line>
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

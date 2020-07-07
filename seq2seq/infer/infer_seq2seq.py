@@ -15,8 +15,8 @@ from train.utils import get_vocab_size, load_resource
 def build_qa_model(BaseDir, wp=None):
     max_len = 20
     iq, el, qh, qc, ld, iae, dd1, dd2, ia = build_seq2seq(
-        BaseDir=BaseDir,
-        vocab_size=get_vocab_size(BaseDir=BaseDir),
+        base_dir=BaseDir,
+        vocab_size=get_vocab_size(base_dir=BaseDir),
         weight_path=wp
     )
     question_model = Model(iq, [el, qh, qc])
@@ -44,7 +44,7 @@ def loop_talking(UseKeywords=False, BaseDir='../'):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
     all_lines = [raw_lines]
     question_model, answer_model = build_qa_model(BaseDir=BaseDir, wp=BaseDir + "train/check_points/W -100-0.0266-.h5")
-    question, answer, answer_o, words, word_to_index, index_to_word = load_resource(BaseDir=BaseDir)
+    question, answer, answer_o, words, word_to_index, index_to_word = load_resource(base_dir=BaseDir)
     f_q = open(BaseDir + "infer/Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open(BaseDir + "infer/Online_A.txt", 'a', encoding='utf-8-sig')
     with open(BaseDir + 'data/resource/composable.pkl', 'rb') as f:
