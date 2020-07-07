@@ -331,8 +331,6 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                         load_index = int(data['weight'])
                         if 0 <= load_index < len(response):
                             self.weight_name = response[load_index]
-                            self.seq2seq = MyRequestHandler.load_weight(self.weight_name)
-                            response = "Use weight: " + self.weight_name
                 else:
                     response = "train/check_points is empty."
                 self.send_response(200)

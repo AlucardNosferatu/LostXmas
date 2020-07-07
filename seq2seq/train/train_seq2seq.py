@@ -68,24 +68,14 @@ def load_seq2seq(file_path="../models/seq2seq_raw.h5"):
 
 
 def train_seq2seq(input_model, base_dir="../"):
-    file_list = os.listdir(base_dir + 'train/check_points/')
-    initial_epoch_ = 0
-    if len(file_list) > 0:
-        epoch_list = get_file_list(base_dir + 'train/check_points/')
-        epoch_last = epoch_list[-1]
-        input_model.load_weights(base_dir + 'train/check_points/' + epoch_last)
-        print("**********checkpoint_loaded: ", epoch_last)
-        initial_epoch_ = int(epoch_last.split('-')[1].strip())
-
-    checkpoint = ModelCheckpoint(
-        base_dir + "train/check_points/W -{epoch:3d}-{loss:.4f}-.h5",
-        monitor='loss',
-        verbose=1,
-        save_best_only=True,
-        mode='min',
-        period=1,
-        save_weights_only=True
-    )
+    checkpoint = ModelCheckpoint(base_dir + "train/check_points/W -{epoch:3d}-{loss:.4f}-.h5",
+                                 monitor='loss',
+                                 verbose=1,
+                                 save_best_only=True,
+                                 mode='min',
+                                 period=1,
+                                 save_weights_only=True
+                                 )
     reduce_lr = ReduceLROnPlateau(monitor='loss',
                                   factor=0.2,
                                   patience=2,
@@ -110,8 +100,15 @@ def train_seq2seq(input_model, base_dir="../"):
     early = EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=1, mode='auto')
     callbacks_list = [checkpoint, early]
 
-    # initial_epoch_ = int(epoch_last.split('-')[2]) - 1
-    # print('**********Begin from epoch: ', str(initial_epoch_))
+    initial_epoch_ = 0
+    file_list = os.listdir(base_dir + 'train/check_points/')
+    if len(file_list) > 0:
+        epoch_list = get_file_list(base_dir + 'train/check_points/')
+        epoch_last = epoch_list[-1]
+        input_model.load_weights(base_dir + 'train/check_points/' + epoch_last)
+        print("**********checkpoint_loaded: ", epoch_last)
+        # initial_epoch_ = int(epoch_last.split('-')[2]) - 1
+        # print('**********Begin from epoch: ', str(initial_epoch_))
     gen = generate_train(batch_size=100, base_dir=base_dir)
     spe = next(gen)
     with tf.device("/gpu:0"):
