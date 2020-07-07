@@ -309,13 +309,16 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                     else:
                         response = "DEBUG:训练未开始"
                 else:
-                    dir_path = "train/check_points"
-                    for e, i in enumerate(os.listdir(dir_path)):
-                        if i.endswith('h5'):
-                            file_path = os.path.join(dir_path, i)
-                            if os.path.exists(file_path):
-                                os.remove(file_path)
-                    if MyRequestHandler.train_thread is None:
+                    if data['train'] == 'continue':
+                        pass
+                    else:
+                        dir_path = "train/check_points"
+                        for e, i in enumerate(os.listdir(dir_path)):
+                            if i.endswith('h5'):
+                                file_path = os.path.join(dir_path, i)
+                                if os.path.exists(file_path):
+                                    os.remove(file_path)
+                    if MyRequestHandler.train_thread is None or not MyRequestHandler.train_thread.is_alive():
                         MyRequestHandler.train_thread = TrainThread()
                     MyRequestHandler.train_thread.start()
                     response = "DEBUG:训练已开始"
