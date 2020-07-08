@@ -12,10 +12,10 @@ def get_siaw(sentence, smw):
     return rs1
 
 
-def use_log():
-    with open("Online_Q.txt", 'r', encoding='utf-8-sig') as f_q:
+def use_log(base_dir="../"):
+    with open(base_dir + "infer/Online_Q.txt", 'r', encoding='utf-8-sig') as f_q:
         q_lines = f_q.readlines()
-    with open("Online_A.txt", 'r', encoding='utf-8-sig') as f_a:
+    with open(base_dir + "infer/Online_A.txt", 'r', encoding='utf-8-sig') as f_a:
         a_lines = f_a.readlines()
     new_q = q_lines.copy()
     new_a = a_lines.copy()
@@ -35,9 +35,9 @@ def use_log():
         new_a[i] = new_a[i].replace('\n', '')
         new_q[i] += '\n'
         new_a[i] += '\n'
-    with open("Online_Q_SIAW.txt", 'w', encoding='utf-8-sig') as f_q:
+    with open(base_dir + "infer/Online_Q_SIAW.txt", 'w', encoding='utf-8-sig') as f_q:
         f_q.writelines(new_q)
-    with open("Online_A_SIAW.txt", 'w', encoding='utf-8-sig') as f_a:
+    with open(base_dir + "infer/Online_A_SIAW.txt", 'w', encoding='utf-8-sig') as f_a:
         f_a.writelines(new_a)
 
 

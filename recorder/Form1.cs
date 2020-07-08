@@ -2,14 +2,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Recorder
@@ -17,9 +14,12 @@ namespace Recorder
     public partial class RecorderForm : Form
     {
         HttpWebRequest hwr;
+        Dictionary<string, string> JsonDict;
         public RecorderForm()
         {
             InitializeComponent();
+            this.JsonDict = new Dictionary<string, string>();
+            JsonTree.Nodes.Add("root");
         }
 
         private void HostSay_Click(object sender, EventArgs e)
@@ -61,7 +61,6 @@ namespace Recorder
             API_Response.AppendText("\n");
         }
 
-
         private void Send_Click(object sender, EventArgs e)
         {
             string[] Content = Log.Text.Split('\n');
@@ -92,6 +91,31 @@ namespace Recorder
                 SendReq(req_queue[i]);
                 SendReq(sync);
             }
+        }
+
+        private void Append_Click(object sender, EventArgs e)
+        {
+            string key = InputKey.Text;
+            string val = InputVal.Text;
+            if (val.Equals("use_long_text") || val.Equals("ULT"))
+            {
+                val = InputBox.Text;
+                InputBox.Clear();
+            }
+            this.JsonDict.Add(key, val);
+            JsonTree.Nodes.Add(key);
+            JsonTree.Nodes[JsonTree.Nodes.Count - 1].Nodes.Add(val);
+            InputKey.Clear();
+            InputVal.Clear();
+        }
+
+        private void Submit_Click(object sender, EventArgs e)
+        {
+            API_Response.Clear();
+            this.SendReq(this.JsonDict);
+            this.JsonDict = new Dictionary<string, string>();
+            JsonTree.Nodes.Clear();
+            JsonTree.Nodes.Add("root");
         }
     }
     public class Record_Request

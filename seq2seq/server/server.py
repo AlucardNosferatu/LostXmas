@@ -11,6 +11,7 @@ from urllib import parse
 from snownlp import SnowNLP
 
 from data.data_tool import get_file_list
+from infer.SayItAnotherWay import use_log
 from train.train_seq2seq import build_seq2seq, train_seq2seq, load_seq2seq
 from train.utils import load_resource, get_vocab_size
 from server.inspiration import Inspiration
@@ -297,6 +298,7 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 response = data
                 self.send_response(200)
             elif data.__contains__('data'):
+                use_log(base_dir='')
                 read_conversation(base_dir="")
                 response = add_padding(base_dir="")
                 self.send_response(200)

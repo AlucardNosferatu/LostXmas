@@ -164,8 +164,8 @@ class Inspiration:
         return self.a
 
     def get_qa(self, q_index=None):
-        if type(q_index) is int and q_index in range(len(self.q_list)):
-            self.q = self.q_list[q_index]
+        if q_index.isnumeric() and int(q_index) in range(len(self.q_list)):
+            self.q = self.q_list[int(q_index)]
         if len(self.q) == 0:
             self.q = random.choice(self.q_list)
         if len(self.a) == 0:
