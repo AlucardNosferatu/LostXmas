@@ -343,6 +343,7 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                                 break
                     if weight_changed:
                         self.seq2seq = MyRequestHandler.load_weight(self.weight_name)
+                        response = "Use weight: " + self.weight_name
                 else:
                     response = "train/check_points is empty."
                 self.send_response(200)
