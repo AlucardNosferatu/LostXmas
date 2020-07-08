@@ -18,3 +18,4 @@ seq2seq/train/logs/train/
 recorder/packages/
 recorder/bin/
 seq2seq/.idea/workspace.xml
+seq2seq/model.png
