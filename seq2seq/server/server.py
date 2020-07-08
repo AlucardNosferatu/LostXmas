@@ -179,8 +179,7 @@ class TrainThread(threading.Thread):
     model = None
 
     def run(self):
-        while self._running:
-            train_seq2seq(input_model=self.model, base_dir="")
+        train_seq2seq(input_model=self.model, base_dir="")
 
     def __init__(self):
         threading.Thread.__init__(self)
@@ -325,12 +324,25 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 self.send_response(200)
             elif data.__contains__('weights'):
                 file_list = os.listdir('train/check_points/')
+                weight_changed = False
                 if len(file_list) > 0:
                     response = get_file_list('train/check_points/')
                     if str(data['weights']).isnumeric():
-                        load_index = int(data['weight'])
+                        load_index = int(data['weights'])
                         if 0 <= load_index < len(response):
                             self.weight_name = response[load_index]
+                            weight_changed = True
+                    elif data['weights'] == "newest":
+                        self.weight_name = response[-1]
+                        weight_changed = True
+                    elif data['weights'].startswith("E") and data['weights'][1:].isnumeric():
+                        for each in response:
+                            if data['weights'][1:] == each.split('-')[1].strip():
+                                self.weight_name = each
+                                weight_changed = True
+                                break
+                    if weight_changed:
+                        self.seq2seq = MyRequestHandler.load_weight(self.weight_name)
                 else:
                     response = "train/check_points is empty."
                 self.send_response(200)
