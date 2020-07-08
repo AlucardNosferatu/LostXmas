@@ -17,8 +17,10 @@ def use_log(base_dir="../"):
         q_lines = f_q.readlines()
     with open(base_dir + "infer/Online_A.txt", 'r', encoding='utf-8-sig') as f_a:
         a_lines = f_a.readlines()
-    new_q = q_lines.copy()
-    new_a = a_lines.copy()
+    # new_q = q_lines.copy()
+    # new_a = a_lines.copy()
+    new_q = []
+    new_a = []
     smw = [Randomword(create_num=5, change_rate=0.05)]
     smw += [Similarword(create_num=5, change_rate=0.05)]
     for i in range(len(q_lines)):
