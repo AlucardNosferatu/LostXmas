@@ -17,8 +17,8 @@ def read_conversation(force_syn=False, force_dec=False, base_dir="../"):
     gfw = DFAFilter()
     gfw.parse(base_dir + 'data/augmentation/blacklist')
     # region Append test log
-    q_path = base_dir + 'infer/Online_Q.txt'
-    a_path = base_dir + 'infer/Online_A.txt'
+    q_path = base_dir + 'infer/Online_Q_SIAW.txt'
+    a_path = base_dir + 'infer/Online_A_SIAW.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, [], [])
     # endregion
 

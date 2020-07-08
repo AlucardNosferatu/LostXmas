@@ -13,21 +13,20 @@ def get_siaw(sentence, smw):
 
 
 def use_log():
-    f_q = open("Online_Q.txt", 'r+', encoding='utf-8-sig')
-    f_a = open("Online_A.txt", 'r+', encoding='utf-8-sig')
-    # f_q = open("../data/resource/raw/legacy/ChatterBot_Q.txt", 'r+', encoding='utf-8-sig')
-    # f_a = open("../data/resource/raw/legacy/ChatterBot_A.txt", 'r+', encoding='utf-8-sig')
-    q_lines = f_q.readlines()
-    a_lines = f_a.readlines()
+    with open("Online_Q.txt", 'r', encoding='utf-8-sig') as f_q:
+        q_lines = f_q.readlines()
+    with open("Online_A.txt", 'r', encoding='utf-8-sig') as f_a:
+        a_lines = f_a.readlines()
     new_q = q_lines.copy()
     new_a = a_lines.copy()
-    smw = [Randomword(create_num=5, change_rate=0.1)]
-    smw += [Similarword(create_num=5, change_rate=0.1)]
+    smw = [Randomword(create_num=5, change_rate=0.05)]
+    smw += [Similarword(create_num=5, change_rate=0.05)]
     for i in range(len(q_lines)):
         q_list = get_siaw(q_lines[i], smw)
-        a_list = get_siaw(a_lines[i], smw)
-        q_list = q_list[:min(len(q_list), len(a_list))]
-        a_list = a_list[:min(len(q_list), len(a_list))]
+        # a_list = get_siaw(a_lines[i], smw)
+        a_list = [a_lines[i]] * len(q_list)
+        # q_list = q_list[:min(len(q_list), len(a_list))]
+        # a_list = a_list[:min(len(q_list), len(a_list))]
         new_q += q_list
         new_a += a_list
     assert len(new_a) == len(new_q)
@@ -36,12 +35,10 @@ def use_log():
         new_a[i] = new_a[i].replace('\n', '')
         new_q[i] += '\n'
         new_a[i] += '\n'
-    f_q.truncate(0)
-    f_a.truncate(0)
-    f_q.seek(0)
-    f_a.seek(0)
-    f_q.writelines(new_q)
-    f_a.writelines(new_a)
+    with open("Online_Q_SIAW.txt", 'w', encoding='utf-8-sig') as f_q:
+        f_q.writelines(new_q)
+    with open("Online_A_SIAW.txt", 'w', encoding='utf-8-sig') as f_a:
+        f_a.writelines(new_a)
 
 
 if __name__ == '__main__':
