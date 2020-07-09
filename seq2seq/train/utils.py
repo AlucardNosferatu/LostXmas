@@ -25,7 +25,7 @@ def load_resource(base_dir='../'):
     return question, answer, answer_o, words, word_to_index, index_to_word
 
 
-def generate_train(batch_size, base_dir="../"):
+def generate_train(batch_size, base_dir="../", embed="word2vec"):
     question, answer, answer_o, words, word_to_index, index_to_word = load_resource(base_dir=base_dir)
     vocab_size = len(word_to_index) + 1
     maxLen = 20
@@ -38,12 +38,16 @@ def generate_train(batch_size, base_dir="../"):
         batch_answer_o = answer_o[steps:steps + batch_size]
         batch_question = question_[steps:steps + batch_size]
         batch_answer = answer_[steps:steps + batch_size]
-        outs = np.zeros([batch_size, maxLen, vocab_size], dtype='float32')
-        for pos, i in enumerate(batch_answer_o):
-            for pos_, j in enumerate(i):
-                if pos_ > 20:
-                    print(i)
-                outs[pos, pos_, j] = 1  # one-hot
+        outs = batch_answer_o
+        if embed == "word2vec":
+            pass
+        else:
+            outs = np.zeros([batch_size, maxLen, vocab_size], dtype='float32')
+            for pos, i in enumerate(batch_answer_o):
+                for pos_, j in enumerate(i):
+                    if pos_ > 20:
+                        print(i)
+                    outs[pos, pos_, j] = 1  # one-hot
         yield [batch_question, batch_answer], outs
         # print(steps)
         steps += batch_size

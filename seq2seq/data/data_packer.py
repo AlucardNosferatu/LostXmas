@@ -11,11 +11,14 @@ from data.augmentation.decomposition import getBaseWord, getComposed
 from data.augmentation.frequency import getWords
 from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data, \
     remove_banned
+from w2v.w2v_test import init_w2v, word2vector
+from w2v.w2v_train import incremental_train
 
 
-def read_conversation(force_syn=False, force_dec=False, base_dir="../"):
+def read_conversation(force_syn=False, force_dec=False, base_dir="../", embed="word2vec", w2v_it=False, w2v=None):
     gfw = DFAFilter()
     gfw.parse(base_dir + 'data/augmentation/blacklist')
+
     # region Append test log
     q_path = base_dir + 'infer/Online_Q_SIAW.txt'
     a_path = base_dir + 'infer/Online_A_SIAW.txt'
@@ -134,84 +137,130 @@ def read_conversation(force_syn=False, force_dec=False, base_dir="../"):
     # endregion
 
     placeholders = ['BOS', 'EOS']
-    _, freq_dist = getWords(question + answer + placeholders)
-    word_to_index = {}
-    for pos, i in enumerate(tqdm(freq_dist)):
-        word_to_index[i] = pos
-    index_to_word = {}
-    for pos, i in enumerate(tqdm(freq_dist)):
-        index_to_word[pos] = i
-    vocab_bag = list(word_to_index.keys())
 
-    answer_a = ['BOS ' + i + ' EOS' for i in answer]
-    answer_b = [i + ' EOS' for i in answer]
-    with open(base_dir + 'data/resource/word_to_index.pkl', 'wb') as f:
-        pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
-    with open(base_dir + 'data/resource/index_to_word.pkl', 'wb') as f:
-        pickle.dump(index_to_word, f, pickle.HIGHEST_PROTOCOL)
-    with open(base_dir + 'data/resource/vocab_bag.pkl', 'wb') as f:
-        pickle.dump(vocab_bag, f, pickle.HIGHEST_PROTOCOL)
-    question = np.array([[word_to_index[w] for w in i.split(' ')] for i in question])
-    answer_a = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_a])
-    answer_b = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_b])
+    if embed == "word2vec":
+        question = [item.split(' ') for item in question]
+        answer_a = [("BOS " + item + " EOS").split(' ') for item in answer]
+        answer_b = [(item + " EOS").split(' ') for item in answer]
+        if w2v_it:
+            incremental_train(
+                more_sentences=question + answer_a,
+                base_dir="../"
+            )
+        if w2v is None:
+            w2v = init_w2v(base_dir="../")
+        question = np.array([[word2vector(w, w2v) for w in i] for i in question])
+        answer_a = np.array([[word2vector(w, w2v) for w in i] for i in answer_a])
+        answer_b = np.array([[word2vector(w, w2v) for w in i] for i in answer_b])
+        i = 0
+        while i < len(question):
+            unk = False
+            for each in question[i]:
+                if not each.any():
+                    unk = True
+                    break
+            if unk:
+                question = np.delete(question, i)
+                answer_a = np.delete(answer_a, i)
+                answer_b = np.delete(answer_b, i)
+            else:
+                i += 1
+    else:
+        _, freq_dist = getWords(question + answer + placeholders)
+        word_to_index = {}
+        for pos, i in enumerate(tqdm(freq_dist)):
+            word_to_index[i] = pos
+        index_to_word = {}
+        for pos, i in enumerate(tqdm(freq_dist)):
+            index_to_word[pos] = i
+        vocab_bag = list(word_to_index.keys())
+
+        answer_a = ['BOS ' + i + ' EOS' for i in answer]
+        answer_b = [i + ' EOS' for i in answer]
+        with open(base_dir + 'data/resource/word_to_index.pkl', 'wb') as f:
+            pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
+        with open(base_dir + 'data/resource/index_to_word.pkl', 'wb') as f:
+            pickle.dump(index_to_word, f, pickle.HIGHEST_PROTOCOL)
+        with open(base_dir + 'data/resource/vocab_bag.pkl', 'wb') as f:
+            pickle.dump(vocab_bag, f, pickle.HIGHEST_PROTOCOL)
+        question = np.array([[word_to_index[w] for w in i.split(' ')] for i in question])
+        answer_a = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_a])
+        answer_b = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_b])
     size = int(len(question) / 100) * 100
     np.save(base_dir + 'data/resource/question.npy', question[:size])
     np.save(base_dir + 'data/resource/answer_a.npy', answer_a[:size])
     np.save(base_dir + 'data/resource/answer_b.npy', answer_b[:size])
 
 
-def add_padding(base_dir="../"):
+def add_padding(base_dir="../", embed="word2vec", w2v=None):
     question = np.load(base_dir + 'data/resource/question.npy', allow_pickle=True)
     answer_a = np.load(base_dir + 'data/resource/answer_a.npy', allow_pickle=True)
     answer_b = np.load(base_dir + 'data/resource/answer_b.npy', allow_pickle=True)
-    print('answer_a.shape: ', answer_a.shape)
-    with open(base_dir + 'data/resource/word_to_index.pkl', 'rb') as f:
-        word_to_index = pickle.load(f)
-    for i, j in tqdm(word_to_index.items()):
-        word_to_index[i] = j + 1
-    index_to_word = {}
-    for key, value in tqdm(word_to_index.items()):
-        index_to_word[value] = key
     pad_question = question
     pad_answer_a = answer_a
     pad_answer_b = answer_b
-    maxLen = 20
-    for pos, i in enumerate(tqdm(pad_question)):
-        for pos_, j in enumerate(i):
-            i[pos_] = j + 1
-        if len(i) > maxLen:
-            pad_question[pos] = i[:maxLen]
-    for pos, i in enumerate(tqdm(pad_answer_a)):
-        for pos_, j in enumerate(i):
-            i[pos_] = j + 1
-        if len(i) > maxLen:
-            pad_answer_a[pos] = i[:maxLen]
-    for pos, i in enumerate(tqdm(pad_answer_b)):
-        for pos_, j in enumerate(i):
-            i[pos_] = j + 1
-        if len(i) > maxLen:
-            pad_answer_b[pos] = i[:maxLen]
-    np.save(base_dir + 'data/resource/answer_o.npy', pad_answer_b)
-    with open(base_dir + 'data/resource/vocab_bag.pkl', 'rb') as f:
-        words = pickle.load(f)
-    vocab_size = len(word_to_index) + 1
-    print('word_to_vec_map: ', len(list(words)))
+    max_len = 20
+    if embed == "word2vec":
+        if w2v is None:
+            w2v = init_w2v(base_dir="../")
+        vocab_size = len(w2v.index2word)
+
+    else:
+        with open(base_dir + 'data/resource/word_to_index.pkl', 'rb') as f:
+            word_to_index = pickle.load(f)
+        for i, j in tqdm(word_to_index.items()):
+            word_to_index[i] = j + 1
+        index_to_word = {}
+        for key, value in tqdm(word_to_index.items()):
+            index_to_word[value] = key
+        with open(base_dir + 'data/resource/pad_index_to_word.pkl', 'wb') as f:
+            pickle.dump(index_to_word, f, pickle.HIGHEST_PROTOCOL)
+        for pos, i in enumerate(tqdm(pad_question)):
+            for pos_, j in enumerate(i):
+                i[pos_] = j + 1
+            if len(i) > max_len:
+                pad_question[pos] = i[:max_len]
+        for pos, i in enumerate(tqdm(pad_answer_a)):
+            for pos_, j in enumerate(i):
+                i[pos_] = j + 1
+            if len(i) > max_len:
+                pad_answer_a[pos] = i[:max_len]
+        for pos, i in enumerate(tqdm(pad_answer_b)):
+            for pos_, j in enumerate(i):
+                i[pos_] = j + 1
+            if len(i) > max_len:
+                pad_answer_b[pos] = i[:max_len]
+        with open(base_dir + 'data/resource/vocab_bag.pkl', 'rb') as f:
+            words = pickle.load(f)
+        vocab_size = len(word_to_index) + 1
+        print('word_to_vec_map: ', len(list(words)))
+        with open(base_dir + 'data/resource/pad_word_to_index.pkl', 'wb') as f:
+            pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
     print('vocab_size: ', vocab_size)
-    pad_question = sequence.pad_sequences(pad_question, maxlen=maxLen,
-                                          dtype='int32', padding='post',
-                                          truncating='post')
-    pad_answer = sequence.pad_sequences(pad_answer_a, maxlen=maxLen,
-                                        dtype='int32', padding='post',
-                                        truncating='post')
-    with open(base_dir + 'data/resource/pad_word_to_index.pkl', 'wb') as f:
-        pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
-    with open(base_dir + 'data/resource/pad_index_to_word.pkl', 'wb') as f:
-        pickle.dump(index_to_word, f, pickle.HIGHEST_PROTOCOL)
+    print('answer_a.shape: ', pad_answer_a.shape)
+    if embed == "word2vec":
+        pad_question = sequence.pad_sequences(pad_question, maxlen=max_len,
+                                              dtype='float32', padding='post',
+                                              truncating='post')
+        pad_answer = sequence.pad_sequences(pad_answer_a, maxlen=max_len,
+                                            dtype='float32', padding='post',
+                                            truncating='post')
+        pad_answer_b = sequence.pad_sequences(pad_answer_b, maxlen=max_len,
+                                              dtype='float32', padding='post',
+                                              truncating='post')
+    else:
+        pad_question = sequence.pad_sequences(pad_question, maxlen=max_len,
+                                              dtype='int32', padding='post',
+                                              truncating='post')
+        pad_answer = sequence.pad_sequences(pad_answer_a, maxlen=max_len,
+                                            dtype='int32', padding='post',
+                                            truncating='post')
+
+    np.save(base_dir + 'data/resource/answer_o.npy', pad_answer_b)
     np.save(base_dir + 'data/resource/pad_question.npy', pad_question)
     np.save(base_dir + 'data/resource/pad_answer.npy', pad_answer)
     return [
-        'answer_a.shape: ' + str(answer_a.shape),
-        'word_to_vec_map: ' + str(len(list(words))),
+        'answer_a.shape: ' + str(pad_answer_a.shape),
         'vocab_size: ' + str(vocab_size)
     ]
 
