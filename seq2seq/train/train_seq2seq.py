@@ -59,15 +59,27 @@ def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None, embed="word
     output = decoder_dense1(decoder_combined_context)  # equation (5) of the paper
     output = decoder_dense2(output)  # equation (6) of the paper
 
-    model = Model([input_question, input_answer], output)
-    model.compile(optimizer='Adam', loss='mse')
-    model.summary()
-    tf.keras.utils.plot_model(model, base_dir + "model.png", show_shapes=True)
-    model.save(filepath=base_dir + "models/seq2seq_raw.h5")
+    output_model = Model([input_question, input_answer], output)
+    if embed == "word2vec":
+        output_model.compile(optimizer='rmsprop', loss='mse')
+    else:
+        output_model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
+    output_model.summary()
+    tf.keras.utils.plot_model(output_model, base_dir + "model.png", show_shapes=True)
+    output_model.save(filepath=base_dir + "models/seq2seq_raw.h5")
     if weight_path:
-        model.load_weights(weight_path)
-    return input_question, encoder_lstm, question_h, question_c, lstm_decoder, input_answer, decoder_dense1, \
-           decoder_dense2, input_answer
+        output_model.load_weights(weight_path)
+    return [
+        input_question,
+        encoder_lstm,
+        question_h,
+        question_c,
+        lstm_decoder,
+        input_answer,
+        decoder_dense1,
+        decoder_dense2,
+        input_answer
+    ]
 
 
 def load_seq2seq(file_path="../models/seq2seq_raw.h5"):
@@ -115,7 +127,7 @@ def train_seq2seq(input_model, base_dir="../", embed="word2vec"):
                               #                           embeddings_data=None,
                               #                           update_freq='epoch'
                               )
-    early = EarlyStopping(monitor='loss', min_delta=0, patience=5, verbose=1, mode='auto')
+    early = EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=1, mode='auto')
     callbacks_list = [checkpoint]
 
     # initial_epoch_ = int(epoch_last.split('-')[2]) - 1
