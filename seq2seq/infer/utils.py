@@ -7,6 +7,7 @@ import synonyms
 from tensorflow.keras.preprocessing import sequence
 
 from server.hyper_transformer import translator, recursive_translator
+from w2v.w2v_test import word2vector
 
 maxLen = 20
 
@@ -22,50 +23,65 @@ def act_weather(city):
     return outstrs + ' EOS'
 
 
-def input_question(seq, word_to_index, all_composed, syn_dict):
+def input_question(seq, word_to_index, embed="word2vec"):
     seq = seq.replace('，', ',').replace('。', '.')
     seq = jieba.lcut(seq.strip(), cut_all=False)
     use_syn = False
-    for k in range(len(seq)):
-        if not seq[k] in word_to_index:
-            use_syn = True
-            # seq[k] = translator(word_to_index, seq[k])
-            seq[k] = recursive_translator(word_to_index, seq[k], 0)
-            # for key in syn_dict:
-            #     if seq[k] in syn_dict[key]:
-            #         seq[k] = key
-            #         break
-            #     elif key in synonyms.nearby(seq[k])[0]:
-            #         seq[k] = key
-            #         break
-        # if seq[k] in all_composed:
-        #     seq[k] = ' '.join(list(seq[k]))
-    seq = ' '.join(seq)
-    if use_syn:
-        print("出现未知词汇，采用同义词替换：")
-        print(seq.replace(' ', ''))
-    seq = seq.split(' ')
-    sentence = seq
-    try:
-        seq = np.array([word_to_index[w] for w in seq])
-        seq = sequence.pad_sequences([seq], maxlen=maxLen,
-                                     padding='post', truncating='post')
-    except KeyError as e:
-        sentence = None
-        seq = "出现了Carol没法理解的词汇。。。：" + str(e.args[0])
-    return seq, sentence
+    if embed == "word2vec":
+        for k in range(len(seq)):
+            if not seq[k] in word_to_index.wv.vocab:
+                use_syn = True
+                seq[k] = recursive_translator(word_to_index.wv.vocab, seq[k], 0)
+        seq = ' '.join(seq)
+        if use_syn:
+            print("出现未知词汇，采用同义词替换：")
+            print(seq.replace(' ', ''))
+        seq = seq.split(' ')
+        try:
+            seq = np.array([word_to_index.wv.word_vec(w, use_norm=True) for w in seq])
+            seq = sequence.pad_sequences(
+                [seq],
+                maxlen=maxLen,
+                dtype='float32',
+                padding='post',
+                truncating='post'
+            )
+        except KeyError as e:
+            seq = "出现了Carol没法理解的词汇。。。：" + str(e.args[0])
+            print(seq)
+    else:
+        for k in range(len(seq)):
+            if not seq[k] in word_to_index:
+                use_syn = True
+                # seq[k] = translator(word_to_index, seq[k])
+                seq[k] = recursive_translator(word_to_index, seq[k], 0)
+        seq = ' '.join(seq)
+        if use_syn:
+            print("出现未知词汇，采用同义词替换：")
+            print(seq.replace(' ', ''))
+        seq = seq.split(' ')
+        try:
+            seq = np.array([word_to_index[w] for w in seq])
+            seq = sequence.pad_sequences([seq], maxlen=maxLen,
+                                         padding='post', truncating='post')
+        except KeyError as e:
+            seq = "出现了Carol没法理解的词汇。。。：" + str(e.args[0])
+            print(seq)
+    return seq
 
 
-def decode_greedy(seq, sentence, question_model, answer_model, word_to_index, index_to_word):
+def decode_greedy(seq, question_model, answer_model, word_to_index, index_to_word, embed="word2vec"):
     question = seq
-    # for index in question[0]:
-    #     if int(index) == 5900:
-    #         for index_ in question[0]:
-    #             if index_ in [7851, 11842, 2406, 3485, 823, 12773, 8078]:
-    #                 return act_weather(index_to_word[index_])
-    answer = np.zeros((1, 1))
+    if embed == 'word2vec':
+        answer = np.zeros((1, 50))
+    else:
+        answer = np.zeros((1, 1))
     attention_plot = np.zeros((20, 20))
-    answer[0, 0] = word_to_index['BOS']
+    if embed == "word2vec":
+        answer[0, :] = word_to_index.wv.word_vec('BOS', use_norm=True)
+    else:
+        answer[0, 0] = word_to_index['BOS']
+
     i = 1
     answer_ = []
     flag = 0
@@ -86,9 +102,7 @@ def decode_greedy(seq, sentence, question_model, answer_model, word_to_index, in
         question_h = prediction_h
         question_c = prediction_c
         i += 1
-    # result = ' '.join(answer_)
-    # attention_plot = attention_plot[:len(result.split(' ')), :len(sentence)]
-    # plot_attention(attention_plot, sentence, result.split(' '))
+
     return ''.join(answer_).replace('EOS', '')
 
 

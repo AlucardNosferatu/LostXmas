@@ -10,20 +10,25 @@ from tensorflow.keras.layers import Input, dot, Activation, concatenate
 from infer.utils import input_question, decode_greedy
 from train.train_seq2seq import build_seq2seq
 from train.utils import get_vocab_size, load_resource
+from w2v.w2v_test import init_w2v
 
 
-def build_qa_model(BaseDir, wp=None):
+def build_qa_model(base_dir, wp=None, embed="word2vec"):
     max_len = 20
     iq, el, qh, qc, ld, iae, dd1, dd2, ia = build_seq2seq(
-        base_dir=BaseDir,
-        vocab_size=get_vocab_size(base_dir=BaseDir),
-        weight_path=wp
+        base_dir=base_dir,
+        vocab_size=get_vocab_size(base_dir=base_dir),
+        weight_path=wp,
+        embed=embed
     )
     question_model = Model(iq, [el, qh, qc])
     question_model.summary()
+
     answer_h = Input(shape=(512,))
     answer_c = Input(shape=(512,))
+
     el = Input(shape=(max_len, 512))
+
     target, h, c = ld(iae, initial_state=[answer_h, answer_c])
     attention = dot([target, el], axes=[2, 2])
     attention_ = Activation('softmax')(attention)
@@ -36,38 +41,39 @@ def build_qa_model(BaseDir, wp=None):
     return question_model, answer_model
 
 
-def loop_talking(UseKeywords=False, BaseDir='../'):
-    f_r = open(BaseDir + "data/resource/raw/all_corpus.tsv", 'r+', encoding='utf-8-sig')
+def loop_talking(use_keywords=False, base_dir='../', embed="word2vec"):
+    f_r = open(base_dir + "data/resource/raw/all_corpus.tsv", 'r+', encoding='utf-8-sig')
     raw_lines = f_r.readlines()
     lines = raw_lines.copy()
     for i in tqdm(range(len(raw_lines))):
         raw_lines[i] = raw_lines[i].split('\t')[1].replace('\n', '').strip()
     all_lines = [raw_lines]
-    question_model, answer_model = build_qa_model(BaseDir=BaseDir, wp=BaseDir + "train/check_points/W -100-0.0266-.h5")
-    question, answer, answer_o, words, word_to_index, index_to_word = load_resource(base_dir=BaseDir)
-    f_q = open(BaseDir + "infer/Online_Q.txt", 'a', encoding='utf-8-sig')
-    f_a = open(BaseDir + "infer/Online_A.txt", 'a', encoding='utf-8-sig')
-    with open(BaseDir + 'data/resource/composable.pkl', 'rb') as f:
-        all_composed = pickle.load(f)
-    with open(BaseDir + 'data/resource/syn_dict.pkl', 'rb') as f:
-        syn = pickle.load(f)
+    question_model, answer_model = build_qa_model(
+        base_dir=base_dir,
+        wp=base_dir + "train/check_points/W -117-0.0011-.h5"
+    )
+    _, _, _, _, word_to_index, index_to_word = load_resource(base_dir=base_dir)
+    if embed == "word2vec":
+        word_to_index = init_w2v()
+
+    f_q = open(base_dir + "infer/Online_Q.txt", 'a', encoding='utf-8-sig')
+    f_a = open(base_dir + "infer/Online_A.txt", 'a', encoding='utf-8-sig')
     while True:
         seq = input("对Carol说些什么吧：")
         question_new = seq
         if seq == 'x':
             break
-        seq, sentence = input_question(seq=seq, word_to_index=word_to_index, all_composed=all_composed, syn_dict=syn)
-        print(sentence)
-        if seq is None:
+        seq = input_question(seq=seq, word_to_index=word_to_index, embed=embed)
+        if type(seq) is str and seq.startswith("出现了Carol没法理解的词汇。。。："):
             continue
         with tf.device("/gpu:0"):
             answer = decode_greedy(
                 seq=seq,
-                sentence=sentence,
                 question_model=question_model,
                 answer_model=answer_model,
                 word_to_index=word_to_index,
-                index_to_word=index_to_word
+                index_to_word=index_to_word,
+                embed=embed
             )
         #     answer=decode_beamsearch(seq, 3)
         print('ANSWER: ', answer)
@@ -79,7 +85,7 @@ def loop_talking(UseKeywords=False, BaseDir='../'):
             f_q.flush()
             f_a.flush()
         while input("是否查找？") == 'y':
-            if not UseKeywords:
+            if not use_keywords:
                 must_include = input("必须包含：")
                 exclude = input("不得包含：")
             else:
@@ -94,7 +100,7 @@ def loop_talking(UseKeywords=False, BaseDir='../'):
                         continue
 
                     # region use Similarity
-                    if not UseKeywords:
+                    if not use_keywords:
                         if len(exclude) >= 2 and exclude in line:
                             continue
                         if must_include in line:

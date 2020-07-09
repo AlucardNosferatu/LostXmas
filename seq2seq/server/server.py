@@ -52,7 +52,7 @@ class Seq2seq:
             lines[i] = lines[i].split('\t')[1].replace('\n', '').strip()
             self.a_lines_list = [lines]
         self.q_model, self.a_model = build_qa_model(
-            BaseDir=self.BaseDir,
+            base_dir=self.BaseDir,
             wp=base_dir + "train/check_points/" + weight_name
         )
         _, _, _, _, self.word_to_index, self.index_to_word = load_resource(base_dir=self.BaseDir)
@@ -71,9 +71,7 @@ class Seq2seq:
             return self.currentA
         new_question, sentence = input_question(
             seq=new_question,
-            word_to_index=self.word_to_index,
-            all_composed=None,
-            syn_dict=None
+            word_to_index=self.word_to_index
         )
         if sentence is None:
             self.currentA = "DEBUG:" + new_question
@@ -82,7 +80,6 @@ class Seq2seq:
         with tf.device("/gpu:0"):
             self.currentA = decode_greedy(
                 seq=new_question,
-                sentence=sentence,
                 question_model=self.q_model,
                 answer_model=self.a_model,
                 word_to_index=self.word_to_index,
