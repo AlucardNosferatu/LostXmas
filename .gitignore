@@ -19,3 +19,8 @@ recorder/packages/
 recorder/bin/
 seq2seq/.idea/workspace.xml
 seq2seq/model.png
+seq2seq/w2v/corpusSegDone_1.model
+seq2seq/w2v/corpus_1.txt
+seq2seq/w2v/corpusSegDone_1.txt
+seq2seq/w2v/corpusSegDone_1.vector
+seq2seq/w2v/news_sohusite_xml.dat

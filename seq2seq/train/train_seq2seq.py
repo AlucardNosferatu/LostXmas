@@ -21,13 +21,13 @@ def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None):
                             mask_zero=True,
                             input_length=None,
                             embeddings_initializer=truncated_normal)
-    LSTM_encoder = LSTM(512,
+    lstm_encoder = LSTM(512,
                         return_sequences=True,
                         return_state=True,
                         kernel_initializer='lecun_uniform',
                         name='encoder_lstm'
                         )
-    LSTM_decoder = LSTM(512,
+    lstm_decoder = LSTM(512,
                         return_sequences=True,
                         return_state=True,
                         kernel_initializer='lecun_uniform',
@@ -38,8 +38,8 @@ def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None):
     input_answer = Input(shape=(None,), dtype='int32', name='input_answer')
     input_question_embed = embed_layer(input_question)
     input_answer_embed = embed_layer(input_answer)
-    encoder_lstm, question_h, question_c = LSTM_encoder(input_question_embed)
-    decoder_lstm, _, _ = LSTM_decoder(input_answer_embed,
+    encoder_lstm, question_h, question_c = lstm_encoder(input_question_embed)
+    decoder_lstm, _, _ = lstm_decoder(input_answer_embed,
                                       initial_state=[question_h, question_c])
     attention = dot([decoder_lstm, encoder_lstm], axes=[2, 2])
     attention = Activation('softmax')(attention)
@@ -54,11 +54,11 @@ def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None):
     model = Model([input_question, input_answer], output)
     model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
     model.summary()
-    tf.keras.utils.plot_model(model, base_dir + "model.png")
+    tf.keras.utils.plot_model(model, base_dir + "model.png", show_shapes=True)
     model.save(filepath=base_dir + "models/seq2seq_raw.h5")
     if weight_path:
         model.load_weights(weight_path)
-    return input_question, encoder_lstm, question_h, question_c, LSTM_decoder, input_answer_embed, decoder_dense1, \
+    return input_question, encoder_lstm, question_h, question_c, lstm_decoder, input_answer_embed, decoder_dense1, \
            decoder_dense2, input_answer
 
 
