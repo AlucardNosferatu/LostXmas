@@ -1,6 +1,7 @@
 import gensim
 import numpy as np
 
+
 def process_corpus():
     lines = []
     with open('news_sohusite_xml.dat', mode='r', encoding='gb18030') as f:
@@ -21,13 +22,14 @@ def init_w2v(base_dir="../"):
         base_dir + 'w2v/corpusSegDone_1.vector',
         binary=False
     )
+    word2vec.init_sims(replace=True)
     return word2vec
 
 
 def word2vector(word, word2vec):
     dims = word2vec.vector_size
     if word in word2vec.vocab:
-        vector = word2vec.get_vector(word)
+        vector = word2vec.wv.word_vec(word, use_norm=True)
     else:
         vector = np.zeros(shape=(dims,))
     return vector

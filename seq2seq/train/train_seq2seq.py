@@ -53,14 +53,14 @@ def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None, embed="word
     # Has another weight + tanh layer as described in equation (5) of the paper
     decoder_dense1 = TimeDistributed(Dense(256, activation="tanh"))
     if embed == "word2vec":
-        decoder_dense2 = TimeDistributed(Dense(50, activation="relu"))
+        decoder_dense2 = TimeDistributed(Dense(50, activation="tanh"))
     else:
         decoder_dense2 = TimeDistributed(Dense(vocab_size, activation="softmax"))
     output = decoder_dense1(decoder_combined_context)  # equation (5) of the paper
     output = decoder_dense2(output)  # equation (6) of the paper
 
     model = Model([input_question, input_answer], output)
-    model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
+    model.compile(optimizer='Adam', loss='mse')
     model.summary()
     tf.keras.utils.plot_model(model, base_dir + "model.png", show_shapes=True)
     model.save(filepath=base_dir + "models/seq2seq_raw.h5")
@@ -115,8 +115,8 @@ def train_seq2seq(input_model, base_dir="../", embed="word2vec"):
                               #                           embeddings_data=None,
                               #                           update_freq='epoch'
                               )
-    early = EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=1, mode='auto')
-    callbacks_list = [checkpoint, early]
+    early = EarlyStopping(monitor='loss', min_delta=0, patience=5, verbose=1, mode='auto')
+    callbacks_list = [checkpoint]
 
     # initial_epoch_ = int(epoch_last.split('-')[2]) - 1
     # print('**********Begin from epoch: ', str(initial_epoch_))
