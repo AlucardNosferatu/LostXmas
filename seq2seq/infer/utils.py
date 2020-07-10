@@ -73,12 +73,12 @@ def input_question(seq, word_to_index, embed="word2vec"):
 def decode_greedy(seq, question_model, answer_model, word_to_index, index_to_word, embed="word2vec"):
     question = seq
     if embed == 'word2vec':
-        answer = np.zeros((1, 50))
+        answer = np.zeros((1, 1, 50))
     else:
         answer = np.zeros((1, 1))
     attention_plot = np.zeros((20, 20))
     if embed == "word2vec":
-        answer[0, :] = word_to_index.wv.word_vec('BOS', use_norm=True)
+        answer[0, 0, :] = word_to_index.wv.word_vec('BOS', use_norm=True)
     else:
         answer[0, 0] = word_to_index['BOS']
 
@@ -93,12 +93,20 @@ def decode_greedy(seq, question_model, answer_model, word_to_index, index_to_wor
         ])
         attention_weights = attention.reshape(-1, )
         attention_plot[i] = attention_weights
-        word_arg = np.argmax(prediction[0, -1, :])  #
-        answer_.append(index_to_word[word_arg])
-        if word_arg == word_to_index['EOS'] or i > 20:
-            flag = 1
-        answer = np.zeros((1, 1))
-        answer[0, 0] = word_arg
+        if embed == "word2vec":
+            word_arg = np.squeeze(prediction)
+            word = word_to_index.most_similar(positive=[word_arg], topn=1)[0][0]
+            answer_.append(word)
+            if word == "EOS" or i > 20:
+                flag = 1
+            answer = prediction
+        else:
+            word_arg = np.argmax(prediction[0, -1, :])  #
+            answer_.append(index_to_word[word_arg])
+            if word_arg == word_to_index['EOS'] or i > 20:
+                flag = 1
+            answer = np.zeros((1, 1))
+            answer[0, 0] = word_arg
         question_h = prediction_h
         question_c = prediction_c
         i += 1

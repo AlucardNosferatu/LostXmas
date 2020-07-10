@@ -149,4 +149,7 @@ def loop_talking(use_keywords=False, base_dir='../', embed="word2vec"):
 
 
 if __name__ == '__main__':
+    GPU_list = tf.config.experimental.list_physical_devices('GPU')
+    for gpu in GPU_list:
+        tf.config.experimental.set_memory_growth(gpu, True)
     loop_talking()
