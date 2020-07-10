@@ -115,20 +115,21 @@ def train_seq2seq(input_model, base_dir="../", embed="word2vec"):
                                   cooldown=0,
                                   min_lr=0
                                   )
-    tensorboard = TensorBoard(log_dir=base_dir + 'train/logs',
-                              #                           histogram_freq=0,
-                              batch_size=100
-                              #                           write_graph=True,
-                              #                           write_grads=True,
-                              #                           write_images=True,
-                              #                           embeddings_freq=0,
-                              #                           embeddings_layer_names=None,
-                              #                           embeddings_metadata=None,
-                              #                           embeddings_data=None,
-                              #                           update_freq='epoch'
-                              )
+    tb_callback = TensorBoard(
+        log_dir=base_dir + 'train/logs',
+        histogram_freq=0,
+        batch_size=100,
+        write_graph=True,
+        write_grads=True,
+        write_images=True,
+        embeddings_freq=0,
+        embeddings_layer_names=None,
+        embeddings_metadata=None,
+        embeddings_data=None,
+        update_freq='epoch'
+    )
     early = EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=1, mode='auto')
-    callbacks_list = [checkpoint]
+    callbacks_list = [checkpoint, early, tb_callback]
 
     # initial_epoch_ = int(epoch_last.split('-')[2]) - 1
     # print('**********Begin from epoch: ', str(initial_epoch_))

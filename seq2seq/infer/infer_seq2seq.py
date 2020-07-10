@@ -50,7 +50,7 @@ def loop_talking(use_keywords=False, base_dir='../', embed="word2vec"):
     all_lines = [raw_lines]
     question_model, answer_model = build_qa_model(
         base_dir=base_dir,
-        wp=base_dir + "train/check_points/W -117-0.0011-.h5"
+        wp=base_dir + "train/check_points/W -200-0.0006-.h5"
     )
     _, _, _, _, word_to_index, index_to_word = load_resource(base_dir=base_dir)
     if embed == "word2vec":
