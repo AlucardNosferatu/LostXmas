@@ -1,20 +1,36 @@
+import random
+
 import gensim
 import numpy as np
+import Neu
+from snownlp import SnowNLP
 
 
 def process_corpus():
     lines = []
     with open('news_sohusite_xml.dat', mode='r', encoding='gb18030') as f:
-        line = f.readline()
-        while line:
-            if line.startswith('<content>'):
-                line = line.replace('<content>', '').replace('</content>', '')
-                if line != '\n':
-                    lines.append(line)
-            line = f.readline()
+        sentence = f.readline()
         with open('corpus_1.txt', mode='w', encoding='utf-8-sig') as f2:
+            while sentence:
+                if sentence.startswith('<content>'):
+                    sentence = sentence.replace('<content>', '').replace('</content>', '').replace("", "")
+                    name_list = ['刘真']
+                    for name in name_list:
+                        if len(name) > 1:
+                            sentence = sentence.replace(name, random.choice(['Scrooge', 'Carol']))
+                    if sentence != '\n':
+                        lines.append(sentence)
+                        f2.truncate(0)
+                        f2.seek(0)
+                        f2.writelines(lines)
+                        f2.flush()
+                        print(len(lines))
+                sentence = f.readline()
+            f2.truncate(0)
+            f2.seek(0)
             f2.writelines(lines)
-        print("Done")
+            f2.flush()
+            print("Done")
 
 
 def init_w2v(base_dir="../"):
@@ -36,6 +52,5 @@ def word2vector(word, word2vec):
 
 
 if __name__ == '__main__':
-    w2v = gensim.models.KeyedVectors.load_word2vec_format('corpusSegDone_1.vector', binary=False)
-    vec = w2v.get_vector('的')
+    process_corpus()
     print("Done")
