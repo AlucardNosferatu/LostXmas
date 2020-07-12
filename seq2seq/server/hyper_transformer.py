@@ -1,5 +1,6 @@
 import copy
 import jieba
+import jieba.analyse
 import synonyms
 
 from train.utils import load_resource
@@ -78,5 +79,5 @@ def recursive_translator(word_to_index, word, count=0):
 
 
 if __name__ == '__main__':
-    seq = input_question()
-    print(seq)
+    question = input_question()
+    print(question)

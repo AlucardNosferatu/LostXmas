@@ -65,7 +65,7 @@ def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None):
         question_h,
         question_c,
         lstm_decoder,
-        input_answer,
+        input_answer_embed,
         decoder_dense1,
         decoder_dense2,
         input_answer

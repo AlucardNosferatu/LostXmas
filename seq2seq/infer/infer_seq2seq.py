@@ -46,7 +46,7 @@ def loop_talking(use_keywords=False, base_dir='../'):
     all_lines = [raw_lines]
     question_model, answer_model = build_qa_model(
         base_dir=base_dir,
-        wp=base_dir + "train/check_points/W -  1-0.0006-.h5"
+        wp=base_dir + "train/check_points/W -  4-1.6948-.h5"
     )
     _, _, _, _, word_to_index, index_to_word = load_resource(base_dir=base_dir)
     f_q = open(base_dir + "infer/Online_Q.txt", 'a', encoding='utf-8-sig')
