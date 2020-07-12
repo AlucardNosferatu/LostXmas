@@ -12,7 +12,7 @@ def batch_mark():
     pycorrector.enable_char_error(enable=False)
     corrected_sent, detail = pycorrector.correct("开始清洗")
     print(corrected_sent)
-    text_path = "../resource/raw/all_corpus.tsv"
+    text_path = "../data/resource/raw/all_corpus.tsv"
     with open(text_path, 'r+', encoding='utf-8-sig') as f_q:
         q_lines = f_q.readlines()
         for i in tqdm(range(20652, len(q_lines))):

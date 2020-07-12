@@ -2,34 +2,34 @@ import random
 
 import gensim
 import numpy as np
-import Neu
-from snownlp import SnowNLP
 
 
 def process_corpus():
-    lines = []
+    name_list = ['刘真']
     with open('news_sohusite_xml.dat', mode='r', encoding='gb18030') as f:
         sentence = f.readline()
-        with open('corpus_1.txt', mode='w', encoding='utf-8-sig') as f2:
+        with open('corpus_1.txt', mode='r+', encoding='utf-8-sig') as f2:
+            lines = f2.readlines()
+            already = len(lines)
             while sentence:
                 if sentence.startswith('<content>'):
                     sentence = sentence.replace('<content>', '').replace('</content>', '').replace("", "")
-                    name_list = ['刘真']
-                    for name in name_list:
-                        if len(name) > 1:
-                            sentence = sentence.replace(name, random.choice(['Scrooge', 'Carol']))
                     if sentence != '\n':
-                        lines.append(sentence)
-                        f2.truncate(0)
-                        f2.seek(0)
-                        f2.writelines(lines)
-                        f2.flush()
-                        print(len(lines))
+                        if already != 0:
+                            already -= 1
+                            continue
+                        else:
+                            for name in name_list:
+                                if len(name) > 1:
+                                    sentence = sentence.replace(name, random.choice(['Scrooge', 'Carol']))
+                            # lines.append(sentence)
+                        if len(lines) % 100 == 0 or True:
+                            # print(len(lines))
+                            # f2.truncate(0)
+                            # f2.seek(0)
+                            f2.writelines([sentence])
+                            f2.flush()
                 sentence = f.readline()
-            f2.truncate(0)
-            f2.seek(0)
-            f2.writelines(lines)
-            f2.flush()
             print("Done")
 
 

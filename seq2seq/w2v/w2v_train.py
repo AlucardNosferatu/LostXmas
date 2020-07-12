@@ -8,6 +8,7 @@ import gensim
 import jieba
 from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
+from tqdm import tqdm
 
 filePath = 'corpus_1.txt'
 fileSegWordDonePath = 'corpusSegDone_1.txt'
@@ -17,9 +18,9 @@ out_vector = 'corpusSegDone_1.vector'
 
 
 # 打印中文列表
-def print_list_chinese(list):
-    for i in range(len(list)):
-        print(list[i])
+def print_list_chinese(input_list):
+    for i in range(len(input_list)):
+        print(input_list[i])
 
     # 读取文件内容到列表
 
@@ -35,13 +36,11 @@ def process_raw(file_path):
 # jieba分词后保存在列表中
 def tokenize_and_save(file_train_read):
     file_train_seg = []
-    for i in range(len(file_train_read)):
+    for i in tqdm(range(len(file_train_read))):
         file_train_seg.append([' '.join(list(jieba.cut(file_train_read[i], cut_all=False)))])
-        if i % 100 == 0:
-            print(i)
     # 保存分词结果到文件中
     with open(fileSegWordDonePath, 'w', encoding='utf-8') as fW:
-        for i in range(len(file_train_seg)):
+        for i in tqdm(range(len(file_train_seg))):
             fW.write(file_train_seg[i][0])
             fW.write('\n')
 
@@ -53,12 +52,6 @@ gensim word2vec获取词向量
 
 def incremental_train(more_sentences, base_dir="../"):
     model_w2v = gensim.models.Word2Vec.load(base_dir + "w2v/" + out_model)
-    # more_sentences = [
-    #     [
-    #         'Advanced', 'users', 'can', 'load', 'a', 'model', 'and',
-    #         'continue', 'training', 'it', 'with', 'more', 'sentences'
-    #     ]
-    # ]
     model_w2v.build_vocab(more_sentences, update=True)
     model_w2v.train(more_sentences, total_examples=model_w2v.corpus_count, epochs=model_w2v.iter)
     # 保存模型
@@ -68,6 +61,8 @@ def incremental_train(more_sentences, base_dir="../"):
 
 
 def initial_train():
+    ftr = process_raw(filePath)
+    tokenize_and_save(ftr)
     program = os.path.basename(sys.argv[0])  # 读取当前文件的文件名
     logger = logging.getLogger(program)
     logging.basicConfig(format='%(asctime)s: %(levelname)s: %(message)s', level=logging.INFO)
@@ -89,5 +84,4 @@ def initial_train():
 warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')
 
 if __name__ == '__main__':
-    sentence = [jieba.lcut("我爱Carol", cut_all=False)]
-    incremental_train(sentence)
+    initial_train()

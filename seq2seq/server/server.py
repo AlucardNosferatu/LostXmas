@@ -12,14 +12,14 @@ from snownlp import SnowNLP
 
 from data.data_tool import get_file_list
 from infer.SayItAnotherWay import use_log
-from train.train_seq2seq import build_seq2seq, train_seq2seq, load_seq2seq
+from obsolete.w2v_train_misuse import build_seq2seq, train_seq2seq, load_seq2seq
 from train.utils import load_resource, get_vocab_size
 from server.inspiration import Inspiration
-from infer.infer_seq2seq import build_qa_model
+from obsolete.w2v_infer_misuse import build_qa_model
 from http.server import SimpleHTTPRequestHandler
 from infer.utils import input_question, decode_greedy
-from data.obsolete.grammar4fluency import mark_invalid
-from data.data_packer import read_conversation, add_padding
+from obsolete.grammar4fluency import mark_invalid
+from obsolete.w2v_packer_misuse import read_conversation, add_padding
 from data.augmentation.similarity import similarity_complex, Keywords_IoU
 
 

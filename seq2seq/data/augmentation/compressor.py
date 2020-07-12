@@ -28,10 +28,10 @@ def getSynDict(freq_dist):
 
 
 def syn_replace(ReplaceAllMatched=True):
-    with open("../obsolete/qingyun_withSyn.tsv", 'r', encoding='utf-8-sig') as f_o:
+    with open("../../obsolete/qingyun_withSyn.tsv", 'r', encoding='utf-8-sig') as f_o:
         prev_lines = f_o.readlines()
         last_index = len(prev_lines)
-    f_o = open("../obsolete/qingyun_withSyn.tsv", 'a', encoding='utf-8-sig')
+    f_o = open("../../obsolete/qingyun_withSyn.tsv", 'a', encoding='utf-8-sig')
     with open("../resource/raw/qingyun.tsv", 'r+', encoding='utf-8-sig') as f_r:
         raw_lines = f_r.readlines()
         raw_lines[:last_index] = prev_lines

@@ -1,13 +1,11 @@
 import jieba
 import matplotlib
 import matplotlib.pyplot as plt
-import requests
 import numpy as np
-import synonyms
+import requests
 from tensorflow.keras.preprocessing import sequence
 
-from server.hyper_transformer import translator, recursive_translator
-from w2v.w2v_test import word2vector
+from server.hyper_transformer import recursive_translator
 
 maxLen = 20
 
@@ -23,64 +21,35 @@ def act_weather(city):
     return outstrs + ' EOS'
 
 
-def input_question(seq, word_to_index, embed="word2vec"):
+def input_question(seq, word_to_index):
     seq = seq.replace('，', ',').replace('。', '.')
     seq = jieba.lcut(seq.strip(), cut_all=False)
     use_syn = False
-    if embed == "word2vec":
-        for k in range(len(seq)):
-            if not seq[k] in word_to_index.wv.vocab:
-                use_syn = True
-                seq[k] = recursive_translator(word_to_index.wv.vocab, seq[k], 0)
-        seq = ' '.join(seq)
-        if use_syn:
-            print("出现未知词汇，采用同义词替换：")
-            print(seq.replace(' ', ''))
-        seq = seq.split(' ')
-        try:
-            seq = np.array([word_to_index.wv.word_vec(w, use_norm=True) for w in seq])
-            seq = sequence.pad_sequences(
-                [seq],
-                maxlen=maxLen,
-                dtype='float32',
-                padding='post',
-                truncating='post'
-            )
-        except KeyError as e:
-            seq = "出现了Carol没法理解的词汇。。。：" + str(e.args[0])
-            print(seq)
-    else:
-        for k in range(len(seq)):
-            if not seq[k] in word_to_index:
-                use_syn = True
-                # seq[k] = translator(word_to_index, seq[k])
-                seq[k] = recursive_translator(word_to_index, seq[k], 0)
-        seq = ' '.join(seq)
-        if use_syn:
-            print("出现未知词汇，采用同义词替换：")
-            print(seq.replace(' ', ''))
-        seq = seq.split(' ')
-        try:
-            seq = np.array([word_to_index[w] for w in seq])
-            seq = sequence.pad_sequences([seq], maxlen=maxLen,
-                                         padding='post', truncating='post')
-        except KeyError as e:
-            seq = "出现了Carol没法理解的词汇。。。：" + str(e.args[0])
-            print(seq)
+    for k in range(len(seq)):
+        if not seq[k] in word_to_index:
+            use_syn = True
+            # seq[k] = translator(word_to_index, seq[k])
+            seq[k] = recursive_translator(word_to_index, seq[k], 0)
+    seq = ' '.join(seq)
+    if use_syn:
+        print("出现未知词汇，采用同义词替换：")
+        print(seq.replace(' ', ''))
+    seq = seq.split(' ')
+    try:
+        seq = np.array([word_to_index[w] for w in seq])
+        seq = sequence.pad_sequences([seq], maxlen=maxLen,
+                                     padding='post', truncating='post')
+    except KeyError as e:
+        seq = "出现了Carol没法理解的词汇。。。：" + str(e.args[0])
+        print(seq)
     return seq
 
 
-def decode_greedy(seq, question_model, answer_model, word_to_index, index_to_word, embed="word2vec"):
+def decode_greedy(seq, question_model, answer_model, word_to_index, index_to_word):
     question = seq
-    if embed == 'word2vec':
-        answer = np.zeros((1, 1, 50))
-    else:
-        answer = np.zeros((1, 1))
+    answer = np.zeros((1, 1))
     attention_plot = np.zeros((20, 20))
-    if embed == "word2vec":
-        answer[0, 0, :] = word_to_index.wv.word_vec('BOS', use_norm=True)
-    else:
-        answer[0, 0] = word_to_index['BOS']
+    answer[0, 0] = word_to_index['BOS']
 
     i = 1
     answer_ = []
@@ -93,20 +62,12 @@ def decode_greedy(seq, question_model, answer_model, word_to_index, index_to_wor
         ])
         attention_weights = attention.reshape(-1, )
         attention_plot[i] = attention_weights
-        if embed == "word2vec":
-            word_arg = np.squeeze(prediction)
-            word = word_to_index.most_similar(positive=[word_arg], topn=1)[0][0]
-            answer_.append(word)
-            if word == "EOS" or i > 20:
-                flag = 1
-            answer = prediction
-        else:
-            word_arg = np.argmax(prediction[0, -1, :])  #
-            answer_.append(index_to_word[word_arg])
-            if word_arg == word_to_index['EOS'] or i > 20:
-                flag = 1
-            answer = np.zeros((1, 1))
-            answer[0, 0] = word_arg
+        word_arg = np.argmax(prediction[0, -1, :])  #
+        answer_.append(index_to_word[word_arg])
+        if word_arg == word_to_index['EOS'] or i > 20:
+            flag = 1
+        answer = np.zeros((1, 1))
+        answer[0, 0] = word_arg
         question_h = prediction_h
         question_c = prediction_c
         i += 1

@@ -1,21 +1,118 @@
+import jieba
+import numpy as np
 import tensorflow as tf
+from tqdm import tqdm
+from tensorflow.keras.preprocessing import sequence
+from obsolete.grammar4fluency import mark_invalid
+from data.augmentation.similarity import similarity_complex, Keywords_IoU
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Input, dot, Activation, concatenate
-from tqdm import tqdm
-
-from data.augmentation.similarity import similarity_complex, Keywords_IoU
-from infer.utils import input_question, decode_greedy
-from obsolete.grammar4fluency import mark_invalid
-from train.train_seq2seq import build_seq2seq
+from obsolete.w2v_train_misuse import build_seq2seq
+from server.hyper_transformer import recursive_translator
 from train.utils import get_vocab_size, load_resource
+from w2v.w2v_test import init_w2v
+
+maxLen = 20
 
 
-def build_qa_model(base_dir, wp=None):
+def decode_greedy(seq, question_model, answer_model, word_to_index, index_to_word, embed="word2vec"):
+    question = seq
+    if embed == 'word2vec':
+        answer = np.zeros((1, 1, 50))
+    else:
+        answer = np.zeros((1, 1))
+    attention_plot = np.zeros((20, 20))
+    if embed == "word2vec":
+        answer[0, 0, :] = word_to_index.wv.word_vec('BOS', use_norm=True)
+    else:
+        answer[0, 0] = word_to_index['BOS']
+
+    i = 1
+    answer_ = []
+    flag = 0
+    encoder_lstm_, question_h, question_c = question_model.predict(x=question, verbose=1)
+    #     print(question_h, '\n')
+    while flag != 1:
+        prediction, prediction_h, prediction_c, attention = answer_model.predict([
+            answer, question_h, question_c, encoder_lstm_
+        ])
+        attention_weights = attention.reshape(-1, )
+        attention_plot[i] = attention_weights
+        if embed == "word2vec":
+            word_arg = np.squeeze(prediction)
+            word = word_to_index.most_similar(positive=[word_arg], topn=1)[0][0]
+            answer_.append(word)
+            if word == "EOS" or i > 20:
+                flag = 1
+            answer = prediction
+        else:
+            word_arg = np.argmax(prediction[0, -1, :])  #
+            answer_.append(index_to_word[word_arg])
+            if word_arg == word_to_index['EOS'] or i > 20:
+                flag = 1
+            answer = np.zeros((1, 1))
+            answer[0, 0] = word_arg
+        question_h = prediction_h
+        question_c = prediction_c
+        i += 1
+
+    return ''.join(answer_).replace('EOS', '')
+
+
+def input_question(seq, word_to_index, embed="word2vec"):
+    seq = seq.replace('，', ',').replace('。', '.')
+    seq = jieba.lcut(seq.strip(), cut_all=False)
+    use_syn = False
+    if embed == "word2vec":
+        for k in range(len(seq)):
+            if not seq[k] in word_to_index.wv.vocab:
+                use_syn = True
+                seq[k] = recursive_translator(word_to_index.wv.vocab, seq[k], 0)
+        seq = ' '.join(seq)
+        if use_syn:
+            print("出现未知词汇，采用同义词替换：")
+            print(seq.replace(' ', ''))
+        seq = seq.split(' ')
+        try:
+            seq = np.array([word_to_index.wv.word_vec(w, use_norm=True) for w in seq])
+            seq = sequence.pad_sequences(
+                [seq],
+                maxlen=maxLen,
+                dtype='float32',
+                padding='post',
+                truncating='post'
+            )
+        except KeyError as e:
+            seq = "出现了Carol没法理解的词汇。。。：" + str(e.args[0])
+            print(seq)
+    else:
+        for k in range(len(seq)):
+            if not seq[k] in word_to_index:
+                use_syn = True
+                # seq[k] = translator(word_to_index, seq[k])
+                seq[k] = recursive_translator(word_to_index, seq[k], 0)
+        seq = ' '.join(seq)
+        if use_syn:
+            print("出现未知词汇，采用同义词替换：")
+            print(seq.replace(' ', ''))
+        seq = seq.split(' ')
+        try:
+            seq = np.array([word_to_index[w] for w in seq])
+            seq = sequence.pad_sequences([seq], maxlen=maxLen,
+                                         padding='post', truncating='post')
+        except KeyError as e:
+            seq = "出现了Carol没法理解的词汇。。。：" + str(e.args[0])
+            print(seq)
+    return seq
+
+
+def build_qa_model(base_dir, wp=None, embed="word2vec"):
     max_len = 20
     iq, el, qh, qc, ld, iae, dd1, dd2, ia = build_seq2seq(
         base_dir=base_dir,
         vocab_size=get_vocab_size(base_dir=base_dir),
-        weight_path=wp
+        weight_path=wp,
+        embed=embed
     )
     question_model = Model(iq, [el, qh, qc])
     question_model.summary()
@@ -37,7 +134,7 @@ def build_qa_model(base_dir, wp=None):
     return question_model, answer_model
 
 
-def loop_talking(use_keywords=False, base_dir='../'):
+def loop_talking(use_keywords=False, base_dir='../', embed="word2vec"):
     f_r = open(base_dir + "data/resource/raw/all_corpus.tsv", 'r+', encoding='utf-8-sig')
     raw_lines = f_r.readlines()
     lines = raw_lines.copy()
@@ -49,6 +146,9 @@ def loop_talking(use_keywords=False, base_dir='../'):
         wp=base_dir + "train/check_points/W -  1-0.0006-.h5"
     )
     _, _, _, _, word_to_index, index_to_word = load_resource(base_dir=base_dir)
+    if embed == "word2vec":
+        word_to_index = init_w2v()
+
     f_q = open(base_dir + "infer/Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open(base_dir + "infer/Online_A.txt", 'a', encoding='utf-8-sig')
     while True:
@@ -56,7 +156,7 @@ def loop_talking(use_keywords=False, base_dir='../'):
         question_new = seq
         if seq == 'x':
             break
-        seq = input_question(seq=seq, word_to_index=word_to_index)
+        seq = input_question(seq=seq, word_to_index=word_to_index, embed=embed)
         if type(seq) is str and seq.startswith("出现了Carol没法理解的词汇。。。："):
             continue
         with tf.device("/gpu:0"):
@@ -65,7 +165,8 @@ def loop_talking(use_keywords=False, base_dir='../'):
                 question_model=question_model,
                 answer_model=answer_model,
                 word_to_index=word_to_index,
-                index_to_word=index_to_word
+                index_to_word=index_to_word,
+                embed=embed
             )
         #     answer=decode_beamsearch(seq, 3)
         print('ANSWER: ', answer)
@@ -141,4 +242,7 @@ def loop_talking(use_keywords=False, base_dir='../'):
 
 
 if __name__ == '__main__':
+    GPU_list = tf.config.experimental.list_physical_devices('GPU')
+    for gpu in GPU_list:
+        tf.config.experimental.set_memory_growth(gpu, True)
     loop_talking()

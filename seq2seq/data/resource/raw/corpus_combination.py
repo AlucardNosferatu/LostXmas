@@ -7,8 +7,8 @@ from data.data_tool import append_extra_data
 def getExtra():
     gfw = DFAFilter()
     gfw.parse('../../augmentation/blacklist')
-    q_path = '../../obsolete/legacy/YellowChick_Q.txt'
-    a_path = '../../obsolete/legacy/YellowChick_A.txt'
+    q_path = '../../../obsolete/legacy/YellowChick_Q.txt'
+    a_path = '../../../obsolete/legacy/YellowChick_A.txt'
     question, answer = append_extra_data(gfw, q_path, a_path, [], [])
     f = open('YellowChick.tsv', 'w', encoding='utf-8-sig')
     for i in tqdm(range(len(question))):
@@ -19,7 +19,7 @@ def getExtra():
 
 
 def getQingYun():
-    f_q = open('../../obsolete/qingyun_withSyn.tsv', 'r', encoding='utf-8-sig')
+    f_q = open('../../../obsolete/qingyun_withSyn.tsv', 'r', encoding='utf-8-sig')
     lines = f_q.readlines()
     f_q.close()
     f_a = open('all_corpus.tsv', 'a', encoding='utf-8-sig')
