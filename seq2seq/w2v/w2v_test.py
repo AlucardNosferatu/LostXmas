@@ -51,6 +51,12 @@ def word2vector(word, word2vec):
     return vector
 
 
+def get_embedding(w2v=None):
+    if w2v is None:
+        w2v = init_w2v()
+    ke = w2v.wv.get_keras_embedding(train_embeddings=False)
+    return ke
+
+
 if __name__ == '__main__':
-    process_corpus()
     print("Done")

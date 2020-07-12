@@ -11,12 +11,14 @@ from data.augmentation.decomposition import getBaseWord, getComposed
 from data.augmentation.frequency import getWords
 from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data, \
     remove_banned
+from w2v.w2v_train import incremental_train
 
 
 def read_conversation(
         force_syn=False,
         force_dec=False,
         base_dir="../",
+        train_w2v=True,
 ):
     gfw = DFAFilter()
     gfw.parse(base_dir + 'data/augmentation/blacklist')
@@ -139,6 +141,14 @@ def read_conversation(
     # endregion
 
     placeholders = ['BOS', 'EOS']
+
+    if train_w2v:
+        temp = [item.split(' ') for item in question]
+        temp += [("BOS " + item + " EOS").split(' ') for item in answer]
+        incremental_train(
+            more_sentences=temp,
+            base_dir="../"
+        )
 
     _, freq_dist = getWords(question + answer + placeholders)
     word_to_index = {}

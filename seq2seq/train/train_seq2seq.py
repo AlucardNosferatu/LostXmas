@@ -10,12 +10,23 @@ from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, Tenso
 from tensorflow.keras.initializers import TruncatedNormal
 from tensorflow.keras import Model
 
+from w2v.w2v_test import get_embedding
 
-def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None):
+
+def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None, use_w2v=True):
     if vocab_size is None:
         print("vocab_size must be defined!")
         sys.exit()
     truncated_normal = TruncatedNormal(mean=0.0, stddev=0.05)
+    embed_layer = Embedding(input_dim=vocab_size,
+                            output_dim=100,
+                            mask_zero=True,
+                            input_length=None,
+                            embeddings_initializer=truncated_normal)
+
+    if use_w2v:
+        embed_layer = get_embedding()
+
     lstm_encoder = LSTM(512,
                         return_sequences=True,
                         return_state=True,
@@ -31,11 +42,7 @@ def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None):
     # encoder输入 与 decoder输入
     input_question = Input(shape=(None,), dtype='int32', name='input_question')
     input_answer = Input(shape=(None,), dtype='int32', name='input_answer')
-    embed_layer = Embedding(input_dim=vocab_size,
-                            output_dim=100,
-                            mask_zero=True,
-                            input_length=None,
-                            embeddings_initializer=truncated_normal)
+
     input_question_embed = embed_layer(input_question)
     input_answer_embed = embed_layer(input_answer)
     encoder_lstm, question_h, question_c = lstm_encoder(input_question_embed)
