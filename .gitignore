@@ -24,3 +24,5 @@ seq2seq/w2v/corpus_1.txt
 seq2seq/w2v/corpusSegDone_1.txt
 seq2seq/w2v/corpusSegDone_1.vector
 seq2seq/w2v/news_sohusite_xml.dat
+seq2seq/w2v/with_custom_corpus.model
+seq2seq/w2v/with_custom_corpus.vector

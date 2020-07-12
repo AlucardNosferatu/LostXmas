@@ -10,7 +10,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, Tenso
 from tensorflow.keras.initializers import TruncatedNormal
 from tensorflow.keras import Model
 
-from w2v.w2v_test import get_embedding
+from w2v.w2v_test import get_embedding, init_w2v
 
 
 def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None, use_w2v=True):
@@ -19,13 +19,12 @@ def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None, use_w2v=Tru
         sys.exit()
     truncated_normal = TruncatedNormal(mean=0.0, stddev=0.05)
     embed_layer = Embedding(input_dim=vocab_size,
-                            output_dim=100,
+                            output_dim=50,
                             mask_zero=True,
                             input_length=None,
-                            embeddings_initializer=truncated_normal)
-
-    if use_w2v:
-        embed_layer = get_embedding()
+                            embeddings_initializer=truncated_normal,
+                            name="Embed"
+                            )
 
     lstm_encoder = LSTM(512,
                         return_sequences=True,
@@ -61,6 +60,11 @@ def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None, use_w2v=Tru
 
     output_model = Model([input_question, input_answer], output)
     output_model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
+    if use_w2v:
+        weights = get_embedding()
+        embed_layer = output_model.get_layer(name="Embed")
+        embed_layer.set_weights(weights)
+        embed_layer.trainable = False
     output_model.summary()
     tf.keras.utils.plot_model(output_model, base_dir + "model.png", show_shapes=True)
     output_model.save(filepath=base_dir + "models/seq2seq_raw.h5")
@@ -150,7 +154,8 @@ def train_seq2seq(input_model, base_dir="../"):
 
 
 if __name__ == '__main__':
-    VS = get_vocab_size()
-    build_seq2seq(vocab_size=VS)
+    # VS = get_vocab_size()
+    w2v = init_w2v()
+    build_seq2seq(vocab_size=len(w2v.index2word))
     model = load_seq2seq()
     train_seq2seq(model)

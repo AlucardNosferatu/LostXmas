@@ -34,11 +34,17 @@ def process_corpus():
 
 
 def init_w2v(base_dir="../"):
-    word2vec = gensim.models.KeyedVectors.load_word2vec_format(
-        base_dir + 'w2v/corpusSegDone_1.vector',
-        binary=False
-    )
-    word2vec.init_sims(replace=True)
+    try:
+        word2vec = gensim.models.KeyedVectors.load_word2vec_format(
+            base_dir + 'w2v/with_custom_corpus.vector',
+            binary=False
+        )
+    except OSError:
+        word2vec = gensim.models.KeyedVectors.load_word2vec_format(
+            base_dir + 'w2v/corpusSegDone_1.vector',
+            binary=False
+        )
+    # word2vec.init_sims(replace=True)
     return word2vec
 
 
@@ -51,11 +57,20 @@ def word2vector(word, word2vec):
     return vector
 
 
+def word2index(word, word2vec):
+    if word in word2vec.wv.vocab:
+        index = word2vec.wv.vocab[word].index
+    else:
+        index = len(word2vec.index2word) - 1
+    return index
+
+
 def get_embedding(w2v=None):
     if w2v is None:
         w2v = init_w2v()
     ke = w2v.wv.get_keras_embedding(train_embeddings=False)
-    return ke
+    weights = ke._initial_weights
+    return weights
 
 
 if __name__ == '__main__':

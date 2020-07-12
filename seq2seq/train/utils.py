@@ -2,6 +2,8 @@ import pickle
 
 import numpy as np
 
+from w2v.w2v_test import init_w2v
+
 
 def get_vocab_size(base_dir='../'):
     main_path = base_dir + 'data/'
@@ -25,10 +27,14 @@ def load_resource(base_dir='../'):
     return question, answer, answer_o, words, word_to_index, index_to_word
 
 
-def generate_train(batch_size, base_dir="../"):
-    question, answer, answer_o, words, word_to_index, index_to_word = load_resource(base_dir=base_dir)
-    vocab_size = len(word_to_index) + 1
-    maxLen = 20
+def generate_train(batch_size, base_dir="../", use_w2v=True):
+    question, answer, answer_o, _, word_to_index, _ = load_resource(base_dir=base_dir)
+    if use_w2v:
+        w2v = init_w2v()
+        vocab_size = len(w2v.index2word)
+    else:
+        vocab_size = len(word_to_index) + 1
+    max_len = 20
     print('\n*********************************generate_train()*********************************')
     steps = 0
     question_ = question
@@ -38,7 +44,7 @@ def generate_train(batch_size, base_dir="../"):
         batch_answer_o = answer_o[steps:steps + batch_size]
         batch_question = question_[steps:steps + batch_size]
         batch_answer = answer_[steps:steps + batch_size]
-        outs = np.zeros([batch_size, maxLen, vocab_size], dtype='float32')
+        outs = np.zeros([batch_size, max_len, vocab_size], dtype='float32')
         for pos, i in enumerate(batch_answer_o):
             for pos_, j in enumerate(i):
                 if pos_ > 20:
