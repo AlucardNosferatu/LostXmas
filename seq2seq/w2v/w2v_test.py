@@ -61,7 +61,7 @@ def word2index(word, word2vec):
     if word in word2vec.wv.vocab:
         index = word2vec.wv.vocab[word].index
     else:
-        index = len(word2vec.index2word) - 1
+        index = -1
     return index
 
 

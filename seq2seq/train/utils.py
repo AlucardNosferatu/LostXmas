@@ -49,7 +49,10 @@ def generate_train(batch_size, base_dir="../", use_w2v=True):
             for pos_, j in enumerate(i):
                 if pos_ > 20:
                     print(i)
-                outs[pos, pos_, j] = 1  # one-hot
+                if j == -1:
+                    pass
+                else:
+                    outs[pos, pos_, j] = 1  # one-hot
         yield [batch_question, batch_answer], outs
         # print(steps)
         steps += batch_size
