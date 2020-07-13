@@ -4,7 +4,7 @@ from tensorflow.keras.preprocessing import sequence
 
 from infer.utils import maxLen
 from server.hyper_transformer import recursive_translator
-from w2v.w2v_emb_test import init_w2v
+from embed.w2v.w2v_emb_test import init_w2v
 
 
 def input_question_w2v(seq, w2v=None):

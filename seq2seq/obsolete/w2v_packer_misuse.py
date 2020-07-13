@@ -11,8 +11,8 @@ from data.augmentation.decomposition import getBaseWord, getComposed
 from data.augmentation.frequency import getWords
 from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data, \
     remove_banned
-from w2v.w2v_emb_test import init_w2v, word2vector
-from w2v.w2v_emb_train import incremental_train
+from embed.w2v.w2v_emb_test import init_w2v, word2vector
+from embed.w2v.w2v_emb_train import incremental_train
 
 
 def read_conversation(

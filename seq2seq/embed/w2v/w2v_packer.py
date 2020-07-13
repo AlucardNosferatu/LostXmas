@@ -4,8 +4,8 @@ import numpy as np
 from data.augmentation.blacklist import DFAFilter
 from data.data_tool import append_extra_data, is_all_chinese, is_pure_english, remove_brackets, remove_banned, \
     Traditional2Simplified
-from w2v.w2v_emb_test import init_w2v, word2index
-from w2v.w2v_emb_train import incremental_train
+from embed.w2v.w2v_emb_test import init_w2v, word2index
+from embed.w2v.w2v_emb_train import incremental_train
 
 
 def w2v_packer(base_dir="../", inc_train=False):
@@ -118,7 +118,7 @@ def w2v_packer(base_dir="../", inc_train=False):
     if inc_train:
         incremental_train(
             more_sentences=question + answer_a,
-            base_dir="../"
+            base_dir="../../"
         )
     w2v = init_w2v()
 
@@ -139,7 +139,7 @@ def w2v_packer(base_dir="../", inc_train=False):
     if inc_train:
         incremental_train(
             more_sentences=question + answer_a,
-            base_dir="../"
+            base_dir="../../"
         )
         w2v = init_w2v()
     assert 'UNK' in w2v.vocab

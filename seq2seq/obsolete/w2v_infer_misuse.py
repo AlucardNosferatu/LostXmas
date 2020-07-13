@@ -10,7 +10,7 @@ from tensorflow.keras.layers import Input, dot, Activation, concatenate
 from obsolete.w2v_train_misuse import build_seq2seq
 from server.hyper_transformer import recursive_translator
 from train.utils import get_vocab_size, load_resource
-from w2v.w2v_emb_test import init_w2v
+from embed.w2v.w2v_emb_test import init_w2v
 
 maxLen = 20
 

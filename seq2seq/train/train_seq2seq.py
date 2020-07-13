@@ -4,13 +4,13 @@ import tensorflow as tf
 from tensorflow.python.keras.callbacks import EarlyStopping
 
 from data.data_tool import get_file_list
-from train.utils import generate_train, get_vocab_size
+from train.utils import generate_train
 from tensorflow.keras.layers import Embedding, LSTM, Input, dot, Activation, concatenate, TimeDistributed, Dense
 from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, TensorBoard
 from tensorflow.keras.initializers import TruncatedNormal
 from tensorflow.keras import Model
 
-from w2v.w2v_emb_test import get_embedding, init_w2v
+from embed.w2v.w2v_emb_test import get_embedding, init_w2v
 
 
 def build_seq2seq(base_dir='../', vocab_size=None, weight_path=None, use_w2v=True):

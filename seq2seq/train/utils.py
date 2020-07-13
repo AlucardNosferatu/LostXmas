@@ -2,7 +2,7 @@ import pickle
 
 import numpy as np
 
-from w2v.w2v_emb_test import init_w2v
+from embed.w2v.w2v_emb_test import init_w2v
 
 
 def get_vocab_size(base_dir='../'):

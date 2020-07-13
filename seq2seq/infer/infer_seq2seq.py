@@ -8,8 +8,8 @@ from infer.utils import input_question, decode_greedy
 from obsolete.grammar4fluency import mark_invalid
 from train.train_seq2seq import build_seq2seq
 from train.utils import get_vocab_size, load_resource
-from w2v.w2v_emb_test import init_w2v
-from w2v.w2v_infer import input_question_w2v, decode_greedy_w2v
+from embed.w2v.w2v_emb_test import init_w2v
+from embed.w2v.w2v_infer import input_question_w2v, decode_greedy_w2v
 
 
 def build_qa_model(base_dir, wp=None, use_w2v=True):
