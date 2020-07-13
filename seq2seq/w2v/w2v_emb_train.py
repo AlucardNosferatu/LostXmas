@@ -51,7 +51,15 @@ gensim word2vec获取词向量
 
 
 def incremental_train(more_sentences, base_dir="../"):
+    more_sentences = [item.split(' ') for item in more_sentences]
+    i = 0
+    while i < len(more_sentences):
+        if list(set(more_sentences[i])) == ['PAD']:
+            del more_sentences[i]
+        else:
+            i += 1
     model_w2v = gensim.models.Word2Vec.load(base_dir + "w2v/" + out_model)
+    model_w2v.min_count = 5
     model_w2v.build_vocab(more_sentences, update=True)
     model_w2v.train(more_sentences, total_examples=model_w2v.corpus_count, epochs=model_w2v.iter)
     # 保存模型
@@ -71,7 +79,7 @@ def initial_train():
     # inp为输入语料, outp1为输出模型, outp2为vector格式的模型
 
     # 训练skip-gram模型
-    model = Word2Vec(LineSentence(inp), size=50, window=5, min_count=5000,
+    model = Word2Vec(LineSentence(inp), size=100, window=5, min_count=5000,
                      workers=multiprocessing.cpu_count())
 
     # 保存模型

@@ -2,7 +2,7 @@ import pickle
 
 import numpy as np
 
-from w2v.w2v_test import init_w2v
+from w2v.w2v_emb_test import init_w2v
 
 
 def get_vocab_size(base_dir='../'):
@@ -48,9 +48,7 @@ def generate_train(batch_size, base_dir="../", use_w2v=True):
         for pos, i in enumerate(batch_answer_o):
             for pos_, j in enumerate(i):
                 if pos_ > 20:
-                    print(i)
-                if j == -1:
-                    pass
+                    raise ValueError("max length of sentence exceeded")
                 else:
                     outs[pos, pos_, j] = 1  # one-hot
         yield [batch_question, batch_answer], outs

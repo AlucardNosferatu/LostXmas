@@ -8,15 +8,25 @@ from infer.utils import input_question, decode_greedy
 from obsolete.grammar4fluency import mark_invalid
 from train.train_seq2seq import build_seq2seq
 from train.utils import get_vocab_size, load_resource
+from w2v.w2v_emb_test import init_w2v
+from w2v.w2v_infer import input_question_w2v, decode_greedy_w2v
 
 
-def build_qa_model(base_dir, wp=None):
+def build_qa_model(base_dir, wp=None, use_w2v=True):
     max_len = 20
-    iq, el, qh, qc, ld, iae, dd1, dd2, ia = build_seq2seq(
-        base_dir=base_dir,
-        vocab_size=get_vocab_size(base_dir=base_dir),
-        weight_path=wp
-    )
+    if use_w2v:
+        w2v = init_w2v()
+        iq, el, qh, qc, ld, iae, dd1, dd2, ia = build_seq2seq(
+            base_dir=base_dir,
+            vocab_size=len(w2v.index2word),
+            weight_path=wp
+        )
+    else:
+        iq, el, qh, qc, ld, iae, dd1, dd2, ia = build_seq2seq(
+            base_dir=base_dir,
+            vocab_size=get_vocab_size(base_dir=base_dir),
+            weight_path=wp
+        )
     question_model = Model(iq, [el, qh, qc])
     question_model.summary()
 
@@ -37,7 +47,7 @@ def build_qa_model(base_dir, wp=None):
     return question_model, answer_model
 
 
-def loop_talking(use_keywords=False, base_dir='../'):
+def loop_talking(use_keywords=False, base_dir='../', use_w2v=True):
     f_r = open(base_dir + "data/resource/raw/all_corpus.tsv", 'r+', encoding='utf-8-sig')
     raw_lines = f_r.readlines()
     lines = raw_lines.copy()
@@ -46,8 +56,12 @@ def loop_talking(use_keywords=False, base_dir='../'):
     all_lines = [raw_lines]
     question_model, answer_model = build_qa_model(
         base_dir=base_dir,
-        wp=base_dir + "train/check_points/W -  4-1.6948-.h5"
+        wp=base_dir + "train/check_points/W - 85-0.0258-.h5",
+        use_w2v=use_w2v
     )
+    w2v = None
+    if use_w2v:
+        w2v = init_w2v()
     _, _, _, _, word_to_index, index_to_word = load_resource(base_dir=base_dir)
     f_q = open(base_dir + "infer/Online_Q.txt", 'a', encoding='utf-8-sig')
     f_a = open(base_dir + "infer/Online_A.txt", 'a', encoding='utf-8-sig')
@@ -56,17 +70,28 @@ def loop_talking(use_keywords=False, base_dir='../'):
         question_new = seq
         if seq == 'x':
             break
-        seq = input_question(seq=seq, word_to_index=word_to_index)
+        if use_w2v:
+            seq = input_question_w2v(seq=seq, w2v=w2v)
+        else:
+            seq = input_question(seq=seq, word_to_index=word_to_index)
         if type(seq) is str and seq.startswith("出现了Carol没法理解的词汇。。。："):
             continue
         with tf.device("/gpu:0"):
-            answer = decode_greedy(
-                seq=seq,
-                question_model=question_model,
-                answer_model=answer_model,
-                word_to_index=word_to_index,
-                index_to_word=index_to_word
-            )
+            if use_w2v:
+                answer = decode_greedy_w2v(
+                    seq=seq,
+                    question_model=question_model,
+                    answer_model=answer_model,
+                    word2vec=w2v
+                )
+            else:
+                answer = decode_greedy(
+                    seq=seq,
+                    question_model=question_model,
+                    answer_model=answer_model,
+                    word_to_index=word_to_index,
+                    index_to_word=index_to_word
+                )
         #     answer=decode_beamsearch(seq, 3)
         print('ANSWER: ', answer)
         revision = input("是否修正？")

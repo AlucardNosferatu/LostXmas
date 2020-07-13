@@ -11,15 +11,14 @@ from data.augmentation.decomposition import getBaseWord, getComposed
 from data.augmentation.frequency import getWords
 from data.data_tool import Traditional2Simplified, is_all_chinese, is_pure_english, remove_brackets, append_extra_data, \
     remove_banned
-from w2v.w2v_test import init_w2v, word2index
-from w2v.w2v_train import incremental_train
+from w2v.w2v_emb_test import init_w2v, word2index
+from w2v.w2v_emb_train import incremental_train
 
 
 def read_conversation(
         force_syn=False,
         force_dec=False,
-        base_dir="../",
-        use_w2v=True,
+        base_dir="../"
 ):
     gfw = DFAFilter()
     gfw.parse(base_dir + 'data/augmentation/blacklist')
@@ -143,14 +142,6 @@ def read_conversation(
 
     placeholders = ['BOS', 'EOS']
 
-    if use_w2v:
-        temp = [item.split(' ') for item in question]
-        temp += [("BOS " + item + " EOS").split(' ') for item in answer]
-        incremental_train(
-            more_sentences=temp,
-            base_dir="../"
-        )
-
     _, freq_dist = getWords(question + answer + placeholders)
     word_to_index = {}
     for pos, i in enumerate(tqdm(freq_dist)):
@@ -169,22 +160,16 @@ def read_conversation(
     with open(base_dir + 'data/resource/vocab_bag.pkl', 'wb') as f:
         pickle.dump(vocab_bag, f, pickle.HIGHEST_PROTOCOL)
 
-    if use_w2v:
-        w2v = init_w2v()
-        question = np.array([[word2index(w, w2v) for w in i.split(' ')] for i in question])
-        answer_a = np.array([[word2index(w, w2v) for w in i.split(' ')] for i in answer_a])
-        answer_b = np.array([[word2index(w, w2v) for w in i.split(' ')] for i in answer_b])
-    else:
-        question = np.array([[word_to_index[w] for w in i.split(' ')] for i in question])
-        answer_a = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_a])
-        answer_b = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_b])
+    question = np.array([[word_to_index[w] for w in i.split(' ')] for i in question])
+    answer_a = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_a])
+    answer_b = np.array([[word_to_index[w] for w in i.split(' ')] for i in answer_b])
     size = int(len(question) / 100) * 100
     np.save(base_dir + 'data/resource/question.npy', question[:size])
     np.save(base_dir + 'data/resource/answer_a.npy', answer_a[:size])
     np.save(base_dir + 'data/resource/answer_b.npy', answer_b[:size])
 
 
-def add_padding(base_dir="../", use_w2v=True):
+def add_padding(base_dir="../"):
     question = np.load(base_dir + 'data/resource/question.npy', allow_pickle=True)
     answer_a = np.load(base_dir + 'data/resource/answer_a.npy', allow_pickle=True)
     answer_b = np.load(base_dir + 'data/resource/answer_b.npy', allow_pickle=True)
@@ -204,28 +189,24 @@ def add_padding(base_dir="../", use_w2v=True):
     with open(base_dir + 'data/resource/pad_index_to_word.pkl', 'wb') as f:
         pickle.dump(index_to_word, f, pickle.HIGHEST_PROTOCOL)
 
-    if use_w2v:
-        w2v = init_w2v()
-        vocab_size = len(w2v.index2word)
-    else:
-        for pos, i in enumerate(tqdm(pad_question)):
-            for pos_, j in enumerate(i):
-                i[pos_] = j + 1
-            if len(i) > max_len:
-                pad_question[pos] = i[:max_len]
+    for pos, i in enumerate(tqdm(pad_question)):
+        for pos_, j in enumerate(i):
+            i[pos_] = j + 1
+        if len(i) > max_len:
+            pad_question[pos] = i[:max_len]
 
-        for pos, i in enumerate(tqdm(pad_answer_a)):
-            for pos_, j in enumerate(i):
-                i[pos_] = j + 1
-            if len(i) > max_len:
-                pad_answer_a[pos] = i[:max_len]
+    for pos, i in enumerate(tqdm(pad_answer_a)):
+        for pos_, j in enumerate(i):
+            i[pos_] = j + 1
+        if len(i) > max_len:
+            pad_answer_a[pos] = i[:max_len]
 
-        for pos, i in enumerate(tqdm(pad_answer_b)):
-            for pos_, j in enumerate(i):
-                i[pos_] = j + 1
-            if len(i) > max_len:
-                pad_answer_b[pos] = i[:max_len]
-        vocab_size = len(word_to_index) + 1
+    for pos, i in enumerate(tqdm(pad_answer_b)):
+        for pos_, j in enumerate(i):
+            i[pos_] = j + 1
+        if len(i) > max_len:
+            pad_answer_b[pos] = i[:max_len]
+    vocab_size = len(word_to_index) + 1
     with open(base_dir + 'data/resource/pad_word_to_index.pkl', 'wb') as f:
         pickle.dump(word_to_index, f, pickle.HIGHEST_PROTOCOL)
     print('vocab_size: ', vocab_size)
