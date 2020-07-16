@@ -19,6 +19,7 @@ def print_sentence_with_w2v(sent_vect, w2v):
     sent_vect = np.squeeze(sent_vect)
     word_sent = ''
     for i in range(sent_vect.shape[0]):
+        sent_vect[i] = sent_vect[i] * 2 - 1
         word_sent += w2v.most_similar(positive=[sent_vect[i]], topn=1)[0][0]
         word_sent += ' '
     print(word_sent)

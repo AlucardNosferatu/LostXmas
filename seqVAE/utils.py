@@ -1,6 +1,5 @@
-import sys
-
 import numpy as np
+import tensorflow as tf
 from nltk.tokenize import sent_tokenize
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras import backend as K
@@ -49,7 +48,7 @@ def vectorize_sentences(w2v, sentences):
 def sampling(args):
     z_mean, z_log_var = args
     epsilon = K.random_normal(
-        shape=(batch_size, seq_len, latent_dim),
+        shape=(tf.shape(z_mean)[0], int(seq_len/4), latent_dim),
         mean=0.,
         stddev=epsilon_std
     )

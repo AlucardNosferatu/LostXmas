@@ -1,18 +1,17 @@
-import tensorflow as tf
 from tensorflow.keras import Model
 from tensorflow.keras import backend as K
 from tensorflow.keras import metrics
-from tensorflow.keras.layers import Input, Dense, Lambda, Conv1D
+from tensorflow.keras.layers import Input, Lambda, Conv1D, UpSampling1D
 from tensorflow.keras.layers import Layer
 
-from cfgs import batch_size, intermediate_dim, latent_dim, vec_dim, seq_len
+from cfgs import intermediate_dim, latent_dim, vec_dim, seq_len
 from utils import sampling, zero_loss
 
 
 def vae_loss(x, x_decoded_mean, z_log_var, z_mean):
-    xent_loss = seq_len * vec_dim * metrics.mse(x, x_decoded_mean)
-    kl_loss = - 0.5 * K.sum(1 + z_log_var - K.square(z_mean) - K.exp(z_log_var), axis=-1)
-    return K.mean(xent_loss + kl_loss)
+    xent_loss = K.mean(metrics.binary_crossentropy(x, x_decoded_mean))
+    kl_loss = K.mean(- 0.5 * K.sum(1 + z_log_var - K.square(z_mean) - K.exp(z_log_var), axis=-1))
+    return xent_loss + kl_loss
 
 
 class CustomVariationalLayer(Layer):
@@ -33,19 +32,21 @@ class CustomVariationalLayer(Layer):
 
 def build_vae():
     x = Input(shape=(seq_len, vec_dim))
-    h = Conv1D(filters=intermediate_dim, kernel_size=3, padding='same', activation='relu')(x)
+    h = Conv1D(filters=intermediate_dim, kernel_size=3, strides=2, padding='same', activation='relu')(x)
     # h = Dense(intermediate_dim, activation='relu')(x)
-    z_mean = Conv1D(filters=latent_dim, kernel_size=3, padding='same')(h)
+    z_mean = Conv1D(filters=latent_dim, kernel_size=3, strides=2, padding='same')(h)
     # z_mean = Dense(latent_dim)(h)
-    z_log_var = Conv1D(filters=latent_dim, kernel_size=3, padding='same')(h)
+    z_log_var = Conv1D(filters=latent_dim, kernel_size=3, strides=2, padding='same')(h)
     # z_log_var = Dense(latent_dim)(h)
     z = Lambda(sampling, output_shape=(latent_dim,))([z_mean, z_log_var])
     # we instantiate these layers separately so as to reuse them later
-    decoder_h = Conv1D(filters=intermediate_dim, kernel_size=3, padding='same', activation='relu')
+    z = UpSampling1D(size=4)(z)
+    decoder_h = Conv1D(filters=intermediate_dim, kernel_size=3, strides=2, padding='same', activation='relu')
     # decoder_h = Dense(intermediate_dim, activation='relu')
-    decoder_mean = Conv1D(filters=vec_dim, kernel_size=3, padding='same', activation='sigmoid')
+    decoder_mean = Conv1D(filters=vec_dim, kernel_size=3, strides=2, padding='same', activation='sigmoid')
     # decoder_mean = Dense(vec_dim * seq_len, activation='tanh')
     h_decoded = decoder_h(z)
+    h_decoded = UpSampling1D(size=4)(h_decoded)
     x_decoded_mean = decoder_mean(h_decoded)
     loss_layer = CustomVariationalLayer()([x, x_decoded_mean, z_log_var, z_mean])
     vae = Model(x, [loss_layer])

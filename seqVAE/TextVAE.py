@@ -1,5 +1,3 @@
-import itertools
-
 import jieba
 import numpy as np
 import tensorflow as tf
