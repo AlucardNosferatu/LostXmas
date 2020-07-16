@@ -1,3 +1,5 @@
+import sys
+
 import numpy as np
 from nltk.tokenize import sent_tokenize
 from tensorflow.keras.preprocessing import sequence
@@ -26,7 +28,9 @@ def vectorize_sentences(w2v, sentences):
         concat_vector = []
         for word in byword:
             try:
-                concat_vector.append(w2v[word])
+                vect = w2v[word]
+                vect = (vect + 1) / 2
+                concat_vector.append(vect)
             except Exception as e:
                 print(repr(e))
                 print(word)
@@ -37,7 +41,7 @@ def vectorize_sentences(w2v, sentences):
         dtype='float32',
         padding='post',
         truncating='post',
-        value=w2v['PAD']
+        value=(w2v['PAD'] + 1) / 2
     )
     return vectorized
 
