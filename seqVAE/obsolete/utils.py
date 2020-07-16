@@ -4,7 +4,7 @@ from nltk.tokenize import sent_tokenize
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras import backend as K
 
-from cfgs import batch_size, latent_dim, epsilon_std, seq_len
+from obsolete.cfgs import latent_dim, epsilon_std
 
 
 def split_into_sent(text):
@@ -27,9 +27,8 @@ def vectorize_sentences(w2v, sentences):
         concat_vector = []
         for word in byword:
             try:
-                vect = w2v[word]
-                vect = (vect + 1) / 2
-                concat_vector.append(vect)
+                index = w2v.vocab[word].index
+                concat_vector.append(index)
             except Exception as e:
                 print(repr(e))
                 print(word)
@@ -40,7 +39,7 @@ def vectorize_sentences(w2v, sentences):
         dtype='float32',
         padding='post',
         truncating='post',
-        value=(w2v['PAD'] + 1) / 2
+        value=w2v.vocab['PAD'].index
     )
     return vectorized
 
@@ -48,7 +47,7 @@ def vectorize_sentences(w2v, sentences):
 def sampling(args):
     z_mean, z_log_var = args
     epsilon = K.random_normal(
-        shape=(tf.shape(z_mean)[0], int(seq_len/4), latent_dim),
+        shape=(tf.shape(z_mean)[0], latent_dim),
         mean=0.,
         stddev=epsilon_std
     )

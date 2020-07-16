@@ -2,7 +2,7 @@ import itertools
 import numpy as np
 from scipy import spatial
 
-from utils import vectorize_sentences
+from obsolete.utils import vectorize_sentences
 
 
 def sent_parse(sentence, mat_shape, w2v):
