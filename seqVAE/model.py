@@ -6,8 +6,8 @@ from tensorflow.keras.layers import Input, Embedding, Bidirectional, LSTM, Dense
 from tensorflow.keras.layers import Layer
 from tensorflow.keras.optimizers import Adam
 
-from obsolete.cfgs import intermediate_dim, latent_dim, vec_dim, seq_len
-from obsolete.utils import sampling, zero_loss
+from cfgs import intermediate_dim, latent_dim, vec_dim, seq_len
+from utils import sampling, zero_loss
 
 
 class CustomVariationalLayer(Layer):

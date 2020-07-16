@@ -4,7 +4,7 @@ from nltk.tokenize import sent_tokenize
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras import backend as K
 
-from obsolete.cfgs import latent_dim, epsilon_std
+from cfgs import epsilon_std
 
 
 def split_into_sent(text):
