@@ -2,12 +2,12 @@ import itertools
 
 import jieba
 import numpy as np
+import tensorflow as tf
 from gensim.models import KeyedVectors
 from tensorflow.keras.callbacks import ModelCheckpoint
-from tensorflow.keras import Model
 
-from cfgs import epochs, batch_size
-from gen import print_sentence_with_w2v, shortest_homology, find_similar_encoding
+from cfgs import epochs, batch_size, seq_len
+from gen import shortest_homology, find_similar_encoding, print_sentence_with_w2v
 from model import build_vae, encoder_and_decoder
 from utils import vectorize_sentences
 
@@ -27,31 +27,35 @@ for i, line in enumerate(text):
 
 vect = vectorize_sentences(w2v, text)
 vect = vect.tolist()
-data = [x for x in vect if len(x) == 20]
+data = [x for x in vect if len(x) == seq_len]
 for x in data:
     data_concat.append(list(itertools.chain.from_iterable(x)))
 
-data_array = np.array(data_concat)
+data_array = np.array(data)
 np.random.shuffle(data_array)
 
 train = data_array
-for i in range(50):
+for i in range(train.shape[0]):
     print_sentence_with_w2v(train[i], w2v)
-
-vae, x, z_mean, decoder_h, decoder_mean = build_vae()
+gpu_list = tf.config.experimental.list_physical_devices(device_type="GPU")
+print(gpu_list)
+for gpu in gpu_list:
+    tf.config.experimental.set_memory_growth(gpu, True)
 cp = [ModelCheckpoint(filepath="model.h5", verbose=1, save_best_only=True, monitor='loss')]
-vae.fit(
-    train,
-    train,
-    shuffle=True,
-    epochs=epochs,
-    batch_size=batch_size,
-    callbacks=cp
-)
+vae, x, z_mean, decoder_h, decoder_mean = build_vae()
+with tf.device("/gpu:0"):
+    vae.fit(
+        train,
+        train,
+        shuffle=True,
+        epochs=epochs,
+        batch_size=batch_size,
+        callbacks=cp
+    )
 encoder, generator = encoder_and_decoder(x, z_mean, decoder_h, decoder_mean)
 sent_encoded = encoder.predict(np.array(train), batch_size=50)
 sent_decoded = generator.predict(sent_encoded)
-for i in range(50):
+for i in range(sent_decoded.shape[0]):
     print_sentence_with_w2v(sent_decoded[i], w2v)
 
 

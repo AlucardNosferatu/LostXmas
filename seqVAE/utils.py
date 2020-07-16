@@ -3,7 +3,7 @@ from nltk.tokenize import sent_tokenize
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras import backend as K
 
-from cfgs import batch_size, latent_dim, epsilon_std
+from cfgs import batch_size, latent_dim, epsilon_std, seq_len
 
 
 def split_into_sent(text):
@@ -45,7 +45,7 @@ def vectorize_sentences(w2v, sentences):
 def sampling(args):
     z_mean, z_log_var = args
     epsilon = K.random_normal(
-        shape=(batch_size, latent_dim),
+        shape=(batch_size, seq_len, latent_dim),
         mean=0.,
         stddev=epsilon_std
     )

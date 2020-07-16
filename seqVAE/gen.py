@@ -16,19 +16,18 @@ def sent_parse(sentence, mat_shape, w2v):
 
 
 def print_sentence_with_w2v(sent_vect, w2v):
+    sent_vect = np.squeeze(sent_vect)
     word_sent = ''
-    to_cut = sent_vect
-    for i in range(int(len(sent_vect) / 100)):
-        word_sent += w2v.most_similar(positive=[to_cut[:100]], topn=1)[0][0]
+    for i in range(sent_vect.shape[0]):
+        word_sent += w2v.most_similar(positive=[sent_vect[i]], topn=1)[0][0]
         word_sent += ' '
-        to_cut = to_cut[100:]
     print(word_sent)
 
 
 def find_similar_encoding(sent_vect, sent_encoded):
     all_cosine = []
     for sent in sent_encoded:
-        result = 1 - spatial.distance.cosine(sent_vect, sent)
+        result = 1 - spatial.distance.cosine(sent_vect.reshape((-1)), sent.reshape((-1)))
         all_cosine.append(result)
     data_array = np.array(all_cosine)
     maximum = data_array.argsort()[-3:][::-1][1]

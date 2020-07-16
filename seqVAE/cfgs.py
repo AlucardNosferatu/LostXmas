@@ -1,6 +1,7 @@
 batch_size = 50
-original_dim = 2000
-intermediate_dim = 1000
-latent_dim = 500
-epochs = 5000
+vec_dim = 100
+seq_len = 20
+intermediate_dim = 50
+latent_dim = 25
+epochs = 1000
 epsilon_std = 1.0
