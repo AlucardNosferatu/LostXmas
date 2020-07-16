@@ -11,21 +11,14 @@ from obsolete.model import build_vae, encoder_and_decoder
 from obsolete.utils import vectorize_sentences
 
 w2v = KeyedVectors.load_word2vec_format(
-    'with_custom_corpus.vector',
+    '../with_custom_corpus.vector',
     binary=False
 )
 
 w2v.init_sims(replace=True)
 
-tf.compat.v1.disable_eager_execution()
-gpu_list = tf.config.experimental.list_physical_devices(device_type="GPU")
-print(gpu_list)
-for gpu in gpu_list:
-    tf.config.experimental.set_memory_growth(gpu, True)
-vae, x, z_mean, decoder_h, decoder_mean = build_vae(
-    len(w2v.index2word),
-    w2v.get_keras_embedding()._initial_weights
-)
+# tf.compat.v1.disable_eager_execution()
+
 
 
 text = []
@@ -55,6 +48,14 @@ train = data_array
 #     print_sentence_with_w2v(train[i], w2v)
 
 cp = [ModelCheckpoint(filepath="../model.h5", verbose=1, save_best_only=True, monitor='loss')]
+gpu_list = tf.config.experimental.list_physical_devices(device_type="GPU")
+print(gpu_list)
+for gpu in gpu_list:
+    tf.config.experimental.set_memory_growth(gpu, True)
+vae, x, z_mean, decoder_h, decoder_mean = build_vae(
+    len(w2v.index2word),
+    w2v.get_keras_embedding()._initial_weights
+)
 
 with tf.device("/gpu:0"):
 
