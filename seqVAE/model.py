@@ -44,4 +44,15 @@ def build_vae():
     loss_layer = CustomVariationalLayer()([x, x_decoded_mean, z_log_var, z_mean])
     vae = Model(x, [loss_layer])
     vae.compile(optimizer='rmsprop', loss=[zero_loss])
-    return vae
+    return vae, x, z_mean, decoder_h, decoder_mean
+
+
+def encoder_and_decoder(x, z_mean, decoder_h, decoder_mean):
+    encoder = Model(x, z_mean)
+
+    # build a generator that can sample from the learned distribution
+    decoder_input = Input(shape=(latent_dim,))
+    _h_decoded = decoder_h(decoder_input)
+    _x_decoded_mean = decoder_mean(_h_decoded)
+    generator = Model(decoder_input, _x_decoded_mean)
+    return encoder, generator
