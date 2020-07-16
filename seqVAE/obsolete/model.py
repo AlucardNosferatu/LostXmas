@@ -39,7 +39,7 @@ class CustomVariationalLayer(Layer):
         x_decoded_mean = inputs[1]
         z_log_var = inputs[2]
         z_mean = inputs[3]
-        print(x.shape, x_decoded_mean.shape)
+        # print(x.shape, x_decoded_mean.shape)
         self.target_weights = K.ones_like(x)
         loss = self.vae_loss(x, x_decoded_mean, z_log_var, z_mean)
         self.add_loss(loss, inputs=inputs)
@@ -67,6 +67,7 @@ def build_vae(vocab_size, word2vec_weight):
     z_mean = Dense(latent_dim)(h)
     z_log_var = Dense(latent_dim)(h)
     z = Lambda(sampling, output_shape=(latent_dim,))([z_mean, z_log_var])
+    # z = Lambda(sampling, output_shape=(latent_dim,))([h, h])
     # we instantiate these layers separately so as to reuse them later
     repeated_context = RepeatVector(seq_len)
     decoder_h = LSTM(
@@ -81,19 +82,13 @@ def build_vae(vocab_size, word2vec_weight):
     h_decoded = decoder_h(repeated_context(z))
     x_decoded_mean = decoder_mean(h_decoded)
     loss_layer = CustomVariationalLayer()([x, x_decoded_mean, z_log_var, z_mean])
+    # loss_layer = CustomVariationalLayer()([x, x_decoded_mean, h, h])
     vae = Model(x, [loss_layer])
     opt = Adam(lr=0.01)
 
-    def get_kl_loss(x, x_decoded_mean):
-        kl_weight = 0.01
-        kl_loss = - 0.5 * K.sum(1 + z_log_var - K.square(z_mean) - K.exp(z_log_var), axis=-1)
-        kl_loss = kl_weight * kl_loss
-        return kl_loss
-
     vae.compile(
         optimizer=opt,
-        loss=[zero_loss],
-        metrics=[get_kl_loss],
+        loss=[zero_loss]
     )
     vae.summary()
     return vae, x, z_mean, decoder_h, decoder_mean

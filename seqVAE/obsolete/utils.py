@@ -48,7 +48,7 @@ def vectorize_sentences(w2v, sentences):
 def sampling(args):
     z_mean, z_log_var = args
     epsilon = K.random_normal(
-        shape=(tf.shape(z_mean)[0], latent_dim),
+        shape=(tf.shape(z_mean)[0], tf.shape(z_mean)[1]),
         mean=0.,
         stddev=epsilon_std
     )
