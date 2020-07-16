@@ -30,8 +30,9 @@ def vectorize_sentences(w2v, sentences):
                 index = w2v.vocab[word].index
                 concat_vector.append(index)
             except Exception as e:
-                print(repr(e))
-                print(word)
+                continue
+                # print(repr(e))
+                # print(word)
         vectorized.append(concat_vector)
     vectorized = sequence.pad_sequences(
         np.array(vectorized),
