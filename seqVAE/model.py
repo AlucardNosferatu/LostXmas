@@ -32,8 +32,8 @@ class CustomVariationalLayer(Layer):
 
 
 def build_vae():
-    x = Input(batch_shape=(batch_size, seq_len, vec_dim))
-    h = Conv1D(filters=intermediate_dim, kernel_size=3, padding='same', activation='relu')(x)
+    x = Input(shape=(seq_len, vec_dim))
+    h = Conv1D(filters=intermediate_dim, kernel_size=3, padding='same', activation='selu')(x)
     # h = Dense(intermediate_dim, activation='relu')(x)
     z_mean = Conv1D(filters=latent_dim, kernel_size=3, padding='same')(h)
     # z_mean = Dense(latent_dim)(h)
@@ -41,7 +41,7 @@ def build_vae():
     # z_log_var = Dense(latent_dim)(h)
     z = Lambda(sampling, output_shape=(latent_dim,))([z_mean, z_log_var])
     # we instantiate these layers separately so as to reuse them later
-    decoder_h = Conv1D(filters=intermediate_dim, kernel_size=3, padding='same', activation='relu')
+    decoder_h = Conv1D(filters=intermediate_dim, kernel_size=3, padding='same', activation='selu')
     # decoder_h = Dense(intermediate_dim, activation='relu')
     decoder_mean = Conv1D(filters=vec_dim, kernel_size=3, padding='same', activation='tanh')
     # decoder_mean = Dense(vec_dim * seq_len, activation='tanh')

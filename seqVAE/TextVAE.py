@@ -5,6 +5,7 @@ import numpy as np
 import tensorflow as tf
 from gensim.models import KeyedVectors
 from tensorflow.keras.callbacks import ModelCheckpoint
+from tqdm import tqdm
 
 from cfgs import epochs, batch_size, seq_len
 from gen import shortest_homology, find_similar_encoding, print_sentence_with_w2v
@@ -18,9 +19,16 @@ w2v = KeyedVectors.load_word2vec_format(
 
 w2v.init_sims(replace=True)
 
-data_concat = []
+text = []
 with open('Online_A.txt', mode='r', encoding='utf-8-sig') as f:
-    text = f.readlines()
+    text += f.readlines()
+with open('Online_Q.txt', mode='r', encoding='utf-8-sig') as f:
+    text += f.readlines()
+with open('all_corpus.tsv', mode='r', encoding='utf-8-sig') as f:
+    lines = f.readlines()
+    for line in tqdm(lines):
+        if not line.startswith('【禁用】'):
+            text += line.split('\t')
 
 for i, line in enumerate(text):
     text[i] = ' '.join([item for item in jieba.lcut(line, cut_all=False) if item != '\n'])
@@ -28,15 +36,14 @@ for i, line in enumerate(text):
 vect = vectorize_sentences(w2v, text)
 vect = vect.tolist()
 data = [x for x in vect if len(x) == seq_len]
-for x in data:
-    data_concat.append(list(itertools.chain.from_iterable(x)))
 
-data_array = np.array(data)
+batch_length = int(len(data)/batch_size)*batch_size
+data_array = np.array(data)[:batch_length]
 np.random.shuffle(data_array)
 
 train = data_array
-for i in range(train.shape[0]):
-    print_sentence_with_w2v(train[i], w2v)
+# for i in range(train.shape[0]):
+#     print_sentence_with_w2v(train[i], w2v)
 gpu_list = tf.config.experimental.list_physical_devices(device_type="GPU")
 print(gpu_list)
 for gpu in gpu_list:
@@ -53,11 +60,10 @@ with tf.device("/gpu:0"):
         callbacks=cp
     )
 encoder, generator = encoder_and_decoder(x, z_mean, decoder_h, decoder_mean)
-sent_encoded = encoder.predict(np.array(train), batch_size=50)
+sent_encoded = encoder.predict(train, batch_size=train.shape[0])
 sent_decoded = generator.predict(sent_encoded)
 for i in range(sent_decoded.shape[0]):
     print_sentence_with_w2v(sent_decoded[i], w2v)
-
 
 test_hom = shortest_homology(sent_encoded[3], sent_encoded[10], 5)
 for point in test_hom:
