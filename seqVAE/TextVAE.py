@@ -128,14 +128,16 @@ def from_random():
         vae.load_weights(filepath='weights.h5')
     _, generator = encoder_and_decoder(x, z_mean, decoder_h, decoder_mean, repeated_context)
     while True:
-        vec = generator.predict(np.random.randn(1, latent_dim), batch_size=1)
-        print(print_sentence_with_w2v(vec, w2v))
+        input_vec = np.random.rand(1, latent_dim)
+        # print(input_vec)
+        output_vec = generator.predict(input_vec, batch_size=1)
+        print(print_sentence_with_w2v(output_vec, w2v))
         control = input("")
         if control == 'x':
             break
 
 
 if __name__ == '__main__':
-    train()
+    # train()
     # gen()
-    # from_random()
+    from_random()

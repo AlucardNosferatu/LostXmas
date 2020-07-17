@@ -2,8 +2,7 @@ import tensorflow as tf
 import tensorflow_addons as tfa
 from tensorflow.keras import Model
 from tensorflow.keras import backend as K
-from tensorflow.keras.layers import Input, Embedding, Bidirectional, LSTM, Dense, Lambda, RepeatVector
-from tensorflow.keras.layers import Layer
+from tensorflow.keras.layers import Layer, Input, Embedding, Bidirectional, LSTM, Dense, Lambda, RepeatVector
 from tensorflow.keras.optimizers import Adam
 
 from cfgs import intermediate_dim, latent_dim, vec_dim, seq_len
@@ -15,7 +14,7 @@ class CustomVariationalLayer(Layer):
         self.is_placeholder = True
         super(CustomVariationalLayer, self).__init__(**kwargs)
         self.target_weights = None
-        self.kl_weight = 0.000
+        self.kl_weight = 0.1
 
     def vae_loss(self, x, x_decoded_mean, z_log_var, z_mean):
         labels = tf.cast(x, tf.int32)
@@ -92,7 +91,7 @@ def build_vae(vocab_size, word2vec_weight):
     loss_layer = CustomVariationalLayer()([x, x_decoded_mean, z_log_var, z_mean])
     # loss_layer = CustomVariationalLayer()([x, x_decoded_mean, h, h])
     vae = Model(x, [loss_layer])
-    opt = Adam(lr=0.0001)
+    opt = Adam(lr=0.001)
 
     vae.compile(
         optimizer=opt,
