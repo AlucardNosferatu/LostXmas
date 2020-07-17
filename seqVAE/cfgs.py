@@ -1,4 +1,4 @@
-batch_size = 50
+batch_size = 100
 vec_dim = 100
 seq_len = 20
 intermediate_dim = 50
