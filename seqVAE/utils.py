@@ -79,7 +79,8 @@ def print_sentence_with_w2v(sent_vect, w2v):
         max_score = np.argmax(sent_vect[i])
         word_sent += w2v.index2word[max_score]
         word_sent += ' '
-    print(word_sent)
+    # print(word_sent)
+    return word_sent
 
 
 def find_similar_encoding(sent_vect, sent_encoded):

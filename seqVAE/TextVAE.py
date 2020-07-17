@@ -86,20 +86,37 @@ def gen():
     sent_encoded = encoder.predict(input_batch[:batch_size], batch_size=batch_size)
     sent_decoded = generator.predict(sent_encoded)
     for i in range(sent_decoded.shape[0]):
-        print(i)
-        print_sentence_with_w2v(sent_decoded[i], w2v)
+        print(i, ' ', print_sentence_with_w2v(sent_decoded[i], w2v))
 
-    test_hom = shortest_homology(sent_encoded[3], sent_encoded[10], 5)
+    start_index = input("选定A语句编号")
+    end_index = input("选定B语句编号")
+    while not (start_index.isnumeric() and end_index.isnumeric() and 0 <= int(start_index) < batch_size and 0 <= int(
+            end_index) < batch_size):
+        start_index = input("选定A语句编号")
+        end_index = input("选定B语句编号")
+    start_index = int(start_index)
+    end_index = int(end_index)
+    print('################用隐变量合成语句################')
+    test_hom = shortest_homology(sent_encoded[start_index], sent_encoded[end_index], 5)
     for point in test_hom:
         p = generator.predict(np.array([point]))[0]
-        print_sentence_with_w2v(p, w2v)
+        print(print_sentence_with_w2v(p, w2v))
 
-    test_hom = shortest_homology(sent_encoded[2], sent_encoded[40], 20)
+    start_index = input("选定A语句编号")
+    end_index = input("选定B语句编号")
+    while not (start_index.isnumeric() and end_index.isnumeric() and 0 <= int(start_index) < batch_size and 0 <= int(
+            end_index) < batch_size):
+        start_index = input("选定A语句编号")
+        end_index = input("选定B语句编号")
+    start_index = int(start_index)
+    end_index = int(end_index)
+    print('################用隐变量合成语句################')
+    test_hom = shortest_homology(sent_encoded[start_index], sent_encoded[end_index], 20)
     for point in test_hom:
         p = generator.predict(np.array([find_similar_encoding(point, sent_encoded)]))[0]
-        print_sentence_with_w2v(p, w2v)
+        print(print_sentence_with_w2v(p, w2v))
 
 
 if __name__ == '__main__':
-    train()
-    # gen()
+    # train()
+    gen()
