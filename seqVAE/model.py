@@ -92,7 +92,7 @@ def build_vae(vocab_size, word2vec_weight):
     loss_layer = CustomVariationalLayer()([x, x_decoded_mean, z_log_var, z_mean])
     # loss_layer = CustomVariationalLayer()([x, x_decoded_mean, h, h])
     vae = Model(x, [loss_layer])
-    opt = Adam(lr=0.01)
+    opt = Adam(lr=0.001)
 
     vae.compile(
         optimizer=opt,

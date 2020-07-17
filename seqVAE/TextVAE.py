@@ -55,6 +55,8 @@ def train():
         len(w2v.index2word),
         w2v.get_keras_embedding()._initial_weights
     )
+    if os.path.exists('weights.h5'):
+        vae.load_weights(filepath='weights.h5')
     cp = [
         ModelCheckpoint(filepath="weights.h5", verbose=1, save_best_only=True, monitor='loss', save_weights_only=True),
         EarlyStopping(monitor='loss', patience=2, verbose=1)
@@ -99,5 +101,5 @@ def gen():
 
 
 if __name__ == '__main__':
-    # train()
-    gen()
+    train()
+    # gen()
