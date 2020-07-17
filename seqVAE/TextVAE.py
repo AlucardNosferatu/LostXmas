@@ -4,10 +4,10 @@ import jieba
 import numpy as np
 import tensorflow as tf
 from gensim.models import KeyedVectors
-from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
+from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, TensorBoard
 from tqdm import tqdm
 
-from cfgs import epochs, batch_size, seq_len
+from cfgs import epochs, batch_size, seq_len, latent_dim
 from model import build_vae, encoder_and_decoder
 from utils import vectorize_sentences, shortest_homology, find_similar_encoding, print_sentence_with_w2v
 
@@ -59,7 +59,8 @@ def train():
         vae.load_weights(filepath='weights.h5')
     cp = [
         ModelCheckpoint(filepath="weights.h5", verbose=1, save_best_only=True, monitor='loss', save_weights_only=True),
-        EarlyStopping(monitor='loss', patience=2, verbose=1)
+        EarlyStopping(monitor='loss', patience=5, verbose=1),
+        TensorBoard(log_dir='logs', histogram_freq=1, write_graph=True, write_images=True)
     ]
     with tf.device("/gpu:0"):
         vae.fit(
@@ -117,6 +118,24 @@ def gen():
         print(print_sentence_with_w2v(p, w2v))
 
 
+def from_random():
+    w2v = get_w2v()
+    vae, x, z_mean, decoder_h, decoder_mean, repeated_context = build_vae(
+        len(w2v.index2word),
+        w2v.get_keras_embedding()._initial_weights
+    )
+    if os.path.exists('weights.h5'):
+        vae.load_weights(filepath='weights.h5')
+    _, generator = encoder_and_decoder(x, z_mean, decoder_h, decoder_mean, repeated_context)
+    while True:
+        vec = generator.predict(np.random.randn(1, latent_dim), batch_size=1)
+        print(print_sentence_with_w2v(vec, w2v))
+        control = input("")
+        if control == 'x':
+            break
+
+
 if __name__ == '__main__':
-    # train()
-    gen()
+    train()
+    # gen()
+    # from_random()

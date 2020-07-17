@@ -15,7 +15,7 @@ class CustomVariationalLayer(Layer):
         self.is_placeholder = True
         super(CustomVariationalLayer, self).__init__(**kwargs)
         self.target_weights = None
-        self.kl_weight = 0.01
+        self.kl_weight = 0.000
 
     def vae_loss(self, x, x_decoded_mean, z_log_var, z_mean):
         labels = tf.cast(x, tf.int32)
@@ -30,8 +30,8 @@ class CustomVariationalLayer(Layer):
         )  # ,
         # softmax_loss_function=softmax_loss_f), axis=-1)#,
         kl_loss = - 0.5 * K.sum(1 + z_log_var - K.square(z_mean) - K.exp(z_log_var), axis=-1)
-        xent_loss = K.mean(xent_loss)
         kl_loss = K.mean(kl_loss)
+        xent_loss = K.mean(xent_loss)
         return K.mean(xent_loss + self.kl_weight * kl_loss)
 
     def call(self, inputs, **kwargs):
@@ -92,7 +92,7 @@ def build_vae(vocab_size, word2vec_weight):
     loss_layer = CustomVariationalLayer()([x, x_decoded_mean, z_log_var, z_mean])
     # loss_layer = CustomVariationalLayer()([x, x_decoded_mean, h, h])
     vae = Model(x, [loss_layer])
-    opt = Adam(lr=0.001)
+    opt = Adam(lr=0.0001)
 
     vae.compile(
         optimizer=opt,
