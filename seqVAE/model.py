@@ -58,9 +58,13 @@ def build_vae(vocab_size, word2vec_weight):
     )(x)
     h = Bidirectional(
         LSTM(
-            intermediate_dim,
             return_sequences=False,
-            recurrent_dropout=0.2
+            activation='tanh',
+            recurrent_activation='sigmoid',
+            units=intermediate_dim,
+            unroll=False,
+            use_bias=True,
+            recurrent_dropout=0
         ),
         merge_mode='concat'
     )(x_embed)
@@ -71,9 +75,13 @@ def build_vae(vocab_size, word2vec_weight):
     # we instantiate these layers separately so as to reuse them later
     repeated_context = RepeatVector(seq_len)
     decoder_h = LSTM(
-        intermediate_dim,
         return_sequences=True,
-        recurrent_dropout=0.2
+        activation='tanh',
+        recurrent_activation='sigmoid',
+        units=intermediate_dim,
+        unroll=False,
+        use_bias=True,
+        recurrent_dropout=0
     )
     decoder_mean = Dense(
         vocab_size,
@@ -91,15 +99,15 @@ def build_vae(vocab_size, word2vec_weight):
         loss=[zero_loss]
     )
     vae.summary()
-    return vae, x, z_mean, decoder_h, decoder_mean
+    return vae, x, z_mean, decoder_h, decoder_mean, repeated_context
 
 
-def encoder_and_decoder(x, z_mean, decoder_h, decoder_mean):
+def encoder_and_decoder(x, z_mean, decoder_h, decoder_mean, repeated_context):
     encoder = Model(x, z_mean)
 
     # build a generator that can sample from the learned distribution
-    decoder_input = Input(shape=(seq_len, latent_dim))
-    _h_decoded = decoder_h(decoder_input)
+    decoder_input = Input(shape=(latent_dim,))
+    _h_decoded = decoder_h(repeated_context(decoder_input))
     _x_decoded_mean = decoder_mean(_h_decoded)
     generator = Model(decoder_input, _x_decoded_mean)
     return encoder, generator
