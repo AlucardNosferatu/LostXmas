@@ -1,6 +1,6 @@
 import os
+import pycorrector
 
-test_text = 'texts/xiaoice_island (4).txt'
 filter_prefixes = ['\n', '3月', '星期', '我滴老婆大人', '请使用文明用语']
 
 
@@ -20,7 +20,7 @@ def concatenate_unfinished(tgt_txt):
                 next_line = lines.pop(i + 1)
                 lines[i] = lines[i].strip('\n')
                 lines[i] += next_line
-    with open(tgt_txt.replace('.txt', '_finished.txt'), 'w', encoding='utf-8') as f:
+    with open(tgt_txt.replace('.txt', '_fin.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
 
 
@@ -41,20 +41,15 @@ def ends_with_strs(line, postfixes):
 def filter_one_txt(tgt_txt):
     with open(tgt_txt, 'r', encoding='utf-8') as f:
         lines = f.readlines()
-
-    filter_lines = []
     i = len(lines)
     while i != 0:
         i -= 1
         drop = False
-        if starts_with_strs(lines[i], filter_prefixes) == '\n':
+        if starts_with_strs(lines[i], filter_prefixes):
             drop = True
         if drop:
-            if lines[i] != '\n':
-                print(lines[i])
-                filter_lines.append(lines[i])
             lines.pop(i)
-    with open(tgt_txt.replace('.txt', '_filtered.txt'), 'w', encoding='utf-8') as f:
+    with open(tgt_txt.replace('.txt', '_fil.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
 
 
@@ -93,22 +88,36 @@ def rearrange_sequence(tgt_txt):
         for j in range(window_size):
             rearr_seq_batch[j] = seq_batch[int(arrangement[j])]
         lines[i:i + window_size] = rearr_seq_batch
-    with open(tgt_txt.replace('.txt', '_rearranged.txt'), 'w', encoding='utf-8') as f:
+    with open(tgt_txt.replace('.txt', '_rea.txt'), 'w', encoding='utf-8') as f:
+        f.writelines(lines)
+
+
+def correct_wrong_word(tgt_txt):
+    with open(tgt_txt, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    for i in range(len(lines)):
+        corrected_sent, _ = pycorrector.correct(lines[i])
+        lines[i] = corrected_sent
+    with open(tgt_txt.replace('.txt', '_cor.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
 
 
 if __name__ == '__main__':
-    file_type_postfixes = ['_filtered.txt', '_finished.txt']
+    file_type_postfixes = ['_fil.txt', '_fin.txt', '_fin.txt', '_rea.txt', '_cor.txt']
     files = os.listdir('texts')
     for file in files:
         if not ends_with_strs(file, file_type_postfixes):
             filter_one_txt(os.path.join('texts', file))
     files = os.listdir('texts')
     for file in files:
-        if file.endswith('_filtered.txt'):
+        if file.endswith('_fil.txt'):
             concatenate_unfinished(os.path.join('texts', file))
     files = os.listdir('texts')
     for file in files:
-        if file.endswith('_finished.txt'):
+        if file.endswith('_fin.txt'):
             rearrange_sequence(os.path.join('texts', file))
+    files = os.listdir('texts')
+    for file in files:
+        if file.endswith('_rea.txt'):
+            correct_wrong_word(os.path.join('texts', file))
     print('Done')
