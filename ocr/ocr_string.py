@@ -14,7 +14,7 @@ def concatenate_unfinished(tgt_txt):
         if i + 1 < len(lines) and len(lines[i]) >= std_full_len:
             finishe_with_nextline = ''
             while finishe_with_nextline not in ['y', 'n']:
-                print(lines[i])
+                print(lines[i], lines[i + 1])
                 finishe_with_nextline = input('y/n')
             if finishe_with_nextline == 'y':
                 next_line = lines.pop(i + 1)
@@ -80,14 +80,17 @@ def rearrange_sequence(tgt_txt):
     for i in range(len(lines) - window_size + 1):
         seq_batch = lines[i:i + window_size].copy()
         arrangement = ''
-        while format_error(arrangement):
+        while arrangement != '' and format_error(arrangement):
             print(''.join(seq_batch))
             arrangement = input('input rearranged order index, start from 0')
-        arrangement = arr_str_process(arrangement)
-        rearr_seq_batch = seq_batch.copy()
-        for j in range(window_size):
-            rearr_seq_batch[j] = seq_batch[int(arrangement[j])]
-        lines[i:i + window_size] = rearr_seq_batch
+        if arrangement == '':
+            continue
+        else:
+            arrangement = arr_str_process(arrangement)
+            rearr_seq_batch = seq_batch.copy()
+            for j in range(window_size):
+                rearr_seq_batch[j] = seq_batch[int(arrangement[j])]
+            lines[i:i + window_size] = rearr_seq_batch
     with open(tgt_txt.replace('.txt', '_rea.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
 
@@ -104,14 +107,14 @@ def correct_wrong_word(tgt_txt):
 
 if __name__ == '__main__':
     file_type_postfixes = ['_fil.txt', '_fin.txt', '_fin.txt', '_rea.txt', '_cor.txt']
-    files = os.listdir('texts')
-    for file in files:
-        if not ends_with_strs(file, file_type_postfixes):
-            filter_one_txt(os.path.join('texts', file))
-    files = os.listdir('texts')
-    for file in files:
-        if file.endswith('_fil.txt'):
-            concatenate_unfinished(os.path.join('texts', file))
+    # files = os.listdir('texts')
+    # for file in files:
+    #     if not ends_with_strs(file, file_type_postfixes):
+    #         filter_one_txt(os.path.join('texts', file))
+    # files = os.listdir('texts')
+    # for file in files:
+    #     if file.endswith('_fil.txt'):
+    #         concatenate_unfinished(os.path.join('texts', file))
     files = os.listdir('texts')
     for file in files:
         if file.endswith('_fin.txt'):
