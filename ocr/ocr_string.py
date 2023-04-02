@@ -21,7 +21,7 @@ def ends_with_strs(line, postfixes):
 def concatenate_unfinished(tgt_txt):
     with open(tgt_txt, 'r', encoding='utf-8') as f:
         lines = f.readlines()
-    std_full_len = 12
+    std_full_len = 10
     i = len(lines)
     while i != 0:
         i -= 1
@@ -140,17 +140,48 @@ def tag_q_or_a(tgt_txt):
         f.writelines(lines)
 
 
+def delete_redundant_version(txt_in_dir):
+    for txt in txt_in_dir:
+        old_txt = txt
+        txt = txt.replace('.txt', '')
+        txt = txt.split('_')
+        last_mod = txt[-1]
+        if txt.count(last_mod) > 1:
+            rollback_ver = txt.index(last_mod)
+            while len(txt) > rollback_ver + 1:
+                txt.pop(-1)
+            txt = '_'.join(txt)
+            txt += '.txt'
+            if os.path.exists(os.path.join('texts', txt)):
+                os.remove(os.path.join('texts', txt))
+            if os.path.exists(os.path.join('texts', old_txt)):
+                os.rename(os.path.join('texts', old_txt), os.path.join('texts', txt))
+
+
 if __name__ == '__main__':
     file_type_postfixes = ['_fil.txt', '_fin.txt', '_fin.txt', '_rea.txt', '_cor.txt']
-    skipped = ['xiaoice_island (10)_fil_fin.txt', 'xiaoice_island (1)_fil_fin.txt']
+    skipped = [
+        'xiaoice_island (1)_fil_fin.txt',
+        'xiaoice_island (1)_fil_fin_man.txt',
+        'xiaoice_island (10)_fil_fin.txt',
+        'xiaoice_island (10)_fil_fin_man.txt',
+        'xiaoice_island (11)_fil_fin.txt',
+        'xiaoice_island (11)_fil_fin_man.txt',
+        'xiaoice_island (12)_fil_fin.txt',
+        'xiaoice_island (12)_fil_fin_man.txt',
+        'xiaoice_island (13)_fil_fin.txt',
+        'xiaoice_island (13)_fil_fin_man.txt'
+    ]
     # files = os.listdir('texts')
     # for file in files:
     #     if not ends_with_strs(file, file_type_postfixes) and file not in skipped:
     #         filter_one_txt(os.path.join('texts', file))
-    # files = os.listdir('texts')
-    # for file in files:
-    #     if file.endswith('_fil.txt') and file not in skipped:
-    #         concatenate_unfinished(os.path.join('texts', file))
+    files = os.listdir('texts')
+    delete_redundant_version(files)
+    files = os.listdir('texts')
+    for file in files:
+        if file.endswith('_man.txt') and file not in skipped:
+            concatenate_unfinished(os.path.join('texts', file))
     files = os.listdir('texts')
     for file in files:
         if file.endswith('_fin.txt') and file not in skipped:
@@ -167,4 +198,6 @@ if __name__ == '__main__':
     for file in files:
         if file.endswith('_rea.txt') and file not in skipped:
             correct_wrong_word(os.path.join('texts', file))
+    files = os.listdir('texts')
+    delete_redundant_version(files)
     print('Done')
