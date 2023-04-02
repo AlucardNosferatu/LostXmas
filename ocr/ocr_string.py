@@ -79,7 +79,7 @@ def rearrange_sequence(tgt_txt):
         lines = f.readlines()
     for i in range(len(lines) - window_size + 1):
         seq_batch = lines[i:i + window_size].copy()
-        arrangement = ''
+        arrangement = 'bruh'
         while arrangement != '' and format_error(arrangement):
             print(''.join(seq_batch))
             arrangement = input('input rearranged order index, start from 0')
