@@ -8,7 +8,7 @@ from ocr_cutter_test import get_bounds, reduce_bounds, cut_bound, save_slices
 model = CnOcr(det_model_name='db_resnet34')
 src_pics = os.listdir('pics')
 for src_pic in src_pics:
-    # print('Now processing:', src_pic)
+    print('Now processing:', src_pic)
     # bl, img_arr = get_bounds(src_pic)
     # bl = reduce_bounds(bl)
     # sal = cut_bound(img_arr, bl)

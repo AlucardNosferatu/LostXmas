@@ -4,26 +4,6 @@ import pycorrector
 filter_prefixes = ['\n', '3月', '星期', '我滴老婆大人', '请使用文明用语']
 
 
-def concatenate_unfinished(tgt_txt):
-    with open(tgt_txt, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-    std_full_len = 12
-    i = len(lines)
-    while i != 0:
-        i -= 1
-        if i + 1 < len(lines) and len(lines[i]) >= std_full_len:
-            finishe_with_nextline = ''
-            while finishe_with_nextline not in ['y', 'n']:
-                print(lines[i], lines[i + 1])
-                finishe_with_nextline = input('y/n')
-            if finishe_with_nextline == 'y':
-                next_line = lines.pop(i + 1)
-                lines[i] = lines[i].strip('\n')
-                lines[i] += next_line
-    with open(tgt_txt.replace('.txt', '_fin.txt'), 'w', encoding='utf-8') as f:
-        f.writelines(lines)
-
-
 def starts_with_strs(line, prefixes):
     for prefix in prefixes:
         if line.startswith(prefix):
@@ -36,6 +16,26 @@ def ends_with_strs(line, postfixes):
         if line.endswith(postfix):
             return True
     return False
+
+
+def concatenate_unfinished(tgt_txt):
+    with open(tgt_txt, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    std_full_len = 12
+    i = len(lines)
+    while i != 0:
+        i -= 1
+        if i + 1 < len(lines) and len(lines[i]) >= std_full_len:
+            finishe_with_nextline = ''
+            while finishe_with_nextline not in ['y', 'n']:
+                print(lines[i], lines[i + 1])
+                finishe_with_nextline = input('y for finish this line with the next line\n n for skip')
+            if finishe_with_nextline == 'y':
+                next_line = lines.pop(i + 1)
+                lines[i] = lines[i].strip('\n')
+                lines[i] += next_line
+    with open(tgt_txt.replace('.txt', '_fin.txt'), 'w', encoding='utf-8') as f:
+        f.writelines(lines)
 
 
 def filter_one_txt(tgt_txt):
@@ -105,22 +105,66 @@ def correct_wrong_word(tgt_txt):
         f.writelines(lines)
 
 
+def manual_filter(tgt_txt):
+    with open(tgt_txt, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    i = len(lines)
+    while i != 0:
+        i -= 1
+        drop_this_line = ''
+        while drop_this_line not in ['y', 'n']:
+            if i - 1 >= 0:
+                print(lines[i - 1], lines[i])
+            else:
+                print(lines[i])
+            drop_this_line = input('y for drop\nn for pass')
+        if drop_this_line == 'y':
+            lines.pop(i)
+    with open(tgt_txt.replace('.txt', '_man.txt'), 'w', encoding='utf-8') as f:
+        f.writelines(lines)
+
+
+def tag_q_or_a(tgt_txt):
+    with open(tgt_txt, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    for i in range(len(lines)):
+        q_or_a = ''
+        while q_or_a not in ['q', 'a']:
+            if i + 1 < len(lines):
+                print(lines[i], lines[i + 1])
+            else:
+                print(lines[i])
+            q_or_a = input('q for question\na for answer')
+        lines[i] = q_or_a + '\t' + lines[i]
+    with open(tgt_txt.replace('.txt', '_tag.txt'), 'w', encoding='utf-8') as f:
+        f.writelines(lines)
+
+
 if __name__ == '__main__':
     file_type_postfixes = ['_fil.txt', '_fin.txt', '_fin.txt', '_rea.txt', '_cor.txt']
+    skipped = ['xiaoice_island (10)_fil_fin.txt', 'xiaoice_island (1)_fil_fin.txt']
     # files = os.listdir('texts')
     # for file in files:
-    #     if not ends_with_strs(file, file_type_postfixes):
+    #     if not ends_with_strs(file, file_type_postfixes) and file not in skipped:
     #         filter_one_txt(os.path.join('texts', file))
     # files = os.listdir('texts')
     # for file in files:
-    #     if file.endswith('_fil.txt'):
+    #     if file.endswith('_fil.txt') and file not in skipped:
     #         concatenate_unfinished(os.path.join('texts', file))
     files = os.listdir('texts')
     for file in files:
-        if file.endswith('_fin.txt'):
+        if file.endswith('_fin.txt') and file not in skipped:
+            manual_filter(os.path.join('texts', file))
+    files = os.listdir('texts')
+    for file in files:
+        if file.endswith('_man.txt') and file not in skipped:
+            tag_q_or_a(os.path.join('texts', file))
+    files = os.listdir('texts')
+    for file in files:
+        if file.endswith('_tag.txt') and file not in skipped:
             rearrange_sequence(os.path.join('texts', file))
     files = os.listdir('texts')
     for file in files:
-        if file.endswith('_rea.txt'):
+        if file.endswith('_rea.txt') and file not in skipped:
             correct_wrong_word(os.path.join('texts', file))
     print('Done')
