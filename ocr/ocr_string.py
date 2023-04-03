@@ -161,8 +161,8 @@ def delete_redundant_version(txt_in_dir):
 if __name__ == '__main__':
     file_type_postfixes = ['_fil.txt', '_fin.txt', '_fin.txt', '_rea.txt', '_cor.txt']
     skipped = [
-        'xiaoice_island (1)_fil_fin_man.txt',
-        'xiaoice_island (10)_fil_fin_man.txt'
+        # 'xiaoice_island (1)_fil_fin_man.txt',
+        # 'xiaoice_island (10)_fil_fin_man.txt'
     ]
     files = os.listdir('texts')
     delete_redundant_version(files)
