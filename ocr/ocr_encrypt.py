@@ -1,6 +1,7 @@
 import os
 
 from pyDes import des, CBC, PAD_PKCS5
+from tqdm import tqdm
 
 
 def encrypt_file(key, tgt_txt):
@@ -24,7 +25,7 @@ def decrypt_file(key, tgt_txt):
 # hint: What happened on December 24th, 2029?
 encrypt_key = input('input encryption key string:')
 files = os.listdir('texts')
-for file in files:
+for file in tqdm(files):
     if file.endswith('.txt'):
         encrypt_file(encrypt_key, os.path.join('texts', file))
     # if file.endswith('.xmas'):
