@@ -178,6 +178,9 @@ if __name__ == '__main__':
     file_type_postfixes = ['_fil.txt', '_fin.txt', '_fin.txt', '_rea.txt', '_cor.txt']
     skipped = [
         'xiaoice_island (1)_fil_fin_man.txt',
+        'xiaoice_island (4)_fil_fin_man.txt',
+        'xiaoice_island (5)_fil_fin_man.txt',
+        'xiaoice_island (6)_fil_fin_man.txt',
         'xiaoice_island (10)_fil_fin_man.txt',
         'xiaoice_island (11)_fil_fin_man.txt',
         'xiaoice_island (12)_fil_fin_man.txt'
@@ -197,7 +200,6 @@ if __name__ == '__main__':
     #     if file.endswith('_fin.txt') and file not in skipped:
     #         manual_filter(os.path.join(text_dir, file))
     files = os.listdir(text_dir)
-    print(files)
     for file in files:
         if file.endswith('_man.txt') and file not in skipped:
             tag_q_or_a(os.path.join(text_dir, file))
