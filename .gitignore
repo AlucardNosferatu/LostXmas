@@ -25,4 +25,4 @@ seq2seq_RNN/embed/w2v/corpus_1.txt
 seqVAE/logs/train/
 ocr/pics/
 ocr/pics_cut/
-ocr/texts/
+ocr/texts/*.txt
