@@ -170,18 +170,26 @@ if __name__ == '__main__':
         'xiaoice_island (12)_fil_fin.txt',
         'xiaoice_island (12)_fil_fin_man.txt',
         'xiaoice_island (13)_fil_fin.txt',
-        'xiaoice_island (13)_fil_fin_man.txt'
+        'xiaoice_island (13)_fil_fin_man.txt',
+        'xiaoice_island (14)_fil_fin.txt',
+        'xiaoice_island (14)_fil_fin_man.txt',
+        'xiaoice_island (15)_fil_fin.txt',
+        'xiaoice_island (15)_fil_fin_man.txt',
+        'xiaoice_island (16)_fil_fin.txt',
+        'xiaoice_island (16)_fil_fin_man.txt',
+        'xiaoice_island (17)_fil_fin.txt',
+        'xiaoice_island (17)_fil_fin_man.txt'
     ]
+    files = os.listdir('texts')
+    delete_redundant_version(files)
     # files = os.listdir('texts')
     # for file in files:
     #     if not ends_with_strs(file, file_type_postfixes) and file not in skipped:
     #         filter_one_txt(os.path.join('texts', file))
-    files = os.listdir('texts')
-    delete_redundant_version(files)
-    files = os.listdir('texts')
-    for file in files:
-        if file.endswith('_man.txt') and file not in skipped:
-            concatenate_unfinished(os.path.join('texts', file))
+    # files = os.listdir('texts')
+    # for file in files:
+    #     if file.endswith('_fil.txt') and file not in skipped:
+    #         concatenate_unfinished(os.path.join('texts', file))
     files = os.listdir('texts')
     for file in files:
         if file.endswith('_fin.txt') and file not in skipped:
