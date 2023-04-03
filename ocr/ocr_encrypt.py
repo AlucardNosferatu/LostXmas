@@ -27,5 +27,5 @@ files = os.listdir('texts')
 for file in files:
     if file.endswith('.txt'):
         encrypt_file(encrypt_key, os.path.join('texts', file))
-    elif file.endswith('.xmas'):
-        decrypt_file(encrypt_key, os.path.join('texts', file))
+    # if file.endswith('.xmas'):
+    #     decrypt_file(encrypt_key, os.path.join('texts', file))
