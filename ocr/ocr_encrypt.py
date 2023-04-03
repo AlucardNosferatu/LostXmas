@@ -21,6 +21,7 @@ def decrypt_file(key, tgt_txt):
         f.write(lines)
 
 
+# hint: What happened on December 24th, 2029?
 encrypt_key = input('input encryption key string:')
 files = os.listdir('texts')
 for file in files:
