@@ -19,7 +19,7 @@ def ends_with_strs(line, postfixes):
     return False
 
 
-def concatenate_unfinished(tgt_txt, tagged=False):
+def concatenate_unfinished(tgt_txt):
     with open(tgt_txt, 'r', encoding='utf-8') as f:
         lines = f.readlines()
     std_full_len = 10
@@ -28,14 +28,10 @@ def concatenate_unfinished(tgt_txt, tagged=False):
         i -= 1
         if i + 1 < len(lines):
             detected = False
-            if tagged:
-                tag = lines[i].split('\t')[0]
-                tag_next = lines[i + 1].split('\t')[0]
-                if tag == tag_next:
-                    detected = True
-            else:
-                if len(lines[i]) >= std_full_len:
-                    detected = True
+            tag = lines[i].split('\t')[0]
+            tag_next = lines[i + 1].split('\t')[0]
+            if len(lines[i]) >= std_full_len and tag == tag_next:
+                detected = True
             if detected:
                 finishe_with_nextline = ''
                 while finishe_with_nextline not in ['y', 'n']:
@@ -178,7 +174,7 @@ if __name__ == '__main__':
     files = os.listdir(text_dir)
     for file in files:
         if file.endswith('_man.txt') and file not in skipped:
-            concatenate_unfinished(os.path.join(text_dir, file), tagged=True)
+            concatenate_unfinished(os.path.join(text_dir, file))
 
     files = os.listdir(text_dir)
     for file in files:
@@ -190,9 +186,12 @@ if __name__ == '__main__':
         if file.endswith('_rea.txt') and file not in skipped:
             manual_filter(os.path.join(text_dir, file), tag_missing=True)
 
+    files = os.listdir(text_dir)
+    delete_redundant_version(files)
+
     # files = os.listdir(text_dir)
     # for file in files:
-    #     if file.endswith('_rea.txt') and file not in skipped:
+    #     if file.endswith('_man.txt') and file not in skipped:
     #         correct_wrong_word(os.path.join(text_dir, file))
     files = os.listdir(text_dir)
     delete_redundant_version(files)

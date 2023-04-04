@@ -3,14 +3,14 @@ from ocr_string import starts_with_strs
 filter_prefixes = ['\n', '3月', '星期', '我滴老婆大人', '请使用文明用语']
 
 
-def filter_one_txt(tgt_txt):
+def filter_by_prefix(tgt_txt):
     with open(tgt_txt, 'r', encoding='utf-8') as f:
         lines = f.readlines()
     i = len(lines)
     while i != 0:
         i -= 1
         drop = False
-        if starts_with_strs(lines[i], filter_prefixes):
+        if starts_with_strs(lines[i].split('\t')[1], filter_prefixes):
             drop = True
         if drop:
             lines.pop(i)
@@ -18,7 +18,7 @@ def filter_one_txt(tgt_txt):
         f.writelines(lines)
 
 
-def tag_q_or_a(tgt_txt):
+def manual_tag(tgt_txt):
     with open(tgt_txt, 'r', encoding='utf-8') as f:
         lines = f.readlines()
     for i in range(len(lines)):
