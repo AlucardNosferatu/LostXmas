@@ -26,7 +26,7 @@ def decrypt_file(key, tgt_txt):
 encrypt_key = input('input encryption key string:')
 files = os.listdir('texts')
 for file in tqdm(files):
-    # if file.endswith('.txt'):
-    #     encrypt_file(encrypt_key, os.path.join('texts', file))
-    if file.endswith('.xmas'):
-        decrypt_file(encrypt_key, os.path.join('texts', file))
+    if file.endswith('.txt'):
+        encrypt_file(encrypt_key, os.path.join('texts', file))
+    # if file.endswith('.xmas'):
+    #     decrypt_file(encrypt_key, os.path.join('texts', file))
