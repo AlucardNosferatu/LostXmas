@@ -10,18 +10,19 @@ from ocr_cutter_test import get_bounds, reduce_bounds, cut_bound, save_slices
 
 def tag_by_bbox(model, filepath, str_list: list):
     img_array = cv2.imread(filepath)
-    xc_pic = img_array.shape[1] / 2
+    # xc_pic = img_array.shape[1] / 2
     out_this_slice = model.ocr(img_array)
     for line_dict in out_this_slice:
         if len(line_dict['text']) <= 1:
             continue
         else:
-            text = line_dict['text'] + '\n'
-            x1 = line_dict['position'][0, 0]
-            x2 = line_dict['position'][2, 0]
-            xc_sen = (x1 + x2) / 2
             tbc = tag_by_bcolor(img_array, line_dict['position'])
-            if xc_sen < xc_pic:
+            text = line_dict['text'] + '\n'
+            # x1 = line_dict['position'][0, 0]
+            # x2 = line_dict['position'][2, 0]
+            # xc_sen = (x1 + x2) / 2
+            # if xc_sen < xc_pic:
+            if tbc:
                 text = 'a\t' + text
             else:
                 text = 'q\t' + text
@@ -38,10 +39,10 @@ def tag_by_bcolor(img_array, bbox):
     cropped_array = img_array[y1:y2, x1:x2, :]
     # cv2.imshow('cropped', cropped_array)
     # cv2.waitKey()
-    histo = cv2.calcHist([cropped_array], [2], None, [256], [192, 256])
-    mean = np.mean(histo)
-    mean = mean / (cropped_array.shape[0] * cropped_array.shape[1])
-    return True
+    histo = cv2.calcHist([cropped_array], [2], None, [256], [0, 256])[192:256, :]
+    sum_histo = np.sum(histo)
+    percent = sum_histo / (cropped_array.shape[0] * cropped_array.shape[1])
+    return percent > 0.125
 
 
 mdl = CnOcr(det_model_name='db_resnet34')
