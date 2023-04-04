@@ -5,7 +5,7 @@ import numpy as np
 from cnocr import CnOcr
 from tqdm import tqdm
 
-from ocr_cutter_test import get_bounds, reduce_bounds, cut_bound, save_slices
+# from ocr_cutter_test import get_bounds, reduce_bounds, cut_bound, save_slices
 
 
 def tag_by_bbox(model, filepath, str_list: list):
