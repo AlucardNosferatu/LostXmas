@@ -15,15 +15,16 @@ def tag_by_bbox(model, filepath, str_list: list):
     bbox_list = []
     slice_list = []
     for line_dict in out_this_slice:
-        slice_list = line_dict_process(slice_list, img_array, line_dict)
-        bbox_list.append(line_dict['position'])
+        slice_list, bbox_list = line_dict_process(slice_list, img_array, line_dict, bbox_list)
     if len(slice_list) >= 2:
+        if len(slice_list) >= 3:
+            print('breakpoint')
         slice_list, bbox_list = sort_by_bbox(slice_list, bbox_list)
     str_list += slice_list
     return str_list
 
 
-def line_dict_process(slice_list, img_array, line_dict):
+def line_dict_process(slice_list, img_array, line_dict, bbox_list):
     if len(line_dict['text']) <= 1:
         return slice_list
     else:
@@ -38,7 +39,8 @@ def line_dict_process(slice_list, img_array, line_dict):
         else:
             text = 'q\t' + text
         slice_list.append(text)
-        return slice_list
+        bbox_list.append(line_dict['position'])
+        return slice_list, bbox_list
 
 
 def sort_by_bbox(slice_list, bbox_list):
@@ -70,7 +72,8 @@ def sort_by_bbox(slice_list, bbox_list):
     # y_rc = corner[1]
     while len(slice_list) > 0:
         if len(slice_list) == 1:
-            new_list.append(slice_list[0])
+            new_list.append(slice_list.pop(ref_index))
+            new_bbox.append(bbox_list.pop(ref_index))
         else:
             ref_box_corner = bbox_list[ref_index][0, :]
             cmp_box_corner = bbox_list[cmp_index][0, :]
