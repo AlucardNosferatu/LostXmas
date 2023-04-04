@@ -25,9 +25,7 @@ def tag_by_bbox(model, filepath, str_list: list):
 
 
 def line_dict_process(slice_list, img_array, line_dict, bbox_list):
-    if len(line_dict['text']) <= 1:
-        return slice_list
-    else:
+    if len(line_dict['text']) > 1:
         tbc = tag_by_bcolor(img_array, line_dict['position'])
         text = line_dict['text'] + '\n'
         # x1 = line_dict['position'][0, 0]
@@ -40,7 +38,7 @@ def line_dict_process(slice_list, img_array, line_dict, bbox_list):
             text = 'q\t' + text
         slice_list.append(text)
         bbox_list.append(line_dict['position'])
-        return slice_list, bbox_list
+    return slice_list, bbox_list
 
 
 def sort_by_bbox(slice_list, bbox_list):
