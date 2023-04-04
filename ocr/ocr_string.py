@@ -154,6 +154,21 @@ def delete_redundant_version(txt_in_dir):
                 os.rename(os.path.join(text_dir, old_txt), os.path.join(text_dir, txt))
 
 
+def filter_by_prefix(tgt_txt):
+    with open(tgt_txt, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    i = len(lines)
+    while i != 0:
+        i -= 1
+        drop = False
+        if starts_with_strs(lines[i].split('\t')[1], filter_prefixes):
+            drop = True
+        if drop:
+            lines.pop(i)
+    with open(tgt_txt, 'w', encoding='utf-8') as f:
+        f.writelines(lines)
+
+
 if __name__ == '__main__':
     file_type_postfixes = [
         '_man.txt',
@@ -166,6 +181,12 @@ if __name__ == '__main__':
     ]
     files = os.listdir(text_dir)
     delete_redundant_version(files)
+
+    files = os.listdir(text_dir)
+    for file in files:
+        if not starts_with_strs(file, file_type_postfixes) and file not in skipped:
+            filter_by_prefix(os.path.join(text_dir, file))
+
     files = os.listdir(text_dir)
     for file in files:
         if not starts_with_strs(file, file_type_postfixes) and file not in skipped:
@@ -196,3 +217,4 @@ if __name__ == '__main__':
     files = os.listdir(text_dir)
     delete_redundant_version(files)
     print('Done')
+filter_prefixes = ['\n', '3月', '星期', '我滴老婆大人', '请使用文明用语']
