@@ -184,7 +184,10 @@ if __name__ == '__main__':
         '_cor.txt',
     ]
     skipped = [
-
+        'xiaoice_island (1).txt',
+        'xiaoice_island (10).txt',
+        'xiaoice_island (11).txt',
+        'xiaoice_island (12).txt'
     ]
     files = os.listdir(text_dir)
     delete_redundant_version(files)
