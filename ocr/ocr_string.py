@@ -42,7 +42,7 @@ def concatenate_unfinished(tgt_txt):
                 if finishe_with_nextline == 'y':
                     next_line = lines.pop(i + 1)
                     lines[i] = lines[i].strip('\n')
-                    lines[i] += next_line
+                    lines[i] += next_line.split('\t')[0]
     with open(tgt_txt.replace('.txt', '_fin.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
 
@@ -100,38 +100,39 @@ def rearrange_sequence(tgt_txt):
 #         f.writelines(lines)
 
 
-def manual_filter(tgt_txt, tag_missing=False):
+def manual_filter(tgt_txt, tag_missing=False, skip=False):
     with open(tgt_txt, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
-    if tag_missing:
-        i = 0
-        while i != len(lines):
-            if i + 1 < len(lines):
-                insert_tag_missing = ''
-                while insert_tag_missing not in ['y', 'n']:
-                    print('prev line:', lines[i].strip('\n'))
-                    print('next line:', lines[i + 1].strip('\n'))
-                    insert_tag_missing = input('y for tagging missing sentences\nn for pass')
-                if insert_tag_missing == 'y':
-                    lines.insert(i + 1, 'm\t\n')
-                i += 1
-            else:
-                break
-    else:
-        i = len(lines)
-        while i != 0:
-            i -= 1
-            drop_this_line = ''
-            while drop_this_line not in ['y', 'n']:
-                print('Current txt:', tgt_txt)
-                if i - 1 >= 0:
-                    print(lines[i - 1], lines[i])
+    if not skip:
+        if tag_missing:
+            i = 0
+            while i != len(lines):
+                if i + 1 < len(lines):
+                    insert_tag_missing = ''
+                    while insert_tag_missing not in ['y', 'n']:
+                        print('prev line:', lines[i].strip('\n'))
+                        print('next line:', lines[i + 1].strip('\n'))
+                        insert_tag_missing = input('y for tagging missing sentences\nn for pass')
+                    if insert_tag_missing == 'y':
+                        lines.insert(i + 1, 'm\t\n')
+                    i += 1
                 else:
-                    print(lines[i])
-                drop_this_line = input('y for drop\nn for pass')
-            if drop_this_line == 'y':
-                lines.pop(i)
+                    break
+        else:
+            i = len(lines)
+            while i != 0:
+                i -= 1
+                drop_this_line = ''
+                while drop_this_line not in ['y', 'n']:
+                    print('Current txt:', tgt_txt)
+                    if i - 1 >= 0:
+                        print(lines[i - 1], lines[i])
+                    else:
+                        print(lines[i])
+                    drop_this_line = input('y for drop\nn for pass')
+                if drop_this_line == 'y':
+                    lines.pop(i)
 
     with open(tgt_txt.replace('.txt', '_man.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
@@ -178,20 +179,20 @@ if __name__ == '__main__':
         '_cor.txt',
     ]
     skipped = [
-
+        'xiaoice_island (1)_man.txt'
     ]
     files = os.listdir(text_dir)
     delete_redundant_version(files)
 
     files = os.listdir(text_dir)
     for file in files:
-        if not starts_with_strs(file, file_type_postfixes) and file not in skipped:
+        if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
             filter_by_prefix(os.path.join(text_dir, file))
 
     files = os.listdir(text_dir)
     for file in files:
-        if not starts_with_strs(file, file_type_postfixes) and file not in skipped:
-            manual_filter(os.path.join(text_dir, file))
+        if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
+            manual_filter(os.path.join(text_dir, file), tag_missing=False, skip=True)
 
     files = os.listdir(text_dir)
     for file in files:
