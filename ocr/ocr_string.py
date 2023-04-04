@@ -42,7 +42,7 @@ def concatenate_unfinished(tgt_txt):
                 if finishe_with_nextline == 'y':
                     next_line = lines.pop(i + 1)
                     lines[i] = lines[i].strip('\n')
-                    lines[i] += next_line.split('\t')[0]
+                    lines[i] += next_line.split('\t')[1]
     with open(tgt_txt.replace('.txt', '_fin.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
 
@@ -179,7 +179,7 @@ if __name__ == '__main__':
         '_cor.txt',
     ]
     skipped = [
-        'xiaoice_island (1)_man.txt'
+
     ]
     files = os.listdir(text_dir)
     delete_redundant_version(files)
