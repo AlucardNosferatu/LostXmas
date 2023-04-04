@@ -185,9 +185,15 @@ if __name__ == '__main__':
     ]
     skipped = [
         'xiaoice_island (1).txt',
+        'xiaoice_island (2).txt',
         'xiaoice_island (10).txt',
         'xiaoice_island (11).txt',
-        'xiaoice_island (12).txt'
+        'xiaoice_island (12).txt',
+        'xiaoice_island (13).txt',
+        'xiaoice_island (14).txt',
+        'xiaoice_island (15).txt',
+        'xiaoice_island (16).txt',
+        'xiaoice_island (17).txt',
     ]
     files = os.listdir(text_dir)
     delete_redundant_version(files)
