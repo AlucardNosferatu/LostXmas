@@ -12,22 +12,79 @@ def tag_by_bbox(model, filepath, str_list: list):
     img_array = cv2.imread(filepath)
     # xc_pic = img_array.shape[1] / 2
     out_this_slice = model.ocr(img_array)
+    bbox_list = []
+    slice_list = []
     for line_dict in out_this_slice:
-        if len(line_dict['text']) <= 1:
-            continue
-        else:
-            tbc = tag_by_bcolor(img_array, line_dict['position'])
-            text = line_dict['text'] + '\n'
-            # x1 = line_dict['position'][0, 0]
-            # x2 = line_dict['position'][2, 0]
-            # xc_sen = (x1 + x2) / 2
-            # if xc_sen < xc_pic:
-            if tbc:
-                text = 'a\t' + text
-            else:
-                text = 'q\t' + text
-            str_list.append(text)
+        slice_list = line_dict_process(slice_list, img_array, line_dict)
+        bbox_list.append(line_dict['position'])
+    if len(slice_list) >= 2:
+        slice_list, bbox_list = sort_by_bbox(slice_list, bbox_list)
+    str_list += slice_list
     return str_list
+
+
+def line_dict_process(slice_list, img_array, line_dict):
+    if len(line_dict['text']) <= 1:
+        return slice_list
+    else:
+        tbc = tag_by_bcolor(img_array, line_dict['position'])
+        text = line_dict['text'] + '\n'
+        # x1 = line_dict['position'][0, 0]
+        # x2 = line_dict['position'][2, 0]
+        # xc_sen = (x1 + x2) / 2
+        # if xc_sen < xc_pic:
+        if tbc:
+            text = 'a\t' + text
+        else:
+            text = 'q\t' + text
+        slice_list.append(text)
+        return slice_list
+
+
+def sort_by_bbox(slice_list, bbox_list):
+    def approximate(a_val, b_val):
+        threshold = 5
+        return abs(a_val - b_val) < threshold
+
+    def prior_box(a_corner, b_corner):
+        xa = a_corner[0]
+        xb = b_corner[0]
+        ya = a_corner[1]
+        yb = b_corner[1]
+        if not approximate(ya, yb):
+            if ya > yb:
+                return 'b'
+            else:
+                return 'a'
+        else:
+            if xa > xb:
+                return 'b'
+            else:
+                return 'a'
+
+    new_list = []
+    new_bbox = []
+    ref_index = 0
+    cmp_index = 1
+    # x_rc = corner[0]
+    # y_rc = corner[1]
+    while len(slice_list) > 0:
+        if len(slice_list) == 1:
+            new_list.append(slice_list[0])
+        else:
+            ref_box_corner = bbox_list[ref_index][0, :]
+            cmp_box_corner = bbox_list[cmp_index][0, :]
+
+            if prior_box(ref_box_corner, cmp_box_corner) == 'b':
+                ref_index = cmp_index
+            cmp_index += 1
+            if cmp_index == len(slice_list):
+                new_list.append(slice_list.pop(ref_index))
+                new_bbox.append(bbox_list.pop(ref_index))
+                ref_index = 0
+                cmp_index = 1
+
+    return new_list, bbox_list
 
 
 def tag_by_bcolor(img_array, bbox):
