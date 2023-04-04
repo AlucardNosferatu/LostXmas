@@ -1,6 +1,7 @@
 import os
 
 import cv2
+import numpy as np
 from cnocr import CnOcr
 from tqdm import tqdm
 
@@ -17,14 +18,30 @@ def tag_by_bbox(model, filepath, str_list: list):
         else:
             text = line_dict['text'] + '\n'
             x1 = line_dict['position'][0, 0]
-            x2 = line_dict['position'][1, 0]
+            x2 = line_dict['position'][2, 0]
             xc_sen = (x1 + x2) / 2
+            tbc = tag_by_bcolor(img_array, line_dict['position'])
             if xc_sen < xc_pic:
                 text = 'a\t' + text
             else:
                 text = 'q\t' + text
             str_list.append(text)
     return str_list
+
+
+def tag_by_bcolor(img_array, bbox):
+    # bbox = line_dict['position']
+    x1 = int(bbox[0, 0])
+    y1 = int(bbox[0, 1])
+    x2 = int(bbox[2, 0])
+    y2 = int(bbox[2, 1])
+    cropped_array = img_array[y1:y2, x1:x2, :]
+    # cv2.imshow('cropped', cropped_array)
+    # cv2.waitKey()
+    histo = cv2.calcHist([cropped_array], [2], None, [256], [192, 256])
+    mean = np.mean(histo)
+    mean = mean / (cropped_array.shape[0] * cropped_array.shape[1])
+    return True
 
 
 mdl = CnOcr(det_model_name='db_resnet34')

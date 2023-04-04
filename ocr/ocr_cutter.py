@@ -8,6 +8,5 @@ for file in tqdm(files):
     filepath = os.path.join('pics', file)
     cv2.imread('')
 
-
     with open(os.path.join('texts', file + '.txt'), mode='w', encoding='utf-8') as text_file:
         pass
