@@ -2,7 +2,6 @@ import os
 
 # import pycorrector
 
-filter_prefixes = ['\n', '3月', '星期', '我滴老婆大人', '请使用文明用语']
 text_dir = 'texts'
 
 
@@ -48,21 +47,6 @@ def concatenate_unfinished(tgt_txt, tagged=False):
                     lines[i] = lines[i].strip('\n')
                     lines[i] += next_line
     with open(tgt_txt.replace('.txt', '_fin.txt'), 'w', encoding='utf-8') as f:
-        f.writelines(lines)
-
-
-def filter_one_txt(tgt_txt):
-    with open(tgt_txt, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-    i = len(lines)
-    while i != 0:
-        i -= 1
-        drop = False
-        if starts_with_strs(lines[i], filter_prefixes):
-            drop = True
-        if drop:
-            lines.pop(i)
-    with open(tgt_txt.replace('.txt', '_fil.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
 
 
@@ -119,40 +103,40 @@ def rearrange_sequence(tgt_txt):
 #         f.writelines(lines)
 
 
-def manual_filter(tgt_txt):
+def manual_filter(tgt_txt, tag_missing=False):
     with open(tgt_txt, 'r', encoding='utf-8') as f:
         lines = f.readlines()
-    i = len(lines)
-    while i != 0:
-        i -= 1
-        drop_this_line = ''
-        while drop_this_line not in ['y', 'n']:
-            print('Current txt:', tgt_txt)
-            if i - 1 >= 0:
-                print(lines[i - 1], lines[i])
-            else:
-                print(lines[i])
-            drop_this_line = input('y for drop\nn for pass')
-        if drop_this_line == 'y':
-            lines.pop(i)
-    with open(tgt_txt.replace('.txt', '_man.txt'), 'w', encoding='utf-8') as f:
-        f.writelines(lines)
 
-
-def tag_q_or_a(tgt_txt):
-    with open(tgt_txt, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-    for i in range(len(lines)):
-        q_or_a = ''
-        while q_or_a not in ['q', 'a']:
-            print('Current txt:', tgt_txt)
+    if tag_missing:
+        i = 0
+        while i != len(lines):
             if i + 1 < len(lines):
-                print(lines[i], lines[i + 1])
+                insert_tag_missing = ''
+                while insert_tag_missing not in ['y', 'n']:
+                    print('prev line:', lines[i].strip('\n'))
+                    print('next line:', lines[i + 1].strip('\n'))
+                    insert_tag_missing = input('y for tagging missing sentences\nn for pass')
+                if insert_tag_missing == 'y':
+                    lines.insert(i + 1, 'm\t\n')
+                i += 1
             else:
-                print(lines[i])
-            q_or_a = input('q for question\na for answer')
-        lines[i] = q_or_a + '\t' + lines[i]
-    with open(tgt_txt.replace('.txt', '_tag.txt'), 'w', encoding='utf-8') as f:
+                break
+    else:
+        i = len(lines)
+        while i != 0:
+            i -= 1
+            drop_this_line = ''
+            while drop_this_line not in ['y', 'n']:
+                print('Current txt:', tgt_txt)
+                if i - 1 >= 0:
+                    print(lines[i - 1], lines[i])
+                else:
+                    print(lines[i])
+                drop_this_line = input('y for drop\nn for pass')
+            if drop_this_line == 'y':
+                lines.pop(i)
+
+    with open(tgt_txt.replace('.txt', '_man.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
 
 
@@ -175,42 +159,37 @@ def delete_redundant_version(txt_in_dir):
 
 
 if __name__ == '__main__':
-    file_type_postfixes = ['_fil.txt', '_fin.txt', '_fin.txt', '_rea.txt', '_cor.txt']
+    file_type_postfixes = [
+        '_man.txt',
+        '_fin.txt',
+        '_rea.txt',
+        '_cor.txt',
+    ]
     skipped = [
-        'xiaoice_island (1)_fil_fin_man.txt',
-        'xiaoice_island (4)_fil_fin_man.txt',
-        'xiaoice_island (5)_fil_fin_man.txt',
-        'xiaoice_island (6)_fil_fin_man.txt',
-        'xiaoice_island (10)_fil_fin_man.txt',
-        'xiaoice_island (11)_fil_fin_man.txt',
-        'xiaoice_island (12)_fil_fin_man.txt'
+
     ]
     files = os.listdir(text_dir)
     delete_redundant_version(files)
-    # files = os.listdir(text_dir)
-    # for file in files:
-    #     if not ends_with_strs(file, file_type_postfixes) and file not in skipped:
-    #         filter_one_txt(os.path.join(text_dir, file))
-    # files = os.listdir(text_dir)
-    # for file in files:
-    #     if file.endswith('_fil.txt') and file not in skipped:
-    #         concatenate_unfinished(os.path.join(text_dir, file))
-    # files = os.listdir(text_dir)
-    # for file in files:
-    #     if file.endswith('_fin.txt') and file not in skipped:
-    #         manual_filter(os.path.join(text_dir, file))
+    files = os.listdir(text_dir)
+    for file in files:
+        if not starts_with_strs(file, file_type_postfixes) and file not in skipped:
+            manual_filter(os.path.join(text_dir, file))
+
     files = os.listdir(text_dir)
     for file in files:
         if file.endswith('_man.txt') and file not in skipped:
-            tag_q_or_a(os.path.join(text_dir, file))
-    files = os.listdir(text_dir)
-    for file in files:
-        if file.endswith('_tag.txt') and file not in skipped:
             concatenate_unfinished(os.path.join(text_dir, file), tagged=True)
+
     files = os.listdir(text_dir)
     for file in files:
-        if file.endswith('_tag.txt') and file not in skipped:
+        if file.endswith('_fin.txt') and file not in skipped:
             rearrange_sequence(os.path.join(text_dir, file))
+
+    files = os.listdir(text_dir)
+    for file in files:
+        if file.endswith('_rea.txt') and file not in skipped:
+            manual_filter(os.path.join(text_dir, file), tag_missing=True)
+
     # files = os.listdir(text_dir)
     # for file in files:
     #     if file.endswith('_rea.txt') and file not in skipped:
