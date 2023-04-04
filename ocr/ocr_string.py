@@ -3,6 +3,7 @@ import os
 # import pycorrector
 
 text_dir = 'texts'
+filter_prefixes = ['\n', '3月', '星期', '我滴老婆大人', '请使用文明用语']
 
 
 def starts_with_strs(line, prefixes):
@@ -217,4 +218,3 @@ if __name__ == '__main__':
     files = os.listdir(text_dir)
     delete_redundant_version(files)
     print('Done')
-filter_prefixes = ['\n', '3月', '星期', '我滴老婆大人', '请使用文明用语']
