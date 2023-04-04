@@ -17,8 +17,6 @@ def tag_by_bbox(model, filepath, str_list: list):
     for line_dict in out_this_slice:
         slice_list, bbox_list = line_dict_process(slice_list, img_array, line_dict, bbox_list)
     if len(slice_list) >= 2:
-        if len(slice_list) >= 3:
-            print('breakpoint')
         slice_list, bbox_list = sort_by_bbox(slice_list, bbox_list)
     str_list += slice_list
     return str_list
@@ -43,7 +41,7 @@ def line_dict_process(slice_list, img_array, line_dict, bbox_list):
 
 def sort_by_bbox(slice_list, bbox_list):
     def approximate(a_val, b_val):
-        threshold = 5
+        threshold = 10
         return abs(a_val - b_val) < threshold
 
     def prior_box(a_corner, b_corner):
