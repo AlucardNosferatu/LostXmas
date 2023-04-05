@@ -131,16 +131,16 @@ if __name__ == '__main__':
         if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
             correct_wrong_word(os.path.join(text_dir, file))
 
-    # semi-auto
-    files = os.listdir(text_dir)
-    for file in files:
-        if file.endswith('_cor.txt') and file not in skipped:
-            manual_filter(os.path.join(text_dir, file), tag_missing=False)
+    # # semi-auto
+    # files = os.listdir(text_dir)
+    # for file in files:
+    #     if file.endswith('_cor.txt') and file not in skipped:
+    #         manual_filter(os.path.join(text_dir, file), tag_missing=False)
 
     # semi-auto
     files = os.listdir(text_dir)
     for file in files:
-        if file.endswith('_man.txt') and file not in skipped:
+        if file.endswith('_cor.txt') and file not in skipped:
             manual_filter(os.path.join(text_dir, file), tag_missing=True)
 
     files = os.listdir(text_dir)
