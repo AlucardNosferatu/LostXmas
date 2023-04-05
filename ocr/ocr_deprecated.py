@@ -1,3 +1,6 @@
+import pycorrector
+from tqdm import tqdm
+
 from ocr import filter_prefixes
 from ocr_config import std_full_len
 from ocr_util import starts_with_strs
@@ -102,4 +105,17 @@ def filter_by_prefix(tgt_txt):
         if drop:
             lines.pop(i)
     with open(tgt_txt, 'w', encoding='utf-8') as f:
+        f.writelines(lines)
+
+
+def correct_wrong_word(tgt_txt):
+    print('Current txt:', tgt_txt)
+    with open(tgt_txt, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    for i in tqdm(range(len(lines))):
+        old = lines[i].split('\t')[1].strip('\n')
+        tag = lines[i].split('\t')[0]
+        new, _ = pycorrector.correct(old)
+        lines[i] = tag + '\t' + new + '\n'
+    with open(tgt_txt.replace('.txt', '_cor.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)

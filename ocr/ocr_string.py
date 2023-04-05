@@ -3,20 +3,6 @@ import os
 from ocr_config import text_dir, std_full_len
 from ocr_util import ends_with_strs
 
-import pycorrector
-
-
-def correct_wrong_word(tgt_txt):
-    with open(tgt_txt, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-    for i in range(len(lines)):
-        old = lines[i].split('\t')[1].strip('\n')
-        tag = lines[i].split('\t')[0]
-        new, _ = pycorrector.correct(old)
-        lines[i] = tag + '\t' + new + '\n'
-    with open(tgt_txt.replace('.txt', '_cor.txt'), 'w', encoding='utf-8') as f:
-        f.writelines(lines)
-
 
 def manual_filter(tgt_txt, tag_missing=False):
     with open(tgt_txt, 'r', encoding='utf-8') as f:
@@ -125,11 +111,11 @@ if __name__ == '__main__':
     #     if file.endswith('_fin.txt') and file not in skipped:
     #         sort_by_batch(os.path.join(text_dir, file))
 
-    # full-auto
-    files = os.listdir(text_dir)
-    for file in files:
-        if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
-            correct_wrong_word(os.path.join(text_dir, file))
+    # # full-auto
+    # files = os.listdir(text_dir)
+    # for file in files:
+    #     if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
+    #         correct_wrong_word(os.path.join(text_dir, file))
 
     # # semi-auto
     # files = os.listdir(text_dir)
@@ -140,7 +126,7 @@ if __name__ == '__main__':
     # semi-auto
     files = os.listdir(text_dir)
     for file in files:
-        if file.endswith('_cor.txt') and file not in skipped:
+        if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
             manual_filter(os.path.join(text_dir, file), tag_missing=True)
 
     files = os.listdir(text_dir)
