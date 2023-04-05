@@ -65,27 +65,35 @@ def delete_redundant_version(txt_in_dir):
                 os.rename(os.path.join(text_dir, old_txt), os.path.join(text_dir, txt))
 
 
-def match_by_question(tgt_txt):
+def match_with_stacks(tgt_txt):
+    def isint(str_cmd):
+        # noinspection PyBroadException
+        try:
+            _ = int(str_cmd)
+            return True
+        except Exception as e:
+            # print(repr(e))
+            return False
+
     def select_partner(this_line, wait_partner, paired, wait_rivals):
         halt_ctrl = False
-        print('>>>Current line:')
-        print(this_line)
-        print('>>>Potential partner:')
         if len(wait_partner) < 1:
             wait_rivals.append(this_line)
             return wait_partner, paired, wait_rivals, halt_ctrl
         else:
-            for i, potential_partner in enumerate(wait_partner):
-                print(i, potential_partner)
             select_cmd = ''
-            while not select_cmd.isdecimal() or int(select_cmd) not in list(range(-2, len(wait_partner))):
+            while not isint(select_cmd) or int(select_cmd) not in list(range(-2, len(wait_partner))):
+                print('>>>Current line:')
+                print(this_line.strip('\n'))
+                print('>>>Potential partner:')
+                for i, potential_partner in enumerate(wait_partner):
+                    print(i, potential_partner.strip('\n'))
                 select_cmd = input('>>>Input partner index:')
-                select_cmd = int(select_cmd)
-            if select_cmd == -1:
+            select_cmd = int(select_cmd)
+            if select_cmd < 0:
                 wait_rivals.append(this_line)
-                return wait_partner, paired, wait_rivals, halt_ctrl
-            elif select_cmd == -2:
-                halt_ctrl = True
+                if select_cmd < -1:
+                    halt_ctrl = True
                 return wait_partner, paired, wait_rivals, halt_ctrl
             else:
                 selected_partner = wait_partner.pop(select_cmd)
@@ -113,9 +121,16 @@ def match_by_question(tgt_txt):
             w_que, p_list, w_ans, halt = select_partner(tl, w_que, p_list, w_ans)
         else:
             raise ValueError('Unexpected tag alphabet.')
-
+    halt = False
     while (len(w_ans) > 0 and len(w_que) > 0) and not halt:
-        pass
+        tl = w_que.pop(0)
+        w_ans, p_list, w_que, halt = select_partner(tl, w_ans, p_list, w_que)
+    while len(p_list) > 0:
+        pair_dict = p_list.pop(0)
+        pair_q = pair_dict['q']
+        pair_a = pair_dict['a']
+        lines.append(pair_q)
+        lines.append(pair_a)
     with open(tgt_txt.replace('.txt', '_mat.txt'), 'w', encoding='utf-8') as f:
         f.writelines(lines)
 
@@ -183,7 +198,13 @@ if __name__ == '__main__':
     files = os.listdir(text_dir)
     for file in files:
         if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
-            manual_filter(os.path.join(text_dir, file), tag_missing=True)
+            match_with_stacks(os.path.join(text_dir, file))
+
+    # # semi-auto
+    # files = os.listdir(text_dir)
+    # for file in files:
+    #     if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
+    #         manual_filter(os.path.join(text_dir, file), tag_missing=True)
 
     files = os.listdir(text_dir)
     delete_redundant_version(files)
