@@ -20,6 +20,8 @@ def tag_by_bbox(model, filepath, str_list: list):
     slice_list = []
     for line_dict in out_this_slice:
         slice_list, bbox_list = line_dict_process(slice_list, img_array, line_dict, bbox_list)
+    if filepath.endswith('47.jpg'):
+        print('bp')
     if len(slice_list) >= 2:
         slice_list, bbox_list = sort_by_bbox(slice_list, bbox_list)
     slice_list, bbox_list = filter_by_prefix_before_ocr(slice_list, bbox_list)
@@ -114,7 +116,7 @@ def sort_by_bbox(slice_list, bbox_list):
                 ref_index = 0
                 cmp_index = 1
 
-    return new_list, bbox_list
+    return new_list, new_bbox
 
 
 def tag_by_bcolor(img_array, bbox):
