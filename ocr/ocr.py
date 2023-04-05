@@ -5,8 +5,11 @@ import numpy as np
 from cnocr import CnOcr
 from tqdm import tqdm
 
+from ocr_util import starts_with_strs
 
 # from ocr_cutter_test import get_bounds, reduce_bounds, cut_bound, save_slices
+
+filter_prefixes = ['\n', '3月', '星期', '我滴老婆大人', '请使用文明用语']
 
 
 def tag_by_bbox(model, filepath, str_list: list):
@@ -19,16 +22,33 @@ def tag_by_bbox(model, filepath, str_list: list):
         slice_list, bbox_list = line_dict_process(slice_list, img_array, line_dict, bbox_list)
     if len(slice_list) >= 2:
         slice_list, bbox_list = sort_by_bbox(slice_list, bbox_list)
+    slice_list, bbox_list = filter_by_prefix_before_ocr(slice_list, bbox_list)
     slice_list_concat = concatenate_by_slice(slice_list)
     str_list += slice_list_concat
     return str_list
 
 
+def filter_by_prefix_before_ocr(slice_list_sort, bbox_list):
+    index = len(slice_list_sort)
+    while index != 0:
+        index -= 1
+        drop = False
+        if starts_with_strs(slice_list_sort[index].split('\t')[1], filter_prefixes):
+            drop = True
+        if drop:
+            print(slice_list_sort.pop(index))
+            bbox_list.pop(index)
+    return slice_list_sort, bbox_list
+
+
 def concatenate_by_slice(slice_list_sort):
+    bp = False
     if len(slice_list_sort) > 1:
+        bp = True
+    while len(slice_list_sort) > 1:
         slice_list_sort[0] = slice_list_sort[0].strip('\n')
-        while len(slice_list_sort) > 1:
-            slice_list_sort[0] = slice_list_sort[0] + slice_list_sort.pop(1).split('\t')[1]
+        slice_list_sort[0] = slice_list_sort[0] + slice_list_sort.pop(1).split('\t')[1]
+    if bp:
         print(slice_list_sort)
     return slice_list_sort
 

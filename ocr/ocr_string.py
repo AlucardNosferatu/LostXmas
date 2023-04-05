@@ -1,24 +1,13 @@
 import os
 
+from ocr import filter_prefixes
+from ocr_util import starts_with_strs, ends_with_strs
+
 # import pycorrector
 
 text_dir = 'texts'
-filter_prefixes = ['\n', '3月', '星期', '我滴老婆大人', '请使用文明用语']
+
 std_full_len = 10
-
-
-def starts_with_strs(line, prefixes):
-    for prefix in prefixes:
-        if line.startswith(prefix):
-            return True
-    return False
-
-
-def ends_with_strs(line, postfixes):
-    for postfix in postfixes:
-        if line.endswith(postfix):
-            return True
-    return False
 
 
 def concatenate_by_length_and_tag(tgt_txt):
