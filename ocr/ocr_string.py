@@ -166,23 +166,23 @@ if __name__ == '__main__':
         '_mat.txt'
     ]
     skipped = [
-        'xiaoice_island (1).txt'
-        # 'xiaoice_island (2).txt',
-        # 'xiaoice_island (3).txt',
-        # 'xiaoice_island (4).txt',
-        # 'xiaoice_island (5).txt',
-        # 'xiaoice_island (6).txt',
-        # 'xiaoice_island (7).txt',
-        # 'xiaoice_island (8).txt',
-        # 'xiaoice_island (9).txt',
-        # 'xiaoice_island (10).txt',
-        # 'xiaoice_island (11).txt',
-        # 'xiaoice_island (12).txt',
-        # 'xiaoice_island (13).txt',
-        # 'xiaoice_island (14).txt',
-        # 'xiaoice_island (15).txt',
-        # 'xiaoice_island (16).txt',
-        # 'xiaoice_island (17).txt',
+        'xiaoice_island (1).txt',
+        'xiaoice_island (2).txt',
+        'xiaoice_island (3).txt',
+        'xiaoice_island (4).txt',
+        'xiaoice_island (5).txt',
+        'xiaoice_island (6).txt',
+        'xiaoice_island (7).txt',
+        'xiaoice_island (8).txt',
+        'xiaoice_island (9).txt',
+        'xiaoice_island (10).txt',
+        'xiaoice_island (11).txt',
+        'xiaoice_island (12).txt',
+        'xiaoice_island (13).txt',
+        'xiaoice_island (14).txt',
+        'xiaoice_island (15).txt',
+        'xiaoice_island (16).txt',
+        'xiaoice_island (17).txt'
     ]
     files = os.listdir(text_dir)
     delete_redundant_version(files)
@@ -221,7 +221,7 @@ if __name__ == '__main__':
     files = os.listdir(text_dir)
     for file in files:
         if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
-            match_with_stacks(os.path.join(text_dir, file))
+            match_with_stacks(os.path.join(text_dir, file), True)
 
     # # semi-auto
     # files = os.listdir(text_dir)
