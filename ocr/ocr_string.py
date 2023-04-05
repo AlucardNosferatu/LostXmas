@@ -14,9 +14,10 @@ def manual_filter(tgt_txt, tag_missing=False):
             if i + 1 < len(lines):
                 this_tag = lines[i].split('\t')[0]
                 next_tag = lines[i + 1].split('\t')[0]
-                if this_tag == next_tag:
+                if this_tag == 'q' and this_tag == next_tag:
                     insert_tag_missing = ''
                     while insert_tag_missing not in ['y', 'n']:
+                        print('Current txt:', tgt_txt)
                         print('prev line:', lines[i].strip('\n'))
                         print('next line:', lines[i + 1].strip('\n'))
                         insert_tag_missing = input('y for tagging missing sentences\nn for pass')
@@ -62,6 +63,11 @@ def delete_redundant_version(txt_in_dir):
                 os.remove(os.path.join(text_dir, txt))
             if os.path.exists(os.path.join(text_dir, old_txt)):
                 os.rename(os.path.join(text_dir, old_txt), os.path.join(text_dir, txt))
+
+
+def match_by_question(tgt_txt):
+    pass
+    # todo
 
 
 if __name__ == '__main__':
