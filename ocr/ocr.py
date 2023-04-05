@@ -5,6 +5,7 @@ import numpy as np
 from cnocr import CnOcr
 from tqdm import tqdm
 
+
 # from ocr_cutter_test import get_bounds, reduce_bounds, cut_bound, save_slices
 
 
@@ -18,8 +19,18 @@ def tag_by_bbox(model, filepath, str_list: list):
         slice_list, bbox_list = line_dict_process(slice_list, img_array, line_dict, bbox_list)
     if len(slice_list) >= 2:
         slice_list, bbox_list = sort_by_bbox(slice_list, bbox_list)
-    str_list += slice_list
+    slice_list_concat = concatenate_by_slice(slice_list)
+    str_list += slice_list_concat
     return str_list
+
+
+def concatenate_by_slice(slice_list_sort):
+    if len(slice_list_sort) > 1:
+        slice_list_sort[0] = slice_list_sort[0].strip('\n')
+        while len(slice_list_sort) > 1:
+            slice_list_sort[0] = slice_list_sort[0] + slice_list_sort.pop(1).split('\t')[1]
+        print(slice_list_sort)
+    return slice_list_sort
 
 
 def line_dict_process(slice_list, img_array, line_dict, bbox_list):

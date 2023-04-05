@@ -21,7 +21,7 @@ def ends_with_strs(line, postfixes):
     return False
 
 
-def concatenate_unfinished(tgt_txt):
+def concatenate_by_length_and_tag(tgt_txt):
     with open(tgt_txt, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
@@ -48,7 +48,7 @@ def concatenate_unfinished(tgt_txt):
         f.writelines(lines)
 
 
-def rearrange_sequence(tgt_txt):
+def sort_by_batch(tgt_txt):
     window_size = 5
     index_str_list = [str(index) for index in list(range(5))]
 
@@ -211,22 +211,22 @@ if __name__ == '__main__':
         if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
             filter_by_prefix(os.path.join(text_dir, file))
 
+    # # semi-auto
+    # files = os.listdir(text_dir)
+    # for file in files:
+    #     if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
+    #         concatenate_by_length_and_tag(os.path.join(text_dir, file))
+
+    # # manual
+    # files = os.listdir(text_dir)
+    # for file in files:
+    #     if file.endswith('_fin.txt') and file not in skipped:
+    #         sort_by_batch(os.path.join(text_dir, file))
+
     # semi-auto
     files = os.listdir(text_dir)
     for file in files:
         if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes) and file not in skipped:
-            concatenate_unfinished(os.path.join(text_dir, file))
-
-    # manual
-    files = os.listdir(text_dir)
-    for file in files:
-        if file.endswith('_fin.txt') and file not in skipped:
-            rearrange_sequence(os.path.join(text_dir, file))
-
-    # semi-auto
-    files = os.listdir(text_dir)
-    for file in files:
-        if file.endswith('_rea.txt') and file not in skipped:
             manual_filter(os.path.join(text_dir, file), tag_missing=False)
 
     # semi-auto
