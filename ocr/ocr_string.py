@@ -72,7 +72,7 @@ def match_with_stacks(tgt_txt):
             _ = int(str_cmd)
             return True
         except Exception as e:
-            # print(repr(e))
+            _ = repr(e)
             return False
 
     def select_partner(this_line, wait_partner, paired, wait_rivals):
@@ -129,6 +129,7 @@ def match_with_stacks(tgt_txt):
         pair_dict = p_list.pop(0)
         pair_q = pair_dict['q']
         pair_a = pair_dict['a']
+
         lines.append(pair_q)
         lines.append(pair_a)
     with open(tgt_txt.replace('.txt', '_mat.txt'), 'w', encoding='utf-8') as f:
