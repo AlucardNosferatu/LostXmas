@@ -66,8 +66,58 @@ def delete_redundant_version(txt_in_dir):
 
 
 def match_by_question(tgt_txt):
-    pass
-    # todo
+    def select_partner(this_line, wait_partner, paired, wait_rivals):
+        halt_ctrl = False
+        print('>>>Current line:')
+        print(this_line)
+        print('>>>Potential partner:')
+        if len(wait_partner) < 1:
+            wait_rivals.append(this_line)
+            return wait_partner, paired, wait_rivals, halt_ctrl
+        else:
+            for i, potential_partner in enumerate(wait_partner):
+                print(i, potential_partner)
+            select_cmd = ''
+            while not select_cmd.isdecimal() or int(select_cmd) not in list(range(-2, len(wait_partner))):
+                select_cmd = input('>>>Input partner index:')
+                select_cmd = int(select_cmd)
+            if select_cmd == -1:
+                wait_rivals.append(this_line)
+                return wait_partner, paired, wait_rivals, halt_ctrl
+            elif select_cmd == -2:
+                halt_ctrl = True
+                return wait_partner, paired, wait_rivals, halt_ctrl
+            else:
+                selected_partner = wait_partner.pop(select_cmd)
+                tag_this_line = this_line.split('\t')[0]
+                tag_selected_partner = selected_partner.split('\t')[0]
+                paired_dict = {
+                    tag_this_line: this_line,
+                    tag_selected_partner: selected_partner
+                }
+                paired.append(paired_dict)
+                return wait_partner, paired, wait_rivals, halt_ctrl
+
+    with open(tgt_txt, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    p_list = []
+    w_que = []
+    w_ans = []
+    halt = False
+    while len(lines) > 0 and not halt:
+        tl = lines.pop(0)
+        tag = tl.split('\t')[0]
+        if tag == 'q':
+            w_ans, p_list, w_que, halt = select_partner(tl, w_ans, p_list, w_que)
+        elif tag == 'a':
+            w_que, p_list, w_ans, halt = select_partner(tl, w_que, p_list, w_ans)
+        else:
+            raise ValueError('Unexpected tag alphabet.')
+
+    while (len(w_ans) > 0 and len(w_que) > 0) and not halt:
+        pass
+    with open(tgt_txt.replace('.txt', '_mat.txt'), 'w', encoding='utf-8') as f:
+        f.writelines(lines)
 
 
 if __name__ == '__main__':
