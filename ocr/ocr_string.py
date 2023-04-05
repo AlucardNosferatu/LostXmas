@@ -149,13 +149,10 @@ def match_with_stacks(tgt_txt):
 
 if __name__ == '__main__':
     file_type_postfixes = [
-        '_man.txt',
-        '_fin.txt',
-        '_rea.txt',
-        '_cor.txt',
+        '_mat.txt'
     ]
     skipped = [
-        # 'xiaoice_island (1).txt',
+        'xiaoice_island (1).txt'
         # 'xiaoice_island (2).txt',
         # 'xiaoice_island (3).txt',
         # 'xiaoice_island (4).txt',
