@@ -82,7 +82,7 @@ def match_with_stacks(tgt_txt):
             return wait_partner, paired, wait_rivals, halt_ctrl
         else:
             select_cmd = ''
-            while not isint(select_cmd) or int(select_cmd) not in list(range(-2, len(wait_partner))):
+            while not isint(select_cmd) or int(select_cmd) not in list(range(-3, len(wait_partner))):
                 print('>>>Current line:')
                 print(this_line.strip('\n'))
                 print('>>>Potential partner:')
@@ -93,7 +93,17 @@ def match_with_stacks(tgt_txt):
             if select_cmd < 0:
                 wait_rivals.append(this_line)
                 if select_cmd < -1:
-                    halt_ctrl = True
+                    if select_cmd < -2:
+                        purge_partner = ''
+                        while purge_partner not in ['y', 'n']:
+                            purge_partner = input('>>>Are you sure to purge waiting partners? [y/n]:')
+                        if purge_partner == 'y':
+                            wait_partner.clear()
+                            print('>>>Waiting partners have been purged.')
+                        else:
+                            print('>>>Abort purging, waiting partners remain intact.')
+                    else:
+                        halt_ctrl = True
                 return wait_partner, paired, wait_rivals, halt_ctrl
             else:
                 selected_partner = wait_partner.pop(select_cmd)
@@ -113,6 +123,7 @@ def match_with_stacks(tgt_txt):
     w_ans = []
     halt = False
     while len(lines) > 0 and not halt:
+        print('Current txt:', tgt_txt)
         tl = lines.pop(0)
         tag = tl.split('\t')[0]
         if tag == 'q':
