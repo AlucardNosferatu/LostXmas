@@ -186,6 +186,13 @@ if __name__ == '__main__':
     skipped = [
         'xiaoice_island (1).txt',
         'xiaoice_island (2).txt',
+        'xiaoice_island (3).txt',
+        'xiaoice_island (4).txt',
+        'xiaoice_island (5).txt',
+        'xiaoice_island (6).txt',
+        'xiaoice_island (7).txt',
+        'xiaoice_island (8).txt',
+        'xiaoice_island (9).txt',
         'xiaoice_island (10).txt',
         'xiaoice_island (11).txt',
         'xiaoice_island (12).txt',
