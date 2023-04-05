@@ -145,7 +145,4 @@ if __name__ == '__main__':
 
     files = os.listdir(text_dir)
     delete_redundant_version(files)
-
-    files = os.listdir(text_dir)
-    delete_redundant_version(files)
     print('Done')
