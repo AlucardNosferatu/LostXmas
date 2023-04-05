@@ -65,7 +65,7 @@ def delete_redundant_version(txt_in_dir):
                 os.rename(os.path.join(text_dir, old_txt), os.path.join(text_dir, txt))
 
 
-def match_with_stacks(tgt_txt):
+def match_with_stacks(tgt_txt, eager_mode=False):
     def isint(str_cmd):
         # noinspection PyBroadException
         try:
@@ -77,9 +77,20 @@ def match_with_stacks(tgt_txt):
 
     def select_partner(this_line, wait_partner, paired, wait_rivals):
         halt_ctrl = False
-        if len(wait_partner) < 1:
-            wait_rivals.append(this_line)
-            return wait_partner, paired, wait_rivals, halt_ctrl
+        if len(wait_partner) <= 1:
+            if len(wait_partner) < 1:
+                wait_rivals.append(this_line)
+                return wait_partner, paired, wait_rivals, halt_ctrl
+            elif eager_mode:
+                selected_partner = wait_partner.pop(0)
+                tag_this_line = this_line.split('\t')[0]
+                tag_selected_partner = selected_partner.split('\t')[0]
+                paired_dict = {
+                    tag_this_line: this_line,
+                    tag_selected_partner: selected_partner
+                }
+                paired.append(paired_dict)
+                return wait_partner, paired, wait_rivals, halt_ctrl
         else:
             select_cmd = ''
             while not isint(select_cmd) or int(select_cmd) not in list(range(-3, len(wait_partner))):
@@ -140,11 +151,14 @@ def match_with_stacks(tgt_txt):
         pair_dict = p_list.pop(0)
         pair_q = pair_dict['q']
         pair_a = pair_dict['a']
-
         lines.append(pair_q)
         lines.append(pair_a)
-    with open(tgt_txt.replace('.txt', '_mat.txt'), 'w', encoding='utf-8') as f:
-        f.writelines(lines)
+    if eager_mode:
+        with open(tgt_txt.replace('.txt', '_eag_mat.txt'), 'w', encoding='utf-8') as f:
+            f.writelines(lines)
+    else:
+        with open(tgt_txt.replace('.txt', '_mat.txt'), 'w', encoding='utf-8') as f:
+            f.writelines(lines)
 
 
 if __name__ == '__main__':
