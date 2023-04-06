@@ -40,8 +40,43 @@ def calculate_filter_ratio(tgt_txt):
     print(tgt_txt, ':', ratio)
 
 
+def check_corpus_format(tgt_txt):
+    result = True
+    with open(tgt_txt, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    if len(lines) % 2 == 0:
+        for i in range(0, len(lines)):
+            tag = lines[i].split('\t')[0]
+            if i % 2 == 0:
+                if tag == 'q':
+                    continue
+                else:
+                    print(lines[i])
+                    result = False
+                    break
+            else:
+                if tag == 'a':
+                    continue
+                else:
+                    print(lines[i])
+                    result = False
+                    break
+    else:
+        result = False
+    print(tgt_txt, 'check result:', {True: 'Pass', False: 'Fail'}[result])
+    return result
+
+
 if __name__ == '__main__':
+    # files = os.listdir(text_dir)
+    # for file in files:
+    #     if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes):
+    #         calculate_filter_ratio(os.path.join(text_dir, file))
+
     files = os.listdir(text_dir)
     for file in files:
-        if file.endswith('.txt') and not ends_with_strs(file, file_type_postfixes):
-            calculate_filter_ratio(os.path.join(text_dir, file))
+        if file.endswith('_mat.txt'):
+            res = check_corpus_format(os.path.join(text_dir, file))
+    for file in files:
+        if file.endswith('_fil.txt'):
+            res = check_corpus_format(os.path.join(text_dir, file))
