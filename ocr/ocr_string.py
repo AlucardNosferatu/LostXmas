@@ -1,6 +1,6 @@
 import os
 
-from ocr_config import text_dir, std_full_len
+from ocr_config import text_dir, std_full_len, file_type_postfixes
 from ocr_util import ends_with_strs
 
 
@@ -162,9 +162,6 @@ def match_with_stacks(tgt_txt, eager_mode=False):
 
 
 if __name__ == '__main__':
-    file_type_postfixes = [
-        '_mat.txt'
-    ]
     skipped = [
         'xiaoice_island (1).txt',
         'xiaoice_island (2).txt',
