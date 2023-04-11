@@ -3,3 +3,4 @@ DIY/SeqGAN_IntentExpressor/disc_data/checkpoints/
 DIY/SeqGAN_IntentExpressor/gen_data/checkpoints/
 DIY/SeqGAN_IntentExpressor/tensorboard/disc_log/
 DIY/SeqGAN_IntentExpressor/tensorboard/gen_log/
+*.idea/
