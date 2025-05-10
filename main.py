@@ -77,7 +77,7 @@ def inference_with_encoder(model, sentence_text, words_list, max_length):
     print(''.join(output_seq))
 
 
-def routine_with_encoder():
+def routine_with_encoder(sentence_text='没吃的话快去吃，记得早点午休，爱你！'):
     lines_words, max_length = read_corpus(filepath='conv.txt')
     words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB)
     model = TransformerWithEncoder(
@@ -87,7 +87,7 @@ def routine_with_encoder():
         train_with_encoder(model=model, lines_words=lines_words, words_list=words_list, max_length=max_length)
     else:
         model.load_state_dict(torch.load('transformer_with_encoder.pth'))
-    sentence_text = '没吃的话快去吃，记得早点午休，爱你！'
+
     inference_with_encoder(model=model, sentence_text=sentence_text, words_list=words_list, max_length=max_length)
 
 
@@ -168,7 +168,7 @@ def inference_without_encoder(model, sentence_text, words_list, max_length):
     print(''.join(output_seq))
 
 
-def routine_without_encoder():
+def routine_without_encoder(sentence_text='我很想你'):
     lines_words_, max_length_ = read_corpus(filepath='conv.txt', pad_now=False, add_sos=False, add_eos=True)
     max_length_ *= 2
     words_list_ = get_vocab(lines_words=lines_words_, new_vocab=NEW_VOCAB, tag_fill_this=True)
@@ -179,10 +179,10 @@ def routine_without_encoder():
         train_without_encoder(model=model_, lines_words=lines_words_, words_list=words_list_, max_length=max_length_)
     else:
         model_.load_state_dict(torch.load('transformer_without_encoder.pth'))
-    sentence_text = '我很想你'
+
     inference_without_encoder(model=model_, sentence_text=sentence_text, words_list=words_list_, max_length=max_length_)
 
 
 if __name__ == '__main__':
-    routine_without_encoder()
+    routine_without_encoder(sentence_text='我好想老婆你呀')
     print('WIP')
