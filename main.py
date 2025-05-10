@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
+from torchsummaryX import summary
 from tqdm import tqdm
 
 from cfg import BATCH_SIZE, LEARNING_RATE, EPOCHS, NEW_VOCAB, D_MODEL, N_HEADS, N_LAYERS, TRAIN_NEW
@@ -16,7 +17,6 @@ writer = SummaryWriter(log_dir='tensorboard_runs/{}'.format(datetime.datetime.no
 
 def train_with_encoder(model, lines_words, words_list, max_length):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    # device = torch.device("cpu")
     model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
@@ -29,6 +29,7 @@ def train_with_encoder(model, lines_words, words_list, max_length):
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
     criterion = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))
     # 训练循环
+    summarized = False
     steps_count = 0
     for epoch in range(EPOCHS):
         progress_bar = tqdm(dataloader, desc=f"Epoch {epoch + 1}")
@@ -36,6 +37,9 @@ def train_with_encoder(model, lines_words, words_list, max_length):
             steps_count += 1
             src, tgt = src.to(device), tgt.to(device)
             # 前向传播
+            if not summarized:
+                summary(model=model, x=(src, tgt[:, :-1]))
+                summarized = True
             output = model(src, tgt[:, :-1])
             # 计算损失
             loss = criterion(
@@ -92,8 +96,8 @@ def routine_with_encoder(sentence_text='没吃的话快去吃，记得早点午�
 
 
 def train_without_encoder(model, lines_words, words_list, max_length):
-    device_ = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = model.to(device_)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
     prompts = []
@@ -106,12 +110,16 @@ def train_without_encoder(model, lines_words, words_list, max_length):
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
     criterion = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))
     steps_count = 0
+    summarized = False
     for epoch in range(EPOCHS):
         progress_bar_ = tqdm(dataloader, desc=f"Epoch {epoch + 1}")
         for tgt, tgt_shifted in progress_bar_:
             steps_count += 1
-            tgt = tgt.to(device_)
-            tgt_shifted = tgt_shifted.to(device_)
+            tgt = tgt.to(device)
+            tgt_shifted = tgt_shifted.to(device)
+            if not summarized:
+                summary(model=model, x=tgt)
+                summarized = True
             output = model(tgt)
             loss = criterion(
                 output.reshape(-1, len(words_list)),
@@ -125,6 +133,7 @@ def train_without_encoder(model, lines_words, words_list, max_length):
             # 记录 loss 数值到 TensorBoard
             writer.add_scalar("Loss/train", loss.item(), steps_count)
     writer.close()
+
     torch.save(model.state_dict(), "transformer_without_encoder.pth")
 
 
@@ -184,5 +193,5 @@ def routine_without_encoder(sentence_text='我很想你'):
 
 
 if __name__ == '__main__':
-    routine_without_encoder(sentence_text='我好想老婆你呀')
+    routine_without_encoder(sentence_text='老婆，我爱你')
     print('WIP')
