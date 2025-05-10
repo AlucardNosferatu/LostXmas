@@ -136,7 +136,8 @@ def inference_without_encoder(model, sentence_text, words_list, max_length):
     sentence_tensor = sentence_to_tensor(
         sentence=sentence_text, words_list=words_list, max_length=max_length
     ).to(device)
-    indices = torch.where(sentence_tensor == 1)  # 行索引（此处为0）
+    pad_id = int(words_list.index('[PAD]'))
+    indices = torch.where(sentence_tensor == pad_id)  # 行索引（此处为0）
     next_to_be_replaced = indices[1][0].item()
     max_iter = max_length - next_to_be_replaced
     with torch.no_grad():
@@ -144,7 +145,7 @@ def inference_without_encoder(model, sentence_text, words_list, max_length):
             output = model(sentence_tensor)
             next_token = output.argmax(dim=-1)
             sentence_tensor[0, next_to_be_replaced] = next_token[0, next_to_be_replaced - 1]
-            indices = torch.where(sentence_tensor == 1)
+            indices = torch.where(sentence_tensor == pad_id)
             if indices[1].shape[0] > 0:
                 next_to_be_replaced = indices[1][0].item()
     sentence_text_full = [words_list[id_] for id_ in [item.item() for item in list(sentence_tensor.squeeze())]]
@@ -160,7 +161,8 @@ def inference_without_encoder(model, sentence_text, words_list, max_length):
                 break
         else:
             if first_eos_passed:
-                output_seq.append(word)
+                if word != '[PAD]':
+                    output_seq.append(word)
             else:
                 pass
     print(''.join(output_seq))

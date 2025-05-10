@@ -1,3 +1,6 @@
 *.pth
 *.pkl
 conv.txt
+*.idea
+tensorboard_runs/
+__pycache__/
