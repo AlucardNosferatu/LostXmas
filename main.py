@@ -8,8 +8,10 @@ from torchsummaryX import summary
 from tqdm import tqdm
 
 from cfg import BATCH_SIZE, LEARNING_RATE, EPOCHS, NEW_VOCAB, D_MODEL, N_HEADS, N_LAYERS, TRAIN_NEW
-from data import read_corpus, get_vocab, tokenize, PairDataset, sentence_to_tensor, PromptDataset
+from data import read_corpus, get_vocab, tokenize, PairDataset, sentence_to_tensor, ConcatShiftedDataset, \
+    ConcatTruncatedDataset
 from transformer_encoder_decoder import TransformerEncoderDecoder
+from transformer_without_decoder import TransformerWithoutDecoder
 from transformer_without_encoder import TransformerWithoutEncoder
 
 writer = SummaryWriter(log_dir='tensorboard_runs/{}'.format(datetime.datetime.now().strftime("%m-%d_%H-%M-%S")))
@@ -20,10 +22,10 @@ def train_encoder_decoder(model, lines_words, words_list, max_length):
     model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
-    pairs = []
+    data_pairs = []
     for i in range(0, len(lines_ids), 2):
-        pairs.append([lines_ids[i], lines_ids[i + 1]])
-    dataset = PairDataset(pairs, max_len=max_length, pad_id=words_list.index('[PAD]'))
+        data_pairs.append([lines_ids[i], lines_ids[i + 1]])
+    dataset = PairDataset(data_pairs, max_len=max_length, pad_id=words_list.index('[PAD]'))
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
     # 初始化模型和优化器
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
@@ -38,13 +40,13 @@ def train_encoder_decoder(model, lines_words, words_list, max_length):
             src, tgt = src.to(device), tgt.to(device)
             # 前向传播
             if not summarized:
-                summary(model=model, x=(src, tgt[:, :-1]))
+                summary(model=model, x=src, **{'tgt': tgt[:, :-1]})
                 summarized = True
             output = model(src, tgt[:, :-1])
             # 计算损失
             loss = criterion(
                 output.reshape(-1, len(words_list)),
-                tgt[:, 1:].reshape(-1)
+                tgt[:, 1:].squeeze()
             )
             # 反向传播
             optimizer.zero_grad()
@@ -85,12 +87,13 @@ def routine_encoder_decoder(sentence_text='没吃的话快去吃，记得早点�
     lines_words, max_length = read_corpus(filepath='conv.txt')
     words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB)
     model = TransformerEncoderDecoder(
-        d_model=D_MODEL, nhead=N_HEADS, num_layers=N_LAYERS, vocab_size=len(words_list), max_length=max_length
+        d_model=D_MODEL, nhead=N_HEADS, num_layers=N_LAYERS, vocab_size=len(words_list), max_length=max_length,
+        pad_id=words_list.index('[PAD]')
     )
     if TRAIN_NEW:
         train_encoder_decoder(model=model, lines_words=lines_words, words_list=words_list, max_length=max_length)
     else:
-        model.load_state_dict(torch.load('transformer_with_encoder.pth'))
+        model.load_state_dict(torch.load('transformer_encoder_decoder.pth'))
 
     inference_encoder_decoder(model=model, sentence_text=sentence_text, words_list=words_list, max_length=max_length)
 
@@ -100,11 +103,11 @@ def train_without_encoder(model, lines_words, words_list, max_length):
     model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
-    prompts = []
+    data_concat = []
     for i in range(0, len(lines_ids), 2):
-        prompts.append(lines_ids[i] + lines_ids[i + 1])
-    dataset = PromptDataset(
-        prompts, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]')
+        data_concat.append(lines_ids[i] + lines_ids[i + 1])
+    dataset = ConcatShiftedDataset(
+        data_concat, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]')
     )
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
@@ -112,8 +115,8 @@ def train_without_encoder(model, lines_words, words_list, max_length):
     steps_count = 0
     summarized = False
     for epoch in range(EPOCHS):
-        progress_bar_ = tqdm(dataloader, desc=f"Epoch {epoch + 1}")
-        for tgt, tgt_shifted in progress_bar_:
+        progress_bar = tqdm(dataloader, desc=f"Epoch {epoch + 1}")
+        for tgt, tgt_shifted in progress_bar:
             steps_count += 1
             tgt = tgt.to(device)
             tgt_shifted = tgt_shifted.to(device)
@@ -123,17 +126,16 @@ def train_without_encoder(model, lines_words, words_list, max_length):
             output = model(tgt)
             loss = criterion(
                 output.reshape(-1, len(words_list)),
-                tgt_shifted.reshape(-1)
+                tgt_shifted.squeeze()
             )
             # 反向传播
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            progress_bar_.set_postfix(loss=loss.item())
+            progress_bar.set_postfix(loss=loss.item())
             # 记录 loss 数值到 TensorBoard
             writer.add_scalar("Loss/train", loss.item(), steps_count)
     writer.close()
-
     torch.save(model.state_dict(), "transformer_without_encoder.pth")
 
 
@@ -178,20 +180,109 @@ def inference_without_encoder(model, sentence_text, words_list, max_length):
 
 
 def routine_without_encoder(sentence_text='我很想你'):
-    lines_words_, max_length_ = read_corpus(filepath='conv.txt', pad_now=False, add_sos=False, add_eos=True)
-    max_length_ *= 2
-    words_list_ = get_vocab(lines_words=lines_words_, new_vocab=NEW_VOCAB, tag_fill_this=True)
-    model_ = TransformerWithoutEncoder(
-        d_model=D_MODEL, nhead=N_HEADS, num_layers=N_LAYERS, vocab_size=len(words_list_), max_length=max_length_
+    lines_words, max_length = read_corpus(filepath='conv.txt', pad_now=False, add_sos=False, add_eos=True)
+    max_length *= 2
+    words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB, tag_fill_this=True)
+    model = TransformerWithoutEncoder(
+        d_model=D_MODEL, nhead=N_HEADS, num_layers=N_LAYERS, vocab_size=len(words_list), max_length=max_length,
+        pad_id=words_list.index('[PAD]')
     )
     if TRAIN_NEW:
-        train_without_encoder(model=model_, lines_words=lines_words_, words_list=words_list_, max_length=max_length_)
+        train_without_encoder(model=model, lines_words=lines_words, words_list=words_list, max_length=max_length)
     else:
-        model_.load_state_dict(torch.load('transformer_without_encoder.pth'))
-
-    inference_without_encoder(model=model_, sentence_text=sentence_text, words_list=words_list_, max_length=max_length_)
+        model.load_state_dict(torch.load('transformer_without_encoder.pth'))
+    inference_without_encoder(model=model, sentence_text=sentence_text, words_list=words_list, max_length=max_length)
 
 
 if __name__ == '__main__':
-    routine_without_encoder(sentence_text='宝贝晚安')
+    lines_words_, max_length_ = read_corpus(filepath='conv.txt', pad_now=False, add_sos=False, add_eos=True)
+    max_length_ *= 2
+    words_list_ = get_vocab(lines_words=lines_words_, new_vocab=NEW_VOCAB, tag_fill_this=True)
+    model_ = TransformerWithoutDecoder(
+        d_model=D_MODEL, nhead=N_HEADS, num_layers=N_LAYERS, vocab_size=len(words_list_), max_length=max_length_
+    )
+    if TRAIN_NEW:
+        device_ = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        # device_ = torch.device("cpu")
+        model_ = model_.to(device_)
+        model_.train()
+        lines_ids_ = tokenize(lines_words=lines_words_, words_list=words_list_)
+        data_concat_ = []
+        for i_ in range(0, len(lines_ids_), 2):
+            line_concat = lines_ids_[i_] + lines_ids_[i_ + 1]
+            tgt_len = len(line_concat)
+            first_eos = line_concat.index(words_list_.index('[EOS]'))
+            data_concat_.append([line_concat, tgt_len, first_eos])
+        dataset_ = ConcatTruncatedDataset(
+            data_concat_, max_len=max_length_, pad_id=words_list_.index('[PAD]'), sos_id=words_list_.index('[SOS]'),
+            eos_id=words_list_.index('[EOS]')
+        )
+        dataloader_ = DataLoader(dataset_, batch_size=BATCH_SIZE, shuffle=True)
+        optimizer_ = torch.optim.Adam(model_.parameters(), lr=LEARNING_RATE)
+        criterion_ = nn.CrossEntropyLoss(ignore_index=words_list_.index('[PAD]'))
+        steps_count_ = 0
+        summarized_ = False
+        for epoch_ in range(EPOCHS):
+            progress_bar_ = tqdm(dataloader_, desc=f"Epoch {epoch_ + 1}")
+            for tgt_, tgt_next_token in progress_bar_:
+                steps_count_ += 1
+                tgt_ = tgt_.to(device_)
+                tgt_next_token = tgt_next_token.to(device_)
+                if not summarized_:
+                    summary(model=model_, x=tgt_)
+                    summarized_ = True
+                output_ = model_(tgt_)
+                loss = criterion_(
+                    output_.reshape(-1, len(words_list_)),
+                    tgt_next_token.squeeze(-1)
+                )
+                # 反向传播
+                optimizer_.zero_grad()
+                loss.backward()
+                optimizer_.step()
+                progress_bar_.set_postfix(loss=loss.item())
+                # 记录 loss 数值到 TensorBoard
+                writer.add_scalar("Loss/train", loss.item(), steps_count_)
+        writer.close()
+        torch.save(model_.state_dict(), "transformer_without_decoder.pth")
+    else:
+        model_.load_state_dict(torch.load('transformer_without_decoder.pth'))
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = model_.to(device)
+    model.eval()
+    sentence_text = '老婆，吃午饭了吗'
+    print(sentence_text)
+    sentence_tensor = sentence_to_tensor(
+        sentence=sentence_text, words_list=words_list_, max_length=max_length_
+    ).to(device)
+    pad_id = int(words_list_.index('[PAD]'))
+    indices = torch.where(sentence_tensor == pad_id)  # 行索引（此处为0）
+    next_to_be_replaced = indices[1][0].item()
+    max_iter = max_length_ - next_to_be_replaced
+    with torch.no_grad():
+        for _ in range(max_iter):
+            output = model(sentence_tensor)
+            next_token = output.argmax(dim=-1)
+            sentence_tensor[0, next_to_be_replaced] = next_token.item()
+            indices = torch.where(sentence_tensor == pad_id)
+            if indices[1].shape[0] > 0:
+                next_to_be_replaced = indices[1][0].item()
+    sentence_text_full = [words_list_[id_] for id_ in [item.item() for item in list(sentence_tensor.squeeze())]]
+    output_seq = []
+    first_eos_passed = False
+    for word in sentence_text_full:
+        if word == '[SOS]':
+            pass
+        elif word == '[EOS]':
+            if not first_eos_passed:
+                first_eos_passed = True
+            else:
+                break
+        else:
+            if first_eos_passed:
+                if word != '[PAD]':
+                    output_seq.append(word)
+            else:
+                pass
+    print(''.join(output_seq))
     print('WIP')

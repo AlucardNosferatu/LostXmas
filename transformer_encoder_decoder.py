@@ -5,7 +5,7 @@ from torch import nn as nn
 
 
 class TransformerEncoderDecoder(nn.Module):
-    def __init__(self, vocab_size, d_model=256, nhead=4, num_layers=3, max_length=5000):
+    def __init__(self, vocab_size, d_model=256, nhead=4, num_layers=3, max_length=5000, pad_id=0):
         super().__init__()
         self.embedding = nn.Embedding(vocab_size, d_model)  # Token嵌入
         self.pos_encoder = PositionalEncoding(d_model=d_model, max_len=max_length)  # 启用位置编码模块
@@ -16,6 +16,7 @@ class TransformerEncoderDecoder(nn.Module):
             num_decoder_layers=num_layers
         )
         self.fc = nn.Linear(d_model, vocab_size)
+        self.pad_id = pad_id
 
     def forward(self, src, tgt):
         # 生成掩码
@@ -27,8 +28,8 @@ class TransformerEncoderDecoder(nn.Module):
         tgt_emb = self.pos_encoder(tgt_emb).permute(1, 0, 2)
         # Transformer处理
         if self.training:
-            src_pad_mask = (src == 0)
-            tgt_pad_mask = (tgt == 0)
+            src_pad_mask = (src == self.pad_id)
+            tgt_pad_mask = (tgt == self.pad_id)
             out = self.transformer(
                 src_emb,
                 tgt_emb,

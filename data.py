@@ -1,4 +1,5 @@
 import pickle
+import random
 
 import jieba
 import torch
@@ -6,8 +7,8 @@ from torch.utils.data import Dataset
 
 
 class PairDataset(Dataset):
-    def __init__(self, pairs, max_len=128, pad_id=0):
-        self.pairs = pairs
+    def __init__(self, data_pairs, max_len=128, pad_id=0):
+        self.pairs = data_pairs
         self.max_len = max_len
         self.pad_id = pad_id
 
@@ -29,26 +30,55 @@ class PairDataset(Dataset):
         return torch.LongTensor(padded)
 
 
-class PromptDataset(Dataset):
-    def __init__(self, prompts, max_len=128, pad_id=0, sos_id=1):
-        self.prompts = prompts
+class ConcatShiftedDataset(Dataset):
+    def __init__(self, data_concat, max_len=128, pad_id=0, sos_id=1):
+        self.data_concat = data_concat
         self.max_len = max_len
         self.pad_id = pad_id
         self.sos_id = sos_id
 
     def __len__(self):
-        return len(self.prompts)
+        return len(self.data_concat)
 
     def __getitem__(self, idx):
         # 对数据对进行填充/截断处理，确保长度不超过max_length
         # 使用pad_id填充不足部分，保证批次内序列长度对齐 [[4]]
-        tgt = self.prompts[idx]
+        tgt = self.data_concat[idx]
         tgt_shifted = tgt.copy()
         tgt_shifted.pop(0)
         # 添加填充和截断
         tgt = self._pad_sequence(tgt)
         tgt_shifted = self._pad_sequence(tgt_shifted)
         return tgt, tgt_shifted
+
+    def _pad_sequence(self, sequence):
+        truncated = sequence[:self.max_len]  # 截断
+        padded = truncated + [self.pad_id] * (self.max_len - len(truncated))  # 填充
+        return torch.LongTensor(padded)
+
+
+class ConcatTruncatedDataset(Dataset):
+    def __init__(self, data_concat, max_len=128, pad_id=0, sos_id=1, eos_id=2):
+        self.data_concat = data_concat
+        self.max_len = max_len
+        self.pad_id = pad_id
+        self.sos_id = sos_id
+        self.eos_id = eos_id
+
+    def __len__(self):
+        return len(self.data_concat)
+
+    def __getitem__(self, idx):
+        # 对数据对进行填充/截断处理，确保长度不超过max_length
+        # 使用pad_id填充不足部分，保证批次内序列长度对齐 [[4]]
+        tgt = self.data_concat[idx]
+        tgt_len, first_eos = tgt[1], tgt[2]
+        tgt = tgt[0].copy()
+        truncate_after = random.randint(first_eos + 1, tgt_len - 1)
+        tgt_next_token = torch.LongTensor([tgt[truncate_after]])
+        tgt[truncate_after:] = [self.pad_id] * (len(tgt) - truncate_after)
+        tgt = self._pad_sequence(tgt)
+        return tgt, tgt_next_token
 
     def _pad_sequence(self, sequence):
         truncated = sequence[:self.max_len]  # 截断
