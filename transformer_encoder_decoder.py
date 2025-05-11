@@ -4,7 +4,7 @@ import torch
 from torch import nn as nn
 
 
-class TransformerWithEncoder(nn.Module):
+class TransformerEncoderDecoder(nn.Module):
     def __init__(self, vocab_size, d_model=256, nhead=4, num_layers=3, max_length=5000):
         super().__init__()
         self.embedding = nn.Embedding(vocab_size, d_model)  # Token嵌入

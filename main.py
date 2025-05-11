@@ -9,13 +9,13 @@ from tqdm import tqdm
 
 from cfg import BATCH_SIZE, LEARNING_RATE, EPOCHS, NEW_VOCAB, D_MODEL, N_HEADS, N_LAYERS, TRAIN_NEW
 from data import read_corpus, get_vocab, tokenize, PairDataset, sentence_to_tensor, PromptDataset
-from transformer_with_encoder import TransformerWithEncoder
+from transformer_encoder_decoder import TransformerEncoderDecoder
 from transformer_without_encoder import TransformerWithoutEncoder
 
 writer = SummaryWriter(log_dir='tensorboard_runs/{}'.format(datetime.datetime.now().strftime("%m-%d_%H-%M-%S")))
 
 
-def train_with_encoder(model, lines_words, words_list, max_length):
+def train_encoder_decoder(model, lines_words, words_list, max_length):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
     model.train()
@@ -54,10 +54,10 @@ def train_with_encoder(model, lines_words, words_list, max_length):
             writer.add_scalar("Loss/train", loss.item(), steps_count)
     # 保存模型
     writer.close()
-    torch.save(model.state_dict(), "transformer_with_encoder.py.pth")
+    torch.save(model.state_dict(), "transformer_encoder_decoder.py.pth")
 
 
-def inference_with_encoder(model, sentence_text, words_list, max_length):
+def inference_encoder_decoder(model, sentence_text, words_list, max_length):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
     model.eval()
@@ -81,18 +81,18 @@ def inference_with_encoder(model, sentence_text, words_list, max_length):
     print(''.join(output_seq))
 
 
-def routine_with_encoder(sentence_text='没吃的话快去吃，记得早点午休，爱你！'):
+def routine_encoder_decoder(sentence_text='没吃的话快去吃，记得早点午休，爱你！'):
     lines_words, max_length = read_corpus(filepath='conv.txt')
     words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB)
-    model = TransformerWithEncoder(
+    model = TransformerEncoderDecoder(
         d_model=D_MODEL, nhead=N_HEADS, num_layers=N_LAYERS, vocab_size=len(words_list), max_length=max_length
     )
     if TRAIN_NEW:
-        train_with_encoder(model=model, lines_words=lines_words, words_list=words_list, max_length=max_length)
+        train_encoder_decoder(model=model, lines_words=lines_words, words_list=words_list, max_length=max_length)
     else:
         model.load_state_dict(torch.load('transformer_with_encoder.pth'))
 
-    inference_with_encoder(model=model, sentence_text=sentence_text, words_list=words_list, max_length=max_length)
+    inference_encoder_decoder(model=model, sentence_text=sentence_text, words_list=words_list, max_length=max_length)
 
 
 def train_without_encoder(model, lines_words, words_list, max_length):
@@ -193,5 +193,5 @@ def routine_without_encoder(sentence_text='我很想你'):
 
 
 if __name__ == '__main__':
-    routine_without_encoder(sentence_text='老婆，我爱你')
+    routine_without_encoder(sentence_text='宝贝晚安')
     print('WIP')
