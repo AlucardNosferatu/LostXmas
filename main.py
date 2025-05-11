@@ -83,7 +83,7 @@ def inference_encoder_decoder(model, sentence_text, words_list, max_length):
     print(''.join(output_seq))
 
 
-def routine_encoder_decoder(sentence_text='没吃的话快去吃，记得早点午休，爱你！'):
+def routine_encoder_decoder(sentence_text='我爱你'):
     lines_words, max_length = read_corpus(filepath='conv.txt')
     words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB)
     model = TransformerEncoderDecoder(
@@ -179,7 +179,7 @@ def inference_without_encoder(model, sentence_text, words_list, max_length):
     print(''.join(output_seq))
 
 
-def routine_without_encoder(sentence_text='我很想你'):
+def routine_without_encoder(sentence_text='我爱你'):
     lines_words, max_length = read_corpus(filepath='conv.txt', pad_now=False, add_sos=False, add_eos=True)
     max_length *= 2
     words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB, tag_fill_this=True)
@@ -279,7 +279,7 @@ def inference_without_decoder(model, sentence_text, words_list, max_length):
     print(''.join(output_seq))
 
 
-def routine_without_decoder(sentence_text='再问问你哈，求二次标准型有哪两个方法？有啥区别？'):
+def routine_without_decoder(sentence_text='我爱你'):
     lines_words_, max_length_ = read_corpus(filepath='conv.txt', pad_now=False, add_sos=False, add_eos=True)
     max_length_ *= 2
     words_list_ = get_vocab(lines_words=lines_words_, new_vocab=NEW_VOCAB, tag_fill_this=True)
