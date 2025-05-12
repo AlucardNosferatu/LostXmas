@@ -8,8 +8,8 @@ from torchsummaryX import summary
 from tqdm import tqdm
 
 from cfg import BATCH_SIZE, LEARNING_RATE, EPOCHS, NEW_VOCAB, D_MODEL, N_HEADS, N_LAYERS, TRAIN_NEW
-from data import tokenize, PairDataset, sentence_to_tensor, read_corpus, get_vocab, ConcatShiftedDataset, \
-    ConcatTruncatedDataset
+from data import tokenize, sentence_to_tensor, read_corpus, get_vocab, ConcatShiftedDataset, \
+    get_dataset_concat_shifted, get_dataset_concat_truncated, get_dataset_pairs
 from models.transformer_encoder_decoder import TransformerEncoderDecoder
 from models.transformer_rag import TransformerRAG
 from models.transformer_without_decoder import TransformerWithoutDecoder
@@ -23,10 +23,7 @@ def train_encoder_decoder(model, lines_words, words_list, max_length):
     model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
-    data_pairs = []
-    for i in range(0, len(lines_ids), 2):
-        data_pairs.append([lines_ids[i], lines_ids[i + 1]])
-    dataset = PairDataset(data_pairs, max_len=max_length, pad_id=words_list.index('[PAD]'))
+    dataset = get_dataset_pairs(lines_ids, max_length, words_list)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
     # 初始化模型和优化器
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
@@ -104,12 +101,7 @@ def train_without_encoder(model, lines_words, words_list, max_length):
     model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
-    data_concat = []
-    for i in range(0, len(lines_ids), 2):
-        data_concat.append(lines_ids[i] + lines_ids[i + 1])
-    dataset = ConcatShiftedDataset(
-        data_concat, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]')
-    )
+    dataset = get_dataset_concat_shifted(lines_ids, max_length, words_list)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
     criterion = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))
@@ -200,16 +192,7 @@ def train_without_decoder(model, lines_words, words_list, max_length):
     model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
-    data_concat = []
-    for i in range(0, len(lines_ids), 2):
-        line_concat = lines_ids[i] + lines_ids[i + 1]
-        tgt_len = len(line_concat)
-        first_eos = line_concat.index(words_list.index('[EOS]'))
-        data_concat.append([line_concat, tgt_len, first_eos])
-    dataset = ConcatTruncatedDataset(
-        data_concat, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]'),
-        eos_id=words_list.index('[EOS]')
-    )
+    dataset = get_dataset_concat_truncated(lines_ids, max_length, words_list)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
     criterion = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))
@@ -301,16 +284,7 @@ def train_rag_encode(model: TransformerRAG, lines_words, words_list, max_length)
     model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
-    data_concat = []
-    for i in range(0, len(lines_ids), 2):
-        line_concat = lines_ids[i] + lines_ids[i + 1]
-        tgt_len = len(line_concat)
-        first_eos = line_concat.index(words_list.index('[EOS]'))
-        data_concat.append([line_concat, tgt_len, first_eos])
-    dataset = ConcatTruncatedDataset(
-        data_concat, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]'),
-        eos_id=words_list.index('[EOS]')
-    )
+    dataset = get_dataset_concat_truncated(lines_ids, max_length, words_list)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
     criterion = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))

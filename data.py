@@ -5,6 +5,8 @@ import jieba
 import torch
 from torch.utils.data import Dataset
 
+from cfg import BATCH_SIZE, FORCE_STEPS
+
 
 class PairDataset(Dataset):
     def __init__(self, data_pairs, max_len=128, pad_id=0):
@@ -153,3 +155,59 @@ def sentence_to_tensor(sentence, words_list, max_length):
     # 假设存在词汇表对象
     sentence_tensor = torch.tensor(sentence_ids_list).unsqueeze(0)  # 添加batch维度[[1]]
     return sentence_tensor
+
+
+def get_dataset_pairs(lines_ids, max_length, words_list):
+    data_pairs = []
+    for i in range(0, len(lines_ids), 2):
+        data_pairs.append([lines_ids[i], lines_ids[i + 1]])
+    dup_range = len(data_pairs)
+    if FORCE_STEPS is not None:
+        batch_count = BATCH_SIZE * FORCE_STEPS
+    else:
+        batch_count = BATCH_SIZE
+    while len(data_pairs) % batch_count != 0:
+        dup_index = random.randint(0, dup_range - 1)
+        data_pairs.append(data_pairs[dup_index])
+    dataset = PairDataset(data_pairs, max_len=max_length, pad_id=words_list.index('[PAD]'))
+    return dataset
+
+
+def get_dataset_concat_shifted(lines_ids, max_length, words_list):
+    data_concat = []
+    for i in range(0, len(lines_ids), 2):
+        data_concat.append(lines_ids[i] + lines_ids[i + 1])
+    dup_range = len(data_concat)
+    if FORCE_STEPS is not None:
+        batch_count = BATCH_SIZE * FORCE_STEPS
+    else:
+        batch_count = BATCH_SIZE
+    while len(data_concat) % batch_count != 0:
+        dup_index = random.randint(0, dup_range - 1)
+        data_concat.append(data_concat[dup_index])
+    dataset = ConcatShiftedDataset(
+        data_concat, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]')
+    )
+    return dataset
+
+
+def get_dataset_concat_truncated(lines_ids, max_length, words_list):
+    data_concat = []
+    for i in range(0, len(lines_ids), 2):
+        line_concat = lines_ids[i] + lines_ids[i + 1]
+        tgt_len = len(line_concat)
+        first_eos = line_concat.index(words_list.index('[EOS]'))
+        data_concat.append([line_concat, tgt_len, first_eos])
+    dup_range = len(data_concat)
+    if FORCE_STEPS is not None:
+        batch_count = BATCH_SIZE * FORCE_STEPS
+    else:
+        batch_count = BATCH_SIZE
+    while len(data_concat) % batch_count != 0:
+        dup_index = random.randint(0, dup_range - 1)
+        data_concat.append(data_concat[dup_index])
+    dataset = ConcatTruncatedDataset(
+        data_concat, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]'),
+        eos_id=words_list.index('[EOS]')
+    )
+    return dataset
