@@ -5,4 +5,4 @@ NEW_VOCAB = False
 D_MODEL = 512
 N_HEADS = 8
 N_LAYERS = 4
-TRAIN_NEW = False
+TRAIN_NEW = True

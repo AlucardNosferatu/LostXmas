@@ -1,6 +1,6 @@
 from torch import nn as nn
 
-from transformer_encoder_decoder import PositionalEncoding
+from models.transformer_encoder_decoder import PositionalEncoding
 
 
 class TransformerWithoutDecoder(nn.Module):
@@ -15,7 +15,7 @@ class TransformerWithoutDecoder(nn.Module):
             num_decoder_layers=0
         )
         # 512-kernel_size+1
-        self.conv1 = nn.Conv1d(in_channels=d_model, out_channels=d_model, kernel_size=max_length)
+        self.conv = nn.Conv1d(in_channels=d_model, out_channels=d_model, kernel_size=max_length)
         self.fc = nn.Linear(d_model, vocab_size)
         self.pad_id = pad_id
 
@@ -26,5 +26,5 @@ class TransformerWithoutDecoder(nn.Module):
         src_emb = self.pos_encoder(src_emb).permute(1, 0, 2)
         # Transformer处理
         out = self.transformer.encoder(src=src_emb, src_key_padding_mask=src_pad_mask).permute(1, 2, 0)
-        out = self.conv1(out)
+        out = self.conv(out)
         return self.fc(out.permute(0, 2, 1))

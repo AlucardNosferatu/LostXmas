@@ -1,6 +1,6 @@
 from torch import nn as nn
 
-from transformer_encoder_decoder import PositionalEncoding
+from models.transformer_encoder_decoder import PositionalEncoding
 
 
 class TransformerWithoutEncoder(nn.Module):
