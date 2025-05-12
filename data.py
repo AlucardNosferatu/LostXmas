@@ -112,7 +112,7 @@ def get_vocab(lines_words, new_vocab, tag_fill_this=False):
     return words_count_sorted
 
 
-def read_corpus(filepath='conv.txt', pad_now=True, add_sos=True, add_eos=True):
+def read_corpus(filepath='qa_short_seq.txt', pad_now=True, add_sos=True, add_eos=True):
     with open(file=filepath, mode='r') as f:
         lines = f.readlines()
         lines = [line.strip() for line in lines if len(line.strip()) > 0]

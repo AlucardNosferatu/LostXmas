@@ -84,7 +84,7 @@ def inference_encoder_decoder(model, sentence_text, words_list, max_length):
 
 
 def routine_encoder_decoder(sentence_text='我爱你'):
-    lines_words, max_length = read_corpus(filepath='data/conv.txt')
+    lines_words, max_length = read_corpus(filepath='data/qa_short_seq.txt')
     words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB)
     model = TransformerEncoderDecoder(
         d_model=D_MODEL, nhead=N_HEADS, num_layers=N_LAYERS, vocab_size=len(words_list), max_length=max_length,
@@ -180,7 +180,7 @@ def inference_without_encoder(model, sentence_text, words_list, max_length):
 
 
 def routine_without_encoder(sentence_text='我爱你'):
-    lines_words, max_length = read_corpus(filepath='data/conv.txt', pad_now=False, add_sos=False, add_eos=True)
+    lines_words, max_length = read_corpus(filepath='data/qa_short_seq.txt', pad_now=False, add_sos=False, add_eos=True)
     max_length *= 2
     words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB, tag_fill_this=True)
     model = TransformerWithoutEncoder(
@@ -280,7 +280,7 @@ def inference_without_decoder(model, sentence_text, words_list, max_length):
 
 
 def routine_without_decoder(sentence_text='我爱你'):
-    lines_words_, max_length_ = read_corpus(filepath='data/conv.txt', pad_now=False, add_sos=False, add_eos=True)
+    lines_words_, max_length_ = read_corpus(filepath='data/qa_short_seq.txt', pad_now=False, add_sos=False, add_eos=True)
     max_length_ *= 2
     words_list_ = get_vocab(lines_words=lines_words_, new_vocab=NEW_VOCAB, tag_fill_this=True)
     model_ = TransformerWithoutDecoder(
