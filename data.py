@@ -104,10 +104,10 @@ def get_vocab(lines_words, new_vocab, tag_fill_this=False):
         words_count_sorted.insert(0, '[UNK]')
         if tag_fill_this:
             words_count_sorted.insert(0, '[FTB]')  # FTB for "fill this blank"
-        with open(file='vocab.pkl', mode='wb') as f:
+        with open(file='data/vocab.pkl', mode='wb') as f:
             pickle.dump(obj=words_count_sorted, file=f)
     else:
-        with open(file='vocab.pkl', mode='rb') as f:
+        with open(file='data/vocab.pkl', mode='rb') as f:
             words_count_sorted = pickle.load(file=f)
     return words_count_sorted
 

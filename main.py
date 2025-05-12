@@ -10,9 +10,9 @@ from tqdm import tqdm
 from cfg import BATCH_SIZE, LEARNING_RATE, EPOCHS, NEW_VOCAB, D_MODEL, N_HEADS, N_LAYERS, TRAIN_NEW
 from data import read_corpus, get_vocab, tokenize, PairDataset, sentence_to_tensor, ConcatShiftedDataset, \
     ConcatTruncatedDataset
-from transformer_encoder_decoder import TransformerEncoderDecoder
-from transformer_without_decoder import TransformerWithoutDecoder
-from transformer_without_encoder import TransformerWithoutEncoder
+from models.transformer_encoder_decoder import TransformerEncoderDecoder
+from models.transformer_without_decoder import TransformerWithoutDecoder
+from models.transformer_without_encoder import TransformerWithoutEncoder
 
 writer = SummaryWriter(log_dir='tensorboard_runs/{}'.format(datetime.datetime.now().strftime("%m-%d_%H-%M-%S")))
 
@@ -84,7 +84,7 @@ def inference_encoder_decoder(model, sentence_text, words_list, max_length):
 
 
 def routine_encoder_decoder(sentence_text='我爱你'):
-    lines_words, max_length = read_corpus(filepath='conv.txt')
+    lines_words, max_length = read_corpus(filepath='data/conv.txt')
     words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB)
     model = TransformerEncoderDecoder(
         d_model=D_MODEL, nhead=N_HEADS, num_layers=N_LAYERS, vocab_size=len(words_list), max_length=max_length,
@@ -136,7 +136,7 @@ def train_without_encoder(model, lines_words, words_list, max_length):
             # 记录 loss 数值到 TensorBoard
             writer.add_scalar("Loss/train", loss.item(), steps_count)
     writer.close()
-    torch.save(model.state_dict(), "transformer_without_encoder.pth")
+    torch.save(model.state_dict(), "weights/transformer_without_encoder.pth")
 
 
 def inference_without_encoder(model, sentence_text, words_list, max_length):
@@ -180,7 +180,7 @@ def inference_without_encoder(model, sentence_text, words_list, max_length):
 
 
 def routine_without_encoder(sentence_text='我爱你'):
-    lines_words, max_length = read_corpus(filepath='conv.txt', pad_now=False, add_sos=False, add_eos=True)
+    lines_words, max_length = read_corpus(filepath='data/conv.txt', pad_now=False, add_sos=False, add_eos=True)
     max_length *= 2
     words_list = get_vocab(lines_words=lines_words, new_vocab=NEW_VOCAB, tag_fill_this=True)
     model = TransformerWithoutEncoder(
@@ -190,7 +190,7 @@ def routine_without_encoder(sentence_text='我爱你'):
     if TRAIN_NEW:
         train_without_encoder(model=model, lines_words=lines_words, words_list=words_list, max_length=max_length)
     else:
-        model.load_state_dict(torch.load('transformer_without_encoder.pth'))
+        model.load_state_dict(torch.load('weights/transformer_without_encoder.pth'))
     inference_without_encoder(model=model, sentence_text=sentence_text, words_list=words_list, max_length=max_length)
 
 
@@ -236,7 +236,7 @@ def train_without_decoder(model, lines_words, words_list, max_length):
             # 记录 loss 数值到 TensorBoard
             writer.add_scalar("Loss/train", loss.item(), steps_count)
     writer.close()
-    torch.save(model.state_dict(), "transformer_without_decoder.pth")
+    torch.save(model.state_dict(), "weights/transformer_without_decoder.pth")
 
 
 def inference_without_decoder(model, sentence_text, words_list, max_length):
@@ -280,7 +280,7 @@ def inference_without_decoder(model, sentence_text, words_list, max_length):
 
 
 def routine_without_decoder(sentence_text='我爱你'):
-    lines_words_, max_length_ = read_corpus(filepath='conv.txt', pad_now=False, add_sos=False, add_eos=True)
+    lines_words_, max_length_ = read_corpus(filepath='data/conv.txt', pad_now=False, add_sos=False, add_eos=True)
     max_length_ *= 2
     words_list_ = get_vocab(lines_words=lines_words_, new_vocab=NEW_VOCAB, tag_fill_this=True)
     model_ = TransformerWithoutDecoder(
@@ -289,7 +289,7 @@ def routine_without_decoder(sentence_text='我爱你'):
     if TRAIN_NEW:
         train_without_decoder(model=model_, lines_words=lines_words_, words_list=words_list_, max_length=max_length_)
     else:
-        model_.load_state_dict(torch.load('transformer_without_decoder.pth'))
+        model_.load_state_dict(torch.load('weights/transformer_without_decoder.pth'))
     inference_without_decoder(model=model_, sentence_text=sentence_text, words_list=words_list_, max_length=max_length_)
 
 
