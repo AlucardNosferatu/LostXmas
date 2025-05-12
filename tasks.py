@@ -315,16 +315,12 @@ def train_rag_encode(model: TransformerRAG, lines_words, words_list, max_length)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
     criterion = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))
     steps_count = 0
-    summarized = False
     for epoch_ in range(EPOCHS):
         progress_bar = tqdm(dataloader, desc=f"Epoch {epoch_ + 1}")
         for tgt, tgt_next_token in progress_bar:
             steps_count += 1
             tgt = tgt.to(device)
             tgt_next_token = tgt_next_token.to(device)
-            if not summarized:
-                summary(model=model, x=tgt)
-                summarized = True
             vec, output = model.vectorize_content(content=tgt)
             loss = criterion(
                 output.reshape(-1, len(words_list)),
@@ -356,17 +352,13 @@ def train_rag_decode(model: TransformerRAG, lines_words, words_list, max_length)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
     criterion = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))
     steps_count = 0
-    summarized = False
     for epoch in range(EPOCHS):
         progress_bar = tqdm(dataloader, desc=f"Epoch {epoch + 1}")
         for tgt, tgt_shifted in progress_bar:
             steps_count += 1
             tgt = tgt.to(device)
             tgt_shifted = tgt_shifted.to(device)
-            if not summarized:
-                summary(model=model, x=tgt)
-                summarized = True
-            output = model(tgt)
+            output = model.continue_content(tgt)
             loss = criterion(
                 output.reshape(-1, len(words_list)),
                 tgt_shifted.squeeze()
