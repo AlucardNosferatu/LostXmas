@@ -37,9 +37,16 @@ if __name__ == '__main__':
     with torch.no_grad():
         vec1, _ = model.vectorize_content(sentence_tensor_1)
         vec2, _ = model.vectorize_content(sentence_tensor_2)
-        cs1 = cosine_similarity(x1=vec1, x2=vec2, dim=2)
-        cs1_s=(cs1*cs1).sum()
+        cs1_matrix = torch.zeros(max_length, max_length, dtype=torch.float32)
+        for i in range(max_length):
+            for j in range(max_length):
+                cs1_matrix[i, j] = cosine_similarity(x1=vec1[i, :, :], x2=vec2[j, :, :]).item()
+        cs1_score = cs1_matrix.sum() / (max_length * max_length)
         vec3, _ = model.vectorize_content(sentence_tensor_3)
-        cs2 = cosine_similarity(x1=vec1, x2=vec3, dim=2)
-        cs2_s=(cs2*cs2).sum()
+        cs2_matrix = torch.zeros(max_length, max_length, dtype=torch.float32)
+        for i in range(max_length):
+            for j in range(max_length):
+                cs2_matrix[i, j] = cosine_similarity(x1=vec1[i, :, :], x2=vec3[j, :, :])
+        cs2_score = cs2_matrix.sum() / (max_length * max_length)
+        # todo: process matrices of cosine_similarity
     print('WIP')
