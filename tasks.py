@@ -9,7 +9,7 @@ from tqdm import tqdm
 
 from cfg import BATCH_SIZE, LEARNING_RATE, EPOCHS, NEW_VOCAB, D_MODEL, N_HEADS, N_LAYERS, TRAIN_NEW
 from data import tokenize, sentence_to_tensor, read_corpus, get_vocab, ConcatShiftedDataset, \
-    get_dataset_concat_shifted, get_dataset_concat_truncated, get_dataset_pairs, get_dataset_concat_triplet
+    get_dataset_concat_shifted, get_dataset_concat_truncated, get_dataset_pairs, get_dataset_triplet
 from models.transformer_encoder_decoder import TransformerEncoderDecoder
 from models.transformer_rag import TransformerRAG
 from models.transformer_without_decoder import TransformerWithoutDecoder
@@ -280,41 +280,39 @@ def routine_without_decoder(sentence_text='我爱你'):
     inference_without_decoder(model=model, sentence_text=sentence_text, words_list=words_list, max_length=max_length)
 
 
-def train_rag_encode(model: TransformerRAG, lines_words, words_list, max_length):
+def train_rag_encoder(model: TransformerRAG, lines_words, words_list, max_length):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
-    dataset = get_dataset_concat_triplet(lines_ids, max_length, words_list)
+    dataset = get_dataset_triplet(lines_ids, max_length, words_list)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
-    criterion1 = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))
-    criterion2 = nn.TripletMarginLoss(margin=1.0, p=2, reduction='mean')
+    criterion = nn.TripletMarginLoss(margin=1.0, p=2, reduction='mean')
     steps_count = 0
     for epoch_ in range(EPOCHS):
         progress_bar = tqdm(dataloader, desc=f"Epoch {epoch_ + 1}")
-        for tgt, tgt_next_token, pos, neg in progress_bar:
+        for tgt, pos, neg in progress_bar:
             steps_count += 1
             tgt = tgt.to(device)
-            tgt_next_token = tgt_next_token.to(device)
+            pos = pos.to(device)
+            neg = neg.to(device)
             vec, output = model.vectorize_content(content=tgt)
             vec_pos, output = model.vectorize_content(content=pos)
             vec_neg, output = model.vectorize_content(content=neg)
-            loss1 = criterion1(output.reshape(-1, len(words_list)), tgt_next_token.squeeze(-1))
-            loss2 = criterion2(anchor=vec, positive=vec_pos, negative=vec_neg)
-            loss = loss1 + loss2
+            loss = criterion(anchor=vec, positive=vec_pos, negative=vec_neg)
             # 反向传播
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
             progress_bar.set_postfix(loss=loss.item())
             # 记录 loss 数值到 TensorBoard
-            writer.add_scalar("Loss/train", loss1.item(), steps_count)
+            writer.add_scalar("Loss/train", loss.item(), steps_count)
     writer.close()
     torch.save(model.state_dict(), "weights/transformer_rag.pth")
 
 
-def train_rag_decode(model: TransformerRAG, lines_words, words_list, max_length):
+def train_rag_decoder(model: TransformerRAG, lines_words, words_list, max_length):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
     model.train()
@@ -351,7 +349,7 @@ def train_rag_decode(model: TransformerRAG, lines_words, words_list, max_length)
     torch.save(model.state_dict(), "weights/transformer_rag.pth")
 
 
-def check_similarity_corpus(model, words_list, max_length):
+def inference_rag_encoder(model, words_list, max_length):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
     model.eval()

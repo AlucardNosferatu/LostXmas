@@ -1,6 +1,6 @@
 import torch
 from torch import cosine_similarity
-from torch.nn import functional as F
+from torch.nn import functional
 
 
 def similarity_slow(vec1, vec2):
@@ -22,11 +22,11 @@ def similarity(vec1, vec2=None, pad_mask=None):
         vec2_pad_after = pad_mask[1]
         vec1_2d = vec1_2d[:vec1_pad_after, :]
         vec2_2d = vec2_2d[:vec2_pad_after, :]
-    norm_vec1 = F.normalize(vec1_2d, p=2, dim=-1)
+    norm_vec1 = functional.normalize(vec1_2d, p=2, dim=-1)
     if vec2 is None:
         norm_vec2 = norm_vec1
     else:
-        norm_vec2 = F.normalize(vec2_2d, p=2, dim=-1)
+        norm_vec2 = functional.normalize(vec2_2d, p=2, dim=-1)
     # 计算余弦相似度矩阵（向量化操作）
     similarity_matrix = torch.mm(norm_vec1, norm_vec2.T)
     # 计算平均相似度

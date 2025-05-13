@@ -88,21 +88,31 @@ class ConcatTruncatedDataset(Dataset):
         return torch.LongTensor(padded)
 
 
-class ConcatTripletDataset(ConcatTruncatedDataset):
-    def __init__(self, data_concat, max_len=128, pad_id=0, sos_id=1, eos_id=2):
-        super().__init__(data_concat, max_len, pad_id, sos_id, eos_id)
+class TripletDataset(Dataset):
+    def __init__(self, data_triplet, max_len=128, pad_id=0, sos_id=1, eos_id=2):
+        self.data_triplet = data_triplet
+        self.max_len = max_len
+        self.pad_id = pad_id
+        self.sos_id = sos_id
+        self.eos_id = eos_id
 
     def __getitem__(self, idx):
-        # 对数据对进行填充/截断处理，确保长度不超过max_length
-        # 使用pad_id填充不足部分，保证批次内序列长度对齐 [[4]]
-        tgt_, tgt_next_token = super().__getitem__(idx=idx)
-        tgt = self.data_concat[idx]
-        pos_ids, neg_ids = tgt[3], tgt[4]
+        tgt = self.data_triplet[idx]
+        pos_ids, neg_ids = tgt[1], tgt[2]
+        tgt = tgt[0]
         pos_id = random.choice(pos_ids)
         neg_id = random.choice(neg_ids)
-        pos = self.data_concat[pos_id]
-        neg = self.data_concat[neg_id]
-        return tgt_, tgt_next_token, pos, neg
+        pos = self.data_triplet[pos_id]
+        neg = self.data_triplet[neg_id]
+        tgt = self._pad_sequence(tgt)
+        pos = self._pad_sequence(pos)
+        neg = self._pad_sequence(neg)
+        return tgt, pos, neg
+
+    def _pad_sequence(self, sequence):
+        truncated = sequence[:self.max_len]  # 截断
+        padded = truncated + [self.pad_id] * (self.max_len - len(truncated))  # 填充
+        return torch.LongTensor(padded)
 
 
 def get_vocab(lines_words, new_vocab, tag_fill_this=False):
@@ -223,33 +233,31 @@ def get_dataset_concat_truncated(lines_ids, max_length, words_list):
     while len(data_concat) % batch_count != 0:
         dup_index = random.randint(0, dup_range - 1)
         data_concat.append(data_concat[dup_index])
-    dataset = ConcatTripletDataset(
+    dataset = ConcatTruncatedDataset(
         data_concat, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]'),
         eos_id=words_list.index('[EOS]')
     )
     return dataset
 
 
-def get_dataset_concat_triplet(lines_ids, max_length, words_list):
-    data_concat = []
-    for i in range(0, len(lines_ids), 2):
+def get_dataset_triplet(lines_ids, max_length, words_list):
+    data_triplet = []
+    for i in range(0, len(lines_ids)):
         line_concat = lines_ids[i] + lines_ids[i + 1]
-        tgt_len = len(line_concat)
-        first_eos = line_concat.index(words_list.index('[EOS]'))
         pos_ids = []
         neg_ids = []
         # todo: read pos_ids & neg_ids from json
-        data_concat.append([line_concat, tgt_len, first_eos, pos_ids, neg_ids])
-    dup_range = len(data_concat)
+        data_triplet.append([line_concat, pos_ids, neg_ids])
+    dup_range = len(data_triplet)
     if FORCE_STEPS is not None:
         batch_count = BATCH_SIZE * FORCE_STEPS
     else:
         batch_count = BATCH_SIZE
-    while len(data_concat) % batch_count != 0:
+    while len(data_triplet) % batch_count != 0:
         dup_index = random.randint(0, dup_range - 1)
-        data_concat.append(data_concat[dup_index])
-    dataset = ConcatTripletDataset(
-        data_concat, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]'),
+        data_triplet.append(data_triplet[dup_index])
+    dataset = TripletDataset(
+        data_triplet, max_len=max_length, pad_id=words_list.index('[PAD]'), sos_id=words_list.index('[SOS]'),
         eos_id=words_list.index('[EOS]')
     )
     return dataset
