@@ -9,11 +9,12 @@ from tqdm import tqdm
 
 from cfg import BATCH_SIZE, LEARNING_RATE, EPOCHS, NEW_VOCAB, D_MODEL, N_HEADS, N_LAYERS, TRAIN_NEW
 from data import tokenize, sentence_to_tensor, read_corpus, get_vocab, ConcatShiftedDataset, \
-    get_dataset_concat_shifted, get_dataset_concat_truncated, get_dataset_pairs
+    get_dataset_concat_shifted, get_dataset_concat_truncated, get_dataset_pairs, get_dataset_concat_triplet
 from models.transformer_encoder_decoder import TransformerEncoderDecoder
 from models.transformer_rag import TransformerRAG
 from models.transformer_without_decoder import TransformerWithoutDecoder
 from models.transformer_without_encoder import TransformerWithoutEncoder
+from utils import similarity
 
 writer = SummaryWriter(log_dir='tensorboard_runs/{}'.format(datetime.datetime.now().strftime("%m-%d_%H-%M-%S")))
 
@@ -284,29 +285,31 @@ def train_rag_encode(model: TransformerRAG, lines_words, words_list, max_length)
     model = model.to(device)
     model.train()
     lines_ids = tokenize(lines_words=lines_words, words_list=words_list)
-    dataset = get_dataset_concat_truncated(lines_ids, max_length, words_list)
+    dataset = get_dataset_concat_triplet(lines_ids, max_length, words_list)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
-    criterion = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))
+    criterion1 = nn.CrossEntropyLoss(ignore_index=words_list.index('[PAD]'))
+    criterion2 = nn.TripletMarginLoss(margin=1.0, p=2, reduction='mean')
     steps_count = 0
     for epoch_ in range(EPOCHS):
         progress_bar = tqdm(dataloader, desc=f"Epoch {epoch_ + 1}")
-        for tgt, tgt_next_token in progress_bar:
+        for tgt, tgt_next_token, pos, neg in progress_bar:
             steps_count += 1
             tgt = tgt.to(device)
             tgt_next_token = tgt_next_token.to(device)
             vec, output = model.vectorize_content(content=tgt)
-            loss = criterion(
-                output.reshape(-1, len(words_list)),
-                tgt_next_token.squeeze(-1)
-            )
+            vec_pos, output = model.vectorize_content(content=pos)
+            vec_neg, output = model.vectorize_content(content=neg)
+            loss1 = criterion1(output.reshape(-1, len(words_list)), tgt_next_token.squeeze(-1))
+            loss2 = criterion2(anchor=vec, positive=vec_pos, negative=vec_neg)
+            loss = loss1 + loss2
             # 反向传播
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
             progress_bar.set_postfix(loss=loss.item())
             # 记录 loss 数值到 TensorBoard
-            writer.add_scalar("Loss/train", loss.item(), steps_count)
+            writer.add_scalar("Loss/train", loss1.item(), steps_count)
     writer.close()
     torch.save(model.state_dict(), "weights/transformer_rag.pth")
 
@@ -346,3 +349,35 @@ def train_rag_decode(model: TransformerRAG, lines_words, words_list, max_length)
             writer.add_scalar("Loss/train", loss.item(), steps_count)
     writer.close()
     torch.save(model.state_dict(), "weights/transformer_rag.pth")
+
+
+def check_similarity_corpus(model, words_list, max_length):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = model.to(device)
+    model.eval()
+    sentence_text_1 = '那我们可以一起找些相关的资料或者视频'
+    print(sentence_text_1)
+    sentence_tensor_1 = sentence_to_tensor(
+        sentence=sentence_text_1, words_list=words_list, max_length=max_length
+    ).to(device)
+    pad_id = int(words_list.index('[PAD]'))
+    indices = torch.where(sentence_tensor_1 == pad_id)  # 行索引（此处为0）
+    first_pad_1 = indices[1][0].item()
+    with torch.no_grad():
+        cs_dict = {}
+        vec3, _ = model.vectorize_content(sentence_tensor_1)
+        with open(file='data/qa_short_seq.txt', mode='r') as f:
+            lines = f.readlines()
+            lines = [line.strip() for line in lines if len(line.strip()) > 0]
+        for line in lines:
+            sentence_tensor_2 = sentence_to_tensor(
+                sentence=line, words_list=words_list, max_length=max_length
+            ).to(device)
+            indices = torch.where(sentence_tensor_2 == pad_id)  # 行索引（此处为0）
+            first_pad_2 = indices[1][0].item()
+            pad_mask = [first_pad_1, first_pad_2]
+            vec4, _ = model.vectorize_content(sentence_tensor_2)
+            cs_score_, cs_matrix_ = similarity(vec1=vec3, vec2=vec4, pad_mask=pad_mask)
+            cs_dict[line] = cs_score_
+        sorted_dict = sorted(cs_dict.items(), key=lambda item: item[1], reverse=True)
+        [print(item) for item in sorted_dict]
